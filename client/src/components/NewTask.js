@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import {submitNewTask} from '../actions/index';
 
 /*
 to-do:
@@ -14,11 +16,11 @@ class NewTask extends Component {
     constructor() {
         super();
         this.state = {
-            taskSubject: '',
+            taskHeadline: '',
             taskValue: 0,
             taskCategory: '',
-            taskNeededDate: '',
-            taskNeededHour: '',
+            taskNeededDate: 'Today',
+            taskNeededHour: '12:00am',
             taskDescription: ''
         };
         this.handleChange  = this.handleChange.bind(this);
@@ -27,8 +29,8 @@ class NewTask extends Component {
 
     handleChange(event) {
         switch (event.target.name) {
-            case 'taskSubject': {
-                return this.setState({taskSubject: event.target.value});
+            case 'taskHeadline': {
+                return this.setState({taskHeadline: event.target.value});
             }
 
             case 'taskValue': {
@@ -61,22 +63,17 @@ class NewTask extends Component {
     submitNewTask() {
         //handle upload separately
 
-        if (!this.state.taskCategory) {
-            return alert('Error: Please select a category before proceeding');
+        if (!this.state.taskHeadline || !this.state.taskDescription || !this.state.taskCategory) {
+            return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
         }
 
+        const newTaskInfo = [this.state.taskHeadline, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription];
 
-        alert('subject: ' + this.state.taskSubject + '\n' +
-                'Value: ' + this.state.taskValue + '\n' +
-                'Category: ' + this.state.taskCategory + '\n' +
-                'Needed by: ' + this.state.taskNeededDate + '\n' +
-                'Needed by hour: ' + this.state.taskNeededHour + '\n' +
-                'Description: ' + this.state.taskDescription
-        );
-        //dispatch task to action creator
-        //action creator will send action to reducer to update store
-        //return to react component
-        //add task to list
+        this.props.dispatch(submitNewTask(newTaskInfo));
+
+        setTimeout(() => {
+            console.log(this.props.newTask);
+        }, 1000)
     }
 
     render() {
@@ -87,12 +84,12 @@ class NewTask extends Component {
                 <form>
                     <FieldGroup
                         label="Headline"
-                        id="taskSubject"
+                        id="taskHeadline"
                         type="text"
-                        name="taskSubject"
+                        name="taskHeadline"
                         placeholder="Summary of task (140 characters max)"
-                        maxlength="140"
-                        value={this.state.taskSubject}
+                        maxLength="140"
+                        value={this.state.taskHeadline}
                         onChange={this.handleChange}
                     />
                     <FormGroup>
@@ -157,7 +154,7 @@ class NewTask extends Component {
                         help="Upload file(s)"
                     />
 
-                    <Button type="submit" bsStyle="primary" onClick={this.submitNewTask}>
+                    <Button bsStyle="primary" onClick={this.submitNewTask}>
                         Submit
                     </Button>
                 </form>
@@ -165,9 +162,6 @@ class NewTask extends Component {
         )
     }
 }
-
-export default NewTask;
-
 
 function FieldGroup({ id, label, ...props }) {
     return (
@@ -177,3 +171,13 @@ function FieldGroup({ id, label, ...props }) {
         </FormGroup>
     );
 }
+
+function mapStateToProps(state) {
+    return {
+        newTask: state.newTask
+    };
+}
+
+export default connect(mapStateToProps)(NewTask);
+
+// <Button type="submit" bsStyle="primary" onClick={this.submitNewTask}>
