@@ -1,12 +1,11 @@
-const newTaskReducer = (state ={
+const newTaskSource = (state ={
     newTask: {
         taskHeadline: '',
         taskValue: 0,
         taskCategory: '',
         taskNeededDate: '',
         taskNeededHour: '',
-        taskDescription: ''
-
+        taskDescription: '',
     }}, action) => {
 
     switch (action.type) {
@@ -31,4 +30,4 @@ const newTaskReducer = (state ={
 };
 
 
-export default newTaskReducer
+export default newTaskSource

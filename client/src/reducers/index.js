@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import newTaskReducer from './newTaskReducer';
+import newTaskSource from './newTask';
 
 
 const allReducers = combineReducers({
-    newTask: newTaskReducer
+    newTaskReducer: newTaskSource
 });
 
 export default allReducers;

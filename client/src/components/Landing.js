@@ -9,7 +9,7 @@ class Landing extends Component {
                 <h1>Handy Helper landing page placeholder</h1>
 }
                 <Button bsStyle="info">
-                    <Link to="NewTask">
+                    <Link to="tasks">
                         I need help with task(s)
                     </Link>
                 </Button>

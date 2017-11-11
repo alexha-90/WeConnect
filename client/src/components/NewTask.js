@@ -73,7 +73,10 @@ class NewTask extends Component {
 
         setTimeout(() => {
             console.log(this.props.newTask);
-        }, 1000)
+        }, 1000);
+
+        return <h1>hey</h1>;
+
     }
 
     render() {
@@ -158,6 +161,8 @@ class NewTask extends Component {
                         Submit
                     </Button>
                 </form>
+
+                <hr/>
             </div>
         )
     }
@@ -174,7 +179,7 @@ function FieldGroup({ id, label, ...props }) {
 
 function mapStateToProps(state) {
     return {
-        newTask: state.newTask
+        newTask: state.newTaskReducer.newTask
     };
 }
 
