@@ -1,11 +1,6 @@
-export function submitNewTask(newTaskData) {
-    if (!newTaskData.taskSummary || !newTaskData.taskDescription || !newTaskData.taskCategory) {
+export function testNewTaskValidity(newTaskData) {
+    if (Object.keys(newTaskData).length !== 6) {
         return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
     }
-
-    console.log(newTaskData);
-    return newTaskData;
+    return newTaskData
 }
-
-
-// export function submitNewTask(taskSummary, taskValue, taskCategory, taskNeededDate, taskNeededHour, taskDescription) {

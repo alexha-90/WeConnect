@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
-import { submitNewTask } from './stateFunctions';
-
-import { saveNewTask } from '../actions/index';
+import { newTaskToProps } from '../actions/index';
 
 /*
 to-do:
@@ -20,6 +19,7 @@ class NewTask extends Component {
     constructor() {
         super();
         this.state = {
+            redirectToReviewNewTask: false,
             taskSummary: '',
             taskValue: 0,
             taskCategory: '',
@@ -28,7 +28,7 @@ class NewTask extends Component {
             taskDescription: ''
         };
         this.handleChange = this.handleChange.bind(this);
-        //this.submitNewTask  = this.submitNewTask.bind(this);
+        this.onReviewNewTask  = this.onReviewNewTask.bind(this);
     }
 
     handleChange(event) {
@@ -63,32 +63,31 @@ class NewTask extends Component {
         }
     }
 
-
-
-    /*
-    submitNewTask() {
-        //handle upload separately
-
+   onReviewNewTask() {
         if (!this.state.taskSummary || !this.state.taskDescription || !this.state.taskCategory) {
             return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
         }
 
-        const newTaskInfo = [this.state.taskSummary, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription];
-
-        //this.props.dispatch(saveNewTask(newTaskInfo));
-
-        setTimeout(() => {
-            console.log(this.props.newTask);
-        }, 1000);
-
-
-        return newTaskInfo;
-        //return <h1>hey</h1>;
+        return (
+            setTimeout(() => {
+                this.props.dispatch(newTaskToProps({
+                    taskSummary: this.state.taskSummary,
+                    taskValue: this.state.taskValue,
+                    taskCategory: this.state.taskCategory,
+                    taskNeededDate: this.state.taskNeededHour,
+                    taskNeededHour: this.state.taskNeededDate,
+                    taskDescription: this.state.taskDescription
+                }));
+                this.setState({redirectToReviewNewTask: true});
+            }, 1000)
+        );
     }
-    */
-
 
     render() {
+        if (this.state.redirectToReviewNewTask) {
+            return <Redirect push to="/reviewNewTask"/>
+        }
+
         return (
             <div>
                 <h1>new task placeholder</h1>
@@ -131,10 +130,10 @@ class NewTask extends Component {
                             onChange={this.handleChange}
                             value={this.state.taskCategory}>
                                 <option value="">-</option>
-                                <option value="electrical">Electrical</option>
-                                <option value="plumbing">Plumbing</option>
-                                <option value="gardening">Gardening</option>
-                                <option value="painting">Painting</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Gardening">Gardening</option>
+                                <option value="Painting">Painting</option>
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
@@ -169,16 +168,9 @@ class NewTask extends Component {
                     />
 
                     <Button bsStyle="primary"
-                            onClick={() => submitNewTask({
-                                taskSummary: this.state.taskSummary,
-                                taskValue: this.state.taskValue,
-                                taskCategory: this.state.taskCategory,
-                                taskNeededDate: this.state.taskNeededHour,
-                                taskNeededHour: this.state.taskNeededDate,
-                                taskDescription: this.state.taskDescription
-                            })}
+                            onClick={this.onReviewNewTask}
                         >
-                        Submit
+                        Review
                     </Button>
                 </form>
 
@@ -203,21 +195,4 @@ function mapStateToProps(state) {
     };
 }
 
-
-// for unit test
-// NewTask.propTypes = {
-//     myTest: React.PropTypes.array.isRequired
-// };
-
-/*
-ProductList.propTypes = {
-  products: React.PropTypes.array.isRequired
-};
- */
-
-export default NewTask;
-
-//export default connect(mapStateToProps)(NewTask);
-
-// <Button type="submit" bsStyle="primary" onClick={this.submitNewTask}>
-//                            onClick={submitNewTask([this.state.taskSummary, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription])}
+export default connect(mapStateToProps)(NewTask);

@@ -9,6 +9,7 @@ import Landing from './components/Landing';
 import NewTask from './components/NewTask';
 import AvailableTasks from './components/AvailableTasks';
 import ProviderHome from './components/ProviderHome';
+import ReviewNewTask from "./components/ReviewNewTask";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
                     <Header />
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/newTask' component={NewTask} />
+                    <Route exact path='/reviewNewTask' component={ReviewNewTask} />
                     <Route exact path='/availableTasks' component={AvailableTasks} />
                     <Route exact path='/providerHome' component={ProviderHome} />
                 </div>

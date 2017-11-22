@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-//import NewTask from '../src/components/NewTask';
-import { submitNewTask } from "../src/components/stateFunctions";
+import { testNewTaskValidity } from "../src/components/stateFunctions";
 
 
 const sampleNewTaskData = {
@@ -13,14 +12,17 @@ const sampleNewTaskData = {
     taskDescription: 'sample description'
 };
 
-const completedForm = submitNewTask(sampleNewTaskData);
+const completedForm = testNewTaskValidity(sampleNewTaskData);
 
 describe('submitNewTask', () => {
     it('retrieves newly created task data specified by user', () => {
         expect(completedForm).toEqual(sampleNewTaskData);
     });
-});
 
+    it('should have six properties for newTask object', () => {
+        expect(Object.keys(sampleNewTaskData).length).toBe(6);
+    });
+});
 
 
 

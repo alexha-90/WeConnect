@@ -1,23 +1,25 @@
 const newTaskSource = (state ={
+    //change values below to null after testing done
     newTask: {
-        taskHeadline: '',
+        taskSummary: '',
         taskValue: 0,
         taskCategory: '',
         taskNeededDate: '',
         taskNeededHour: '',
-        taskDescription: '',
+        taskDescription: ''
     }}, action) => {
 
     switch (action.type) {
         case "SUBMIT_NEW_TASK": {
+            console.log(action.payload);
             return {
                 newTask: {
-                    taskHeadline: action.payload[0],
-                    taskValue: action.payload[1],
-                    taskCategory: action.payload[2],
-                    taskNeededDate: action.payload[3],
-                    taskNeededHour: action.payload[4],
-                    taskDescription: action.payload[5]
+                    taskSummary: action.payload.taskSummary,
+                    taskValue: action.payload.taskValue,
+                    taskCategory: action.payload.taskCategory,
+                    taskNeededDate: action.payload.taskNeededDate,
+                    taskNeededHour: action.payload.taskNeededHour,
+                    taskDescription: action.payload.taskDescription
                 }
             }
         }
