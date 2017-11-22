@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import {submitNewTask} from '../actions/index';
+
+import { submitNewTask } from './stateFunctions';
+
+import { saveNewTask } from '../actions/index';
 
 /*
 to-do:
+add location to task form. zip code.
 validate file uploads
 calendar needed by
 moment.js time
@@ -16,21 +20,21 @@ class NewTask extends Component {
     constructor() {
         super();
         this.state = {
-            taskHeadline: '',
+            taskSummary: '',
             taskValue: 0,
             taskCategory: '',
             taskNeededDate: 'Today',
             taskNeededHour: '12:00am',
             taskDescription: ''
         };
-        this.handleChange  = this.handleChange.bind(this);
-        this.submitNewTask = this.submitNewTask.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        //this.submitNewTask  = this.submitNewTask.bind(this);
     }
 
     handleChange(event) {
         switch (event.target.name) {
-            case 'taskHeadline': {
-                return this.setState({taskHeadline: event.target.value});
+            case 'taskSummary': {
+                return this.setState({taskSummary: event.target.value});
             }
 
             case 'taskValue': {
@@ -60,24 +64,29 @@ class NewTask extends Component {
     }
 
 
+
+    /*
     submitNewTask() {
         //handle upload separately
 
-        if (!this.state.taskHeadline || !this.state.taskDescription || !this.state.taskCategory) {
+        if (!this.state.taskSummary || !this.state.taskDescription || !this.state.taskCategory) {
             return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
         }
 
-        const newTaskInfo = [this.state.taskHeadline, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription];
+        const newTaskInfo = [this.state.taskSummary, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription];
 
-        this.props.dispatch(submitNewTask(newTaskInfo));
+        //this.props.dispatch(saveNewTask(newTaskInfo));
 
         setTimeout(() => {
             console.log(this.props.newTask);
         }, 1000);
 
-        return <h1>hey</h1>;
 
+        return newTaskInfo;
+        //return <h1>hey</h1>;
     }
+    */
+
 
     render() {
         return (
@@ -86,13 +95,13 @@ class NewTask extends Component {
 
                 <form>
                     <FieldGroup
-                        label="Headline"
-                        id="taskHeadline"
+                        label="Summary"
+                        id="taskSummary"
                         type="text"
-                        name="taskHeadline"
+                        name="taskSummary"
                         placeholder="Summary of task (140 characters max)"
                         maxLength="140"
-                        value={this.state.taskHeadline}
+                        value={this.state.taskSummary}
                         onChange={this.handleChange}
                     />
                     <FormGroup>
@@ -122,8 +131,10 @@ class NewTask extends Component {
                             onChange={this.handleChange}
                             value={this.state.taskCategory}>
                                 <option value="">-</option>
-                                <option value="homeRepair">Home Repair</option>
-                                <option value="imageEditing">Image Editing</option>
+                                <option value="electrical">Electrical</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="gardening">Gardening</option>
+                                <option value="painting">Painting</option>
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
@@ -157,7 +168,16 @@ class NewTask extends Component {
                         help="Upload file(s)"
                     />
 
-                    <Button bsStyle="primary" onClick={this.submitNewTask}>
+                    <Button bsStyle="primary"
+                            onClick={() => submitNewTask({
+                                taskSummary: this.state.taskSummary,
+                                taskValue: this.state.taskValue,
+                                taskCategory: this.state.taskCategory,
+                                taskNeededDate: this.state.taskNeededHour,
+                                taskNeededHour: this.state.taskNeededDate,
+                                taskDescription: this.state.taskDescription
+                            })}
+                        >
                         Submit
                     </Button>
                 </form>
@@ -183,6 +203,21 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(NewTask);
+
+// for unit test
+// NewTask.propTypes = {
+//     myTest: React.PropTypes.array.isRequired
+// };
+
+/*
+ProductList.propTypes = {
+  products: React.PropTypes.array.isRequired
+};
+ */
+
+export default NewTask;
+
+//export default connect(mapStateToProps)(NewTask);
 
 // <Button type="submit" bsStyle="primary" onClick={this.submitNewTask}>
+//                            onClick={submitNewTask([this.state.taskSummary, this.state.taskValue, this.state.taskCategory, this.state.taskNeededDate, this.state.taskNeededHour, this.state.taskDescription])}

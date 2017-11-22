@@ -1,6 +1,6 @@
 import store from '../index';
 
-export const submitNewTask = (newTaskInfo) => {
+export const saveNewTask = (newTaskInfo) => {
     return {
         type: "SUBMIT_NEW_TASK",
         payload: newTaskInfo

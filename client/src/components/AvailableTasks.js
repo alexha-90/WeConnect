@@ -20,7 +20,6 @@ class AvailableTasks extends Component {
     render() {
         return (
             <div>
-                <NewTask />
                 <h1>all tasks placeholder</h1>
                 <h1>{this.props.newTask.taskValue}</h1>
 
