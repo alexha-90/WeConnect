@@ -1,0 +1,30 @@
+{
+  "name": "handyhelper",
+  "version": "1.0.0",
+  "description": "app for connecting renters and homeowners with skilled technicians",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexha-90/Handy_Helper.git"
+  },
+  "author": "Alex Ha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexha-90/Handy_Helper/issues"
+  },
+  "homepage": "https://github.com/alexha-90/Handy_Helper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
+  }
+}
