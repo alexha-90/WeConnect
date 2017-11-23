@@ -72,7 +72,7 @@ class NewTask extends Component {
             setTimeout(() => {
                 this.props.dispatch(newTaskToProps({
                     taskSummary: this.state.taskSummary,
-                    taskValue: this.state.taskValue,
+                    taskValue: parseInt(this.state.taskValue, 10),
                     taskCategory: this.state.taskCategory,
                     taskNeededDate: this.state.taskNeededHour,
                     taskNeededHour: this.state.taskNeededDate,

@@ -3,6 +3,8 @@
 const { Client } = require('pg');
 require('dotenv').config();
 
+// get rid of need to parseInt for value
+
 //===============================================================================================//
 
 module.exports = app => {
@@ -20,8 +22,10 @@ module.exports = app => {
                 client.connect()
                     .then(() => {
                         console.log('Successfully connected to postgres DB. Saving new task now');
-                        const sql = 'INSERT INTO tasks (category, summary) VALUES ($1, $2)';
-                        const params = [newTaskToSave.taskCategory, newTaskToSave.taskSummary];
+                        const sql = 'INSERT INTO tasks (category, summary, value, description, hour, date) ' +
+                            'VALUES ($1, $2, $3, $4, $5, $6)';
+                        const params = [newTaskToSave.taskCategory, newTaskToSave.taskSummary, newTaskToSave.taskValue,
+                            newTaskToSave.taskDescription, newTaskToSave.taskNeededHour, newTaskToSave.taskNeededDate];
                         return client.query(sql, params);
                     })
                     .catch((err) => {
