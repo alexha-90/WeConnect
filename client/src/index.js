@@ -21,4 +21,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-//export default store;
+export default store;

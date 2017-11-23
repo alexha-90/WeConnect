@@ -74,7 +74,7 @@ class ReviewNewTask extends Component {
 
 function mapStateToProps(state) {
     return {
-        newTask: state.newTaskReducer.newTask
+        newTask: state.newTaskReducer
     };
 }
 

@@ -31,11 +31,8 @@ export const newTaskPOST = (newTaskInfo) => async dispatch => {
 export const allTasksGET = () => async dispatch => {
     try {
         const res = await axios.get('api/retrieveAllTasks');
-        await console.log('All available tasks from server:');
-        await console.log(res.data);
-        // iterate through console.log(results['rows'].length);
-        //console.log(results['rows'][0]) 1,2,3, x etc to retrieve all results;
-        return await console.log('All tasks retrieved');
+        return store.dispatch({ type: "ALL_TASKS_TO_REDUX_STATE", payload: res.data });
+
     } catch(res) {
         alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
     }
