@@ -31,5 +31,4 @@ const newTaskSource = (state ={
 
 };
 
-
 export default newTaskSource

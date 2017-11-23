@@ -1,5 +1,6 @@
-import store from '../index';
 import axios from 'axios';
+import store from '../index';
+//===============================================================================================//
 
 export const newTaskToProps = (newTaskInfo) => {
     return {
@@ -9,7 +10,6 @@ export const newTaskToProps = (newTaskInfo) => {
 };
 
 // axios POST request to submit information into database
-// refactor later. doesn't seem like req or res is required here.
 export const newTaskPOST = (newTaskInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewTask',
@@ -20,8 +20,40 @@ export const newTaskPOST = (newTaskInfo) => async dispatch => {
         );
         await console.log('reSpoNse from server: ' + res.data);
         return await console.log('New task submitted');
-        
+
     } catch(res) {
         alert('Hmm... it appears something went wrong. Please try submitting another task. Error: ' + res.err)
     }
 };
+
+
+// axios GET request to retrieve all available tasks
+export const allTasksGET = () => async dispatch => {
+    try {
+        const res = await axios.get('api/retrieveAllTasks');
+        await console.log('All available tasks from server:');
+        await console.log(res.data);
+        // iterate through console.log(results['rows'].length);
+        //console.log(results['rows'][0]) 1,2,3, x etc to retrieve all results;
+        return await console.log('All tasks retrieved');
+    } catch(res) {
+        alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
+    }
+};
+
+
+/*
+export const allTasksGET = () => new Promise(() => {
+    const res = axios.get('api/retrieveAllTasks');
+    console.log('All available tasks from server:');
+    return res.data
+        .then((data) => {
+            //update redux state for display
+            console.log(data);
+        })
+        .catch((res) => {
+            alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
+        })
+});
+ */
+

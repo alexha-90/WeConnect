@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import NewTask from './NewTask';
 import { connect } from 'react-redux';
+
+import { allTasksGET } from '../actions/index';
+
 
 class AvailableTasks extends Component {
 
     componentWillMount() {
         //run action to query database and return all tasks
+        return this.props.dispatch(allTasksGET());
     }
+
+    /*
+            // iterate through console.log(results['rows'].length);
+        //console.log(results['rows'][0]) 1,2,3, x etc to retrieve all results;
+     */
+
 
 
     /*

@@ -7,6 +7,7 @@ import { newTaskToProps } from '../actions/index';
 
 /*
 to-do:
+property: isAvailable? T/F
 add location to task form. zip code.
 validate file uploads
 calendar needed by

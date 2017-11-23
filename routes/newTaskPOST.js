@@ -4,7 +4,7 @@ const { Client } = require('pg');
 require('dotenv').config();
 
 // get rid of need to parseInt for value
-
+// validate. if res.send.... else did not post properly
 //===============================================================================================//
 
 module.exports = app => {
@@ -12,7 +12,7 @@ module.exports = app => {
         .post(async (req, res) => {
             try {
 
-                console.log('in express environment. Attempt to save task to db');
+                console.log('Attempt to save task to db');
                 const newTaskToSave = req.body.payload;
                 console.log(newTaskToSave);
                 res.send('back to front-end. Here is what you sent me: ' + newTaskToSave);
@@ -29,7 +29,8 @@ module.exports = app => {
                         return client.query(sql, params);
                     })
                     .catch((err) => {
-                        console.log('Entry was not saved. An error occurred. Reason: ' + err);
+                        console.log('An error occurred. Entry was not saved. Reason: ' + err);
+                        res.send('Error!');
                     });
 
             } catch (res) {
