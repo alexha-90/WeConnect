@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 import { allTasksGET } from '../actions/index';
 
 // expand description upon clicking
 // show a loading page first
+// carousel show providers with circle avatar. assign default image
 //===============================================================================================//
 
 
@@ -18,6 +19,9 @@ class AvailableTasks extends Component {
     }
 
     componentWillMount() {
+        // show loading screen/image
+
+
         //run action to query database and return all tasks
         return this.props.dispatch(allTasksGET());
     }
@@ -25,6 +29,9 @@ class AvailableTasks extends Component {
     //    componentWillReceiveProps() {
 
     componentDidMount() {
+        // hide loading screen/image and show results
+
+
         setTimeout(() => {
             /*
             console.log(this.props.allAvailableTasks[0]);
@@ -40,7 +47,7 @@ class AvailableTasks extends Component {
                 console.log(this.props.allAvailableTasks[i]['summary'])
             }
             this.propagateTasks();
-            }, 600);
+            }, 2000);
     }
 
 
@@ -66,9 +73,14 @@ class AvailableTasks extends Component {
     render() {
         return (
             <div>
-                <h1>all tasks placeholder</h1>
-                {this.propagateTasks()}
-
+                <h1>Providers:</h1>
+                <ul>
+                    <li><Link to='providerProfile'>Robert Smith: Plumber</Link></li>
+                    <li><Link to='providerProfile'>Marge Simpson: Cook</Link></li>
+                    <li><Link to='providerProfile'>Mohammad Ibe: Electrician</Link></li>
+                </ul>
+                <hr />
+                <h1>Available tasks:</h1>
                 <Table striped responsive bordered>
                     <thead>
                     <tr>
@@ -82,20 +94,26 @@ class AvailableTasks extends Component {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>3</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
+                        <td><Link to='/viewTask'>I need help cleaning my kitchen</Link></td>
+                        <td>$50</td>
+                        <td>Cleaning</td>
+                        <td>Tomorrow</td>
+                        <td>5:00pm PST</td>
+                        <td>My kitchen is disgusting and I need someone to clean it for me asap. I am against doing dishes</td>
+                    </tr>
+                    <tr>
+                        <td>Outlet broken in master room</td>
+                        <td>$75</td>
+                        <td>Electrical</td>
+                        <td>Tuesday</td>
+                        <td>2:00pm PST</td>
+                        <td>One of my outlets stopped working in the master bedroom after my science experiment!!</td>
                     </tr>
                     </tbody>
                 </Table>
-
-
-
-
-
+                <hr />
+                <h1>Claimed tasks:</h1>
+                {this.propagateTasks()}
             </div>
         )
     }

@@ -15,8 +15,7 @@ module.exports = app => {
                 console.log('Attempt to save task to db');
                 const newTaskToSave = req.body.payload;
                 console.log(newTaskToSave);
-                res.send('back to front-end. Here is what you sent me: ' + newTaskToSave);
-
+                //res.send('back to front-end. Here is what you sent me: ' + newTaskToSave);
 
                 const client = new Client();
                 client.connect()

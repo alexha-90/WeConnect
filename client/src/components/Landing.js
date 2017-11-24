@@ -28,9 +28,6 @@ class Landing extends Component {
 
         return (
             <div>
-                <h3 style={{textAlign: 'right'}}>Login</h3>
-                <h3 style={{textAlign: 'right'}}>Logout</h3>
-
                 <div style={{textAlign: 'center'}}>
                     <h1>Handy Helper landing page placeholder</h1>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -43,11 +40,11 @@ class Landing extends Component {
                     <Button bsStyle="success"
                         onClick={this.onViewAvailableTasks}
                         >
-                        I'm just browsing. Let me view open tasks.
+                        I'm just visiting. Let me browse open tasks and see available providers.
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button bsStyle="warning">
-                        <Link to="ProviderHome">
+                        <Link to="/providerSignUp">
                             I want to earn money with my skills.
                         </Link>
                     </Button>
