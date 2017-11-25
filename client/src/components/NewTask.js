@@ -65,6 +65,8 @@ class NewTask extends Component {
     }
 
    onReviewNewTask() {
+        console.log('current state is:');
+        console.log(this.state);
         if (!this.state.taskSummary || !this.state.taskDescription || !this.state.taskCategory) {
             return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
         }

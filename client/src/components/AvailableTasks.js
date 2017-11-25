@@ -4,6 +4,8 @@ import { Table } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { allTasksGET } from '../actions/index';
 
+//NOTE 11/25/17: THIS COMPONENT WILL NO LONGER BE USED. JUST HERE FOR REFERENCE
+
 // expand description upon clicking
 // show a loading page first
 // carousel show providers with circle avatar. assign default image
@@ -21,9 +23,10 @@ class AvailableTasks extends Component {
     componentWillMount() {
         // show loading screen/image
 
+        setTimeout(() => this.setState({ loading: false }), 1500); // simulates loading of data
 
         //run action to query database and return all tasks
-        return this.props.dispatch(allTasksGET());
+        //return this.props.dispatch(allTasksGET());
     }
 
     //    componentWillReceiveProps() {
@@ -73,11 +76,11 @@ class AvailableTasks extends Component {
     render() {
         return (
             <div>
-                <h1>Providers:</h1>
+                <h1>Featured professionals:</h1>
                 <ul>
-                    <li><Link to='providerProfile'>Robert Smith: Plumber</Link></li>
-                    <li><Link to='providerProfile'>Marge Simpson: Cook</Link></li>
-                    <li><Link to='providerProfile'>Mohammad Ibe: Electrician</Link></li>
+                    <li><Link to='producerProfile'>Robert Smith: Plumber</Link></li>
+                    <li><Link to='producerProfile'>Marge Simpson: Cook</Link></li>
+                    <li><Link to='producerProfile'>Mohammad Ibe: Electrician</Link></li>
                 </ul>
                 <hr />
                 <h1>Available tasks:</h1>

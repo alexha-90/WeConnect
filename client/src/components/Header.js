@@ -35,7 +35,7 @@ class Header extends Component {
             <div>
 
                 <a href='/'>
-                    <h1 style={{textAlign: 'center'}}>HandyHelper</h1>
+                    <h1 style={{textAlign: 'center'}}>SocialConnector</h1>
                 </a>
                 <div style={{textAlign: 'right'}}>
                     <Link to='/profile'>

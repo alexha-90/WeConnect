@@ -15,6 +15,7 @@ class ReviewNewTask extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.newTask);
         //run function for unit test. Ensure information to be submitted is accurate
         testNewTaskValidity(this.props.newTask)
     }
@@ -26,6 +27,8 @@ class ReviewNewTask extends Component {
 
         let sendingNewTask = new Promise((resolve, reject) => {
             this.props.dispatch(newTaskPOST(this.props.newTask));
+
+            // this needs to consider a res from server. Always true and says new task was submitted regardless of result since dispatch was run.
             sent = true;
 
             if (sent) {
@@ -46,7 +49,7 @@ class ReviewNewTask extends Component {
 
     render() {
         if (this.state.redirectToAvailableTasks) {
-            return <Redirect push to="/availableTasks" />;
+            return <Redirect push to="/contentCreatorsList" />;
         }
         return (
             <div>
@@ -74,7 +77,7 @@ class ReviewNewTask extends Component {
 
 function mapStateToProps(state) {
     return {
-        newTask: state.newTaskReducer
+        newTask: state.newTaskReducer.newTask
     };
 }
 

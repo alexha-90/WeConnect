@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 
+// needs work. This is what users see when logged in.
+
 
 class Profile extends Component {
 
     render() {
         return (
             <div>
+                <h1>Content Creator</h1>
                 <Table striped responsive bordered style={{width: '60%'}}>
                     <tbody>
                     <tr>
@@ -25,17 +28,13 @@ class Profile extends Component {
                     </tr>
                     </tbody>
                 </Table>
-                <form>
-                    <input type="radio" name="gender" value="male" />&nbsp;Professional?<br />
 
-                </form>
 
+                <hr />
+                <h1>Recent reviews:</h1>
                 <ul>
-                    <li>Languages spoken: English, Spanish, Chinese</li>
-                    <li>Skills: Electrical (Expert), Cleaning (Good), Cooking (Poor)</li>
-                    <li>License number(s): CSLB #1223949</li>
-                    <li>Description: I am a versatile handyman. Hire me</li>
-                    <li>Current projects: #1, #2, #3</li>
+                    <li>As customer: he was great!! 5/5</li>
+                    <li>As provider: he sucked!! 1/5</li>
                 </ul>
 
 

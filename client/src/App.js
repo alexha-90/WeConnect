@@ -8,11 +8,12 @@ import Header from './components/Header'
 import Landing from './components/Landing';
 import NewTask from './components/NewTask';
 import AvailableTasks from './components/AvailableTasks';
-import ProviderSignUp from './components/ProviderSignUp';
 import ReviewNewTask from './components/ReviewNewTask';
 import Profile from './components/Profile';
-import ViewProviderProfile from './components/ViewProviderProfile';
-import ViewTask from './components/ViewTask';
+import ProducerProfile from './components/ProducerProfile';
+import AdvertiserProfile from './components/AdvertiserProfile';
+import ContentCreatorsList from './components/ContentCreatorsList';
+import AdvertisersList from './components/AdvertisersList';
 
 class App extends Component {
   render() {
@@ -22,13 +23,17 @@ class App extends Component {
                 <div>
                     <Header />
                     <Route exact path='/' component={Landing} />
+                    <Route exact path='/ContentCreatorsList' component={ContentCreatorsList} />
+                    <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newTask' component={NewTask} />
                     <Route exact path='/profile' component={Profile} />
-                    <Route exact path='/ViewTask' component={ViewTask} />
-                    <Route exact path='/providerProfile' component={ViewProviderProfile} />
+                    <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
+                    <Route exact path='/producerProfile' component={ProducerProfile} />
                     <Route exact path='/reviewNewTask' component={ReviewNewTask} />
+
+                    {/* temporary file below*/}
                     <Route exact path='/availableTasks' component={AvailableTasks} />
-                    <Route exact path='/providerSignUp' component={ProviderSignUp} />
+
                 </div>
             </BrowserRouter>
         </div>
