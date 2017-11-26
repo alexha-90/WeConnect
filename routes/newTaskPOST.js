@@ -23,8 +23,8 @@ module.exports = app => {
                         console.log('Successfully connected to postgres DB. Saving new task now');
                         const sql = 'INSERT INTO tasks (category, summary, value, description, hour, date) ' +
                             'VALUES ($1, $2, $3, $4, $5, $6)';
-                        const params = [newTaskToSave.taskCategory, newTaskToSave.taskSummary, newTaskToSave.taskValue,
-                            newTaskToSave.taskDescription, newTaskToSave.taskNeededHour, newTaskToSave.taskNeededDate];
+                        const params = [newTaskToSave.contentMedium, newTaskToSave.contentSummary, newTaskToSave.contentSubCount,
+                            newTaskToSave.contentDescription, newTaskToSave.contentVideoLength, newTaskToSave.contentUploadFrequency];
                         return client.query(sql, params);
                     })
                     .catch((err) => {

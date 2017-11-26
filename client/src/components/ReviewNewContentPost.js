@@ -4,10 +4,10 @@ import { Button } from 'react-bootstrap';
 import {testNewTaskValidity} from "./stateFunctions";
 import { Redirect } from 'react-router-dom';
 
-import { newTaskPOST } from '../actions/index';
+import { saveNewContentPost } from '../actions/index';
 
 
-class ReviewNewTask extends Component {
+class ReviewNewContentPost extends Component {
     constructor() {
         super();
         this.state = {redirectToAvailableTasks: false};
@@ -15,9 +15,10 @@ class ReviewNewTask extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.newTask);
+        console.log(this.props.newContentPost);
         //run function for unit test. Ensure information to be submitted is accurate
-        testNewTaskValidity(this.props.newTask)
+        //currently always proceeds regardless. Fix
+        testNewTaskValidity(this.props.newContentPost)
     }
 
     onSubmitNewTask() {
@@ -26,7 +27,7 @@ class ReviewNewTask extends Component {
         let sent = false;
 
         let sendingNewTask = new Promise((resolve, reject) => {
-            this.props.dispatch(newTaskPOST(this.props.newTask));
+            this.props.dispatch(saveNewContentPost(this.props.newContentPost));
 
             // this needs to consider a res from server. Always true and says new task was submitted regardless of result since dispatch was run.
             sent = true;
@@ -56,12 +57,12 @@ class ReviewNewTask extends Component {
                 <h1>Review your new task below:</h1>
 
                 <ul>
-                    <li>Summary: {this.props.newTask.taskSummary}</li>
-                    <li>Value: {this.props.newTask.taskValue}</li>
-                    <li>Category: {this.props.newTask.taskCategory}</li>
-                    <li>Date: {this.props.newTask.taskNeededDate}</li>
-                    <li>Hour: {this.props.newTask.taskNeededHour}</li>
-                    <li>Description: {this.props.newTask.taskDescription}</li>
+                    <li>Summary: {this.props.newContentPost.contentSummary}</li>
+                    <li>Value: {this.props.newContentPost.contentSubCount}</li>
+                    <li>Category: {this.props.newContentPost.contentMedium}</li>
+                    <li>Date: {this.props.newContentPost.contentUploadFrequency}</li>
+                    <li>Hour: {this.props.newContentPost.contentVideoLength}</li>
+                    <li>Description: {this.props.newContentPost.contentDescription}</li>
                 </ul>
 
                 <Button bsStyle="success"
@@ -77,11 +78,11 @@ class ReviewNewTask extends Component {
 
 function mapStateToProps(state) {
     return {
-        newTask: state.newTaskReducer.newTask
+        newContentPost: state.newContentPost.newContentPost
     };
 }
 
-export default connect(mapStateToProps)(ReviewNewTask);
+export default connect(mapStateToProps)(ReviewNewContentPost);
 
 
 /*

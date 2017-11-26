@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import newTaskSource from './newTask';
-import allTasksSource from './allTasks';
+import newContentPost from './newContentPost';
+import allContentPosts from './allContentPosts';
 
 const allReducers = combineReducers({
-    newTaskReducer: newTaskSource,
-    allTasksReducer: allTasksSource
+    newContentPost: newContentPost,
+    allContentPosts: allContentPosts
 });
 
 export default allReducers;

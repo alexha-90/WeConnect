@@ -4,12 +4,13 @@ import { testNewTaskValidity } from "../src/components/stateFunctions";
 
 
 const sampleNewTaskData = {
-    taskSummary: 'sample summary',
-    taskValue: 50,
-    taskCategory: 'electrical',
-    taskNeededDate: 'today',
-    taskNeededHour: '12:00am',
-    taskDescription: 'sample description'
+    contentSummary: 'sample summary',
+    contentSubCount: 50,
+    contentMedium: 'electrical',
+    contentUploadFrequency: 'today',
+    contentVideoLength: '12:00am',
+    contentDescription: 'sample description',
+    contentIdealMatch: 'ideal match'
 };
 
 const completedForm = testNewTaskValidity(sampleNewTaskData);
@@ -20,7 +21,7 @@ describe('submitNewTask', () => {
     });
 
     it('should have six properties for newTask object', () => {
-        expect(Object.keys(sampleNewTaskData).length).toBe(6);
+        expect(Object.keys(sampleNewTaskData).length).toBe(7);
     });
 });
 

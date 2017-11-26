@@ -6,9 +6,9 @@ import * as actions from './actions';
 // Page imports
 import Header from './components/Header'
 import Landing from './components/Landing';
-import NewTask from './components/NewTask';
+import NewContentPost from './components/NewContentPost';
 import AvailableTasks from './components/AvailableTasks';
-import ReviewNewTask from './components/ReviewNewTask';
+import ReviewNewContentPost from './components/ReviewNewContentPost';
 import Profile from './components/Profile';
 import ProducerProfile from './components/ProducerProfile';
 import AdvertiserProfile from './components/AdvertiserProfile';
@@ -25,11 +25,11 @@ class App extends Component {
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/ContentCreatorsList' component={ContentCreatorsList} />
                     <Route exact path='/advertisersList' component={AdvertisersList} />
-                    <Route exact path='/newTask' component={NewTask} />
+                    <Route exact path='/newContentPost' component={NewContentPost} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
                     <Route exact path='/producerProfile' component={ProducerProfile} />
-                    <Route exact path='/reviewNewTask' component={ReviewNewTask} />
+                    <Route exact path='/reviewNewTask' component={ReviewNewContentPost} />
 
                     {/* temporary file below*/}
                     <Route exact path='/availableTasks' component={AvailableTasks} />

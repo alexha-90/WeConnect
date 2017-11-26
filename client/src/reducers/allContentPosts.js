@@ -1,19 +1,12 @@
-const allTasksSource = (state ={
-    claimedTasks: {
-        taskSummary: '',
-        taskValue: 0,
-        taskCategory: '',
-        taskNeededDate: '',
-        taskNeededHour: '',
-        taskDescription: ''
-    },
-    availableTasks: {
-        taskSummary: '',
-        taskValue: 0,
-        taskCategory: '',
-        taskNeededDate: '',
-        taskNeededHour: '',
-        taskDescription: ''
+const allContentPosts = (state ={
+    allContentPosts: {
+        contentSummary: '',
+        contentSubCount: 0,
+        contentMedium: '',
+        contentUploadFrequency: '',
+        contentVideoLength: '',
+        contentDescription: '',
+        contentIdealMatch: ''
     }
     }, action) => {
 
@@ -37,7 +30,7 @@ const allTasksSource = (state ={
 
             return {
                 ...state,
-                availableTasks: action.payload
+                allContentPosts: action.payload
             };
         }
 
@@ -48,4 +41,4 @@ const allTasksSource = (state ={
 
 };
 
-export default allTasksSource
+export default allContentPosts

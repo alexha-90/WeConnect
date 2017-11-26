@@ -125,8 +125,7 @@ class AvailableTasks extends Component {
 
 function mapStateToProps(state) {
     return {
-        allAvailableTasks: state.allTasksReducer.availableTasks,
-        allClaimedTasks: state.allTasksReducer.claimedTasks
+        newContentPost: state.newContentPost.newContentPost
     };
 }
 

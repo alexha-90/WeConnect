@@ -2,20 +2,20 @@ import axios from 'axios';
 import store from '../index';
 //===============================================================================================//
 
-export const newTaskToProps = (newTaskInfo) => {
+export const newContentPostToProps = (newContentPostInfo) => {
     return {
-        type: "SUBMIT_NEW_TASK",
-        payload: newTaskInfo
+        type: "SUBMIT_NEW_CONTENT_POST",
+        payload: newContentPostInfo
     };
 };
 
 // axios POST request to submit information into database
-export const newTaskPOST = (newTaskInfo) => async dispatch => {
+export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewTask',
             dispatch({
                 type: 'SUBMIT_NEW_TASK_TO_DB',
-                payload: newTaskInfo
+                payload: newContentPostInfo
             })
         );
         await console.log('reSpoNse from server: ' + res.data);
