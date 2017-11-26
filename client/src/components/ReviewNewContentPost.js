@@ -57,12 +57,13 @@ class ReviewNewContentPost extends Component {
                 <h1>Review your new task below:</h1>
 
                 <ul>
-                    <li>Summary: {this.props.newContentPost.contentSummary}</li>
-                    <li>Value: {this.props.newContentPost.contentSubCount}</li>
-                    <li>Category: {this.props.newContentPost.contentMedium}</li>
-                    <li>Date: {this.props.newContentPost.contentUploadFrequency}</li>
-                    <li>Hour: {this.props.newContentPost.contentVideoLength}</li>
-                    <li>Description: {this.props.newContentPost.contentDescription}</li>
+                    <li>Content Summary: {this.props.newContentPost.contentSummary}</li>
+                    <li>Sub Count: {this.props.newContentPost.contentSubCount}</li>
+                    <li>Medium: {this.props.newContentPost.contentMedium}</li>
+                    <li>Ideal match: {this.props.newContentPost.contentIdealMatch}</li>
+                    <li>Upload frequency: {this.props.newContentPost.contentUploadFrequency}</li>
+                    <li>Typical video length: {this.props.newContentPost.contentVideoLength}</li>
+                    <li>Content Description: {this.props.newContentPost.contentDescription}</li>
                 </ul>
 
                 <Button bsStyle="success"

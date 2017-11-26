@@ -14,7 +14,7 @@ const newContentPost = (state ={
         case "SUBMIT_NEW_CONTENT_POST": {
             console.log(action.payload);
             return {
-                newTask: {
+                newContentPost: {
                     contentIdealMatch: action.payload.contentIdealMatch,
                     contentSummary: action.payload.contentSummary,
                     contentSubCount: action.payload.contentSubCount,

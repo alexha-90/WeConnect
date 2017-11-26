@@ -82,7 +82,7 @@ class NewContentPost extends Component {
             setTimeout(() => {
                 this.props.dispatch(newContentPostToProps({
                     contentSummary: this.state.contentSummary,
-                    contentSubCount: parseInt(this.state.contentSubCount, 10),
+                    contentSubCount: this.state.contentSubCount,
                     contentMedium: this.state.contentMedium,
                     contentIdealMatch: this.state.contentIdealMatch,
                     contentUploadFrequency: this.state.contentVideoLength,
@@ -157,12 +157,12 @@ class NewContentPost extends Component {
                             value={this.state.contentUploadFrequency}
                             placeholder="select">
                             <option value="">-</option>
-                            <option value="0-1">0-1 videos/month</option>
-                            <option value="2-3">2-3 videos/month</option>
-                            <option value="4-5">4-5 videos/month</option>
-                            <option value="6-7">6-7 videos/month</option>
-                            <option value="8-9">8-9 videos/month</option>
-                            <option value="10+">10+ videos/month</option>
+                            <option value="0-1 videos/month">0-1 videos/month</option>
+                            <option value="2-3 videos/month">2-3 videos/month</option>
+                            <option value="4-5 videos/month">4-5 videos/month</option>
+                            <option value="6-7 videos/month">6-7 videos/month</option>
+                            <option value="8-9 videos/month">8-9 videos/month</option>
+                            <option value="10+ videos/month">10+ videos/month</option>
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
@@ -174,10 +174,10 @@ class NewContentPost extends Component {
                             value={this.state.contentVideoLength}
                             placeholder="select">
                             <option value="">-</option>
-                            <option value="0-2">Under 2 minutes</option>
-                            <option value="2-5">Between 2 and 5 minutes</option>
-                            <option value="5-10">Between 5 and 10 minutes</option>
-                            <option value="10+">10 or more minutes</option>
+                            <option value="Under 2 minutes">Under 2 minutes</option>
+                            <option value="Between 2 and 5 minutes">Between 2 and 5 minutes</option>
+                            <option value="Between 5 and 10 minutes">Between 5 and 10 minutes</option>
+                            <option value="10 or more minutes">10 or more minutes</option>
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
@@ -189,18 +189,18 @@ class NewContentPost extends Component {
                             value={this.state.contentSubCount}
                             placeholder="select">
                             <option value="">-</option>
-                            <option value="<5000">Under 5,000</option>
-                            <option value="5-10">Between 5,000 and 10,000</option>
-                            <option value="10-20">Between 10,000 and 20,000</option>
-                            <option value="20-30">Between 20,000 and 30,000</option>
-                            <option value="30-40">Between 30,000 and 40,000</option>
-                            <option value="40-50">Between 40,000 and 50,000</option>
-                            <option value="50-60">Between 50,000 and 60,000</option>
-                            <option value="60-70">Between 60,000 and 70,000</option>
-                            <option value="70-80">Between 70,000 and 80,000</option>
-                            <option value="80-90">Between 80,000 and 90,000</option>
-                            <option value="90-100">Between 90,000 and 100,000</option>
-                            <option value="100+">1,000,000 and up</option>
+                            <option value="Under 5,000">Under 5,000</option>
+                            <option value="Between 5,000 and 10,000">Between 5,000 and 10,000</option>
+                            <option value="Between 10,000 and 20,000">Between 10,000 and 20,000</option>
+                            <option value="Between 20,000 and 30,000">Between 20,000 and 30,000</option>
+                            <option value="Between 30,000 and 40,000">Between 30,000 and 40,000</option>
+                            <option value="Between 40,000 and 50,000">Between 40,000 and 50,000</option>
+                            <option value="Between 50,000 and 60,000">Between 50,000 and 60,000</option>
+                            <option value="Between 60,000 and 70,0000">Between 60,000 and 70,000</option>
+                            <option value="Between 70,000 and 80,000">Between 70,000 and 80,000</option>
+                            <option value="Between 80,000 and 90,000">Between 80,000 and 90,000</option>
+                            <option value="Between 90,000 and 100,00">Between 90,000 and 100,000</option>
+                            <option value="1,000,000 and up">1,000,000 and up</option>
 
                         </FormControl>
                     </FormGroup>

@@ -1,4 +1,4 @@
-const allContentPosts = (state ={
+const allContentPosts = (state = {
     allContentPosts: {
         contentSummary: '',
         contentSubCount: 0,
@@ -6,12 +6,20 @@ const allContentPosts = (state ={
         contentUploadFrequency: '',
         contentVideoLength: '',
         contentDescription: '',
-        contentIdealMatch: ''
+        contentIdealMatch: '',
+
+        //temporary
+        taskSummary: '',
+        taskValue: 0,
+        taskCategory: '',
+        taskNeededDate: '',
+        taskNeededHour: '',
+        taskDescription: ''
     }
     }, action) => {
 
     switch (action.type) {
-        case "ALL_TASKS_TO_REDUX_STATE": {
+        case "ALL_CONTENT_POSTS_TO_REDUX_STATE": {
 
             console.log(action.payload, '****');
             /*

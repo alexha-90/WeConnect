@@ -2,10 +2,16 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { allTasksGET } from '../actions/index';
+import { allContentPostsGET } from '../actions/index';
 
 // https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 // future expansion: referrals and reviews
+
+//youtube api info
+// https://www.googleapis.com/youtube/v3/channels?key={YOUR_API_KEY}&forUsername=klauskkpm&part=id
+// http://johnnythetank.github.io/youtube-channel-name-converter/
+// https://stackoverflow.com/questions/14366648/how-can-i-get-a-channel-id-from-youtube
+
 
 class ContentCreatorsList extends Component {
     constructor() {
@@ -17,7 +23,7 @@ class ContentCreatorsList extends Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(allTasksGET());
+        this.props.dispatch(allContentPostsGET());
         setTimeout(() => {
             //run action to query database and return all tasks
             return this.setState({ loadingComponent: false });
@@ -25,31 +31,38 @@ class ContentCreatorsList extends Component {
     }
 
     componentDidMount() {
-
         setTimeout(() => {
-            //more to come
             return this.propagateTasks();
         }, 500);
     }
 
     propagateTasks() {
-        let testArray = [0,1,2,3,4];
-        let keyCount = 0;
+
+        // all individual contentPost objects will be placed in this array
+        let comboArr = [];
+
+        // iterate through dynamically sized object holding all contentPost objects and split each post individually
+        for (let i = 0; i < this.props.allContentPosts.length; i++) {
+            comboArr[i] = [this.props.allContentPosts[i]['form_id'], this.props.allContentPosts[i]['summary'], this.props.allContentPosts[i]['description'], this.props.allContentPosts[i]['category']];
+        }
+
+        // for each content post, make new container
         return (
             <div>
-
-                <ul>
-                    {testArray.map((listItem) => {
-                        keyCount +=1;
-                        return <li key={keyCount}>{listItem}</li>
-                    })}
-
-                </ul>
+                {comboArr.map((item) => {
+                    return (
+                        <div className='contentCreatorContainer' key={item[0]}>
+                            <ul>
+                                <li key={item[0] + 'summary'}>Summary: {item[1]}</li>
+                                <li key={item[0] + 'description'}>Description: {item[2]}</li>
+                                <li key={item[0] + 'category'}>Category: {item[3]}</li>
+                            </ul>
+                        </div>
+                    )
+                })}
             </div>
-        )
-
+        );
     }
-
 
     render() {
         if (this.state.loadingComponent) {
@@ -64,66 +77,10 @@ class ContentCreatorsList extends Component {
                         Create new listing
                     </Link>
                 </Button>
+
                 <br />
-                <div className='contentCreatorSection'>
-                    {/*
-                    <div className='contentCreatorContainer'>
-                        <ul>
-                            <li>{this.props.newContentPost[0]['summary']}</li>
-                            <li>{this.props.newContentPost[0]['category']}</li>
-                            <li>{this.props.newContentPost[0]['description']}</li>
-                            <li>{this.props.newContentPost[0]['date']}</li>
-                        </ul>
-                        <Button bsStyle="success">
-                            <Link to="/producerProfile">
-                                See more
-                            </Link>
-                        </Button>
-                    </div>
-                    <div className='contentCreatorContainer'>
-                        <ul>
-                            <li>{this.props.newContentPost[1]['summary']}</li>
-                            <li>{this.props.newContentPost[1]['category']}</li>
-                            <li>{this.props.newContentPost[1]['description']}</li>
-                            <li>{this.props.newContentPost[1]['date']}</li>
-                        </ul>
-                        <Button bsStyle="success">
-                            <Link to="/producerProfile">
-                                See more
-                            </Link>
-                        </Button>
-                    </div>
-                    <div className='contentCreatorContainer'>
-                        <ul>
-                            <li>{this.props.newContentPost[2]['summary']}</li>
-                            <li>{this.props.newContentPost[2]['category']}</li>
-                            <li>{this.props.newContentPost[2]['description']}</li>
-                            <li>{this.props.newContentPost[2]['date']}</li>
-                        </ul>
-                        <Button bsStyle="success">
-                            <Link to="/producerProfile">
-                                See more
-                            </Link>
-                        </Button>
-                    </div>
-                    <div className='contentCreatorContainer'>
-                        <ul>
-                            <li>{this.props.newContentPost[3]['summary']}</li>
-                            <li>{this.props.newContentPost[3]['category']}</li>
-                            <li>{this.props.newContentPost[3]['description']}</li>
-                            <li>{this.props.newContentPost[3]['date']}</li>
-                        </ul>
-                        <Button bsStyle="success">
-                            <Link to="/producerProfile">
-                                See more
-                            </Link>
-                        </Button>
-                    </div>
-                    */}
 
-                </div>
-
-                <h1>test:</h1>
+                <h1>Content creators looking to advertise:</h1>
                 <div className='contentCreatorSection'>
                     {this.propagateTasks()}
                 </div>
@@ -135,96 +92,9 @@ class ContentCreatorsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        allContentPosts: state.allContentPosts.allContentPosts
     };
 }
 
 export default connect(mapStateToProps)(ContentCreatorsList);
-
-
-
-
-/*
-
-            let first = [];
-            let second = [];
-            let third = [];
-
-            //first.push(this.props.allAvailableTasks[1]['summary'], this.props.allAvailableTasks[1]['category'], this.props.allAvailableTasks[1]['description'], this.props.allAvailableTasks[1]['date']);
-            //console.log(first);
-
-            // iterate through entire object
-            // return summary, category, description, date for each nested object
-            // for (let i = 0; i < this.props.allAvailableTasks.length; i++) {
-            //     console.log(this.props.allAvailableTasks[i]['summary']);
-            //     console.log(this.props.allAvailableTasks[i]['category']);
-            //     console.log(this.props.allAvailableTasks[i]['description']);
-            //     console.log(this.props.allAvailableTasks[i]['date']);
-            //     console.log('********');
-            // }
-
-            /*
-            for (let key in this.props.allAvailableTasks) {
-                if (Object.prototype.hasOwnProperty.call(this.props.allAvailableTasks, key)) {
-                    let first = this.props.allAvailableTasks[key];
-                    console.log(first);
-
-                    console.log('$$$$$$$');
-                }
-            }
-
-        for (let i = 0; i < this.props.allAvailableTasks.length; i++) {
-        first.push(this.props.allAvailableTasks[1]['summary'], this.props.allAvailableTasks[1]['category'], this.props.allAvailableTasks[1]['description'], this.props.allAvailableTasks[1]['date']);
-        }
-
-
-        for (let key in this.props.allAvailableTasks) {
-            if (this.props.allAvailableTasks.hasOwnProperty(key)) {
-                console.log(this.props.allAvailableTasks[key]);
-                console.log('$$$$$$$');
-            }
-        }
-
-
-            return (
-                <div className='contentCreatorSection'>
-                    <div className='contentCreatorContainer'>
-                        <ul>
-                            <li>{this.props.allAvailableTasks[0]['summary']}</li>
-                            <li>{this.props.allAvailableTasks[0]['category']}</li>
-                            <li>{this.props.allAvailableTasks[0]['description']}</li>
-                            <li>{this.props.allAvailableTasks[0]['date']}</li>
-                        </ul>
-
-                    </div>
-                    <div className='contentCreatorContainer'>
-                        <li>{this.props.allAvailableTasks[1]['summary']}</li>
-                        <li>{this.props.allAvailableTasks[1]['category']}</li>
-                        <li>{this.props.allAvailableTasks[1]['description']}</li>
-                        <li>{this.props.allAvailableTasks[1]['date']}</li>
-                    </div>
-                </div>
-            )
-
-        return (
-            <div className='contentCreatorContainer'>
-                <ul>
-                    <li>{this.props.allAvailableTasks[3]['summary']}</li>
-                    <li>{this.props.allAvailableTasks[3]['category']}</li>
-                    <li>{this.props.allAvailableTasks[3]['description']}</li>
-                    <li>{this.props.allAvailableTasks[3]['date']}</li>
-                </ul>
-            </div>
-
-        )
-
-
-
-            console.log(this.props.allAvailableTasks[0]);
-            console.log(this.props.allAvailableTasks[0]['category']);
-            console.log(this.props.allAvailableTasks[0]['summary']);
-            console.log(this.props.allAvailableTasks[0]['value']);
-            console.log(this.props.allAvailableTasks[0]['description']);
-            console.log(this.props.allAvailableTasks[0]['hour']);
-            console.log(this.props.allAvailableTasks[0]['date']);
- */

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import { allTasksGET } from '../actions/index';
+//import { allTasksGET } from '../actions/index';
 
 //NOTE 11/25/17: THIS COMPONENT WILL NO LONGER BE USED. JUST HERE FOR REFERENCE
 
@@ -130,51 +130,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(AvailableTasks);
-
-
-/*
-                <Table striped responsive bordered>
-                    <thead>
-                    <tr>
-                        <th>Summary</th>
-                        <th>Value</th>
-                        <th>Category</th>
-                        <th>Needed By Date</th>
-                        <th>Needed By Hour</th>
-                        <th>Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{this.props.allAvailableTasks[0]['summary']}</td>
-                        <td>{this.props.allAvailableTasks[0]['value']}</td>
-                        <td>{this.props.allAvailableTasks[0]['category']}</td>
-                        <td>{this.props.allAvailableTasks[0]['date']}</td>
-                        <td>{this.props.allAvailableTasks[0]['hour']}</td>
-                        <td>{this.props.allAvailableTasks[0]['description']}</td>
-                    </tr>
-                    <tr>
-                        <td>{this.props.allAvailableTasks[1]['summary']}</td>
-                        <td>{this.props.allAvailableTasks[1]['value']}</td>
-                        <td>{this.props.allAvailableTasks[1]['category']}</td>
-                        <td>{this.props.allAvailableTasks[1]['date']}</td>
-                        <td>{this.props.allAvailableTasks[1]['hour']}</td>
-                        <td>{this.props.allAvailableTasks[1]['description']}</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    </tbody>
-                </Table>
-
-
-
-
-
-
- */

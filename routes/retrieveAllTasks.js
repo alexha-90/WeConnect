@@ -7,7 +7,7 @@ require('dotenv').config();
 //===============================================================================================//
 
 module.exports = app => {
-    app.route('/api/retrieveAllTasks')
+    app.route('/api/retrieveAllContentPosts')
         .get(async (req, res) => {
             try {
 

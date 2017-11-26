@@ -14,7 +14,8 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewTask',
             dispatch({
-                type: 'SUBMIT_NEW_TASK_TO_DB',
+                // don't think type is actually being used here
+                type: 'SUBMIT_NEW_CONTENT_POST_TO_DB',
                 payload: newContentPostInfo
             })
         );
@@ -28,10 +29,10 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
 
 
 // axios GET request to retrieve all available tasks
-export const allTasksGET = () => async dispatch => {
+export const allContentPostsGET = () => async dispatch => {
     try {
-        const res = await axios.get('api/retrieveAllTasks');
-        return store.dispatch({ type: "ALL_TASKS_TO_REDUX_STATE", payload: res.data });
+        const res = await axios.get('api/retrieveAllContentPosts');
+        return store.dispatch({ type: 'ALL_CONTENT_POSTS_TO_REDUX_STATE', payload: res.data });
 
     } catch(res) {
         alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
