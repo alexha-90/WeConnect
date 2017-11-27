@@ -15,7 +15,7 @@ class ReviewNewContentPost extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.newContentPost);
+        //console.log(this.props.newContentPost);
         //run function for unit test. Ensure information to be submitted is accurate
         //currently always proceeds regardless. Fix
         testNewTaskValidity(this.props.newContentPost)
@@ -57,13 +57,14 @@ class ReviewNewContentPost extends Component {
                 <h1>Review your new task below:</h1>
 
                 <ul>
-                    <li>Content Summary: {this.props.newContentPost.contentSummary}</li>
-                    <li>Sub Count: {this.props.newContentPost.contentSubCount}</li>
                     <li>Medium: {this.props.newContentPost.contentMedium}</li>
-                    <li>Ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                    <li>Upload frequency: {this.props.newContentPost.contentUploadFrequency}</li>
-                    <li>Typical video length: {this.props.newContentPost.contentVideoLength}</li>
+                    <li>Content Summary: {this.props.newContentPost.contentSummary}</li>
                     <li>Content Description: {this.props.newContentPost.contentDescription}</li>
+                    <li>Content Ideal match: {this.props.newContentPost.contentIdealMatch}</li>
+                    <li>YouTube upload frequency: {this.props.newContentPost.yt_UploadFrequency}</li>
+                    <li>YouTube typical video length: {this.props.newContentPost.yt_VideoLength}</li>
+                    <li>YouTube subscriber count: {this.props.newContentPost.yt_SubCount}</li>
+                    <li>YouTube channel view count: {this.props.newContentPost.yt_ViewCount}</li>
                 </ul>
 
                 <Button bsStyle="success"

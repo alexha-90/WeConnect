@@ -1,12 +1,13 @@
 const allContentPosts = (state = {
     allContentPosts: {
-        contentSummary: '',
-        contentSubCount: 0,
         contentMedium: '',
-        contentUploadFrequency: '',
-        contentVideoLength: '',
+        contentSummary: '',
         contentDescription: '',
         contentIdealMatch: '',
+        yt_UploadFrequency: 0,
+        yt_VideoLength: 0,
+        yt_SubCount: '',
+        yt_ViewCount: 0,
 
         //temporary
         taskSummary: '',

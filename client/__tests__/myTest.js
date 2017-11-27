@@ -4,13 +4,14 @@ import { testNewTaskValidity } from "../src/components/stateFunctions";
 
 
 const sampleNewTaskData = {
-    contentSummary: 'sample summary',
-    contentSubCount: 50,
-    contentMedium: 'electrical',
-    contentUploadFrequency: 'today',
-    contentVideoLength: '12:00am',
-    contentDescription: 'sample description',
-    contentIdealMatch: 'ideal match'
+    contentMedium: 'YouTube',
+    contentSummary: 'I make videos about cooking',
+    contentDescription: 'I teach people how to cook tasty meals using very basic, everyday ingredients',
+    contentIdealMatch: 'I discuss a single product at the very end of my video',
+    yt_UploadFrequency: 'today',
+    yt_VideoLength: 'Between 2 and 5 minutes',
+    yt_SubCount: 'Between 20,000 and 30,00',
+    yt_ViewCount: 'Between 90,000 and 100,00',
 };
 
 const completedForm = testNewTaskValidity(sampleNewTaskData);
@@ -21,7 +22,7 @@ describe('submitNewTask', () => {
     });
 
     it('should have six properties for newTask object', () => {
-        expect(Object.keys(sampleNewTaskData).length).toBe(7);
+        expect(Object.keys(sampleNewTaskData).length).toBe(8);
     });
 });
 

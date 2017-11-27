@@ -21,13 +21,14 @@ class NewContentPost extends Component {
         super();
         this.state = {
             redirectToReviewNewContentPost: false,
-            contentSummary: '',
-            contentSubCount: '',
             contentMedium: '',
+            contentSummary: '',
+            contentDescription: '',
             contentIdealMatch: '',
-            contentUploadFrequency: 'Today',
-            contentVideoLength: '12:00am',
-            contentDescription: ''
+            yt_UploadFrequency: 0,
+            yt_VideoLength: 0,
+            yt_SubCount: '',
+            yt_ViewCount: 0
         };
         this.handleChange = this.handleChange.bind(this);
         this.onReviewNewContentPost  = this.onReviewNewContentPost.bind(this);
@@ -35,32 +36,36 @@ class NewContentPost extends Component {
 
     handleChange(event) {
         switch (event.target.name) {
+            case 'contentMedium': {
+                return this.setState({contentMedium: event.target.value});
+            }
+
             case 'contentSummary': {
                 return this.setState({contentSummary: event.target.value});
             }
 
-            case 'contentSubCount': {
-                return this.setState({contentSubCount: event.target.value});
+            case 'contentDescription': {
+                return this.setState({contentDescription: event.target.value});
             }
 
             case 'contentIdealMatch': {
                 return this.setState({contentIdealMatch: event.target.value});
             }
 
-            case 'contentMedium': {
-                return this.setState({contentMedium: event.target.value});
+            case 'yt_UploadFrequency': {
+                return this.setState({yt_UploadFrequency: event.target.value});
             }
 
-            case 'contentUploadFrequency': {
-                return this.setState({contentUploadFrequency: event.target.value});
+            case 'yt_VideoLength': {
+                return this.setState({yt_VideoLength: event.target.value});
             }
 
-            case 'contentVideoLength': {
-                return this.setState({contentVideoLength: event.target.value});
+            case 'yt_SubCount': {
+                return this.setState({yt_SubCount: event.target.value});
             }
 
-            case 'contentDescription': {
-                return this.setState({contentDescription: event.target.value});
+            case 'yt_ViewCount': {
+                return this.setState({yt_ViewCount: event.target.value});
             }
 
             default: {
@@ -70,8 +75,8 @@ class NewContentPost extends Component {
     }
 
     onReviewNewContentPost() {
-        console.log('current state is:');
-        console.log(this.state);
+        //console.log('current state is:');
+        //console.log(this.state);
         /*
         if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentMedium) {
             return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
@@ -81,13 +86,14 @@ class NewContentPost extends Component {
         return (
             setTimeout(() => {
                 this.props.dispatch(newContentPostToProps({
-                    contentSummary: this.state.contentSummary,
-                    contentSubCount: this.state.contentSubCount,
                     contentMedium: this.state.contentMedium,
+                    contentSummary: this.state.contentSummary,
+                    contentDescription: this.state.contentDescription,
                     contentIdealMatch: this.state.contentIdealMatch,
-                    contentUploadFrequency: this.state.contentVideoLength,
-                    contentVideoLength: this.state.contentUploadFrequency,
-                    contentDescription: this.state.contentDescription
+                    yt_UploadFrequency: this.state.yt_VideoLength,
+                    yt_VideoLength: this.state.yt_UploadFrequency,
+                    yt_SubCount: this.state.yt_SubCount,
+                    yt_ViewCount: this.state.yt_ViewCount
                 }));
                 this.setState({redirectToReviewNewContentPost: true});
             }, 1000)
@@ -152,9 +158,9 @@ class NewContentPost extends Component {
                         <ControlLabel>Upload frequency</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="contentUploadFrequency"
+                            name="yt_UploadFrequency"
                             onChange={this.handleChange}
-                            value={this.state.contentUploadFrequency}
+                            value={this.state.yt_UploadFrequency}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="0-1 videos/month">0-1 videos/month</option>
@@ -166,12 +172,12 @@ class NewContentPost extends Component {
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
-                        <ControlLabel>Average video length</ControlLabel>
+                        <ControlLabel>Typical video length</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="contentVideoLength"
+                            name="yt_VideoLength"
                             onChange={this.handleChange}
-                            value={this.state.contentVideoLength}
+                            value={this.state.yt_VideoLength}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="Under 2 minutes">Under 2 minutes</option>
@@ -184,25 +190,47 @@ class NewContentPost extends Component {
                         <ControlLabel>Subscriber count</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="contentSubCount"
+                            name="yt_SubCount"
                             onChange={this.handleChange}
-                            value={this.state.contentSubCount}
+                            value={this.state.yt_SubCount}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="Under 5,000">Under 5,000</option>
-                            <option value="Between 5,000 and 10,000">Between 5,000 and 10,000</option>
-                            <option value="Between 10,000 and 20,000">Between 10,000 and 20,000</option>
-                            <option value="Between 20,000 and 30,000">Between 20,000 and 30,000</option>
-                            <option value="Between 30,000 and 40,000">Between 30,000 and 40,000</option>
-                            <option value="Between 40,000 and 50,000">Between 40,000 and 50,000</option>
-                            <option value="Between 50,000 and 60,000">Between 50,000 and 60,000</option>
-                            <option value="Between 60,000 and 70,0000">Between 60,000 and 70,000</option>
-                            <option value="Between 70,000 and 80,000">Between 70,000 and 80,000</option>
-                            <option value="Between 80,000 and 90,000">Between 80,000 and 90,000</option>
-                            <option value="Between 90,000 and 100,00">Between 90,000 and 100,000</option>
-                            <option value="1,000,000 and up">1,000,000 and up</option>
-
+                            <option value="Between 5,000 and 10,000">Between 5,000 and 10,000 users</option>
+                            <option value="Between 10,000 and 20,000">Between 10,000 and 20,000 users</option>
+                            <option value="Between 20,000 and 30,000">Between 20,000 and 30,000 users</option>
+                            <option value="Between 30,000 and 40,000">Between 30,000 and 40,000 users</option>
+                            <option value="Between 40,000 and 50,000">Between 40,000 and 50,000 users</option>
+                            <option value="Between 50,000 and 60,000">Between 50,000 and 60,000 users</option>
+                            <option value="Between 60,000 and 70,000">Between 60,000 and 70,000 users</option>
+                            <option value="Between 70,000 and 80,000">Between 70,000 and 80,000 users</option>
+                            <option value="Between 80,000 and 90,000">Between 80,000 and 90,000 users</option>
+                            <option value="Between 90,000 and 100,00">Between 90,000 and 100,000 users</option>
+                            <option value="1,000,000 and up">1,000,000+ users</option>
                         </FormControl>
+                        <FormGroup>
+                            <ControlLabel>Total channel views</ControlLabel>
+                            <FormControl
+                                componentClass="select"
+                                name="yt_ViewCount"
+                                onChange={this.handleChange}
+                                value={this.state.yt_ViewCount}
+                                placeholder="select">
+                                <option value="">-</option>
+                                <option value="Under 5,000">Under 5,000</option>
+                                <option value="Between 5,000 and 10,000">Between 5,000 and 10,000 views</option>
+                                <option value="Between 10,000 and 20,000">Between 10,000 and 20,000 views</option>
+                                <option value="Between 20,000 and 30,000">Between 20,000 and 30,000 views</option>
+                                <option value="Between 30,000 and 40,000">Between 30,000 and 40,000 views</option>
+                                <option value="Between 40,000 and 50,000">Between 40,000 and 50,000 views</option>
+                                <option value="Between 50,000 and 60,000">Between 50,000 and 60,000 views</option>
+                                <option value="Between 60,000 and 70,000">Between 60,000 and 70,000 views</option>
+                                <option value="Between 70,000 and 80,000">Between 70,000 and 80,000 views</option>
+                                <option value="Between 80,000 and 90,000">Between 80,000 and 90,000 views</option>
+                                <option value="Between 90,000 and 100,00">Between 90,000 and 100,000 views</option>
+                                <option value="1,000,000 and up">1,000,000+ views</option>
+                            </FormControl>
+                        </FormGroup>
                     </FormGroup>
 
                     {/*

@@ -1,13 +1,14 @@
 const newContentPost = (state ={
     //change values below to null after testing done
     newContentPost: {
-        contentSummary: '',
-        contentSubCount: 0,
         contentMedium: '',
-        contentUploadFrequency: '',
-        contentVideoLength: '',
+        contentSummary: '',
         contentDescription: '',
-        contentIdealMatch: ''
+        contentIdealMatch: '',
+        yt_UploadFrequency: 0,
+        yt_VideoLength: 0,
+        yt_SubCount: '',
+        yt_ViewCount: 0
     }}, action) => {
 
     switch (action.type) {
@@ -15,13 +16,14 @@ const newContentPost = (state ={
             console.log(action.payload);
             return {
                 newContentPost: {
-                    contentIdealMatch: action.payload.contentIdealMatch,
-                    contentSummary: action.payload.contentSummary,
-                    contentSubCount: action.payload.contentSubCount,
                     contentMedium: action.payload.contentMedium,
-                    contentUploadFrequency: action.payload.contentUploadFrequency,
-                    contentVideoLength: action.payload.contentVideoLength,
-                    contentDescription: action.payload.contentDescription
+                    contentSummary: action.payload.contentSummary,
+                    contentDescription: action.payload.contentDescription,
+                    contentIdealMatch: action.payload.contentIdealMatch,
+                    yt_UploadFrequency: action.payload.yt_UploadFrequency,
+                    yt_VideoLength: action.payload.yt_VideoLength,
+                    yt_SubCount: action.payload.yt_SubCount,
+                    yt_ViewCount: action.payload.yt_VideoLength,
                 }
             }
         }
