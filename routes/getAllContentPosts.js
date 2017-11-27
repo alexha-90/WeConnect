@@ -11,7 +11,7 @@ module.exports = app => {
         .get(async (req, res) => {
             try {
 
-                console.log('Attempt to retrieve all tasks from db');
+                console.log('Attempt to retrieve all contentPosts from db');
                 //res.send('back to front-end. Here is what you sent me: ' + newTaskToSave);
 
 
@@ -19,7 +19,7 @@ module.exports = app => {
                 client.connect()
                     .then(() => {
                         console.log('Successfully connected to postgres DB. Getting all tasks now');
-                        const sql = 'SELECT * FROM tasks';
+                        const sql = 'SELECT * FROM content_posts';
                         return client.query(sql);
                     })
                     .then((results) => {

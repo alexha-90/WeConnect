@@ -19,11 +19,14 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
                 payload: newContentPostInfo
             })
         );
-        await console.log('reSpoNse from server: ' + res.data);
-        return await console.log('New task submitted');
+
+        if (res.data === 'Error!') {
+            return alert('Error: Your post was not submitted. Please try again and let us know if this problem persists.')
+        }
+        return alert('Your post was successfully received!'); //this will always work regardless
 
     } catch(res) {
-        alert('Hmm... it appears something went wrong. Please try submitting another task. Error: ' + res.err)
+        alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
     }
 };
 

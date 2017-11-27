@@ -43,7 +43,11 @@ class ContentCreatorsList extends Component {
 
         // iterate through dynamically sized object holding all contentPost objects and split each post individually
         for (let i = 0; i < this.props.allContentPosts.length; i++) {
-            comboArr[i] = [this.props.allContentPosts[i]['form_id'], this.props.allContentPosts[i]['summary'], this.props.allContentPosts[i]['description'], this.props.allContentPosts[i]['category']];
+            comboArr[i] = [
+                this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_summary'], this.props.allContentPosts[i]['content_description'],
+                this.props.allContentPosts[i]['content_ideal_match'], this.props.allContentPosts[i]['yt_upload_frequency'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_view_count']
+
+            ];
         }
 
         // for each content post, make new container
@@ -56,7 +60,23 @@ class ContentCreatorsList extends Component {
                                 <li key={item[0] + 'summary'}>Summary: {item[1]}</li>
                                 <li key={item[0] + 'description'}>Description: {item[2]}</li>
                                 <li key={item[0] + 'category'}>Category: {item[3]}</li>
+
+                                <li key={item[0] + '-1'}>Medium: {item[1]}</li>
+                                <li key={item[0] + '-2'}>Content Summary: {item[2]}</li>
+                                <li key={item[0] + '-3'}>Content Description: {item[3]}</li>
+                                <li key={item[0] + '-4'}>Content Ideal match: {item[4]}</li>
+                                <li key={item[0] + '-5'}>YouTube upload frequency: {item[5]}</li>
+                                <li key={item[0] + '-6'}>YouTube typical video length: {item[6]}</li>
+                                <li key={item[0] + '-7'}>YouTube subscriber count: {item[7]}</li>
+                                <li key={item[0] + '-8'}>YouTube channel view count: {item[8]}</li>
                             </ul>
+
+                            <Button bsStyle="success">
+                                <Link to="/producerProfile">
+                                    See more
+                                </Link>
+                            </Button>
+
                         </div>
                     )
                 })}

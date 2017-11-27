@@ -23,7 +23,7 @@ const newContentPost = (state ={
                     yt_UploadFrequency: action.payload.yt_UploadFrequency,
                     yt_VideoLength: action.payload.yt_VideoLength,
                     yt_SubCount: action.payload.yt_SubCount,
-                    yt_ViewCount: action.payload.yt_VideoLength,
+                    yt_ViewCount: action.payload.yt_ViewCount,
                 }
             }
         }

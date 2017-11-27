@@ -90,8 +90,8 @@ class NewContentPost extends Component {
                     contentSummary: this.state.contentSummary,
                     contentDescription: this.state.contentDescription,
                     contentIdealMatch: this.state.contentIdealMatch,
-                    yt_UploadFrequency: this.state.yt_VideoLength,
-                    yt_VideoLength: this.state.yt_UploadFrequency,
+                    yt_UploadFrequency: this.state.yt_UploadFrequency,
+                    yt_VideoLength: this.state.yt_VideoLength,
                     yt_SubCount: this.state.yt_SubCount,
                     yt_ViewCount: this.state.yt_ViewCount
                 }));
@@ -183,7 +183,7 @@ class NewContentPost extends Component {
                             <option value="Under 2 minutes">Under 2 minutes</option>
                             <option value="Between 2 and 5 minutes">Between 2 and 5 minutes</option>
                             <option value="Between 5 and 10 minutes">Between 5 and 10 minutes</option>
-                            <option value="10 or more minutes">10 or more minutes</option>
+                            <option value="10+ minutes">10+ minutes</option>
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
@@ -195,18 +195,18 @@ class NewContentPost extends Component {
                             value={this.state.yt_SubCount}
                             placeholder="select">
                             <option value="">-</option>
-                            <option value="Under 5,000">Under 5,000</option>
-                            <option value="Between 5,000 and 10,000">Between 5,000 and 10,000 users</option>
-                            <option value="Between 10,000 and 20,000">Between 10,000 and 20,000 users</option>
-                            <option value="Between 20,000 and 30,000">Between 20,000 and 30,000 users</option>
-                            <option value="Between 30,000 and 40,000">Between 30,000 and 40,000 users</option>
-                            <option value="Between 40,000 and 50,000">Between 40,000 and 50,000 users</option>
-                            <option value="Between 50,000 and 60,000">Between 50,000 and 60,000 users</option>
-                            <option value="Between 60,000 and 70,000">Between 60,000 and 70,000 users</option>
-                            <option value="Between 70,000 and 80,000">Between 70,000 and 80,000 users</option>
-                            <option value="Between 80,000 and 90,000">Between 80,000 and 90,000 users</option>
-                            <option value="Between 90,000 and 100,00">Between 90,000 and 100,000 users</option>
-                            <option value="1,000,000 and up">1,000,000+ users</option>
+                            <option value="Under 5,000 users">Under 5,000 users</option>
+                            <option value="Between 5,000 and 10,000 users">Between 5,000 and 10,000 users</option>
+                            <option value="Between 10,000 and 20,000 users">Between 10,000 and 20,000 users</option>
+                            <option value="Between 20,000 and 30,000 users">Between 20,000 and 30,000 users</option>
+                            <option value="Between 30,000 and 40,000 users">Between 30,000 and 40,000 users</option>
+                            <option value="Between 40,000 and 50,000 users">Between 40,000 and 50,000 users</option>
+                            <option value="Between 50,000 and 60,000 users">Between 50,000 and 60,000 users</option>
+                            <option value="Between 60,000 and 70,000 users">Between 60,000 and 70,000 users</option>
+                            <option value="Between 70,000 and 80,000 users">Between 70,000 and 80,000 users</option>
+                            <option value="Between 80,000 and 90,000 users">Between 80,000 and 90,000 users</option>
+                            <option value="Between 90,000 and 100,00 users">Between 90,000 and 100,000 users</option>
+                            <option value="1,000,000+ users">1,000,000+ users</option>
                         </FormControl>
                         <FormGroup>
                             <ControlLabel>Total channel views</ControlLabel>
@@ -217,18 +217,18 @@ class NewContentPost extends Component {
                                 value={this.state.yt_ViewCount}
                                 placeholder="select">
                                 <option value="">-</option>
-                                <option value="Under 5,000">Under 5,000</option>
-                                <option value="Between 5,000 and 10,000">Between 5,000 and 10,000 views</option>
-                                <option value="Between 10,000 and 20,000">Between 10,000 and 20,000 views</option>
-                                <option value="Between 20,000 and 30,000">Between 20,000 and 30,000 views</option>
-                                <option value="Between 30,000 and 40,000">Between 30,000 and 40,000 views</option>
-                                <option value="Between 40,000 and 50,000">Between 40,000 and 50,000 views</option>
-                                <option value="Between 50,000 and 60,000">Between 50,000 and 60,000 views</option>
-                                <option value="Between 60,000 and 70,000">Between 60,000 and 70,000 views</option>
-                                <option value="Between 70,000 and 80,000">Between 70,000 and 80,000 views</option>
-                                <option value="Between 80,000 and 90,000">Between 80,000 and 90,000 views</option>
-                                <option value="Between 90,000 and 100,00">Between 90,000 and 100,000 views</option>
-                                <option value="1,000,000 and up">1,000,000+ views</option>
+                                <option value="Under 5,000 views">Under 5,000 views</option>
+                                <option value="Between 5,000 and 10,000 views">Between 5,000 and 10,000 views</option>
+                                <option value="Between 10,000 and 20,000 views">Between 10,000 and 20,000 views</option>
+                                <option value="Between 20,000 and 30,000 views">Between 20,000 and 30,000 views</option>
+                                <option value="Between 30,000 and 40,000 views">Between 30,000 and 40,000 views</option>
+                                <option value="Between 40,000 and 50,000 views">Between 40,000 and 50,000 views</option>
+                                <option value="Between 50,000 and 60,000 views">Between 50,000 and 60,000 views</option>
+                                <option value="Between 60,000 and 70,000 views">Between 60,000 and 70,000 views</option>
+                                <option value="Between 70,000 and 80,000 views">Between 70,000 and 80,000 views</option>
+                                <option value="Between 80,000 and 90,000 views">Between 80,000 and 90,000 views</option>
+                                <option value="Between 90,000 and 100,00 views">Between 90,000 and 100,000 views</option>
+                                <option value="1,000,000+ views">1,000,000+ views</option>
                             </FormControl>
                         </FormGroup>
                     </FormGroup>

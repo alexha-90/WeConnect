@@ -10,7 +10,7 @@ import { saveNewContentPost } from '../actions/index';
 class ReviewNewContentPost extends Component {
     constructor() {
         super();
-        this.state = {redirectToAvailableTasks: false};
+        this.state = {redirectToContentCreatorsList: false};
         this.onSubmitNewTask = this.onSubmitNewTask.bind(this);
     }
 
@@ -26,6 +26,7 @@ class ReviewNewContentPost extends Component {
 
         let sent = false;
 
+        //can probably refactor promise
         let sendingNewTask = new Promise((resolve, reject) => {
             this.props.dispatch(saveNewContentPost(this.props.newContentPost));
 
@@ -41,7 +42,7 @@ class ReviewNewContentPost extends Component {
 
         sendingNewTask
             .then(() => {
-                this.setState({redirectToAvailableTasks: true})
+                this.setState({redirectToContentCreatorsList: true})
             })
             .catch((reason) => {
                 alert('Auto redirect did not work. Your new task was submitted though! Error: ' + reason);
@@ -49,7 +50,7 @@ class ReviewNewContentPost extends Component {
     }
 
     render() {
-        if (this.state.redirectToAvailableTasks) {
+        if (this.state.redirectToContentCreatorsList) {
             return <Redirect push to="/contentCreatorsList" />;
         }
         return (
@@ -85,11 +86,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(ReviewNewContentPost);
-
-
-/*
-                    onClick={() => {
-                        return this.props.dispatch(newTaskPOST(this.props.newTask))
-                    }}
-                    >
- */
