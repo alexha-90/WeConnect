@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { fetchSingleContentPost } from '../actions/';
 
 // future expansion: referrals and reviews
-// user should be able to load id page and see all respective contents
 
 class ContentPostExpanded extends Component {
     constructor() {
@@ -13,45 +12,47 @@ class ContentPostExpanded extends Component {
         this.state = {
             loadingComponent: true
         };
-        this.propagateExpandedContent = this.propagateExpandedContent.bind(this);
+        this.propagateContent = this.propagateContent.bind(this);
     }
 
 
     componentWillMount() {
+        // need to make a rule for when random characters entered after /contentPost/....
 
         // get current url and extract id number. Query database for this primary key and return all relevant information
-        let postID = Number(this.props.location.pathname.match(/[0-9]/g));
-        this.props.dispatch(fetchSingleContentPost(postID));
+        let postID = this.props.location.pathname.match(/\d+/)[0];
 
-        setTimeout(() => {
-
-            return this.setState({loadingComponent: false});
-        }, 1000);
+        (async () => {
+            try {
+                this.props.dispatch(fetchSingleContentPost(postID));
+                return await this.setState({loadingComponent: false});
+            } catch (err) {
+                return alert('Error: Something went wrong. We are unable to locate this contentPost. Please try again or notify us if the issue persists.');
+            }
+        })();
     }
 
     componentDidMount() {
         setTimeout(() => {
-            console.log(this.props.allContentPosts.contentMedium);
-            return this.propagateExpandedContent();
+            return this.propagateContent();
         }, 500);
     }
 
-    propagateExpandedContent() {
+    propagateContent() {
         return (
             <div>
                 <ul>
-                    <li>Medium: {this.props.allContentPosts.contentMedium}</li>
-                    <li>Content summary: {this.props.allContentPosts.contentSummary}</li>
-                    <li>Content description: {this.props.allContentPosts.contentDescription}</li>
-                    <li>Content ideal match: {this.props.allContentPosts.contentIdealMatch}</li>
-                    <li>YouTube upload frequency: {this.props.allContentPosts.yt_UploadFrequency}</li>
-                    <li>YouTube typical video length: {this.props.allContentPosts.yt_VideoLength}</li>
-                    <li>YouTube subscriber count: {this.props.allContentPosts.yt_SubCount}</li>
-                    <li>YouTube channel view count: {this.props.allContentPosts.yt_ViewCount}</li>
+                    <li>Medium: {this.props.getContentPosts.contentMedium}</li>
+                    <li>Content summary: {this.props.getContentPosts.contentSummary}</li>
+                    <li>Content description: {this.props.getContentPosts.contentDescription}</li>
+                    <li>Content ideal match: {this.props.getContentPosts.contentIdealMatch}</li>
+                    <li>YouTube upload frequency: {this.props.getContentPosts.yt_UploadFrequency}</li>
+                    <li>YouTube typical video length: {this.props.getContentPosts.yt_VideoLength}</li>
+                    <li>YouTube subscriber count: {this.props.getContentPosts.yt_SubCount}</li>
+                    <li>YouTube channel view count: {this.props.getContentPosts.yt_ViewCount}</li>
                 </ul>
             </div>
         )
-
     }
 
 
@@ -63,7 +64,7 @@ class ContentPostExpanded extends Component {
         return (
             <div>
                 <h1>Expanded view for individual contentPost:</h1>
-                {this.propagateExpandedContent()}
+                {this.propagateContent()}
 
                 <Button bsStyle="success">
                     Hire Me
@@ -76,7 +77,7 @@ class ContentPostExpanded extends Component {
                 </Button>
 
                 <hr />
-                <h1>Recent reviews:</h1>
+                <h1>Recent reviews: (to be continued)</h1>
                 <ul>
                     <li>He promoted our content very well. Our sales went up!! 5/5</li>
                     <li>Did not follow instructions we gave him. Subpar. 2/5</li>
@@ -89,10 +90,8 @@ class ContentPostExpanded extends Component {
 
 function mapStateToProps(state) {
     return {
-        allContentPosts: state.allContentPosts.contentPostDetails
+        getContentPosts: state.getContentPosts.contentPostDetails
     };
 }
 
 export default connect(mapStateToProps)(ContentPostExpanded);
-
-//                     <li>{this.loadExpandedContent()}</li>

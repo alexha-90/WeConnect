@@ -10,7 +10,9 @@ import { saveNewContentPost } from '../actions/index';
 class ReviewNewContentPost extends Component {
     constructor() {
         super();
-        this.state = {redirectToContentCreatorsList: false};
+        this.state = {
+            redirectToContentCreatorsList: false
+        };
         this.onSubmitNewTask = this.onSubmitNewTask.bind(this);
     }
 
@@ -22,33 +24,17 @@ class ReviewNewContentPost extends Component {
     }
 
     onSubmitNewTask() {
-        // dispatch to action creator for axios post request
-
-        let sent = false;
-
-        //can refactor promise
-        let sendingNewTask = new Promise((resolve, reject) => {
-            this.props.dispatch(saveNewContentPost(this.props.newContentPost));
-
-            // this needs to consider a res from server. Always true and says new task was submitted regardless of result since dispatch was run.
-            sent = true;
-
-            if (sent) {
-                resolve(alert('Your new task was submitted'));
-            } else {
-                reject(alert('Something went wrong and your request was rejected. Please try again'));
+        (async () => {
+            try {
+                this.props.dispatch(saveNewContentPost(this.props.newContentPost));
+                return setTimeout(() => {
+                            alert('Your new post was submitted! Hope you can find a good partnership!');
+                            return this.setState({redirectToContentCreatorsList: true})
+                        }, 1000);
+            } catch (err) {
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }
-        });
-
-        sendingNewTask
-            .then(() => {
-                setTimeout(() => {
-                    this.setState({redirectToContentCreatorsList: true})
-                }, 1000);
-            })
-            .catch((reason) => {
-                alert('Auto redirect did not work. Your new task was submitted though! Error: ' + reason);
-            });
+        })();
     }
 
     render() {

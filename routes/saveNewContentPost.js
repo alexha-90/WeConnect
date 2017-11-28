@@ -8,7 +8,7 @@ require('dotenv').config();
 //===============================================================================================//
 
 module.exports = app => {
-    app.route('/api/saveNewTask')
+    app.route('/api/saveNewContentPost')
         .post(async (req, res) => {
             try {
 

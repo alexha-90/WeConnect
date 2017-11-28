@@ -1,5 +1,6 @@
-const allContentPosts = (state = {
+const getContentPosts = (state = {
     contentPostDetails: {
+        contentPostID: 0,
         contentMedium: '',
         contentSummary: '',
         contentDescription: '',
@@ -12,6 +13,7 @@ const allContentPosts = (state = {
     }, action) => {
 
     switch (action.type) {
+
         case 'ALL_CONTENT_POSTS_TO_REDUX_STATE': {
             console.log(action.payload, '****');
             return {
@@ -43,4 +45,4 @@ const allContentPosts = (state = {
 
 };
 
-export default allContentPosts
+export default getContentPosts

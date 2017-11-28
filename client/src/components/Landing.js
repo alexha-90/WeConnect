@@ -6,12 +6,6 @@ import { Link } from 'react-router-dom';
 // check if user is logged in.
 
 class Landing extends Component {
-    /*
-    constructor() {
-        super();
-    };
-    */
-
 
     render() {
         return (
@@ -21,13 +15,13 @@ class Landing extends Component {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button bsStyle="info">
                         <Link to="ContentCreatorsList">
-                            View content creators
+                            Content creators looking for revenue
                         </Link>
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button bsStyle="warning">
                         <Link to="AdvertisersList">
-                            View advertisers
+                            Advertisers looking to promote
                         </Link>
                     </Button>
                 </div>
@@ -37,26 +31,3 @@ class Landing extends Component {
 }
 
 export default Landing;
-
-
-/*
-    constructor() {
-        super();
-        this.state = {
-            redirectToAvailableTasks: false,
-
-        };
-        this.onViewAvailableTasks = this.onViewAvailableTasks.bind(this);
-    };
-
-
-    onViewAvailableTasks() {
-        this.setState({redirectToAvailableTasks: true});
-    }
-
-
-    render() {
-        if (this.state.redirectToAvailableTasks) {
-            return <Redirect push to="/availableTasks"/>
-        }
- */

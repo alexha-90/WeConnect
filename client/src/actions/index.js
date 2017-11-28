@@ -12,7 +12,7 @@ export const newContentPostToProps = (newContentPostInfo) => {
 // axios POST request to submit information into database
 export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
     try {
-        const res = await axios.post('api/saveNewTask',
+        const res = await axios.post('api/saveNewContentPost',
             dispatch({
                 type: 'SUBMIT_NEW_CONTENT_POST_TO_DB',
                 payload: newContentPostInfo
@@ -47,7 +47,6 @@ export const fetchAllContentPosts = () => async () => {
 
 // axios request to retrieve one expanded content post
 export const fetchSingleContentPost = (postID) => async dispatch => {
-    console.log(postID);
     try {
         const res = await axios.post('/api/getSingleContentPost',
             dispatch({
@@ -55,8 +54,6 @@ export const fetchSingleContentPost = (postID) => async dispatch => {
                 payload: postID
             })
         );
-
-        await console.log(res.data);
 
         if (res.data === 'Error!') {
             return alert('Error: No match found for the ID number you provided was not found. Please check your input, try again, and let us know if this problem persists.')

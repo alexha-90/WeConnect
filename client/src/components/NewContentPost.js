@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
 import { newContentPostToProps } from '../actions/index';
 
+
+//youtube api info
+// https://www.googleapis.com/youtube/v3/channels?key={YOUR_API_KEY}&forUsername=klauskkpm&part=id
+// http://johnnythetank.github.io/youtube-channel-name-converter/
+// https://stackoverflow.com/questions/14366648/how-can-i-get-a-channel-id-from-youtube
+
 /*
 to-do:
-property: isAvailable? T/F
-add location to task form. zip code.
-validate file uploads
-calendar needed by
-moment.js time
-check user credits on account
-//default hour option based on user's local time
+file uploads
 */
 
 class NewContentPost extends Component {
@@ -75,16 +76,14 @@ class NewContentPost extends Component {
     }
 
     onReviewNewContentPost() {
-        //console.log('current state is:');
-        //console.log(this.state);
-        /*
+        /* validation for later. Check that all contentX fields and one entry are filled in.
         if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentMedium) {
             return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
         }
         */
 
-        return (
-            setTimeout(() => {
+        (async () => {
+            try {
                 this.props.dispatch(newContentPostToProps({
                     contentMedium: this.state.contentMedium,
                     contentSummary: this.state.contentSummary,
@@ -94,10 +93,14 @@ class NewContentPost extends Component {
                     yt_VideoLength: this.state.yt_VideoLength,
                     yt_SubCount: this.state.yt_SubCount,
                     yt_ViewCount: this.state.yt_ViewCount
+
                 }));
-                this.setState({redirectToReviewNewContentPost: true});
-            }, 1000)
-        );
+                return await this.setState({redirectToReviewNewContentPost: true});
+
+            } catch (err) {
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
     }
 
     render() {
@@ -245,8 +248,15 @@ class NewContentPost extends Component {
                     <Button bsStyle="primary"
                             onClick={this.onReviewNewContentPost}
                         >
-                        Review
+                        Review new content post
                     </Button>
+                    ____
+                    <Button bsStyle="warning">
+                        <Link to="/contentCreatorsList">
+                            Back to content listings
+                        </Link>
+                    </Button>
+
                 </form>
 
                 <hr/>

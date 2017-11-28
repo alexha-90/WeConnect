@@ -4,14 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../actions/index';
 
-// https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
-// future expansion: referrals and reviews
-
-//youtube api info
-// https://www.googleapis.com/youtube/v3/channels?key={YOUR_API_KEY}&forUsername=klauskkpm&part=id
-// http://johnnythetank.github.io/youtube-channel-name-converter/
-// https://stackoverflow.com/questions/14366648/how-can-i-get-a-channel-id-from-youtube
-
+// loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 
 // simplify response so not everything needs to be queried from DB. Just enough for preview. Then user can load more upon expanding
 
@@ -21,43 +14,46 @@ class ContentCreatorsList extends Component {
         this.state = {
             loadingComponent: true
         };
-        this.propagateContentPosts = this.propagateContentPosts.bind(this);
+        this.propagateContent = this.propagateContent.bind(this);
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchAllContentPosts());
-        setTimeout(() => {
-            //run action to query database and return all tasks
-            return this.setState({ loadingComponent: false });
-        }, 1000);
+        (async () => {
+            try {
+                this.props.dispatch(fetchAllContentPosts());
+                return await this.setState({loadingComponent: false});
+
+            } catch (err) {
+                return alert('Error: Unable to retrieve results from the database. Please try again or notify us if the issue persists.');
+            }
+        })();
     }
 
     componentDidMount() {
         setTimeout(() => {
-            return this.propagateContentPosts();
+            return this.propagateContent();
         }, 500);
     }
 
-    propagateContentPosts() {
-
+    propagateContent() {
         // all individual contentPost objects will be placed in this array
         let comboArr = [];
 
         // iterate through dynamically sized object holding all contentPost objects and split each post individually
-        for (let i = 0; i < this.props.allContentPosts.length; i++) {
+        for (let i = 0; i < this.props.getContentPosts.length; i++) {
             comboArr[i] = [
-                this.props.allContentPosts[i]['content_post_id'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_summary'], this.props.allContentPosts[i]['content_description'],
-                this.props.allContentPosts[i]['content_ideal_match'], this.props.allContentPosts[i]['yt_upload_frequency'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_view_count']
+                this.props.getContentPosts[i]['content_post_id'], this.props.getContentPosts[i]['content_medium'], this.props.getContentPosts[i]['content_summary'], this.props.getContentPosts[i]['content_description'],
+                this.props.getContentPosts[i]['content_ideal_match'], this.props.getContentPosts[i]['yt_upload_frequency'], this.props.getContentPosts[i]['yt_video_length'], this.props.getContentPosts[i]['yt_sub_count'], this.props.getContentPosts[i]['yt_view_count']
             ];
         }
 
-        // for each content post, make new container
+        // for each content post, create a new container instance with summarized data
         return (
             <div>
+                {console.log(comboArr)}
                 {comboArr.map((item) => {
                     return (
                         <div className='contentCreatorContainer' key={item[0]}>
-                            {console.log('id:' + item[0] + '-1')}
                             <ul>
                                 <li key={'id:' + item[0] + '-1'}>Medium: {item[1]}</li>
                                 <li key={'id:' + item[0] + '-2'}>Content summary: {item[2]}</li>
@@ -89,7 +85,7 @@ class ContentCreatorsList extends Component {
 
         return (
             <div>
-                Have an impressive profile you would like to share?
+                Want to leverage your social media presence to earn extra money?
                 <Button bsStyle="success">
                     <Link to="newContentPost">
                         Create new listing
@@ -100,7 +96,7 @@ class ContentCreatorsList extends Component {
 
                 <h1>Content creators looking to advertise:</h1>
                 <div className='contentCreatorSection'>
-                    {this.propagateContentPosts()}
+                    {this.propagateContent()}
                 </div>
             </div>
         )
@@ -110,7 +106,7 @@ class ContentCreatorsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        allContentPosts: state.allContentPosts.contentPostDetails
+        getContentPosts: state.getContentPosts.contentPostDetails
     };
 }
 
