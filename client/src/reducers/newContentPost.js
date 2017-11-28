@@ -12,7 +12,7 @@ const newContentPost = (state ={
     }}, action) => {
 
     switch (action.type) {
-        case "SUBMIT_NEW_CONTENT_POST": {
+        case "NEW_CONTENT_POST_TO_PROPS": {
             console.log(action.payload);
             return {
                 newContentPost: {

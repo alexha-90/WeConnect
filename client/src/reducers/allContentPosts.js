@@ -1,5 +1,5 @@
 const allContentPosts = (state = {
-    allContentPosts: {
+    contentPostDetails: {
         contentMedium: '',
         contentSummary: '',
         contentDescription: '',
@@ -8,38 +8,31 @@ const allContentPosts = (state = {
         yt_VideoLength: 0,
         yt_SubCount: '',
         yt_ViewCount: 0,
-
-        //temporary
-        taskSummary: '',
-        taskValue: 0,
-        taskCategory: '',
-        taskNeededDate: '',
-        taskNeededHour: '',
-        taskDescription: ''
     }
     }, action) => {
 
     switch (action.type) {
-        case "ALL_CONTENT_POSTS_TO_REDUX_STATE": {
-
+        case 'ALL_CONTENT_POSTS_TO_REDUX_STATE': {
             console.log(action.payload, '****');
-            /*
-            implement pseudo-code later when claimed status implemented
-            //if (claimed) {
-                claimedTasks: {action.payload.claimed}
-            }
-
-            if (!claimed) {
-                availableTasks {action.payload.notClaimed}
-            }
-
-            return claimedTasks, availableTasks
-             */
-
-
             return {
                 ...state,
-                allContentPosts: action.payload
+                contentPostDetails: action.payload
+            };
+        }
+
+        case 'SINGLE_CONTENT_POST_TO_REDUX_STATE': {
+            console.log(action.payload, '@@@@@');
+            return {
+                contentPostDetails: {
+                    contentMedium: action.payload[0]['content_medium'],
+                    contentSummary: action.payload[0]['content_summary'],
+                    contentDescription: action.payload[0]['content_description'],
+                    contentIdealMatch: action.payload[0]['content_ideal_match'],
+                    yt_UploadFrequency: action.payload[0]['yt_upload_frequency'],
+                    yt_VideoLength: action.payload[0]['yt_video_length'],
+                    yt_SubCount: action.payload[0]['yt_sub_count'],
+                    yt_ViewCount: action.payload[0]['yt_view_count'],
+                }
             };
         }
 

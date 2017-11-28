@@ -21,9 +21,6 @@ module.exports = app => {
                 client.connect()
                     .then(() => {
                         console.log('Successfully connected to postgres DB. Saving new task now');
-﻿//INSERT INTO content_posts (content_medium, content_summary, content_description, content_ideal_match, yt_upload_frequency, yt_video_length, yt_sub_count, yt_view_count) VALUES ('meidum test', 'sumary test', 'descrpt test', 'ideal match test', 'upload freq test', 'video lengh test', 'subcount test', 'view test')
-
-
                         const sql = 'INSERT INTO content_posts (content_medium, content_summary, content_description, ' +
                             'content_ideal_match, yt_upload_frequency, yt_video_length, yt_sub_count, yt_view_count) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
                         const params = [saveNewContentPost.contentMedium, saveNewContentPost.contentSummary, saveNewContentPost.contentDescription,

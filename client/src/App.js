@@ -10,7 +10,7 @@ import NewContentPost from './components/NewContentPost';
 import AvailableTasks from './components/AvailableTasks';
 import ReviewNewContentPost from './components/ReviewNewContentPost';
 import Profile from './components/Profile';
-import ProducerProfile from './components/ProducerProfile';
+import ContentPostExpanded from './components/ContentPostExpanded';
 import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';
 import AdvertisersList from './components/AdvertisersList';
@@ -28,7 +28,7 @@ class App extends Component {
                     <Route exact path='/newContentPost' component={NewContentPost} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
-                    <Route exact path='/producerProfile' component={ProducerProfile} />
+                    <Route path='/contentPost' component={ContentPostExpanded} />
                     <Route exact path='/reviewNewTask' component={ReviewNewContentPost} />
 
                     {/* temporary file below*/}

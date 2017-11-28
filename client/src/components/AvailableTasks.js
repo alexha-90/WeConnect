@@ -17,7 +17,7 @@ import {Link} from 'react-router-dom';
 class AvailableTasks extends Component {
     constructor() {
         super();
-        this.propagateTasks = this.propagateTasks.bind(this);
+        this.propagateContentPosts = this.propagateContentPosts.bind(this);
     }
 
     componentWillMount() {
@@ -49,13 +49,13 @@ class AvailableTasks extends Component {
             for (let i = 0; i < this.props.allAvailableTasks.length; i++) {
                 console.log(this.props.allAvailableTasks[i]['summary'])
             }
-            this.propagateTasks();
+            this.propagateContentPosts();
             }, 2000);
     }
 
 
     //kept inside because of bound constructor, need props
-    propagateTasks() {
+    propagateContentPosts() {
         let testArray = [0,1,2,3,4];
         let keyCount = 0;
         return (
@@ -116,7 +116,7 @@ class AvailableTasks extends Component {
                 </Table>
                 <hr />
                 <h1>Claimed tasks:</h1>
-                {this.propagateTasks()}
+                {this.propagateContentPosts()}
             </div>
         )
     }

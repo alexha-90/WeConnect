@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // handle URL-encoded data
 // route for when user submits a new task, POST to database
 require('./routes/saveNewContentPost')(app);
 require('./routes/getAllContentPosts')(app);
+require('./routes/getSingleContentPost')(app);
 
 // basic test routes
 app.get('/', (req, res) => {

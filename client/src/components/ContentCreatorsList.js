@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { allContentPostsGET } from '../actions/index';
+import { fetchAllContentPosts } from '../actions/index';
 
 // https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 // future expansion: referrals and reviews
@@ -13,17 +13,19 @@ import { allContentPostsGET } from '../actions/index';
 // https://stackoverflow.com/questions/14366648/how-can-i-get-a-channel-id-from-youtube
 
 
+// simplify response so not everything needs to be queried from DB. Just enough for preview. Then user can load more upon expanding
+
 class ContentCreatorsList extends Component {
     constructor() {
         super();
         this.state = {
             loadingComponent: true
         };
-        this.propagateTasks = this.propagateTasks.bind(this);
+        this.propagateContentPosts = this.propagateContentPosts.bind(this);
     }
 
     componentWillMount() {
-        this.props.dispatch(allContentPostsGET());
+        this.props.dispatch(fetchAllContentPosts());
         setTimeout(() => {
             //run action to query database and return all tasks
             return this.setState({ loadingComponent: false });
@@ -32,11 +34,11 @@ class ContentCreatorsList extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            return this.propagateTasks();
+            return this.propagateContentPosts();
         }, 500);
     }
 
-    propagateTasks() {
+    propagateContentPosts() {
 
         // all individual contentPost objects will be placed in this array
         let comboArr = [];
@@ -44,9 +46,8 @@ class ContentCreatorsList extends Component {
         // iterate through dynamically sized object holding all contentPost objects and split each post individually
         for (let i = 0; i < this.props.allContentPosts.length; i++) {
             comboArr[i] = [
-                this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_summary'], this.props.allContentPosts[i]['content_description'],
+                this.props.allContentPosts[i]['content_post_id'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_medium'], this.props.allContentPosts[i]['content_summary'], this.props.allContentPosts[i]['content_description'],
                 this.props.allContentPosts[i]['content_ideal_match'], this.props.allContentPosts[i]['yt_upload_frequency'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_video_length'], this.props.allContentPosts[i]['yt_view_count']
-
             ];
         }
 
@@ -56,23 +57,20 @@ class ContentCreatorsList extends Component {
                 {comboArr.map((item) => {
                     return (
                         <div className='contentCreatorContainer' key={item[0]}>
+                            {console.log('id:' + item[0] + '-1')}
                             <ul>
-                                <li key={item[0] + 'summary'}>Summary: {item[1]}</li>
-                                <li key={item[0] + 'description'}>Description: {item[2]}</li>
-                                <li key={item[0] + 'category'}>Category: {item[3]}</li>
-
-                                <li key={item[0] + '-1'}>Medium: {item[1]}</li>
-                                <li key={item[0] + '-2'}>Content Summary: {item[2]}</li>
-                                <li key={item[0] + '-3'}>Content Description: {item[3]}</li>
-                                <li key={item[0] + '-4'}>Content Ideal match: {item[4]}</li>
-                                <li key={item[0] + '-5'}>YouTube upload frequency: {item[5]}</li>
-                                <li key={item[0] + '-6'}>YouTube typical video length: {item[6]}</li>
-                                <li key={item[0] + '-7'}>YouTube subscriber count: {item[7]}</li>
-                                <li key={item[0] + '-8'}>YouTube channel view count: {item[8]}</li>
+                                <li key={'id:' + item[0] + '-1'}>Medium: {item[1]}</li>
+                                <li key={'id:' + item[0] + '-2'}>Content summary: {item[2]}</li>
+                                <li key={'id:' + item[0] + '-3'}>Content description: {item[3]}</li>
+                                <li key={'id:' + item[0] + '-4'}>Content ideal match: {item[4]}</li>
+                                <li key={'id:' + item[0] + '-5'}>YouTube upload frequency: {item[5]}</li>
+                                <li key={'id:' + item[0] + '-6'}>YouTube typical video length: {item[6]}</li>
+                                <li key={'id:' + item[0] + '-7'}>YouTube subscriber count: {item[7]}</li>
+                                <li key={'id:' + item[0] + '-8'}>YouTube channel view count: {item[8]}</li>
                             </ul>
 
                             <Button bsStyle="success">
-                                <Link to="/producerProfile">
+                                <Link to={"/contentPost/id:" + item[0]}>
                                     See more
                                 </Link>
                             </Button>
@@ -102,7 +100,7 @@ class ContentCreatorsList extends Component {
 
                 <h1>Content creators looking to advertise:</h1>
                 <div className='contentCreatorSection'>
-                    {this.propagateTasks()}
+                    {this.propagateContentPosts()}
                 </div>
             </div>
         )
@@ -112,8 +110,7 @@ class ContentCreatorsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost,
-        allContentPosts: state.allContentPosts.allContentPosts
+        allContentPosts: state.allContentPosts.contentPostDetails
     };
 }
 

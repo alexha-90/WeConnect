@@ -4,7 +4,7 @@ import store from '../index';
 
 export const newContentPostToProps = (newContentPostInfo) => {
     return {
-        type: "SUBMIT_NEW_CONTENT_POST",
+        type: "NEW_CONTENT_POST_TO_PROPS",
         payload: newContentPostInfo
     };
 };
@@ -14,7 +14,6 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewTask',
             dispatch({
-                // don't think type is actually being used here
                 type: 'SUBMIT_NEW_CONTENT_POST_TO_DB',
                 payload: newContentPostInfo
             })
@@ -23,7 +22,7 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
         if (res.data === 'Error!') {
             return alert('Error: Your post was not submitted. Please try again and let us know if this problem persists.')
         }
-        return alert('Your post was successfully received!'); //this will always work regardless
+        return alert('Your post was successfully posted!');
 
     } catch(res) {
         alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
@@ -31,30 +30,44 @@ export const saveNewContentPost = (newContentPostInfo) => async dispatch => {
 };
 
 
-// axios GET request to retrieve all available tasks
-export const allContentPostsGET = () => async dispatch => {
+// axios request to retrieve all content posts
+export const fetchAllContentPosts = () => async () => {
     try {
-        const res = await axios.get('api/retrieveAllContentPosts');
-        return store.dispatch({ type: 'ALL_CONTENT_POSTS_TO_REDUX_STATE', payload: res.data });
+        const res = await axios.get('/api/getAllContentPosts');
+        return store.dispatch({
+            type: 'ALL_CONTENT_POSTS_TO_REDUX_STATE',
+            payload: res.data
+        });
 
     } catch(res) {
-        alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
+        alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
     }
 };
 
 
-/*
-export const allTasksGET = () => new Promise(() => {
-    const res = axios.get('api/retrieveAllTasks');
-    console.log('All available tasks from server:');
-    return res.data
-        .then((data) => {
-            //update redux state for display
-            console.log(data);
-        })
-        .catch((res) => {
-            alert('Hmm... it appears something went wrong. Please try reloading the page. Error: ' + res.err)
-        })
-});
- */
+// axios request to retrieve one expanded content post
+export const fetchSingleContentPost = (postID) => async dispatch => {
+    console.log(postID);
+    try {
+        const res = await axios.post('/api/getSingleContentPost',
+            dispatch({
+                type: 'GET_SINGLE_CONTENT_POST',
+                payload: postID
+            })
+        );
 
+        await console.log(res.data);
+
+        if (res.data === 'Error!') {
+            return alert('Error: No match found for the ID number you provided was not found. Please check your input, try again, and let us know if this problem persists.')
+        }
+
+        return store.dispatch({
+            type: 'SINGLE_CONTENT_POST_TO_REDUX_STATE',
+            payload: res.data
+        });
+
+    } catch(res) {
+        alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
+    }
+};

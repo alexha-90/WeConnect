@@ -26,7 +26,7 @@ class ReviewNewContentPost extends Component {
 
         let sent = false;
 
-        //can probably refactor promise
+        //can refactor promise
         let sendingNewTask = new Promise((resolve, reject) => {
             this.props.dispatch(saveNewContentPost(this.props.newContentPost));
 
@@ -42,7 +42,9 @@ class ReviewNewContentPost extends Component {
 
         sendingNewTask
             .then(() => {
-                this.setState({redirectToContentCreatorsList: true})
+                setTimeout(() => {
+                    this.setState({redirectToContentCreatorsList: true})
+                }, 1000);
             })
             .catch((reason) => {
                 alert('Auto redirect did not work. Your new task was submitted though! Error: ' + reason);
