@@ -5,12 +5,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/components/NewUserRegistration.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/components/subcomponents/LoginModal.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/reducers/contentPosts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/authRoutes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/passport.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/AvailableTasks.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/Profile.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/reducers/allContentPosts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/reducers/getContentPosts.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/App.js" afterPath="$PROJECT_DIR$/client/src/App.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/actions/index.js" afterPath="$PROJECT_DIR$/client/src/actions/index.js" />
@@ -22,10 +19,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/ReviewNewContentPost.js" afterPath="$PROJECT_DIR$/client/src/components/ReviewNewContentPost.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/reducers/index.js" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/reducers/newContentPost.js" afterPath="$PROJECT_DIR$/client/src/reducers/newContentPost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/pg-pool/package.json" afterPath="$PROJECT_DIR$/node_modules/pg-pool/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -429,7 +422,7 @@
       <workItem from="1511231693056" duration="92212000" />
       <workItem from="1511774185904" duration="7541000" />
       <workItem from="1511821115855" duration="24843000" />
-      <workItem from="1511907009606" duration="11649000" />
+      <workItem from="1511907009606" duration="11728000" />
     </task>
     <task id="LOCAL-00001" summary="Resolve renamed file conflicts">
       <created>1511822758826</created>
@@ -449,7 +442,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164168000" />
+    <option name="totallyTimeSpent" value="164247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-435" width="1440" height="877" extended-state="0" />
@@ -510,7 +503,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Resolve renamed file conflicts" />
     <MESSAGE value="Resolve renamed file conflicts2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolve renamed file conflicts2" />
+    <MESSAGE value="Add signup/login components. Start getting passport setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add signup/login components. Start getting passport setup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
