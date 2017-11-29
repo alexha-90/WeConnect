@@ -12,6 +12,7 @@ import ContentPostExpanded from './components/ContentPostExpanded';
 import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';
 import AdvertisersList from './components/AdvertisersList';
+import NewUserRegistration from './components/NewUserRegistration';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
                     <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newContentPost' component={NewContentPost} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
+                    <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost' component={ContentPostExpanded} />
                     <Route exact path='/reviewNewTask' component={ReviewNewContentPost} />
 

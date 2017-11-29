@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { fetchAllContentPosts } from '../actions/index';
+import { fetchAllContentPosts } from '../actions';
 
 // loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
+// create rating system
 
+// make searchable filters
 // simplify response so not everything needs to be queried from DB. Just enough for preview. Then user can load more upon expanding
 
 class ContentCreatorsList extends Component {
@@ -40,17 +42,16 @@ class ContentCreatorsList extends Component {
         let comboArr = [];
 
         // iterate through dynamically sized object holding all contentPost objects and split each post individually
-        for (let i = 0; i < this.props.getContentPosts.length; i++) {
+        for (let i = 0; i < this.props.contentPosts.length; i++) {
             comboArr[i] = [
-                this.props.getContentPosts[i]['content_post_id'], this.props.getContentPosts[i]['content_medium'], this.props.getContentPosts[i]['content_summary'], this.props.getContentPosts[i]['content_description'],
-                this.props.getContentPosts[i]['content_ideal_match'], this.props.getContentPosts[i]['yt_upload_frequency'], this.props.getContentPosts[i]['yt_video_length'], this.props.getContentPosts[i]['yt_sub_count'], this.props.getContentPosts[i]['yt_view_count']
+                this.props.contentPosts[i]['content_post_id'], this.props.contentPosts[i]['content_medium'], this.props.contentPosts[i]['content_summary'], this.props.contentPosts[i]['content_description'],
+                this.props.contentPosts[i]['content_ideal_match'], this.props.contentPosts[i]['yt_upload_frequency'], this.props.contentPosts[i]['yt_video_length'], this.props.contentPosts[i]['yt_sub_count'], this.props.contentPosts[i]['yt_view_count']
             ];
         }
 
         // for each content post, create a new container instance with summarized data
         return (
             <div>
-                {console.log(comboArr)}
                 {comboArr.map((item) => {
                     return (
                         <div className='contentCreatorContainer' key={item[0]}>
@@ -106,7 +107,7 @@ class ContentCreatorsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        getContentPosts: state.getContentPosts.contentPostDetails
+        contentPosts: state.contentPosts.contentPostDetails
     };
 }
 

@@ -1,20 +1,9 @@
-const getContentPosts = (state = {
-    contentPostDetails: {
-        contentPostID: 0,
-        contentMedium: '',
-        contentSummary: '',
-        contentDescription: '',
-        contentIdealMatch: '',
-        yt_UploadFrequency: 0,
-        yt_VideoLength: 0,
-        yt_SubCount: '',
-        yt_ViewCount: 0,
-    }
+const contentPosts = (state = {
+    contentPostDetails: {}
     }, action) => {
 
     switch (action.type) {
-
-        case 'ALL_CONTENT_POSTS_TO_REDUX_STATE': {
+        case 'ALL_CONTENT_POSTS_TO_PROPS': {
             console.log(action.payload, '****');
             return {
                 ...state,
@@ -22,7 +11,7 @@ const getContentPosts = (state = {
             };
         }
 
-        case 'SINGLE_CONTENT_POST_TO_REDUX_STATE': {
+        case 'SINGLE_CONTENT_POST_TO_PROPS': {
             console.log(action.payload, '@@@@@');
             return {
                 contentPostDetails: {
@@ -45,4 +34,4 @@ const getContentPosts = (state = {
 
 };
 
-export default getContentPosts
+export default contentPosts

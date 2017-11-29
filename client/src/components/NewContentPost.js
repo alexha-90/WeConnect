@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-import { newContentPostToProps } from '../actions/index';
+import { newContentPostToProps } from '../actions';
 
 
 //youtube api info

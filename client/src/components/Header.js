@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import LoginModal from './subcomponents/LoginModal';
 
 //check here to see if user is logged in
 
 
 class Header extends Component {
+    constructor() {
+        super();
+        this.state = {
+            loginShow: false
+        }
+    }
 
 
     isLoggedIn() {
@@ -20,9 +28,13 @@ class Header extends Component {
             default:
                 return (
                     <div>
-                        <h3>Not logged in</h3>
-                        <hr />
-                        <hr />
+                        <div>
+                            <Button bsStyle="primary" onClick={() => this.setState({ loginShow: true })}>
+                                Sign-up / Login
+                            </Button>
+                            <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
+                        </div>
+
                     </div>
 
                 );
@@ -33,7 +45,8 @@ class Header extends Component {
     render() {
         return (
             <div>
-
+                <hr />
+                <hr />
                 <a href='/'>
                     <h1 style={{textAlign: 'center'}}>SocialConnector</h1>
                 </a>

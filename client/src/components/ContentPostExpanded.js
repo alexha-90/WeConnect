@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { fetchSingleContentPost } from '../actions/';
 
 // future expansion: referrals and reviews
+// upload images. onclick expand
 
 class ContentPostExpanded extends Component {
     constructor() {
@@ -42,14 +43,14 @@ class ContentPostExpanded extends Component {
         return (
             <div>
                 <ul>
-                    <li>Medium: {this.props.getContentPosts.contentMedium}</li>
-                    <li>Content summary: {this.props.getContentPosts.contentSummary}</li>
-                    <li>Content description: {this.props.getContentPosts.contentDescription}</li>
-                    <li>Content ideal match: {this.props.getContentPosts.contentIdealMatch}</li>
-                    <li>YouTube upload frequency: {this.props.getContentPosts.yt_UploadFrequency}</li>
-                    <li>YouTube typical video length: {this.props.getContentPosts.yt_VideoLength}</li>
-                    <li>YouTube subscriber count: {this.props.getContentPosts.yt_SubCount}</li>
-                    <li>YouTube channel view count: {this.props.getContentPosts.yt_ViewCount}</li>
+                    <li>Medium: {this.props.contentPosts.contentMedium}</li>
+                    <li>Content summary: {this.props.contentPosts.contentSummary}</li>
+                    <li>Content description: {this.props.contentPosts.contentDescription}</li>
+                    <li>Content ideal match: {this.props.contentPosts.contentIdealMatch}</li>
+                    <li>YouTube upload frequency: {this.props.contentPosts.yt_UploadFrequency}</li>
+                    <li>YouTube typical video length: {this.props.contentPosts.yt_VideoLength}</li>
+                    <li>YouTube subscriber count: {this.props.contentPosts.yt_SubCount}</li>
+                    <li>YouTube channel view count: {this.props.contentPosts.yt_ViewCount}</li>
                 </ul>
             </div>
         )
@@ -67,7 +68,7 @@ class ContentPostExpanded extends Component {
                 {this.propagateContent()}
 
                 <Button bsStyle="success">
-                    Hire Me
+                    Interested in partnering with me? Send me a message
                 </Button>
                 ______
                 <Button bsStyle="warning">
@@ -75,6 +76,11 @@ class ContentPostExpanded extends Component {
                         Back to results
                     </Link>
                 </Button>
+                <br/>
+
+                <img src="https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_640.jpg" alt="temp" />
+                <img src="https://cdn.pixabay.com/photo/2016/01/22/02/06/food-1155130_640.jpg" alt="temp2" />
+
 
                 <hr />
                 <h1>Recent reviews: (to be continued)</h1>
@@ -90,7 +96,7 @@ class ContentPostExpanded extends Component {
 
 function mapStateToProps(state) {
     return {
-        getContentPosts: state.getContentPosts.contentPostDetails
+        contentPosts: state.contentPosts.contentPostDetails
     };
 }
 

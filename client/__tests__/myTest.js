@@ -27,6 +27,11 @@ describe('submitNewTask', () => {
 });
 
 
+// test submit new task
+// test can retrieve all contentPosts
+// test signup form valid
+
+
 
 
 /*

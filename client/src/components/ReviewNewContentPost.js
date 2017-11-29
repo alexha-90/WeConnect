@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import {testNewTaskValidity} from "./stateFunctions";
 import { Redirect } from 'react-router-dom';
 
-import { saveNewContentPost } from '../actions/index';
+import { saveNewContentPost } from '../actions';
 
 
 class ReviewNewContentPost extends Component {
@@ -17,7 +17,7 @@ class ReviewNewContentPost extends Component {
     }
 
     componentDidMount() {
-        //console.log(this.props.newContentPost);
+        //console.log(this.props.contentPosts);
         //run function for unit test. Ensure information to be submitted is accurate
         //currently always proceeds regardless. Fix
         testNewTaskValidity(this.props.newContentPost)
@@ -27,10 +27,12 @@ class ReviewNewContentPost extends Component {
         (async () => {
             try {
                 this.props.dispatch(saveNewContentPost(this.props.newContentPost));
+                alert('Your new post was submitted! Hope you can find a good partnership!');
+                // delay redirect so redux has time to update before showing updated list of results
                 return setTimeout(() => {
-                            alert('Your new post was submitted! Hope you can find a good partnership!');
-                            return this.setState({redirectToContentCreatorsList: true})
-                        }, 1000);
+                    console.log('test');
+                    return this.setState({redirectToContentCreatorsList: true})
+                }, 1000);
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }

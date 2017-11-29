@@ -10,7 +10,6 @@ module.exports = app => {
             try {
 
                 console.log('Attempt to retrieve all contentPosts from db');
-                //res.send('back to front-end. Here is what you sent me: ' + newTaskToSave);
 
                 const client = new Client();
                 client.connect()

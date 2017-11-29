@@ -51,6 +51,7 @@ app.use(passport.session());
 // route for when user submits a new task, POST to database
 require('./routes/saveNewContentPost')(app, passport);
 require('./routes/getContentPosts')(app); // no authentication needed to view
+require('./routes/saveNewUser')(app);
 
 // passport authorization routes (login, logout, register, etc)
 //require('./routes/authRoutes')(app, passport);
