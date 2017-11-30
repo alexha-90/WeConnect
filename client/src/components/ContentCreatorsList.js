@@ -20,6 +20,8 @@ class ContentCreatorsList extends Component {
     }
 
     componentWillMount() {
+    // this can be refactored later to return res.data and pass this information back to the component
+    // instead of setting to redux state
         (async () => {
             try {
                 this.props.dispatch(fetchAllContentPosts());

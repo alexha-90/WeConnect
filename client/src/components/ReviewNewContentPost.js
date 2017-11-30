@@ -17,6 +17,7 @@ class ReviewNewContentPost extends Component {
     }
 
     componentDidMount() {
+        // this needs work
         //console.log(this.props.contentPosts);
         //run function for unit test. Ensure information to be submitted is accurate
         //currently always proceeds regardless. Fix
@@ -26,13 +27,13 @@ class ReviewNewContentPost extends Component {
     onSubmitNewTask() {
         (async () => {
             try {
-                this.props.dispatch(saveNewContentPost(this.props.newContentPost));
-                alert('Your new post was submitted! Hope you can find a good partnership!');
-                // delay redirect so redux has time to update before showing updated list of results
-                return setTimeout(() => {
-                    console.log('test');
-                    return this.setState({redirectToContentCreatorsList: true})
-                }, 1000);
+                return this.props.dispatch(saveNewContentPost(this.props.newContentPost))
+                .then((result) => {
+                    if (result === 'success') {
+                        return this.setState({redirectToContentCreatorsList: true})
+                    }
+                    return alert('Error: Your post was not submitted. Please try again and let us know if this problem persists.');
+                })
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }

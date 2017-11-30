@@ -25,10 +25,12 @@ class ContentPostExpanded extends Component {
 
         (async () => {
             try {
-                this.props.dispatch(fetchSingleContentPost(postID));
-                return await this.setState({loadingComponent: false});
+                return this.props.dispatch(fetchSingleContentPost(postID))
+                .then(() => {
+                    return this.setState({loadingComponent: false})
+                })
             } catch (err) {
-                return alert('Error: Something went wrong. We are unable to locate this contentPost. Please try again or notify us if the issue persists.');
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }
         })();
     }

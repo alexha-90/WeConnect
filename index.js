@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-//consider pg-pool
 //===============================================================================================//
 
-//const pool = require('pg-pool');
-//const pg = require('pg');
+// Can't redirect React client with serverside. Had this issue as do people below:
+// https://reformatcode.com/code/nodejs/quotresredirectquot-not-working-when-making-ajax-call-from-react-to-node
+
 
 // environment file
 // postgres env variables reference: https://www.postgresql.org/docs/9.3/static/libpq-envars.html
@@ -36,27 +36,27 @@ app.use(session({
     secret: 'ooeortkoksdfisij',  //process.env.SECRET_KEY
     resave: false, // review
     saveUninitialized: false
-    // for HTTPS cookie: { seucre: true }
+    // for HTTPS cookie: { secure: true }
 }));
-
-
-const flash = require('connect-flash');
-app.use(flash());
 
 
 // user authentication middleware
 const passport = require('passport');
-require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
 
+// not used. delete later
+// const flash = require('connect-flash');
+// app.use(flash());
+//require('./config/passport')(passport);
+
+
 // import routes
 //===========================================================================
-// route for when user submits a new task, POST to database
 require('./routes/saveNewContentPost')(app);
-require('./routes/getContentPosts')(app); // no authentication needed to view
-require('./routes/authRoutes')(app, passport);
+require('./routes/getContentPosts')(app);
+require('./routes/authRoutes')(app);
 //require('./routes/saveNewUser')(app);
 
 // passport authorization routes (login, logout, register, etc)
@@ -70,10 +70,6 @@ app.get('/', (req, res) => {
 app.get('/test', (req, res) => {
     res.send("hello @ test");
 });
-
-//===========================================================================
-
-
 
 
 // =================================================================================================
