@@ -82,7 +82,7 @@ export const registerNewUser = (newUserData) => async dispatch => {
         );
 
         if (res.data === 'Error!') {
-            return alert('Error: Your account was not registered. Please try again and let us know if this problem persists.')
+            return alert('Error encountered. Please try again and let us know if this problem persists.')
         }
         return res.data;
 
