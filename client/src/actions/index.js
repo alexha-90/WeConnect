@@ -73,22 +73,22 @@ export const fetchSingleContentPost = (postID) => async dispatch => {
 // axios POST request to save new user into database
 export const registerNewUser = (newUserData) => async dispatch => {
     console.log(newUserData);
-    // try {
-    //     const res = await axios.post('api/saveNewUser',
-    //         dispatch({
-    //             type: 'SAVE_NEW_USER_TO_DB',
-    //             payload: newUserData
-    //         })
-    //     );
-    //
-    //     if (res.data === 'Error!') {
-    //         return alert('Error: Your account was not registered. Please try again and let us know if this problem persists.')
-    //     }
-    //     return res.data;
-    //
-    // } catch(res) {
-    //     alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
-    // }
+    try {
+        const res = await axios.post('/api/saveNewUser',
+            dispatch({
+                type: 'SAVE_NEW_USER_TO_DB',
+                payload: newUserData
+            })
+        );
+
+        if (res.data === 'Error!') {
+            return alert('Error: Your account was not registered. Please try again and let us know if this problem persists.')
+        }
+        return res.data;
+
+    } catch(res) {
+        alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
+    }
 };
 
 

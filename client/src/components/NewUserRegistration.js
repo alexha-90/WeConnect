@@ -8,6 +8,7 @@ import moment from 'moment';
 
 //redux needed here for this.props.dispatch
 
+// feedback at time of entering
 // to do later:
 //validate password characters
 //validate length
@@ -92,9 +93,10 @@ class NewUserRegistration extends Component {
                     emailAddress: this.state.emailAddress,
                     password: this.state.password,
                     accountType: this.state.accountType,
-                    timestamp: moment().format("MM/DD/YYYY") + moment().utcOffset(-480).format('hh:mm a') + ' PST'
+                    timestamp: moment().format("MM/DD/YYYY") + ' ' + moment().utcOffset(-480).format('hh:mm a') + ' PST'
             }));
-                return alert('New account registered!');
+                // will currently always return true
+                //return alert('New account registered!');
                 //return await this.setState({redirectToHome: true});
 
             } catch (err) {

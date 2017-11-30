@@ -7,6 +7,9 @@ import { Redirect } from 'react-router';
 import { newContentPostToProps } from '../actions';
 
 
+//this can be refactored into smaller components so that either new form or review is shown.
+//can avoid a redux action dispatch
+
 //youtube api info
 // https://www.googleapis.com/youtube/v3/channels?key={YOUR_API_KEY}&forUsername=klauskkpm&part=id
 // http://johnnythetank.github.io/youtube-channel-name-converter/

@@ -6,6 +6,10 @@ const app = express();
 //const pool = require('pg-pool');
 //const pg = require('pg');
 
+// environment file
+// postgres env variables reference: https://www.postgresql.org/docs/9.3/static/libpq-envars.html
+require('dotenv').config();
+
 //allow cross-origin resource sharing for development
 const cors = require('cors');
 app.use(cors());
@@ -29,9 +33,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // handle URL-encoded data
 // session secret. See https://github.com/expressjs/session#options . May need some adjusting later
 const session = require('express-session');
 app.use(session({
-    secret: 'testTest',
-    resave: true,
-    saveUninitialized: true
+    secret: 'ooeortkoksdfisij',  //process.env.SECRET_KEY
+    resave: false, // review
+    saveUninitialized: false
+    // for HTTPS cookie: { seucre: true }
 }));
 
 
@@ -41,7 +46,7 @@ app.use(flash());
 
 // user authentication middleware
 const passport = require('passport');
-//require('./services/passport')(passport);
+require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -49,9 +54,10 @@ app.use(passport.session());
 // import routes
 //===========================================================================
 // route for when user submits a new task, POST to database
-require('./routes/saveNewContentPost')(app, passport);
+require('./routes/saveNewContentPost')(app);
 require('./routes/getContentPosts')(app); // no authentication needed to view
-require('./routes/saveNewUser')(app);
+require('./routes/authRoutes')(app, passport);
+//require('./routes/saveNewUser')(app);
 
 // passport authorization routes (login, logout, register, etc)
 //require('./routes/authRoutes')(app, passport);
