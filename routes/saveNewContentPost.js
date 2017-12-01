@@ -2,6 +2,8 @@ const db = require('../config/db');
 
 //===============================================================================================//
 
+// need to account for saved id
+
 module.exports = app => {
     app.post('/api/saveNewContentPost', async (req, res) => {
         try {
@@ -14,7 +16,7 @@ module.exports = app => {
                 saveNewContentPost.contentIdealMatch, saveNewContentPost.yt_UploadFrequency, saveNewContentPost.yt_VideoLength, saveNewContentPost.yt_SubCount, saveNewContentPost.yt_ViewCount];
             return  db.query(sql, params)
             .then(() => {
-                res.send('success');
+                res.sendStatus(200);
             })
         } catch (err) {
             console.log('An error occurred. Entry was not saved. Reason: ' + err);

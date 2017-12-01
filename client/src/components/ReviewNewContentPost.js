@@ -29,7 +29,7 @@ class ReviewNewContentPost extends Component {
             try {
                 return this.props.dispatch(saveNewContentPost(this.props.newContentPost))
                 .then((result) => {
-                    if (result === 'success') {
+                    if (result === 'OK') {
                         alert('Your post was successfully submitted!');
                         return this.setState({redirectToContentCreatorsList: true})
                     }

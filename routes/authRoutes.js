@@ -6,6 +6,11 @@ const passport = require('passport');
 //===============================================================================================//
 
 module.exports = (app) => {
+
+    app.get('/api/isLoggedIn', authenticationCheck(), (req, res) => {
+        return res.sendStatus(200);
+    });
+
     app.post('/api/saveNewUser', authenticationCheck(), (req, res) => {
         try {
             console.log('Attempt to save user to db');
@@ -59,7 +64,8 @@ function authenticationCheck() {
             return next();
         }
         console.log('not logged in!');
-        res.send(401) //not authorized
+        // return res.sendStatus(401) - doesn't work since returns undefined
+        return res.send('401');
     }
 }
 

@@ -80,8 +80,9 @@ app.get('/test', (req, res) => {
 
 
 // // development route. needs to changed for production
-app.use(express.static(path.resolve(__dirname, 'client/public')));
-app.get('*', (req,res) => res.sendFile(path.join(__dirname, 'client', 'public', 'index.html')));
+//app.use(express.static(path.resolve(__dirname, 'client/public')));
+//app.get('*', (req,res) => res.sendFile(path.join(__dirname, 'client', 'public', 'index.html')));
+//app.use(express.static('client/dist'));
 
 
 

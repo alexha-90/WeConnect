@@ -4,16 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
+import { isLoggedIn } from '../actions';
 import { newContentPostToProps } from '../actions';
-
 
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
-
-//youtube api info
-// https://www.googleapis.com/youtube/v3/channels?key={YOUR_API_KEY}&forUsername=klauskkpm&part=id
-// http://johnnythetank.github.io/youtube-channel-name-converter/
-// https://stackoverflow.com/questions/14366648/how-can-i-get-a-channel-id-from-youtube
 
 /*
 to-do:
@@ -24,6 +19,7 @@ class NewContentPost extends Component {
     constructor() {
         super();
         this.state = {
+            checkingLogin: true,
             redirectToReviewNewContentPost: false,
             contentMedium: '',
             contentSummary: '',
@@ -33,10 +29,31 @@ class NewContentPost extends Component {
             yt_VideoLength: 0,
             yt_SubCount: '',
             yt_ViewCount: 0
+            //user id
         };
         this.handleChange = this.handleChange.bind(this);
         this.onReviewNewContentPost  = this.onReviewNewContentPost.bind(this);
     }
+
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                .then((result) => {
+                    console.log(result);
+                    if (result !== 'OK') {
+                        return alert('You are not logged in. Please login or register before proceeding.');
+                    }
+                    return this.setState({ checkingLogin: false });
+                });
+            } catch (err) {
+                console.log(err);
+                //return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+    }
+
+
 
     handleChange(event) {
         switch (event.target.name) {
@@ -107,6 +124,10 @@ class NewContentPost extends Component {
     }
 
     render() {
+        if (this.state.checkingLogin) {
+            return <div className='loader'>Authorizing...</div>;
+        }
+
         if (this.state.redirectToReviewNewContentPost) {
             return <Redirect push to="/reviewNewTask"/>
         }

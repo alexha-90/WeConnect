@@ -2,6 +2,20 @@ import axios from 'axios';
 import store from '../index';
 //===============================================================================================//
 
+export const isLoggedIn = () => async () => {
+    try {
+        const res = await axios.get('/api/isLoggedIn');
+        store.dispatch({
+            type: 'AUTHENTICATE_USER',
+            payload: res.data
+        });
+        console.log(res.data);
+        return res.data;
+    } catch(res) {
+        alert('Unable to connect to database. Please try again and let us know if this problem persists.');
+    }
+};
+
 export const newContentPostToProps = (contentPostsInfo) => {
     return {
         type: "NEW_CONTENT_POST_TO_PROPS",

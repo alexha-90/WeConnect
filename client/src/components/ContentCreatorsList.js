@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { fetchAllContentPosts } from '../actions';
+import { fetchAllContentPosts } from '../actions/index';
 
 // loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 // create rating system
@@ -20,8 +20,6 @@ class ContentCreatorsList extends Component {
     }
 
     componentWillMount() {
-    // this can be refactored later to return res.data and pass this information back to the component
-    // instead of setting to redux state
         (async () => {
             try {
                 this.props.dispatch(fetchAllContentPosts());
@@ -36,7 +34,7 @@ class ContentCreatorsList extends Component {
     componentDidMount() {
         setTimeout(() => {
             return this.propagateContent();
-        }, 500);
+        }, 1500);
     }
 
     propagateContent() {
@@ -54,6 +52,7 @@ class ContentCreatorsList extends Component {
         // for each content post, create a new container instance with summarized data
         return (
             <div>
+                {console.log(comboArr)}
                 {comboArr.map((item) => {
                     return (
                         <div className='contentCreatorContainer' key={item[0]}>
