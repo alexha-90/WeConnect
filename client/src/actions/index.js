@@ -28,10 +28,11 @@ export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
 export const fetchAllContentPosts = () => async () => {
     try {
         const res = await axios.get('/api/getAllContentPosts');
-        return store.dispatch({
+        store.dispatch({
             type: 'ALL_CONTENT_POSTS_TO_PROPS',
             payload: res.data
         });
+        console.log(res.data);
 
     } catch(res) {
         alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)

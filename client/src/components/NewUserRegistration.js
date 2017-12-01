@@ -81,7 +81,6 @@ class NewUserRegistration extends Component {
     }
 
     onSubmit() {
-        console.log(this.state);
         if (!this.state.match || this.state.accountType === '') {
             return alert('Please make sure your email address and password inputs match. An account type must also be selected');
         }

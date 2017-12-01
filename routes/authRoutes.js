@@ -6,7 +6,7 @@ const passport = require('passport');
 //===============================================================================================//
 
 module.exports = (app) => {
-    app.post('/api/saveNewUser',(req, res) => {
+    app.post('/api/saveNewUser', authenticationCheck(), (req, res) => {
         try {
             console.log('Attempt to save user to db');
             const newUser = req.body.payload;
@@ -51,6 +51,17 @@ module.exports = (app) => {
     });
 };
 
+
+function authenticationCheck() {
+    return (req, res, next) => {
+        if (req.isAuthenticated()) {
+            console.log('yes logged in');
+            return next();
+        }
+        console.log('not logged in!');
+        res.send(401) //not authorized
+    }
+}
 
 
 

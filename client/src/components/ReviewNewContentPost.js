@@ -30,6 +30,7 @@ class ReviewNewContentPost extends Component {
                 return this.props.dispatch(saveNewContentPost(this.props.newContentPost))
                 .then((result) => {
                     if (result === 'success') {
+                        alert('Your post was successfully submitted!');
                         return this.setState({redirectToContentCreatorsList: true})
                     }
                     return alert('Error: Your post was not submitted. Please try again and let us know if this problem persists.');

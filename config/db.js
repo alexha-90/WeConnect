@@ -1,4 +1,3 @@
-// test to align with tutorial: https://www.youtube.com/watch?v=NWGDcv54Q4Q
 // reference: https://node-postgres.com/features/connecting
 
 const { Client } = require('pg');

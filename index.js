@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 //===============================================================================================//
-
-// Can't redirect React client with serverside. Had this issue as do people below:
-// https://reformatcode.com/code/nodejs/quotresredirectquot-not-working-when-making-ajax-call-from-react-to-node
-
 
 // environment file
 // postgres env variables reference: https://www.postgresql.org/docs/9.3/static/libpq-envars.html
@@ -32,9 +29,14 @@ app.use(bodyParser.urlencoded({ extended: true })); // handle URL-encoded data
 
 // session secret. See https://github.com/expressjs/session#options . May need some adjusting later
 const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 app.use(session({
+    store: new pgSession({
+        conString: process.env.PGHOST
+    }),
     secret: 'ooeortkoksdfisij',  //process.env.SECRET_KEY
     resave: false, // review
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
     saveUninitialized: false
     // for HTTPS cookie: { secure: true }
 }));
@@ -75,6 +77,13 @@ app.get('/test', (req, res) => {
 // =================================================================================================
 // SERVER CONFIGURATION                                                                           //
 // =================================================================================================
+
+
+// // development route. needs to changed for production
+app.use(express.static(path.resolve(__dirname, 'client/public')));
+app.get('*', (req,res) => res.sendFile(path.join(__dirname, 'client', 'public', 'index.html')));
+
+
 
 // currently always defaults to port specified in dotenv
 const PORT = process.env.PORT || 5005;

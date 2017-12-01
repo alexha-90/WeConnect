@@ -4,7 +4,6 @@ const contentPosts = (state = {
 
     switch (action.type) {
         case 'ALL_CONTENT_POSTS_TO_PROPS': {
-            console.log(action.payload, '****');
             return {
                 ...state,
                 contentPostDetails: action.payload
@@ -12,7 +11,6 @@ const contentPosts = (state = {
         }
 
         case 'SINGLE_CONTENT_POST_TO_PROPS': {
-            console.log(action.payload, '@@@@@');
             return {
                 contentPostDetails: {
                     contentMedium: action.payload[0]['content_medium'],
