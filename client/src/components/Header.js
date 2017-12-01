@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
 import LoginModal from './subcomponents/LoginModal';
 
 //check here to see if user is logged in
@@ -19,11 +17,11 @@ class Header extends Component {
     isLoggedIn() {
         switch (this.props.auth) {
             case true:
-                return <h1>Hello {this.props.auth.userName}!</h1>;
+                 return <h1>Hello {this.props.auth.userName}!</h1>;
 
-            // in mailnet this links directly to proxy
-            case false:
-                return <h1><a href="/auth/login">Login</a></h1>;
+            // // in mailnet this links directly to proxy
+            // case false:
+            //     return <h1><a href="/auth/login">Login</a></h1>;
 
             default:
                 return (
@@ -51,9 +49,7 @@ class Header extends Component {
                     <h1 style={{textAlign: 'center'}}>SocialConnector</h1>
                 </a>
                 <div style={{textAlign: 'right'}}>
-                    <Link to='/profile'>
-                        (Temp) View profile
-                    </Link>
+                    <a href='/profile'>View profile</a>
 
                     {this.isLoggedIn()}
                 </div>

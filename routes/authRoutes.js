@@ -11,7 +11,8 @@ module.exports = (app) => {
         return res.sendStatus(200);
     });
 
-    app.post('/api/saveNewUser', authenticationCheck(), (req, res) => {
+    // authentication is already checked at this point
+    app.post('/api/saveNewUser', (req, res) => {
         try {
             console.log('Attempt to save user to db');
             const newUser = req.body.payload;
@@ -31,7 +32,7 @@ module.exports = (app) => {
                             const user_id = result['rows'];
                             console.log(user_id);
                             req.login(user_id, () => {
-                                res.send('successfully logged in!');
+                                res.sendStatus(200);
                             });
                             console.log(req.user);
                             console.log(req.isAuthenticated());
@@ -69,12 +70,6 @@ function authenticationCheck() {
     }
 }
 
-
-
-
-
-// console.log(req.user)
-// console.log(req.isAuthenticated());
 
 
 

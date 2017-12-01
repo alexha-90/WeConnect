@@ -29,7 +29,6 @@ class NewContentPost extends Component {
             yt_VideoLength: 0,
             yt_SubCount: '',
             yt_ViewCount: 0
-            //user id
         };
         this.handleChange = this.handleChange.bind(this);
         this.onReviewNewContentPost  = this.onReviewNewContentPost.bind(this);

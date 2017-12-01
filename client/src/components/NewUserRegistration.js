@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Button, Radio, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerNewUser } from '../actions/';
+import { isLoggedIn } from '../actions';
+import { registerNewUser } from '../actions';
 import { Redirect } from 'react-router';
 import moment from 'moment';
 
 //redux needed here for this.props.dispatch
+// provide login link just in case user misclicked
 
 // feedback at time of entering
 // to do later:
@@ -31,6 +33,23 @@ class NewUserRegistration extends Component {
         this.onSubmit  = this.onSubmit.bind(this);
         this.onBlurEmail = this.onBlurEmail.bind(this);
         this.onBlurPW = this.onBlurPW.bind(this);
+    }
+
+
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                .then((result) => {
+                    if (result === 'OK') {
+                        this.setState({ redirectToHome: true });
+                        return alert('You are already signed in and registered!');
+                    }
+                });
+            } catch (err) {
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
     }
 
 
@@ -88,16 +107,18 @@ class NewUserRegistration extends Component {
 
         (async () => {
             try {
-                this.props.dispatch(registerNewUser({
+                return this.props.dispatch(registerNewUser({
                     emailAddress: this.state.emailAddress,
                     password: this.state.password,
                     accountType: this.state.accountType,
                     timestamp: moment().format("MM/DD/YYYY") + ' ' + moment().utcOffset(-480).format('hh:mm a') + ' PST'
-            }));
-                // will currently always return true
-                //return alert('New account registered!');
-                //return await this.setState({redirectToHome: true});
-
+            }))
+                .then((result) => {
+                    if (result === 'OK') {
+                        alert('New account registered!');
+                        return this.setState({redirectToHome: true});
+                    }
+                });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }

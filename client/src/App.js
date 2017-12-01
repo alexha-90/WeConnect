@@ -13,6 +13,7 @@ import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';
 import AdvertisersList from './components/AdvertisersList';
 import NewUserRegistration from './components/NewUserRegistration';
+import Profile from './components/Profile';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
                 <div>
                     <Header />
                     <Route exact path='/' component={Landing} />
+                    <Route exact path='/profile' component={Profile} />
                     <Route exact path='/ContentCreatorsList' component={ContentCreatorsList} />
                     <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newContentPost' component={NewContentPost} />

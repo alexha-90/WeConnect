@@ -87,12 +87,11 @@ export const registerNewUser = (newUserData) => async dispatch => {
                 payload: newUserData
             })
         );
-
-        if (res.data === 'error') {
-            return alert('Error encountered. Please try again and let us know if this problem persists.')
-        }
+        //
+        // if (res.data === 'error') {
+        //     return alert('Error encountered. Please try again and let us know if this problem persists.')
+        // }
         return res.data;
-
     } catch(res) {
         alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
     }

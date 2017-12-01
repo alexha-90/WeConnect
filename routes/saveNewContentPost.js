@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const passport = require('passport');
 
 //===============================================================================================//
 
@@ -10,10 +11,15 @@ module.exports = app => {
             const saveNewContentPost = req.body;
             console.log(saveNewContentPost);
 
+            // associate user ID with contentPosts
+            let passportID = `${JSON.stringify(req.session.passport)}`;
+            passportID = passportID.match(/\d+/)[0];
+
             const sql = 'INSERT INTO content_posts (content_medium, content_summary, content_description, ' +
-                'content_ideal_match, yt_upload_frequency, yt_video_length, yt_sub_count, yt_view_count) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+                'content_ideal_match, yt_upload_frequency, yt_video_length, yt_sub_count, yt_view_count, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
             const params = [saveNewContentPost.contentMedium, saveNewContentPost.contentSummary, saveNewContentPost.contentDescription,
-                saveNewContentPost.contentIdealMatch, saveNewContentPost.yt_UploadFrequency, saveNewContentPost.yt_VideoLength, saveNewContentPost.yt_SubCount, saveNewContentPost.yt_ViewCount];
+                saveNewContentPost.contentIdealMatch, saveNewContentPost.yt_UploadFrequency, saveNewContentPost.yt_VideoLength,
+                saveNewContentPost.yt_SubCount, saveNewContentPost.yt_ViewCount, passportID];
             return  db.query(sql, params)
             .then(() => {
                 res.sendStatus(200);
