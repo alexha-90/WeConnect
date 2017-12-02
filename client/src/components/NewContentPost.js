@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-import { isLoggedIn } from '../actions';
-import { newContentPostToProps } from '../actions';
+import { isLoggedIn, newContentPostToProps } from '../actions';
 
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
@@ -40,7 +39,6 @@ class NewContentPost extends Component {
             try {
                 return this.props.dispatch(isLoggedIn())
                 .then((result) => {
-                    console.log(result);
                     if (result !== 'OK') {
                         return alert('You are not logged in. Please login or register before proceeding.');
                     }
@@ -48,7 +46,7 @@ class NewContentPost extends Component {
                 });
             } catch (err) {
                 console.log(err);
-                //return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }
         })();
     }

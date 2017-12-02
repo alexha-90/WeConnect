@@ -2,16 +2,23 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 export default function profileData(data) {
-    
-    let comboArr = [];
 
+    if (!data.length) {
+        return (
+            <div>
+                <h1>No history to show!</h1>
+            </div>
+        )
+    }
+
+
+    let comboArr = [];
     for (let i = 0; i < data.length; i++) {
         comboArr[i] = [
             data[i]['content_post_id'], data[i]['content_medium'], data[i]['content_summary'], data[i]['content_description'],
             data[i]['content_ideal_match'], data[i]['yt_upload_frequency'], data[i]['yt_video_length'], data[i]['yt_sub_count'], data[i]['yt_view_count']
         ];
     }
-
     return (
         <div>
             {comboArr.map((item) => {

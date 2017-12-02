@@ -1,43 +1,56 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import LoginModal from './subcomponents/LoginModal';
-
-//check here to see if user is logged in
-
+import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { isLoggedIn } from '../actions';
+//===============================================================================================//
 
 class Header extends Component {
     constructor() {
         super();
         this.state = {
-            loginShow: false
-        }
+            loginShow: false,
+            isLoggedIn: false
+        };
+        this.loginStatus = this.loginStatus.bind(this);
     }
 
-
-    isLoggedIn() {
-        switch (this.props.auth) {
-            case true:
-                 return <h1>Hello {this.props.auth.userName}!</h1>;
-
-            // // in mailnet this links directly to proxy
-            // case false:
-            //     return <h1><a href="/auth/login">Login</a></h1>;
-
-            default:
-                return (
-                    <div>
-                        <div>
-                            <Button bsStyle="primary" onClick={() => this.setState({ loginShow: true })}>
-                                Sign-up / Login
-                            </Button>
-                            <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
-                        </div>
-
-                    </div>
-
-                );
-        }
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                    .then((result) => {
+                        if (result === 'OK') {
+                            this.setState({ isLoggedIn: true });
+                        }
+                        // user is not logged in
+                    });
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
     }
+
+    loginStatus() {
+        if (this.state.isLoggedIn) {
+            return (
+                <div>
+                    <a href='/profile'>View profile</a>
+                </div>
+            )
+        }
+
+        return (
+            <div>
+                <Button bsStyle="primary" onClick={() => this.setState({ loginShow: true })}>
+                    Sign-up / Login
+                </Button>
+                <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
+            </div>
+        )
+    }
+
 
 
     render() {
@@ -48,10 +61,9 @@ class Header extends Component {
                 <a href='/'>
                     <h1 style={{textAlign: 'center'}}>SocialConnector</h1>
                 </a>
-                <div style={{textAlign: 'right'}}>
-                    <a href='/profile'>View profile</a>
 
-                    {this.isLoggedIn()}
+                <div style={{textAlign: 'right'}}>
+                    {this.loginStatus()}
                 </div>
             </div>
 
@@ -62,4 +74,4 @@ class Header extends Component {
 
 }
 
-export default Header;
+export default connect(null)(Header);
