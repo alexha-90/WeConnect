@@ -45,6 +45,9 @@ class NewUserRegistration extends Component {
                         this.setState({ redirectToHome: true });
                         return alert('You are already signed in and registered!');
                     }
+                    if (result === 'error') {
+                        return alert('Something went wrong. Please try again or notify us if the issue persists.');
+                    }
                 });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');

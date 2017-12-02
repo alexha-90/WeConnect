@@ -91,7 +91,7 @@ function authenticationCheck() {
         }
         console.log('not logged in!');
         // return res.sendStatus(401) - doesn't work since returns undefined
-        return res.send('401');
+        return res.send('error');
     }
 }
 

@@ -18,15 +18,16 @@ module.exports = app => {
             });
         } catch (res) {
             console.log(res.err);
+            res.send('error');
         }
     });
 
     // get all data, expanded
     app.post('/api/getSingleContentPost', async (req, res) => {
         try {
+            let params = JSON.stringify(req.body);
+            params = [parseInt(params.match(/\d+/)[0],10)];
             const sql = 'SELECT * FROM content_posts WHERE content_post_id=$1';
-            const params = [req.body.payload];
-            console.log(params);
             return db.query(sql, params)
             .then((results) => {
                 res.send(results['rows']);
@@ -37,6 +38,7 @@ module.exports = app => {
             });
         } catch (res) {
             console.log(res.err);
+            res.send('error');
         }
     })
 };

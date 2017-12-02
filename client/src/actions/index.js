@@ -39,7 +39,7 @@ export const newContentPostToProps = (contentPostsInfo) => {
     };
 };
 
-
+//refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewContentPost', contentPostsInfo);
@@ -51,41 +51,20 @@ export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
 };
 
 
-// axios request to retrieve all contentPosts
-// this can be refactored later to return res.data and pass this information back to the component
-// instead of setting to redux state
-// currently does not do anything with 'error' returned from backend
 export const fetchAllContentPosts = () => async () => {
     try {
         const res = await axios.get('/api/getAllContentPosts');
-        store.dispatch({
-            type: 'ALL_CONTENT_POSTS_TO_PROPS',
-            payload: res.data
-        });
-        console.log(res.data);
-
+        return res.data;
     } catch(res) {
         alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
     }
 };
 
 
-export const fetchSingleContentPost = (postID) => async dispatch => {
+export const fetchSingleContentPost = (postID) => async () => {
     try {
-        const res = await axios.post('/api/getSingleContentPost',
-            dispatch({
-                type: 'GET_SINGLE_CONTENT_POST',
-                payload: postID
-            })
-        );
-
-        if (res.data === 'error') {
-            return 'error';
-        }
-        return store.dispatch({
-            type: 'SINGLE_CONTENT_POST_TO_PROPS',
-            payload: res.data
-        });
+        const res = await axios.post('/api/getSingleContentPost', postID);
+        return res.data;
     } catch(res) {
         return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
     }
@@ -101,10 +80,6 @@ export const registerNewUser = (newUserData) => async dispatch => {
                 payload: newUserData
             })
         );
-        //
-        // if (res.data === 'error') {
-        //     return alert('Error encountered. Please try again and let us know if this problem persists.')
-        // }
         return res.data;
     } catch(res) {
         alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)

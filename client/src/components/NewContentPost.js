@@ -14,6 +14,7 @@ import { newContentPostToProps } from '../actions';
 to-do:
 file uploads
 */
+//===============================================================================================//
 
 class NewContentPost extends Component {
     constructor() {
