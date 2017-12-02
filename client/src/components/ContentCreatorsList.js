@@ -24,7 +24,6 @@ class ContentCreatorsList extends Component {
             try {
                 this.props.dispatch(fetchAllContentPosts());
                 return await this.setState({loadingComponent: false});
-
             } catch (err) {
                 return alert('Error: Unable to retrieve results from the database. Please try again or notify us if the issue persists.');
             }

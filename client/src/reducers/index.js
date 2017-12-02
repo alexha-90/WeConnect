@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 import newContentPost from './newContentPost';
 import contentPosts from './contentPosts';
-import newUser from './newUser';
+import userProfile from './userProfile';
 
 const allReducers = combineReducers({
     newContentPost: newContentPost,
     contentPosts: contentPosts,
-    newUser: newUser
+    userProfile: userProfile
 });
 
 export default allReducers;

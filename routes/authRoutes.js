@@ -2,7 +2,10 @@ const db = require('../config/db');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
+// ************* authentication routes: isLoggedIn, saveNewUser, getProfileData
+
 // need to check if user already exists
+// getProfileData needs to consider advertisers accounts too, once that's wired in
 //===============================================================================================//
 
 module.exports = (app) => {
@@ -11,7 +14,7 @@ module.exports = (app) => {
         return res.sendStatus(200);
     });
 
-    // authentication is already checked at this point
+    // authentication is already checked when this is called
     app.post('/api/saveNewUser', (req, res) => {
         try {
             console.log('Attempt to save user to db');
@@ -24,28 +27,50 @@ module.exports = (app) => {
                     const sql = 'INSERT INTO users (email, password, timestamp, account_type) VALUES ($1, $2, $3, $4)';
                     const params = [newUser.emailAddress, hashPassword, newUser.timestamp, newUser.accountType];
                     return db.query(sql, params)
-                        .then(() => {
-                            const sql = "SELECT currval(pg_get_serial_sequence('users', 'user_id'))";
-                            return db.query(sql)
-                        })
-                        .then((result) => {
-                            const user_id = result['rows'];
-                            console.log(user_id);
-                            req.login(user_id, () => {
-                                res.sendStatus(200);
-                            });
-                            console.log(req.user);
-                            console.log(req.isAuthenticated());
-                        })
-                        .catch((err) => {
-                            console.log('An error occurred. Reason: ' + err);
-                            res.send('error');
-                        });
-                });
+                .then(() => {
+                    const sql = "SELECT currval(pg_get_serial_sequence('users', 'user_id'))";
+                    return db.query(sql)
+                })
+                .then((result) => {
+                    const user_id = result['rows'];
+                    console.log(user_id);
+                    req.login(user_id, () => {
+                        res.sendStatus(200);
+                    });
+                    console.log(req.user);
+                    console.log(req.isAuthenticated());
+                })
+            });
         } catch (res) {
             console.log(res.err);
+            res.send('error')
         }
     });
+
+    // authentication is already checked when this is called
+    // getProfileData needs to consider advertisers accounts too, once that's wired in
+    app.get('/api/loadProfileData', (req, res) => {
+        try {
+            // associate user ID with contentPosts
+            let passportID = `${JSON.stringify(req.session.passport)}`;
+            passportID = passportID.match(/\d+/)[0];
+
+            const sql = 'SELECT * FROM content_posts WHERE user_id=$1';
+            const params = [passportID];
+            return db.query(sql, params)
+            .then((results) => {
+                console.log(results['rows']);
+                res.send(results['rows']);
+            })
+        } catch (res) {
+            console.log('An error occurred. User data was not retrieved. Reason: ' + res.err);
+            console.log(res.err);
+            res.send('error')
+        }
+    });
+
+
+
 
     passport.serializeUser((user_id, done) => {
         done(null, user_id);

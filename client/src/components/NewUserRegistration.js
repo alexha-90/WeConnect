@@ -205,14 +205,7 @@ class NewUserRegistration extends Component {
     }
 }
 
-
-function mapStateToProps(state) {
-    return {
-        newUser: state.newUser.newUserDetails
-    };
-}
-
-export default connect(mapStateToProps)(NewUserRegistration);
+export default connect(null)(NewUserRegistration);
 
 
 

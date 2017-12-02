@@ -16,6 +16,22 @@ export const isLoggedIn = () => async () => {
     }
 };
 
+
+export const loadProfileData = () => async () => {
+    try {
+        const res = await axios.get('/api/loadProfileData');
+        store.dispatch({
+            type: 'LOAD_PROFILE_DATA',
+            payload: res.data
+        });
+        console.log(res.data);
+        return res.data;
+    } catch(res) {
+        alert('Unable to connect to database. Please try again and let us know if this problem persists.');
+    }
+};
+
+
 export const newContentPostToProps = (contentPostsInfo) => {
     return {
         type: "NEW_CONTENT_POST_TO_PROPS",
@@ -23,7 +39,7 @@ export const newContentPostToProps = (contentPostsInfo) => {
     };
 };
 
-// axios POST request to submit new contentPost into database
+
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
     try {
         const res = await axios.post('api/saveNewContentPost', contentPostsInfo);
@@ -54,7 +70,6 @@ export const fetchAllContentPosts = () => async () => {
 };
 
 
-// axios request to retrieve one expanded contentPost
 export const fetchSingleContentPost = (postID) => async dispatch => {
     try {
         const res = await axios.post('/api/getSingleContentPost',
@@ -77,7 +92,6 @@ export const fetchSingleContentPost = (postID) => async dispatch => {
 };
 
 
-// axios POST request to save new user into database
 export const registerNewUser = (newUserData) => async dispatch => {
     console.log(newUserData);
     try {

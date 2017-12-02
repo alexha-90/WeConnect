@@ -1,6 +1,6 @@
-const newUser = (state ={
+const userProfile = (state ={
     //change values below to null after testing done
-    newUserDetails: {
+    userProfileData: {
         emailAddress: '',
         password: '',
         accountType: '',
@@ -8,7 +8,8 @@ const newUser = (state ={
     }}, action) => {
 
     switch (action.type) {
-        // case "NEW_CONTENT_POST_TO_PROPS": {
+        // case 'LOAD_PROFILE_DATA': {
+        //     console.log('*****$$');
         //     console.log(action.payload);
         //     return {
         //         newUserDetails: {
@@ -31,4 +32,4 @@ const newUser = (state ={
 
 };
 
-export default newUser
+export default userProfile;
