@@ -17,14 +17,9 @@ export const isLoggedIn = () => async () => {
 
 
 export const loginUser = (emailAddress, password) => async () => {
-    console.log(emailAddress, password);
     try {
         const res = await axios.post('/api/loginUser', [emailAddress, password]);
-        //     dispatch({
-        //         type: 'LOGIN_USER',
-        //         payload: emailAddress
-        //     })
-        // );
+        console.log(res.data);
         return res.data;
     } catch(res) {
         alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)

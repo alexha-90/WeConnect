@@ -16,8 +16,39 @@ module.exports = (app) => {
 
 
     app.post('/api/loginUser', (req, res) => {
-        console.log('wecome');
-        console.log(req.body);
+        const inputEmail = req.body[0];
+        const inputPassword = req.body[1];
+
+        try {
+            const sql = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+            const params = [inputEmail];
+            return db.query(sql, params)
+            .then((result) => {
+                const maskedPassword = result['rows'][0]['password'];
+                const userID = result['rows'][0]['user_id'];
+                return [maskedPassword, userID]
+            })
+            .then(([maskedPassword, userID]) => {
+                bcrypt.compare(inputPassword, maskedPassword)
+                    .then((pwMatch) => {
+                        if (pwMatch) {
+                            return req.login(userID, () => {
+                                return res.sendStatus(200);
+                            });
+                        }
+                        console.log('*********no match keep trying****');
+                        res.send('error');
+                    })
+                    .catch ((err) => {
+                        console.log('####');
+                        console.log(err);
+                        return res.send('error');
+                    })
+            })
+        } catch (res) {
+        console.log(res.err);
+        res.send('error')
+        }
     });
 
 

@@ -11,7 +11,8 @@ class LoginModal extends Component {
         super();
         this.state = {
             emailAddress: '',
-            password: ''
+            password: '',
+            // redirectToHome: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,10 +44,9 @@ class LoginModal extends Component {
                 this.props.dispatch(loginUser(this.state.emailAddress, this.state.password))
                 .then((result) => {
                     if (result === 'OK') {
-                        alert('Logged in!');
-                        return this.setState({redirectToHome: true});
+                        return window.location.reload()
                     }
-                    return alert('Error: user was not found from the provided inputs');
+                    return alert('Error: user was not found from the provided inputs. TO DO: change CSS instead of alert');
                 });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
@@ -55,6 +55,9 @@ class LoginModal extends Component {
     }
 
     render() {
+        // if (this.state.redirectToHome) {
+        //     return <Redirect push to="/"/>
+        // }
         return (
             <div>
                 <Modal {...this.props} bsSize="sm" aria-labelledby="contained-modal-title-sm">
