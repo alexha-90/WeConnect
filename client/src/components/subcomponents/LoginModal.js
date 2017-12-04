@@ -1,50 +1,107 @@
 import React, { Component } from 'react';
 import { Button, Modal, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
-
+import { loginUser } from '../../actions/';
+import { connect } from 'react-redux';
 //===============================================================================================//
 
-// add forgot password feature
+// future feature: add forgot password feature
 
 class LoginModal extends Component {
+    constructor() {
+        super();
+        this.state = {
+            emailAddress: '',
+            password: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        switch (event.target.id) {
+            case 'emailAddress': {
+                return this.setState({emailAddress: event.target.value});
+            }
+
+            case 'password': {
+                return this.setState({password: event.target.value});
+            }
+
+            default: {
+                alert('ERROR: input not recognized');
+            }
+        }
+    }
+
+    handleSubmit() {
+        if (!this.state.emailAddress || !this.state.password) {
+            return alert('Please enter an email address and password.');
+        }
+
+        (async () => {
+            try {
+                this.props.dispatch(loginUser(this.state.emailAddress, this.state.password))
+                .then((result) => {
+                    if (result === 'OK') {
+                        alert('Logged in!');
+                        return this.setState({redirectToHome: true});
+                    }
+                    return alert('Error: user was not found from the provided inputs');
+                });
+            } catch (err) {
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+    }
+
     render() {
         return (
-            <Modal {...this.props} bsSize="sm" aria-labelledby="contained-modal-title-sm">
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-sm">SocialConnector</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form>
-                        <FieldGroup
-                            id="formControlsEmail"
-                            type="email"
-                            label="Email address"
-                            placeholder="Enter email"
-                        />
-                        <FieldGroup
-                            id="formControlsPassword"
-                            label="Password"
-                            type="password"
-                        />
-                        <Button type="submit" bsStyle="success">
-                            Login
-                        </Button>
-                        __________
-                        <Button type="submit" bsStyle="warning">
-                            <a href="/newUserRegistration">Register</a>
+            <div>
+                <Modal {...this.props} bsSize="sm" aria-labelledby="contained-modal-title-sm">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-sm">SocialConnector</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <form>
+                            <FieldGroup
+                                id="emailAddress"
+                                type="email"
+                                label="Email address"
+                                placeholder="Enter email"
+                                onChange={this.handleChange}
+                                value={this.state.emailAddress}
+                            />
+                            <FieldGroup
+                                id="password"
+                                label="Password"
+                                type="password"
+                                onChange={this.handleChange}
+                                value={this.state.password}
+                            />
+                            <Button onClick={this.handleSubmit} bsStyle="success">
+                                Login
+                            </Button>
+                            __________
+                            <Button bsStyle="warning">
+                                <a href="/newUserRegistration">Register</a>
 
-                        </Button>
-                    </form>
+                            </Button>
+                        </form>
 
-                    <br/>
+                        <br/>
 
-                    <a href="">I forgot my password!! (TBD)</a>
-                </Modal.Body>
-            </Modal>
+                        <span>I forgot my password!! (Future feature)</span>
+                    </Modal.Body>
+                </Modal>
+            </div>
         );
     }
 }
 
-export default LoginModal;
+
+export default connect(null)(LoginModal);
+
+
 
 
 function FieldGroup({ id, label, help, ...props }) {

@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { isLoggedIn } from '../actions';
 //===============================================================================================//
+// don't like how login button shows up for a split second
+
 
 class Header extends Component {
     constructor() {
@@ -46,7 +48,6 @@ class Header extends Component {
                 <Button bsStyle="primary" onClick={() => this.setState({ loginShow: true })}>
                     Sign-up / Login
                 </Button>
-                <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
             </div>
         )
     }
@@ -64,12 +65,13 @@ class Header extends Component {
 
                 <div style={{textAlign: 'right'}}>
                     {this.loginStatus()}
+                    <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
                 </div>
+
             </div>
 
         )
     }
-
 
 
 }

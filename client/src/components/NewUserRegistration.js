@@ -101,7 +101,7 @@ class NewUserRegistration extends Component {
     }
 
     onSubmit() {
-        if (!this.state.match || this.state.accountType === '') {
+        if (!this.state.match || !this.state.accountType) {
             return alert('Please make sure your email address and password inputs match. An account type must also be selected');
         }
         console.log('valid inputs');
@@ -124,8 +124,6 @@ class NewUserRegistration extends Component {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }
         })();
-
-
     }
 
     render() {

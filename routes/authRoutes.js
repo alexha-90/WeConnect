@@ -14,6 +14,13 @@ module.exports = (app) => {
         return res.sendStatus(200);
     });
 
+
+    app.post('/api/loginUser', (req, res) => {
+        console.log('wecome');
+        console.log(req.body);
+    });
+
+
     // authentication is already checked when this is called
     app.post('/api/saveNewUser', (req, res) => {
         try {

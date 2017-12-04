@@ -9,12 +9,29 @@ export const isLoggedIn = () => async () => {
             type: 'AUTHENTICATE_USER',
             payload: res.data
         });
-        console.log(res.data);
         return res.data;
     } catch(res) {
         alert('Unable to connect to database. Please try again and let us know if this problem persists.');
     }
 };
+
+
+export const loginUser = (emailAddress, password) => async () => {
+    console.log(emailAddress, password);
+    try {
+        const res = await axios.post('/api/loginUser', [emailAddress, password]);
+        //     dispatch({
+        //         type: 'LOGIN_USER',
+        //         payload: emailAddress
+        //     })
+        // );
+        return res.data;
+    } catch(res) {
+        alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
+    }
+};
+
+
 
 
 export const loadProfileData = () => async () => {
