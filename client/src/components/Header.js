@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginModal from './subcomponents/LoginModal';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { isLoggedIn } from '../actions';
+import { isLoggedIn, logoutUser } from '../actions';
 //===============================================================================================//
 // don't like how login button shows up for a split second
 
@@ -15,6 +15,7 @@ class Header extends Component {
             isLoggedIn: false
         };
         this.loginStatus = this.loginStatus.bind(this);
+        this.onLogout = this.onLogout.bind(this);
     }
 
     componentWillMount() {
@@ -34,23 +35,38 @@ class Header extends Component {
         })();
     }
 
+
     loginStatus() {
         if (this.state.isLoggedIn) {
             return (
                 <div>
                     <a href='/profile'>View profile</a>
+                    &nbsp;&nbsp;
+                    <Button bsStyle="warning" onClick={this.onLogout}>
+                        Logout
+                    </Button>
                 </div>
             )
         }
-
         return (
             <div>
-                <Button bsStyle="primary" onClick={() => this.setState({ loginShow: true })}>
+                <Button bsStyle="primary" onClick={ () => this.setState({ loginShow: true }) }>
                     Sign-up / Login
                 </Button>
             </div>
         )
     }
+
+    // return window.location.reload()
+    //
+    onLogout() {
+        this.props.dispatch(logoutUser())
+            .then(() => {
+                console.log('logged out dude!');
+                this.setState({ isLoggedIn: false });
+            })
+    }
+
 
 
 

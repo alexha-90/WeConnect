@@ -20,6 +20,7 @@ class NewContentPost extends Component {
         super();
         this.state = {
             checkingLogin: true,
+            redirectToContentCreatorsList: false,
             redirectToReviewNewContentPost: false,
             contentMedium: '',
             contentSummary: '',
@@ -40,7 +41,8 @@ class NewContentPost extends Component {
                 return this.props.dispatch(isLoggedIn())
                 .then((result) => {
                     if (result !== 'OK') {
-                        return alert('You are not logged in. Please login or register before proceeding.');
+                        alert('You are not logged in. Please login or register before proceeding.');
+                        return this.setState({ redirectToContentCreatorsList: true });
                     }
                     return this.setState({ checkingLogin: false });
                 });
@@ -122,12 +124,16 @@ class NewContentPost extends Component {
     }
 
     render() {
+        if (this.state.redirectToContentCreatorsList) {
+            return <Redirect push to="/contentCreatorsList"/>
+        }
+
         if (this.state.checkingLogin) {
             return <div className='loader'>Authorizing...</div>;
         }
 
         if (this.state.redirectToReviewNewContentPost) {
-            return <Redirect push to="/reviewNewTask"/>
+            return <Redirect push to='/reviewNewTask'/>
         }
 
         return (

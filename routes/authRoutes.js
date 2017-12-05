@@ -52,6 +52,20 @@ module.exports = (app) => {
     });
 
 
+    app.get('/api/logoutUser', (req, res) => {
+        try {
+            req.logout();
+            req.session.destroy();
+            console.log('user authenticated?:');
+            console.log(req.isAuthenticated());
+            return res.sendStatus(200);
+        } catch (err) {
+            console.log(err);
+            res.send('error');
+        }
+    });
+
+
     // authentication is already checked when this is called
     app.post('/api/saveNewUser', (req, res) => {
         try {

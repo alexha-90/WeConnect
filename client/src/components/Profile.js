@@ -25,7 +25,7 @@ class Profile extends Component {
                 .then((result) => {
                     if (result !== 'OK') {
                         alert('You are not logged in. Please login or register before proceeding.');
-                        return this.setState({redirectToHome: true})
+                        return this.setState({ redirectToHome: true })
                     }
                 })
                 .then (() => {

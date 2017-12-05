@@ -27,6 +27,17 @@ export const loginUser = (emailAddress, password) => async () => {
 };
 
 
+export const logoutUser = () => async () => {
+    try {
+        const res = await axios.get('/api/logoutUser');
+        if (res.data === 'error') {
+            return alert ('Logout did not work. Please try again or contact us if this problem persists');
+        }
+        console.log('logged out!');
+    } catch(res) {
+        alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
+    }
+};
 
 
 export const loadProfileData = () => async () => {
@@ -39,7 +50,7 @@ export const loadProfileData = () => async () => {
         console.log(res.data);
         return res.data;
     } catch(res) {
-        alert('Unable to connect to database. Please try again and let us know if this problem persists.');
+        console.log(res);
     }
 };
 
