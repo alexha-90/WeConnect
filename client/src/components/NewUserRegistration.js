@@ -132,7 +132,7 @@ class NewUserRegistration extends Component {
         }
 
         return (
-            <div>
+            <div className="newUserRegistrationContainer">
                 <h2>Register</h2>
                 <form>
                     <FieldGroup

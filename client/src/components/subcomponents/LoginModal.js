@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 import { loginUser } from '../../actions/';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 //===============================================================================================//
 
 // future feature: add forgot password feature
@@ -12,7 +13,7 @@ class LoginModal extends Component {
         this.state = {
             emailAddress: '',
             password: '',
-            // redirectToHome: false
+            linkToRegisterPage: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,9 +56,9 @@ class LoginModal extends Component {
     }
 
     render() {
-        // if (this.state.redirectToHome) {
-        //     return <Redirect push to="/"/>
-        // }
+        if (this.state.linkToRegisterPage) {
+            return <Redirect push to='/newUserRegistration'/>
+        }
         return (
             <div>
                 <Modal {...this.props} bsSize="sm" aria-labelledby="contained-modal-title-sm">
@@ -88,8 +89,8 @@ class LoginModal extends Component {
 
                             <hr />
 
-                            <Button bsStyle="warning" id="registerButton">
-                                <a href="/newUserRegistration">Register</a>
+                            <Button bsStyle="warning" id="registerButton" onClick={() => this.setState({ linkToRegisterPage: true })}>
+                                Register
                             </Button>
 
                             <hr />

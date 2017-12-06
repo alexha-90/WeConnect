@@ -35,6 +35,32 @@
     text-decoration: none;
     color: #ffffff; }
 
+.newUserRegistrationContainer {
+  width: 65%;
+  display: block;
+  margin: 40px auto 0 auto;
+  border: 2px solid #003366;
+  border-radius: 10px;
+  padding: 15px; }
+
+.newContentPostContainer {
+  width: 65%;
+  display: block;
+  margin: 40px auto 0 auto;
+  background-color: #b3d9ff;
+  border: 2px solid #003366;
+  border-radius: 10px;
+  padding: 15px; }
+
+.newPostBanner {
+  width: 100%;
+  display: block;
+  background-color: #cccccc;
+  color: #00394d;
+  text-align: center; }
+  .newPostBanner Button {
+    height: 26px; }
+
 .searchBar {
   float: left;
   padding-left: 20px;
@@ -83,6 +109,6 @@
   border: 0;
   max-width: 100%; }
 
-h1, h3 {
+h1, h2, h3, h4 {
   margin: 0;
   padding: 0; }

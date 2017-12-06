@@ -1,8 +1,17 @@
+.newPostBanner {
+  width: 100%;
+  display: block;
+  background-color: #cccccc;
+  color: #00394d;
+  text-align: center;
 
-//.contentCreatorSection {
-//  width: 100%;
-//  background-color: yellowgreen;
-//}
+  span {
+  }
+
+  Button {
+    height: 26px;
+  }
+}
 
 .searchBar {
   float: left;
@@ -22,7 +31,6 @@
   .filterResult {
     margin-left: 15%;
   }
-
 }
 
 
@@ -36,7 +44,6 @@
     margin-top: 10px;
   }
 
-
   .singleContentPost {
     display: block;
     width: 70%;
@@ -45,7 +52,6 @@
     background-color: #b3d9ff;
     border-radius: 10px;
     box-shadow: 10px 10px #4d4d4d;
-
 
     #postSummary {
       font-size: 1.4em;
@@ -67,5 +73,4 @@
       }
     }
   }
-
 }

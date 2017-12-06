@@ -54,14 +54,16 @@ class ContentCreatorsList extends Component {
 
         return (
             <div>
-                Want to leverage your social media presence to earn extra money?
-                <Button bsStyle="success">
-                    <Link to="newContentPost">
-                        Create new listing
-                    </Link>
-                </Button>
-
-                <br />
+                <div className="newPostBanner">
+                    <span>
+                        Want to leverage your social media presence to earn extra money?
+                        <Button bsStyle="success">
+                            <Link to="newContentPost">
+                                Create new listing
+                            </Link>
+                        </Button>
+                    </span>
+                </div>
 
                 {/* Import */}
                 <ContentPostFilterBar/>
@@ -70,7 +72,7 @@ class ContentCreatorsList extends Component {
                     <h1>Content creators looking to advertise:</h1>
                     {contentCreatorsResults(this.state.contentPosts)}
                 </div>
-            </div>
+        </div>
         )
     }
 }

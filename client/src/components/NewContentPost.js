@@ -41,7 +41,7 @@ class NewContentPost extends Component {
                 return this.props.dispatch(isLoggedIn())
                 .then((result) => {
                     if (result !== 'OK') {
-                        alert('You are not logged in. Please login or register before proceeding.');
+                        alert('You are not logged in. Please login or register before making a new listing.');
                         return this.setState({ redirectToContentCreatorsList: true });
                     }
                     return this.setState({ checkingLogin: false });
@@ -137,24 +137,10 @@ class NewContentPost extends Component {
         }
 
         return (
-            <div>
+            <div className="newContentPostContainer">
                 <h1>Advertise on your content:</h1>
 
                 <form>
-                    <FormGroup>
-                        <ControlLabel>Medium</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            name="contentMedium"
-                            onChange={this.handleChange}
-                            value={this.state.contentMedium}>
-                            <option value="">-</option>
-                            <option value="YouTube">YouTube</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Twitter">Twitter</option>
-                            <option value="Snapchat">Snapchat</option>
-                        </FormControl>
-                    </FormGroup>
                     <FieldGroup
                         label="Summary"
                         id="contentSummary"
@@ -166,12 +152,13 @@ class NewContentPost extends Component {
                         onChange={this.handleChange}
                     />
                     <FormGroup>
-                        <ControlLabel>Description</ControlLabel>
+                        <ControlLabel>Full description</ControlLabel>
                         <FormControl
                             componentClass="textarea"
                             name="contentDescription"
                             onChange={this.handleChange}
                             value={this.state.contentDescription}
+                            style={{minHeight: "60px"}}
                             placeholder="Describe your content in more detail. Examples: target audience, demographics, previous partnerships, etc"
                         />
                     </FormGroup>
@@ -182,8 +169,23 @@ class NewContentPost extends Component {
                             name="contentIdealMatch"
                             onChange={this.handleChange}
                             value={this.state.contentIdealMatch}
+                            style={{minHeight: "60px"}}
                             placeholder="Tell us what your ideal match would be (pay rate, frequency, endorsement gifts, ad placement)"
                         />
+                    </FormGroup>
+                    <FormGroup>
+                        <ControlLabel>Medium(s)</ControlLabel>
+                        <FormControl
+                            componentClass="select"
+                            name="contentMedium"
+                            onChange={this.handleChange}
+                            value={this.state.contentMedium}>
+                            <option value="">-</option>
+                            <option value="YouTube">YouTube</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="Snapchat">Snapchat</option>
+                        </FormControl>
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Upload frequency</ControlLabel>
