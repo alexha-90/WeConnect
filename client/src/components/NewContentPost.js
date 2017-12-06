@@ -25,6 +25,7 @@ class NewContentPost extends Component {
             redirectToContentCreatorsList: false,
             redirectToNextPage: false,
             categoryListOpen: false,
+            userLocation: '',
             contentSummary: '',
             contentDescription: '',
             contentIdealMatch: '',
@@ -56,6 +57,7 @@ class NewContentPost extends Component {
         // // repopulate form fields if redirected here from review page
         if (this.props.newContentPost.contentSummary) {
             return this.setState({
+                userLocation: this.props.newContentPost.userLocation,
                 contentSummary: this.props.newContentPost.contentSummary,
                 contentDescription: this.props.newContentPost.contentDescription,
                 contentIdealMatch: this.props.newContentPost.contentIdealMatch,
@@ -69,6 +71,9 @@ class NewContentPost extends Component {
 
     handleTextChange(event) {
         switch (event.target.name) {
+            case 'userLocation': {
+                return this.setState({userLocation: event.target.value});
+            }
             case 'contentSummary': {
                 return this.setState({contentSummary: event.target.value});
             }
@@ -123,13 +128,14 @@ class NewContentPost extends Component {
         this.setState({ contentCategories: uniqueCategoriesArr });
 
         setTimeout(() => {
-            if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentIdealMatch || !this.state.contentCategories.length) {
+            if (!this.state.userLocation || !this.state.contentSummary || !this.state.contentDescription || !this.state.contentIdealMatch || !this.state.contentCategories.length) {
                 return alert('Error: Please make to fill out this entire form before proceeding.');
             }
 
             (async () => {
                 try {
                     this.props.dispatch(newContentPostToProps({
+                        userLocation: this.state.userLocation,
                         contentSummary: this.state.contentSummary,
                         contentDescription: this.state.contentDescription,
                         contentTags: this.state.contentTags,
@@ -163,6 +169,16 @@ class NewContentPost extends Component {
                 <h1>Describe your content:</h1>
 
                 <Form>
+                    <FieldGroup
+                        label="Location"
+                        id="userLocation"
+                        type="text"
+                        name="userLocation"
+                        placeholder="Where do you live? Please list your city, country, and other relevant information. DO NOT ENTER YOUR FULL ADDRESS."
+                        maxLength="100"
+                        value={this.state.userLocation}
+                        onChange={this.handleTextChange}
+                    />
                     <FieldGroup
                         label="Summary"
                         id="contentSummary"

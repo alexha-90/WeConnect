@@ -31,7 +31,7 @@ class NewContentPostMediums extends Component {
 
     onReviewNewContentPost() {
         if (this.state.showYouTubeForm && !this.props.newContentPost.youtube) {
-            return alert('Error: Please make sure to fill out all details for the YouTube form.')
+            return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
         }
 
         console.log('yes');
@@ -44,14 +44,6 @@ class NewContentPostMediums extends Component {
         // (async () => {
         //     try {
         //         this.props.dispatch(newContentPostToProps({
-        //             contentMedium: this.state.contentMedium,
-        //             contentSummary: this.state.contentSummary,
-        //             contentDescription: this.state.contentDescription,
-        //             contentIdealMatch: this.state.contentIdealMatch,
-        //             yt_UploadFrequency: this.state.yt_UploadFrequency,
-        //             yt_VideoLength: this.state.yt_VideoLength,
-        //             yt_SubCount: this.state.yt_SubCount,
-        //             yt_ViewCount: this.state.yt_ViewCount
         //
         //         }));
         //         return await this.setState({redirectToReviewNewContentPost: true});
@@ -63,12 +55,15 @@ class NewContentPostMediums extends Component {
     }
 
     render() {
+        console.log(this.props.newContentPost);
+
         return (
             <div className="newContentPostContainer">
 
                 <div className="contentMediumsPropsInfo">
                     <h3>Inputs thus far:</h3>
                     <ul>
+                        <li>User location: {this.props.newContentPost.userLocation}</li>
                         <li>Content summary: {this.props.newContentPost.contentSummary}</li>
                         <li>Content description: {this.props.newContentPost.contentDescription}</li>
                         <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>

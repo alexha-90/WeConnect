@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { updateNewContentPost } from '../../actions';
+import { youtubeUpdateNewContentPost } from '../../actions';
 
 //===============================================================================================//
 
@@ -22,18 +22,14 @@ class YoutubeForm extends Component {
 
     handleChange(event) {
         // wait until all youtube data is entered before submitting to redux store. Will send once all values are entered
-        // need some repetition since we do not know what order user will be completing the form. Checking in render led to infinite loop.
-
-        // try to figure out why a variable can't be supped in here. It wasn't loading properly until +1 toggle after condition met
-        // let dispatchCondition;
+        // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
 
         switch (event.target.name) {
             case 'yt_UploadFrequency': {
                 this.setState({ youtube: {...this.state.youtube, yt_UploadFrequency: event.target.value} });
                 setTimeout(() => {
                     if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        console.log('dispatch time');
-                        return this.props.dispatch(updateNewContentPost(this.state.youtube));
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
                     }
                 }, 500);
                 break;
@@ -43,8 +39,7 @@ class YoutubeForm extends Component {
                 this.setState({ youtube: {...this.state.youtube, yt_VideoLength: event.target.value} });
                 setTimeout(() => {
                     if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        console.log('dispatch time');
-                        return this.props.dispatch(updateNewContentPost(this.state.youtube));
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
                     }
                 }, 500);
                 break;
@@ -54,8 +49,7 @@ class YoutubeForm extends Component {
                 this.setState({ youtube: {...this.state.youtube, yt_SubCount: event.target.value} });
                 setTimeout(() => {
                     if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        console.log('dispatch time');
-                        return this.props.dispatch(updateNewContentPost(this.state.youtube));
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
                     }
                 }, 500);
                 break;
@@ -65,8 +59,7 @@ class YoutubeForm extends Component {
                 this.setState({ youtube: {...this.state.youtube, yt_ViewCount: event.target.value} });
                 setTimeout(() => {
                     if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        console.log('dispatch time');
-                        return this.props.dispatch(updateNewContentPost(this.state.youtube));
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
                     }
                 }, 500);
                 break;

@@ -62,9 +62,7 @@ export const newContentPostToProps = (contentPostsInfo) => {
     };
 };
 
-export const updateNewContentPost = (info) => {
-    console.log('in action');
-    console.log(info);
+export const youtubeUpdateNewContentPost = (info) => {
     return {
         type: 'YOUTUBE_UPDATE_NEW_CONTENT_POST',
         payload: info
