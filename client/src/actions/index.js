@@ -57,10 +57,20 @@ export const loadProfileData = () => async () => {
 
 export const newContentPostToProps = (contentPostsInfo) => {
     return {
-        type: "NEW_CONTENT_POST_TO_PROPS",
+        type: 'NEW_CONTENT_POST_TO_PROPS',
         payload: contentPostsInfo
     };
 };
+
+export const updateNewContentPost = (info) => {
+    console.log('in action');
+    console.log(info);
+    return {
+        type: 'YOUTUBE_UPDATE_NEW_CONTENT_POST',
+        payload: info
+    };
+};
+
 
 //refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {

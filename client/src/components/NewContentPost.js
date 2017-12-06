@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
+import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
@@ -26,9 +26,9 @@ class NewContentPost extends Component {
             redirectToNextPage: false,
             categoryListOpen: false,
             contentSummary: '',
-            contentTags: '',
             contentDescription: '',
             contentIdealMatch: '',
+            contentTags: '',
             contentCategories: []
         };
         this.handleTextChange = this.handleTextChange.bind(this);
@@ -37,10 +37,6 @@ class NewContentPost extends Component {
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
     }
     componentWillMount() {
-        // repopulate form fields if user is here from review page
-        console.log('*****');
-        console.log(this.props.newContentPost.contentSummary);
-
         (async () => {
             try {
                 return this.props.dispatch(isLoggedIn())
@@ -56,6 +52,17 @@ class NewContentPost extends Component {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }
         })();
+
+        // // repopulate form fields if redirected here from review page
+        if (this.props.newContentPost.contentSummary) {
+            return this.setState({
+                contentSummary: this.props.newContentPost.contentSummary,
+                contentDescription: this.props.newContentPost.contentDescription,
+                contentIdealMatch: this.props.newContentPost.contentIdealMatch,
+                contentTags: this.props.newContentPost.contentTags,
+                contentCategories: this.props.newContentPost.contentCategories
+            })
+        }
     }
 
 
@@ -155,7 +162,7 @@ class NewContentPost extends Component {
             <div className="newContentPostContainer">
                 <h1>Describe your content:</h1>
 
-                <form>
+                <Form>
                     <FieldGroup
                         label="Summary"
                         id="contentSummary"
@@ -265,7 +272,7 @@ class NewContentPost extends Component {
                         >
                         Proceed - Select your content mediums
                     </Button>
-                </form>
+                </Form>
                 
             </div>
         )

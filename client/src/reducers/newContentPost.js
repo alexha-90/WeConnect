@@ -1,16 +1,7 @@
 const newContentPost = (state ={
     //change values below to null after testing done
-    newContentPost: {
-        // contentMedium: '',
-        // contentSummary: '',
-        // contentDescription: '',
-        // contentIdealMatch: '',
-        //
-        // yt_UploadFrequency: 0,
-        // yt_VideoLength: 0,
-        // yt_SubCount: '',
-        // yt_ViewCount: 0
-    }}, action) => {
+    newContentPost: {}}
+    , action) => {
 
     switch (action.type) {
         case 'NEW_CONTENT_POST_TO_PROPS': {
@@ -22,14 +13,24 @@ const newContentPost = (state ={
                     contentIdealMatch: action.payload.contentIdealMatch,
                     contentTags: action.payload.contentTags,
                     contentCategories: action.payload.contentCategories,
-                    // contentMedium: action.payload.contentMedium,
-                    // yt_UploadFrequency: action.payload.yt_UploadFrequency,
-                    // yt_VideoLength: action.payload.yt_VideoLength,
-                    // yt_SubCount: action.payload.yt_SubCount,
-                    // yt_ViewCount: action.payload.yt_ViewCount,
                 }
             }
         }
+
+        case 'YOUTUBE_UPDATE_NEW_CONTENT_POST': {
+            return {
+                newContentPost: {
+                    ...state,
+                    youtube: {
+                        yt_UploadFrequency: action.payload.yt_UploadFrequency,
+                        yt_VideoLength: action.payload.yt_VideoLength,
+                        yt_SubCount: action.payload.yt_SubCount,
+                        yt_ViewCount: action.payload.yt_ViewCount
+                    }
+                }
+            }
+        }
+
 
         default: {
             return state;
