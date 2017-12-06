@@ -1,0 +1,56 @@
+.headerContainer {
+  width: 100%;
+  background-color: #216894;
+  height: 80px;
+  text-align: center;
+  padding-top: 20px;
+
+  h1 {
+  }
+
+  a {
+    color: #f2f2f2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #b3b3b3;
+  }
+
+  #navContentCreatorsLink, #navAdvertisersLink {
+    display: inline-block;
+    width: 200px;
+    margin: 0 auto;
+
+  }
+
+  #navLogo {
+    display: inline-block;
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  #loginAndProfileLinks {
+    top: 0;
+    right: 0;
+    position: absolute;
+    margin: 10px 15px 0 0;
+
+    Button:active {
+      position: static;
+    }
+  }
+}
+
+#contained-modal-title-sm {
+  font-size: 2em;
+  text-align: center;
+}
+
+#registerButton {
+  width: 100%;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}

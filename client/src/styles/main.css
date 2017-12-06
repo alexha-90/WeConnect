@@ -1,3 +1,40 @@
+.headerContainer {
+  width: 100%;
+  background-color: #216894;
+  height: 80px;
+  text-align: center;
+  padding-top: 20px; }
+  .headerContainer a {
+    color: #f2f2f2;
+    text-decoration: none; }
+  .headerContainer a:hover {
+    color: #b3b3b3; }
+  .headerContainer #navContentCreatorsLink, .headerContainer #navAdvertisersLink {
+    display: inline-block;
+    width: 200px;
+    margin: 0 auto; }
+  .headerContainer #navLogo {
+    display: inline-block;
+    width: 300px;
+    margin: 0 auto; }
+  .headerContainer #loginAndProfileLinks {
+    top: 0;
+    right: 0;
+    position: absolute;
+    margin: 10px 15px 0 0; }
+    .headerContainer #loginAndProfileLinks Button:active {
+      position: static; }
+
+#contained-modal-title-sm {
+  font-size: 2em;
+  text-align: center; }
+
+#registerButton {
+  width: 100%; }
+  #registerButton a {
+    text-decoration: none;
+    color: #ffffff; }
+
 .searchBar {
   float: left;
   padding-left: 20px;
@@ -24,6 +61,7 @@
     margin: 40px auto;
     padding: 10px 20px;
     background-color: #b3d9ff;
+    border-radius: 10px;
     box-shadow: 10px 10px #4d4d4d; }
     .contentPostContainer .singleContentPost #postSummary {
       font-size: 1.4em;

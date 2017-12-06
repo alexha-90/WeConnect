@@ -72,14 +72,26 @@ class Header extends Component {
 
     render() {
         return (
-            <div>
-                <hr />
-                <hr />
-                <a href='/'>
-                    <h1 style={{textAlign: 'center'}}>SocialConnector</h1>
-                </a>
+            <div className="headerContainer">
+                <div id="navContentCreatorsLink">
+                    <a href='/contentCreatorsList'>
+                        <h4>Content Creators</h4>
+                    </a>
+                </div>
 
-                <div style={{textAlign: 'right'}}>
+                <div id="navLogo">
+                    <a href='/'>
+                        <h1>&#8212; WeConnect &#8212;</h1>
+                    </a>
+                </div>
+
+                <div id="navAdvertisersLink">
+                    <a href='/advertisersList'>
+                        <h4>Advertisers</h4>
+                    </a>
+                </div>
+
+                <div id="loginAndProfileLinks">
                     {this.loginStatus()}
                     <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
                 </div>

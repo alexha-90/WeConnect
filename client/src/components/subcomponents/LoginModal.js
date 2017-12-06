@@ -62,8 +62,9 @@ class LoginModal extends Component {
             <div>
                 <Modal {...this.props} bsSize="sm" aria-labelledby="contained-modal-title-sm">
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-sm">SocialConnector</Modal.Title>
+                        <Modal.Title id="contained-modal-title-sm">WeConnect</Modal.Title>
                     </Modal.Header>
+                    <h4>&nbsp;Sign in:</h4>
                     <Modal.Body>
                         <form>
                             <FieldGroup
@@ -81,17 +82,19 @@ class LoginModal extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.password}
                             />
-                            <Button onClick={this.handleSubmit} bsStyle="success">
+                            <Button style={{width: "100%"}} onClick={this.handleSubmit} bsStyle="success">
                                 Login
                             </Button>
-                            __________
-                            <Button bsStyle="warning">
+
+                            <hr />
+
+                            <Button bsStyle="warning" id="registerButton">
                                 <a href="/newUserRegistration">Register</a>
-
                             </Button>
-                        </form>
 
-                        <br/>
+                            <hr />
+
+                        </form>
 
                         <span>I forgot my password!! (Future feature)</span>
                     </Modal.Body>
@@ -103,8 +106,6 @@ class LoginModal extends Component {
 
 
 export default connect(null)(LoginModal);
-
-
 
 
 function FieldGroup({ id, label, help, ...props }) {
