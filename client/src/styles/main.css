@@ -51,6 +51,10 @@
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px; }
+  .newContentPostContainer #categoryTable {
+    min-width: 100%; }
+    .newContentPostContainer #categoryTable td {
+      width: 226px; }
 
 .newPostBanner {
   width: 100%;

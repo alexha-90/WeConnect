@@ -39,9 +39,11 @@ export default function contentCreatorResults(data) {
                             </Link>
                         </div>
                         <div id="postOtherDetails">
-                            <span>Ideal match:</span> {item[3]}
+                            <span>Ideal match</span>: {item[3]}
                             <br/>
-                            <span>Target audience (temp):</span> {item[2]}
+                            <span>Categories</span>: {item[2]}
+                            <br/>
+                            <span>Tags</span>: {item[2]}
                             <div id="socialIcons">
                                 {item[1]}
                             </div>

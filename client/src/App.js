@@ -7,6 +7,7 @@ import * as actions from './actions';
 import Header from './components/Header'
 import Landing from './components/Landing';
 import NewContentPost from './components/NewContentPost';
+import NewContentPostMediums from './components/NewContentPostMediums';
 import ReviewNewContentPost from './components/ReviewNewContentPost';
 import ContentPostExpanded from './components/ContentPostExpanded';
 import AdvertiserProfile from './components/AdvertiserProfile';
@@ -27,6 +28,7 @@ class App extends Component {
                     <Route exact path='/ContentCreatorsList' component={ContentCreatorsList} />
                     <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newContentPost' component={NewContentPost} />
+                    <Route exact path='/newContentPost/mediums' component={NewContentPostMediums} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost' component={ContentPostExpanded} />

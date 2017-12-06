@@ -6,4 +6,13 @@
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px;
+
+  #categoryTable {
+    min-width: 100%;
+
+    td {
+      width: 226px;
+    }
+  }
+
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
+
 
 import { isLoggedIn, newContentPostToProps } from '../actions';
 
@@ -15,27 +15,32 @@ file uploads
 */
 //===============================================================================================//
 
+let categoriesArr = [];
+
 class NewContentPost extends Component {
     constructor() {
         super();
         this.state = {
             checkingLogin: true,
             redirectToContentCreatorsList: false,
-            redirectToReviewNewContentPost: false,
-            contentMedium: '',
+            redirectToNextPage: false,
+            categoryListOpen: false,
             contentSummary: '',
+            contentTags: '',
             contentDescription: '',
             contentIdealMatch: '',
-            yt_UploadFrequency: 0,
-            yt_VideoLength: 0,
-            yt_SubCount: '',
-            yt_ViewCount: 0
+            contentCategories: []
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
         this.onReviewNewContentPost  = this.onReviewNewContentPost.bind(this);
+        this.openCategoryIndicator = this.openCategoryIndicator.bind(this);
+        this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
     }
-
     componentWillMount() {
+        // repopulate form fields if user is here from review page
+        console.log('*****');
+        console.log(this.props.newContentPost.contentSummary);
+
         (async () => {
             try {
                 return this.props.dispatch(isLoggedIn())
@@ -55,72 +60,82 @@ class NewContentPost extends Component {
 
 
 
-    handleChange(event) {
+    handleTextChange(event) {
         switch (event.target.name) {
-            case 'contentMedium': {
-                return this.setState({contentMedium: event.target.value});
-            }
-
             case 'contentSummary': {
                 return this.setState({contentSummary: event.target.value});
             }
-
             case 'contentDescription': {
                 return this.setState({contentDescription: event.target.value});
             }
-
             case 'contentIdealMatch': {
                 return this.setState({contentIdealMatch: event.target.value});
             }
-
-            case 'yt_UploadFrequency': {
-                return this.setState({yt_UploadFrequency: event.target.value});
+            case 'contentTags': {
+                return this.setState({contentTags: event.target.value});
             }
-
-            case 'yt_VideoLength': {
-                return this.setState({yt_VideoLength: event.target.value});
-            }
-
-            case 'yt_SubCount': {
-                return this.setState({yt_SubCount: event.target.value});
-            }
-
-            case 'yt_ViewCount': {
-                return this.setState({yt_ViewCount: event.target.value});
-            }
-
             default: {
                 alert('ERROR: input not recognized');
             }
         }
     }
 
-    onReviewNewContentPost() {
-        /* validation for later. Check that all contentX fields and one entry are filled in.
-        if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentMedium) {
-            return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
+    handleCategoryToggle(event) {
+        if (event.target.checked) {
+            return categoriesArr.push(event.target.name);
         }
-        */
+    }
 
-        (async () => {
-            try {
-                this.props.dispatch(newContentPostToProps({
-                    contentMedium: this.state.contentMedium,
-                    contentSummary: this.state.contentSummary,
-                    contentDescription: this.state.contentDescription,
-                    contentIdealMatch: this.state.contentIdealMatch,
-                    yt_UploadFrequency: this.state.yt_UploadFrequency,
-                    yt_VideoLength: this.state.yt_VideoLength,
-                    yt_SubCount: this.state.yt_SubCount,
-                    yt_ViewCount: this.state.yt_ViewCount
+    openCategoryIndicator() {
+        if (this.state.categoryListOpen) {
+            return '(-)'
+        }
+        if (!this.state.categoryListOpen) {
+            return '(+)'
+        }
+    }
 
-                }));
-                return await this.setState({redirectToReviewNewContentPost: true});
 
-            } catch (err) {
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+    onReviewNewContentPost() {
+        // can split into an exported function
+        // remove duplicates from categories array. Very efficient method borrowed from https://stackoverflow.com/questions/840781/get-all-non-unique-values-i-e-duplicate-more-than-one-occurrence-in-an-array
+        let obj = {};
+        let uniqueCategoriesArr = [];
+        for (let i = 0; i < categoriesArr.length; i++) {
+            obj[categoriesArr[i]] = 0;
+        }
+        for (let i in obj) {
+            uniqueCategoriesArr.push(i);
+        }
+
+        // sort categories array. Very efficient method borrowed from https://stackoverflow.com/questions/8900732/javascript-sort-objects-in-an-array-alphabetically-on-one-property-of-the-arra
+        uniqueCategoriesArr.sort((a,b) => {
+           return (a < b) ? -1 : (a > b) ? 1 :0;
+        });
+
+        this.setState({ contentCategories: uniqueCategoriesArr });
+
+        setTimeout(() => {
+            if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentIdealMatch || !this.state.contentCategories.length) {
+                return alert('Error: Please make to fill out this entire form before proceeding.');
             }
-        })();
+
+            (async () => {
+                try {
+                    this.props.dispatch(newContentPostToProps({
+                        contentSummary: this.state.contentSummary,
+                        contentDescription: this.state.contentDescription,
+                        contentTags: this.state.contentTags,
+                        contentIdealMatch: this.state.contentIdealMatch,
+                        contentCategories: this.state.contentCategories
+                    }));
+                    return await this.setState({redirectToNextPage: true});
+
+                } catch (err) {
+                    return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+                }
+            })();
+        }, 500);
     }
 
     render() {
@@ -132,13 +147,13 @@ class NewContentPost extends Component {
             return <div className='loader'>Authorizing...</div>;
         }
 
-        if (this.state.redirectToReviewNewContentPost) {
-            return <Redirect push to='/reviewNewTask'/>
+        if (this.state.redirectToNextPage) {
+            return <Redirect push to='/newContentPost/mediums'/>
         }
 
         return (
             <div className="newContentPostContainer">
-                <h1>Advertise on your content:</h1>
+                <h1>Describe your content:</h1>
 
                 <form>
                     <FieldGroup
@@ -149,14 +164,14 @@ class NewContentPost extends Component {
                         placeholder="Provide a brief summary about your content (100 characters max)"
                         maxLength="100"
                         value={this.state.contentSummary}
-                        onChange={this.handleChange}
+                        onChange={this.handleTextChange}
                     />
                     <FormGroup>
                         <ControlLabel>Full description</ControlLabel>
                         <FormControl
                             componentClass="textarea"
                             name="contentDescription"
-                            onChange={this.handleChange}
+                            onChange={this.handleTextChange}
                             value={this.state.contentDescription}
                             style={{minHeight: "60px"}}
                             placeholder="Describe your content in more detail. Examples: target audience, demographics, previous partnerships, etc"
@@ -167,129 +182,91 @@ class NewContentPost extends Component {
                         <FormControl
                             componentClass="textarea"
                             name="contentIdealMatch"
-                            onChange={this.handleChange}
+                            onChange={this.handleTextChange}
                             value={this.state.contentIdealMatch}
                             style={{minHeight: "60px"}}
                             placeholder="Tell us what your ideal match would be (pay rate, frequency, endorsement gifts, ad placement)"
                         />
                     </FormGroup>
-                    <FormGroup>
-                        <ControlLabel>Medium(s)</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            name="contentMedium"
-                            onChange={this.handleChange}
-                            value={this.state.contentMedium}>
-                            <option value="">-</option>
-                            <option value="YouTube">YouTube</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Twitter">Twitter</option>
-                            <option value="Snapchat">Snapchat</option>
-                        </FormControl>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel>Upload frequency</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            name="yt_UploadFrequency"
-                            onChange={this.handleChange}
-                            value={this.state.yt_UploadFrequency}
-                            placeholder="select">
-                            <option value="">-</option>
-                            <option value="0-1 videos/month">0-1 videos/month</option>
-                            <option value="2-3 videos/month">2-3 videos/month</option>
-                            <option value="4-5 videos/month">4-5 videos/month</option>
-                            <option value="6-7 videos/month">6-7 videos/month</option>
-                            <option value="8-9 videos/month">8-9 videos/month</option>
-                            <option value="10+ videos/month">10+ videos/month</option>
-                        </FormControl>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel>Typical video length</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            name="yt_VideoLength"
-                            onChange={this.handleChange}
-                            value={this.state.yt_VideoLength}
-                            placeholder="select">
-                            <option value="">-</option>
-                            <option value="Under 2 minutes">Under 2 minutes</option>
-                            <option value="Between 2 and 5 minutes">Between 2 and 5 minutes</option>
-                            <option value="Between 5 and 10 minutes">Between 5 and 10 minutes</option>
-                            <option value="10+ minutes">10+ minutes</option>
-                        </FormControl>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel>Subscriber count</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            name="yt_SubCount"
-                            onChange={this.handleChange}
-                            value={this.state.yt_SubCount}
-                            placeholder="select">
-                            <option value="">-</option>
-                            <option value="Under 5,000 users">Under 5,000 users</option>
-                            <option value="Between 5,000 and 10,000 users">Between 5,000 and 10,000 users</option>
-                            <option value="Between 10,000 and 20,000 users">Between 10,000 and 20,000 users</option>
-                            <option value="Between 20,000 and 30,000 users">Between 20,000 and 30,000 users</option>
-                            <option value="Between 30,000 and 40,000 users">Between 30,000 and 40,000 users</option>
-                            <option value="Between 40,000 and 50,000 users">Between 40,000 and 50,000 users</option>
-                            <option value="Between 50,000 and 60,000 users">Between 50,000 and 60,000 users</option>
-                            <option value="Between 60,000 and 70,000 users">Between 60,000 and 70,000 users</option>
-                            <option value="Between 70,000 and 80,000 users">Between 70,000 and 80,000 users</option>
-                            <option value="Between 80,000 and 90,000 users">Between 80,000 and 90,000 users</option>
-                            <option value="Between 90,000 and 100,00 users">Between 90,000 and 100,000 users</option>
-                            <option value="1,000,000+ users">1,000,000+ users</option>
-                        </FormControl>
-                        <FormGroup>
-                            <ControlLabel>Total channel views</ControlLabel>
-                            <FormControl
-                                componentClass="select"
-                                name="yt_ViewCount"
-                                onChange={this.handleChange}
-                                value={this.state.yt_ViewCount}
-                                placeholder="select">
-                                <option value="">-</option>
-                                <option value="Under 5,000 views">Under 5,000 views</option>
-                                <option value="Between 5,000 and 10,000 views">Between 5,000 and 10,000 views</option>
-                                <option value="Between 10,000 and 20,000 views">Between 10,000 and 20,000 views</option>
-                                <option value="Between 20,000 and 30,000 views">Between 20,000 and 30,000 views</option>
-                                <option value="Between 30,000 and 40,000 views">Between 30,000 and 40,000 views</option>
-                                <option value="Between 40,000 and 50,000 views">Between 40,000 and 50,000 views</option>
-                                <option value="Between 50,000 and 60,000 views">Between 50,000 and 60,000 views</option>
-                                <option value="Between 60,000 and 70,000 views">Between 60,000 and 70,000 views</option>
-                                <option value="Between 70,000 and 80,000 views">Between 70,000 and 80,000 views</option>
-                                <option value="Between 80,000 and 90,000 views">Between 80,000 and 90,000 views</option>
-                                <option value="Between 90,000 and 100,00 views">Between 90,000 and 100,000 views</option>
-                                <option value="1,000,000+ views">1,000,000+ views</option>
-                            </FormControl>
-                        </FormGroup>
-                    </FormGroup>
-
-                    {/*
                     <FieldGroup
-                        id="fileUpload"
-                        type="file"
-                        label="fileUpload"
-                        help="Upload file(s)"
+                            label="Tags"
+                            id="contentTags"
+                            type="text"
+                            name="contentTags"
+                            placeholder="Enter some keywords that describe your content (separate each item with a comma)"
+                            maxLength="100"
+                            value={this.state.contentTags}
+                            onChange={this.handleTextChange}
                     />
-                    */}
+                    <FormGroup>
+                        <span onClick={() => this.setState({ categoryListOpen: !this.state.categoryListOpen })}>
+                            <ControlLabel>{this.openCategoryIndicator()} Associated categories</ControlLabel>
+                        </span>
+                        <br />
+                        <Collapse in={this.state.categoryListOpen}>
+                            <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
+                                <tbody>
+                                <tr>
+                                    <td><Checkbox name="Action/Adventure">Action/Adventure</Checkbox></td>
+                                    <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
+                                    <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Classics">Classics</Checkbox></td>
+                                    <td><Checkbox name="Comedy">Comedy</Checkbox></td>
+                                    <td><Checkbox name="Documentary">Documentary</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Drama">Drama</Checkbox></td>
+                                    <td><Checkbox name="Education">Education</Checkbox></td>
+                                    <td><Checkbox name="Entertainment">Entertainment</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Family">Family</Checkbox></td>
+                                    <td><Checkbox name="Film & Animation">Film & Animation</Checkbox></td>
+                                    <td><Checkbox name="Foreign">Foreign</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Gaming">Gaming</Checkbox></td>
+                                    <td><Checkbox name="Horror">Horror</Checkbox></td>
+                                    <td><Checkbox name="How-to & Style">How-to & Style</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Movies">Movies</Checkbox></td>
+                                    <td><Checkbox name="Music">Music</Checkbox></td>
+                                    <td><Checkbox name="News & Politics">News & Politics</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Nonprofits & Activism">Nonprofits & Activism</Checkbox></td>
+                                    <td><Checkbox name="People & Blog">People & Blogs</Checkbox></td>
+                                    <td><Checkbox name="Pets & Animals">Pets & Animals</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Sci-Fi/Fantasy">Sci-Fi/Fantasy</Checkbox></td>
+                                    <td><Checkbox name="Science & Technology">Science & Technology</Checkbox></td>
+                                    <td><Checkbox name="Short Movies">Short Movies</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Sports">Sports</Checkbox></td>
+                                    <td><Checkbox name="Thriller">Thriller</Checkbox></td>
+                                    <td><Checkbox name="Travel & Events">Travel & Events</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Vlogging">Vlogging</Checkbox></td>
+                                    <td><Checkbox name="Other">Other</Checkbox></td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                        </Collapse>
+                    </FormGroup>
 
-                    <Button bsStyle="primary"
+                    <Button bsStyle="success"
                             onClick={this.onReviewNewContentPost}
                         >
-                        Review new content post
+                        Proceed - Select your content mediums
                     </Button>
-                    ____
-                    <Button bsStyle="warning">
-                        <Link to="/contentCreatorsList">
-                            Back to content listings
-                        </Link>
-                    </Button>
-
                 </form>
-
-                <hr/>
+                
             </div>
         )
     }
