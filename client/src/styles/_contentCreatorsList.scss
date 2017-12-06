@@ -1,0 +1,70 @@
+
+//.contentCreatorSection {
+//  width: 100%;
+//  background-color: yellowgreen;
+//}
+
+.searchBar {
+  float: left;
+  padding-left: 20px;
+  width: 20%;
+  height: 700px;
+  background-color: #e6f2ff;
+
+  h3 {
+    margin-top: 20px;
+  }
+
+  .filterCategory {
+    margin-left: 10%;
+  }
+
+  .filterResult {
+    margin-left: 15%;
+  }
+
+}
+
+
+.contentPostContainer {
+  display: block;
+  float: right;
+  width: 80%;
+
+  h1 {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+
+
+  .singleContentPost {
+    display: block;
+    width: 70%;
+    margin: 40px auto;
+    padding: 10px 20px;
+    background-color: #b3d9ff;
+    box-shadow: 10px 10px #4d4d4d;
+
+
+    #postSummary {
+      font-size: 1.4em;
+      letter-spacing: 0.125em;
+      font-weight: bold;
+    }
+
+    #postOtherDetails {
+      position: relative;
+      span {
+        text-decoration: underline;
+      }
+
+      #socialIcons {
+        position: absolute;
+        right: 0;
+        text-align: right;
+        margin-top: -28px;
+      }
+    }
+  }
+
+}

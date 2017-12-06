@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../actions/index';
 
+import ContentPostFilterBar from './subcomponents/ContentPostFilterBar';
 import contentCreatorsResults from './subcomponents/contentCreatorsResults';
 
 // loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
@@ -42,7 +43,7 @@ class ContentCreatorsList extends Component {
     componentDidMount() {
         setTimeout(() => {
             return this.setState({ loadingComponent: false });
-        }, 1000);
+        }, 500);
     }
 
 
@@ -62,8 +63,11 @@ class ContentCreatorsList extends Component {
 
                 <br />
 
-                <h1>Content creators looking to advertise:</h1>
-                <div className='contentCreatorSection'>
+                {/* Import */}
+                <ContentPostFilterBar/>
+
+                <div className="contentPostContainer">
+                    <h1>Content creators looking to advertise:</h1>
                     {contentCreatorsResults(this.state.contentPosts)}
                 </div>
             </div>

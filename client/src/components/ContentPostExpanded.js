@@ -45,7 +45,7 @@ class ContentPostExpanded extends Component {
         setTimeout(() => {
             console.log(this.state);
             return this.setState({loadingComponent: false})
-        }, 1000);
+        }, 500);
     }
 
     render() {
