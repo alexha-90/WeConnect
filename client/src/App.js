@@ -7,8 +7,8 @@ import * as actions from './actions';
 import Header from './components/Header'
 import Landing from './components/Landing';
 import NewContentPost from './components/NewContentPost';
-import NewContentPostMediums from './components/NewContentPostMediums';
-import ReviewNewContentPost from './components/ReviewNewContentPost';
+import NewContentPostMediums from './components/subcomponents/newContentPost/NewContentPostMediums';
+import ReviewNewContentPost from './components/subcomponents/newContentPost/ReviewNewContentPost';
 import ContentPostExpanded from './components/ContentPostExpanded';
 import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';

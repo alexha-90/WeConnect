@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { youtubeUpdateNewContentPost } from '../../actions';
+import { youtubeUpdateNewContentPost } from '../../../actions';
 
 //===============================================================================================//
 
@@ -10,56 +10,68 @@ class YoutubeForm extends Component {
     constructor () {
         super();
         this.state = {
-            youtube: {
-                yt_UploadFrequency: false,
-                yt_VideoLength: false,
-                yt_SubCount: false,
-                yt_ViewCount: false,
-            },
+            yt_UploadFrequency: false,
+            yt_VideoLength: false,
+            yt_SubCount: false,
+            yt_ViewCount: false,
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentWillMount() {
+        // // repopulate form fields from checkbox toggling
+        if (this.props.newContentPost.youtube) {
+            return this.setState({
+                yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
+                yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
+                yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
+                yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount,
+            })
+        }
+    }
+
+
+
     handleChange(event) {
-        // wait until all youtube data is entered before submitting to redux store. Will send once all values are entered
+        // wait until all data is entered before submitting to redux store. Will send once all values are entered
         // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
 
         switch (event.target.name) {
             case 'yt_UploadFrequency': {
-                this.setState({ youtube: {...this.state.youtube, yt_UploadFrequency: event.target.value} });
+                this.setState({ yt_UploadFrequency: event.target.value });
                 setTimeout(() => {
-                    if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
+                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
                 }, 500);
                 break;
             }
 
             case 'yt_VideoLength': {
-                this.setState({ youtube: {...this.state.youtube, yt_VideoLength: event.target.value} });
+                this.setState({ yt_VideoLength: event.target.value });
                 setTimeout(() => {
-                    if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
+                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
                 }, 500);
                 break;
             }
 
             case 'yt_SubCount': {
-                this.setState({ youtube: {...this.state.youtube, yt_SubCount: event.target.value} });
+                this.setState({ yt_SubCount: event.target.value });
                 setTimeout(() => {
-                    if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
+                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
                 }, 500);
                 break;
             }
 
             case 'yt_ViewCount': {
-                this.setState({ youtube: {...this.state.youtube, yt_ViewCount: event.target.value} });
+                this.setState({ yt_ViewCount: event.target.value });
                 setTimeout(() => {
-                    if (this.state.youtube.yt_UploadFrequency && this.state.youtube.yt_VideoLength && this.state.youtube.yt_SubCount && this.state.youtube.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state.youtube));
+                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
+                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
                 }, 500);
                 break;
@@ -83,7 +95,7 @@ class YoutubeForm extends Component {
                             componentClass="select"
                             name="yt_UploadFrequency"
                             onChange={this.handleChange}
-                            value={this.state.youtube.yt_UploadFrequency}
+                            value={this.state.yt_UploadFrequency}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="0-1 videos/month">0-1 videos/month</option>
@@ -100,7 +112,7 @@ class YoutubeForm extends Component {
                             componentClass="select"
                             name="yt_VideoLength"
                             onChange={this.handleChange}
-                            value={this.state.youtube.yt_VideoLength}
+                            value={this.state.yt_VideoLength}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="Under 2 minutes">Under 2 minutes</option>

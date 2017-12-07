@@ -69,6 +69,27 @@ export const youtubeUpdateNewContentPost = (info) => {
     };
 };
 
+export const instagramUpdateNewContentPost = (info) => {
+    return {
+        type: 'INSTAGRAM_UPDATE_NEW_CONTENT_POST',
+        payload: info
+    };
+};
+
+export const twitterUpdateNewContentPost = (info) => {
+    return {
+        type: 'TWITTER_UPDATE_NEW_CONTENT_POST',
+        payload: info
+    };
+};
+
+export const snapchatUpdateNewContentPost = (info) => {
+    return {
+        type: 'SNAPCHAT_UPDATE_NEW_CONTENT_POST',
+        payload: info
+    };
+};
+
 
 //refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {

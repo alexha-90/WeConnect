@@ -39,6 +39,8 @@ export default function contentCreatorResults(data) {
                             </Link>
                         </div>
                         <div id="postOtherDetails">
+                            <span>Location</span>: {item[0]}
+                            <br/>
                             <span>Ideal match</span>: {item[3]}
                             <br/>
                             <span>Categories</span>: {item[2]}

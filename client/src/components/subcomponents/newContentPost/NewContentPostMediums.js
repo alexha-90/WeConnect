@@ -3,7 +3,10 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Co
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import YoutubeForm from './subcomponents/YoutubeForm';
+import YoutubeForm from './YoutubeForm';
+import InstagramForm from './InstagramForm';
+import TwitterForm from './TwitterForm';
+import SnapchatForm from './SnapchatForm';
 //
 // import { isLoggedIn, newContentPostToProps } from '../actions';
 ////
@@ -15,10 +18,16 @@ class NewContentPostMediums extends Component {
         super();
         this.state = {
             showYouTubeForm: false,
+            showInstagramForm: false,
+            showTwitterForm: false,
+            showSnapchatForm: false,
             contentMedium: '',
         };
         this.onReviewNewContentPost = this.onReviewNewContentPost.bind(this);
         this.youtubeForm = this.youtubeForm.bind(this);
+        this.instagramForm = this.instagramForm.bind(this);
+        this.twitterForm = this.twitterForm.bind(this);
+        this.snapchatForm = this.snapchatForm.bind(this);
     }
 
     youtubeForm() {
@@ -29,9 +38,49 @@ class NewContentPostMediums extends Component {
         return <YoutubeForm />
     }
 
+    instagramForm() {
+        if (!this.state.showInstagramForm) {
+            // retrieve data before uncheck, if available
+            return;
+        }
+        return <InstagramForm />
+    }
+
+    twitterForm() {
+        if (!this.state.showTwitterForm) {
+            // retrieve data before uncheck, if available
+            return;
+        }
+        return <TwitterForm />
+    }
+
+    snapchatForm() {
+        if (!this.state.showSnapchatForm) {
+            // retrieve data before uncheck, if available
+            return;
+        }
+        return <SnapchatForm />
+    }
+
     onReviewNewContentPost() {
+        // if (!this.state.showYouTubeForm) { clear out all youtube values from props}
+        // prevent valid entry then becomes invalid. e.prevent.default
+        console.log(this.state);
+        console.log(this.props.newContentPost);
         if (this.state.showYouTubeForm && !this.props.newContentPost.youtube) {
             return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
+        }
+
+        if (this.state.showInstagramForm && !this.props.newContentPost.instagram) {
+            return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
+        }
+
+        if (this.state.showTwitterForm && !this.props.newContentPost.twitter) {
+            return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
+        }
+
+        if (this.state.showSnapchatForm && !this.props.newContentPost.snapchat) {
+            return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
         }
 
         console.log('yes');
@@ -80,15 +129,24 @@ class NewContentPostMediums extends Component {
                             <Checkbox inline name="YouTube" onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}>
                                 YouTube
                             </Checkbox>
-                            <Checkbox inline name="Instagram">Instagram</Checkbox>
-                            <Checkbox inline name="Twitter">Twitter</Checkbox>
-                            <Checkbox inline name="Snapchat">Snapchat</Checkbox>
+                            <Checkbox inline name="Instagram" onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}>
+                                Instagram
+                            </Checkbox>
+                            <Checkbox inline name="Twitter" onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}>
+                                Twitter
+                            </Checkbox>
+                            <Checkbox inline name="Snapchat" onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}>
+                                Snapchat
+                            </Checkbox>
                         </FormGroup>
                     </FormGroup>
                 </Form>
 
+                {/*Import specific forms*/}
                 {this.youtubeForm()}
-
+                {this.instagramForm()}
+                {this.twitterForm()}
+                {this.snapchatForm()}
 
                 <Button bsStyle="success" onClick={this.onReviewNewContentPost}>
                     Proceed to final review

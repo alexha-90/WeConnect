@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import {testNewTaskValidity} from "./stateFunctions";
+import {testNewTaskValidity} from "../../stateFunctions";
 import { Redirect } from 'react-router-dom';
 
-import { saveNewContentPost } from '../actions';
+import { saveNewContentPost } from '../../../actions';
 
 
 class ReviewNewContentPost extends Component {
