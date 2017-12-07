@@ -8,7 +8,8 @@ import Header from './components/Header'
 import Landing from './components/Landing';
 import NewContentPost from './components/NewContentPost';
 import NewContentPostMediums from './components/subcomponents/newContentPost/NewContentPostMediums';
-import ReviewNewContentPost from './components/subcomponents/newContentPost/ReviewNewContentPost';
+import NewContentPostImageUpload from './components/subcomponents/newContentPost/NewContentPostImageUpload';
+import NewContentPostFinalReview from './components/subcomponents/newContentPost/NewContentPostFinalReview';
 import ContentPostExpanded from './components/ContentPostExpanded';
 import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';
@@ -29,10 +30,11 @@ class App extends Component {
                     <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newContentPost' component={NewContentPost} />
                     <Route exact path='/newContentPost/mediums' component={NewContentPostMediums} />
+                    <Route exact path='/newContentPost/images' component={NewContentPostImageUpload} />
+                    <Route exact path='/newContentPost/review' component={NewContentPostFinalReview} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost' component={ContentPostExpanded} />
-                    <Route exact path='/reviewNewTask' component={ReviewNewContentPost} />
 
                     {/* temporary files below*/}
 

@@ -23,7 +23,7 @@ class NewContentPost extends Component {
         this.state = {
             checkingLogin: true,
             redirectToContentCreatorsList: false,
-            redirectToNextPage: false,
+            redirectToNewContentMediums: false,
             categoryListOpen: false,
             userLocation: '',
             contentSummary: '',
@@ -142,7 +142,7 @@ class NewContentPost extends Component {
                         contentIdealMatch: this.state.contentIdealMatch,
                         contentCategories: this.state.contentCategories
                     }));
-                    return await this.setState({redirectToNextPage: true});
+                    return await this.setState({redirectToNewContentMediums: true});
 
                 } catch (err) {
                     return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
@@ -160,7 +160,7 @@ class NewContentPost extends Component {
             return <div className='loader'>Authorizing...</div>;
         }
 
-        if (this.state.redirectToNextPage) {
+        if (this.state.redirectToNewContentMediums) {
             return <Redirect push to='/newContentPost/mediums'/>
         }
 
@@ -286,7 +286,7 @@ class NewContentPost extends Component {
                     <Button bsStyle="success"
                             onClick={this.onReviewNewContentPost}
                         >
-                        Proceed - Select your content mediums
+                        Proceed - Select your content mediums (Step 2/4)
                     </Button>
                 </Form>
                 

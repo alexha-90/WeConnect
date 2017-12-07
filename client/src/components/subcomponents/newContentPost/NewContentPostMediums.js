@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import YoutubeForm from './YoutubeForm';
 import InstagramForm from './InstagramForm';
 import TwitterForm from './TwitterForm';
 import SnapchatForm from './SnapchatForm';
-//
+
+import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions'
+
 // import { isLoggedIn, newContentPostToProps } from '../actions';
 ////
 
@@ -21,14 +24,33 @@ class NewContentPostMediums extends Component {
             showInstagramForm: false,
             showTwitterForm: false,
             showSnapchatForm: false,
-            contentMedium: '',
+            redirectToNextPage: false
         };
-        this.onReviewNewContentPost = this.onReviewNewContentPost.bind(this);
+        this.onNextPage = this.onNextPage.bind(this);
         this.youtubeForm = this.youtubeForm.bind(this);
         this.instagramForm = this.instagramForm.bind(this);
         this.twitterForm = this.twitterForm.bind(this);
         this.snapchatForm = this.snapchatForm.bind(this);
     }
+
+    componentWillMount() {
+        // preserve history if user toggled between steps
+        if (this.props.newContentPost.youtube && this.props.newContentPost.youtube.yt_UploadFrequency !== null) {
+            this.setState({ showYouTubeForm: true })
+        }
+
+        if (this.props.newContentPost.instagram && this.props.newContentPost.instagram.ig_PostFrequency !== null) {
+            this.setState({ showInstagramForm: true })
+        }
+        if (this.props.newContentPost.twitter && this.props.newContentPost.twitter.tw_PostFrequency !== null) {
+            this.setState({ showTwitterForm: true })
+        }
+
+        if (this.props.newContentPost.snapchat && this.props.newContentPost.snapchat.sc_PostFrequency !== null) {
+            this.setState({ showSnapchatForm: true })
+        }
+    }
+
 
     youtubeForm() {
         if (!this.state.showYouTubeForm) {
@@ -62,11 +84,12 @@ class NewContentPostMediums extends Component {
         return <SnapchatForm />
     }
 
-    onReviewNewContentPost() {
-        // if (!this.state.showYouTubeForm) { clear out all youtube values from props}
-        // prevent valid entry then becomes invalid. e.prevent.default
-        console.log(this.state);
-        console.log(this.props.newContentPost);
+    onNextPage() {
+        // check that inputs are valid
+        if (!this.state.showYouTubeForm && !this.state.showInstagramForm && !this.state.showTwitterForm && !this.state.showSnapchatForm) {
+            return alert('Error: You must select at least one medium before proceeding!')
+        }
+
         if (this.state.showYouTubeForm && !this.props.newContentPost.youtube) {
             return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
         }
@@ -83,7 +106,35 @@ class NewContentPostMediums extends Component {
             return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
         }
 
+
+        // clear out values if checkbox is not selected at point of submitting
+        if (!this.state.showYouTubeForm) {
+            this.props.dispatch(youtubeRemoveData());
+        }
+
+        if (!this.state.showInstagramForm) {
+            this.props.dispatch(instagramRemoveData());
+        }
+
+        if (!this.state.showTwitterForm) {
+            this.props.dispatch(twitterRemoveData());
+        }
+
+        if (!this.state.showSnapchatForm) {
+            this.props.dispatch(snapchatRemoveData());
+        }
+
+        // prevent valid entry then becomes invalid. e.prevent.default
+        console.log(this.state);
+        console.log(this.props.newContentPost);
+
+        console.log(Object.keys(this.props.newContentPost).length);
+
+
+        //temp below
         console.log('yes');
+        this.setState({redirectToNextPage: true})
+
         // // validation for later. Check that all contentX fields and one entry are filled in.
         // if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentMedium) {
         //     return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
@@ -103,8 +154,12 @@ class NewContentPostMediums extends Component {
         // })();
     }
 
+
     render() {
         console.log(this.props.newContentPost);
+        if (this.state.redirectToNextPage) {
+            return <Redirect push to="/newContentPost/images" />;
+        }
 
         return (
             <div className="newContentPostContainer">
@@ -126,35 +181,55 @@ class NewContentPostMediums extends Component {
                         <ControlLabel>Marketable medium(s)</ControlLabel>
 
                         <FormGroup>
-                            <Checkbox inline name="YouTube" onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}>
+                            <Checkbox
+                                inline
+                                name="YouTube"
+                                defaultChecked={this.state.showYouTubeForm}
+                                onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
+                                >
                                 YouTube
                             </Checkbox>
-                            <Checkbox inline name="Instagram" onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}>
+                            <Checkbox
+                                inline
+                                name="Instagram"
+                                defaultChecked={this.state.showInstagramForm}
+                                onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
+                                >
                                 Instagram
                             </Checkbox>
-                            <Checkbox inline name="Twitter" onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}>
+                            <Checkbox
+                                inline
+                                name="Twitter"
+                                defaultChecked={this.state.showTwitterForm}
+                                onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
+                                >
                                 Twitter
                             </Checkbox>
-                            <Checkbox inline name="Snapchat" onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}>
+                            <Checkbox
+                                inline
+                                name="Snapchat"
+                                defaultChecked={this.state.showSnapchatForm}
+                                onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
+                                >
                                 Snapchat
                             </Checkbox>
                         </FormGroup>
                     </FormGroup>
                 </Form>
 
-                {/*Import specific forms*/}
+                {/* Import social media specific forms */}
                 {this.youtubeForm()}
                 {this.instagramForm()}
                 {this.twitterForm()}
                 {this.snapchatForm()}
 
-                <Button bsStyle="success" onClick={this.onReviewNewContentPost}>
-                    Proceed to final review
+                <Button bsStyle="success" onClick={this.onNextPage}>
+                    Proceed to optional images (Step 3/4)
                 </Button>
 
-                <Button id="contentMediumsGoBack" bsStyle="warning" onClick={() => alert('NOTE: You will need to reselect categories. Sorry for the inconvenience!')}>
+                <Button id="contentMediumsGoBack" bsStyle="warning">
                     <Link to="/newContentPost">
-                        Back to previous page
+                        Back to previous page (Step 1/4)
                     </Link>
                 </Button>
 

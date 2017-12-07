@@ -18,6 +18,19 @@ class TwitterForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentWillMount() {
+        // repopulate form fields if user toggled back and forth steps
+        if (this.props.newContentPost.twitter) {
+            return this.setState({
+                tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
+                tw_Followers: this.props.newContentPost.twitter.tw_Followers,
+                tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
+                tw_Comments: this.props.newContentPost.twitter.tw_Comments,
+            })
+        }
+    }
+
+
     handleChange(event) {
         // wait until all data is entered before submitting to redux store. Will send once all values are entered
         // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
@@ -29,7 +42,7 @@ class TwitterForm extends Component {
                     if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
                         return this.props.dispatch(twitterUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -39,7 +52,7 @@ class TwitterForm extends Component {
                     if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
                         return this.props.dispatch(twitterUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -49,7 +62,7 @@ class TwitterForm extends Component {
                     if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
                         return this.props.dispatch(twitterUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -59,7 +72,7 @@ class TwitterForm extends Component {
                     if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
                         return this.props.dispatch(twitterUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -99,8 +112,8 @@ class TwitterForm extends Component {
                             value={this.state.tw_Followers}
                             placeholder="select">
                             <option value="">-</option>
-                            <option value="Under 500 users">Under 500 users</option>
-                            <option value="Between 500 and 1,000 users">Between 500 and 1,000 users</option>
+                            <option value="Under 200 users">Under 200 users</option>
+                            <option value="Between 200 and 1,000 users">Between 200 and 1,000 users</option>
                             <option value="Between 5,000 and 10,000 users">Between 5,000 and 10,000 users</option>
                             <option value="Between 10,000 and 50,000 users">Between 10,000 and 50,000 users</option>
                             <option value="Between 50,000 and 100,000 users">Between 50,000 and 100,000 users</option>
@@ -118,8 +131,8 @@ class TwitterForm extends Component {
                             <option value="">-</option>
                             <option value="Under 50 likes">Under 50 likes</option>
                             <option value="Between 50 and 100 likes">Between 50 and 100 likes</option>
-                            <option value="Between 100 and 500 likes">Between 100 and 500 likes</option>
-                            <option value="500+ likes">500+ likes</option>
+                            <option value="Between 100 and 200 likes">Between 100 and 200 likes</option>
+                            <option value="200+ likes">200+ likes</option>
                         </FormControl>
                         <FormGroup>
                             <ControlLabel>Typical comments per post</ControlLabel>

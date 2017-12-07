@@ -19,7 +19,7 @@ class YoutubeForm extends Component {
     }
 
     componentWillMount() {
-        // // repopulate form fields from checkbox toggling
+        // repopulate form fields if user toggled back and forth steps
         if (this.props.newContentPost.youtube) {
             return this.setState({
                 yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
@@ -43,7 +43,7 @@ class YoutubeForm extends Component {
                     if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
                         return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -53,7 +53,7 @@ class YoutubeForm extends Component {
                     if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
                         return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -63,7 +63,7 @@ class YoutubeForm extends Component {
                     if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
                         return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 
@@ -73,7 +73,7 @@ class YoutubeForm extends Component {
                     if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
                         return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
                     }
-                }, 500);
+                }, 200);
                 break;
             }
 

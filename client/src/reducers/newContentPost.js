@@ -7,36 +7,13 @@ const newContentPost = (state ={
             console.log(action.payload);
             return {
                 newContentPost: {
+                    ...state.newContentPost,
                     userLocation: action.payload.userLocation,
                     contentSummary: action.payload.contentSummary,
                     contentDescription: action.payload.contentDescription,
                     contentIdealMatch: action.payload.contentIdealMatch,
                     contentTags: action.payload.contentTags,
                     contentCategories: action.payload.contentCategories,
-                    youtube: {
-                        yt_UploadFrequency: null,
-                        yt_VideoLength: null,
-                        yt_SubCount: null,
-                        yt_ViewCount: null
-                    },
-                    instagram: {
-                        ig_PostFrequency: null,
-                        ig_Followers: null,
-                        ig_Likes: null,
-                        ig_Comments: null
-                    },
-                    twitter: {
-                        yt_UploadFrequency: null,
-                        yt_VideoLength: null,
-                        yt_SubCount: null,
-                        yt_ViewCount: null
-                    },
-                    snapchat: {
-                        yt_UploadFrequency: null,
-                        yt_VideoLength: null,
-                        yt_SubCount: null,
-                        yt_ViewCount: null
-                    },
                 }
             }
         }
@@ -95,6 +72,62 @@ const newContentPost = (state ={
                 }
             }
         }
+
+        case 'REMOVE_YOUTUBE_DATA_ON_SUBMIT': {
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                    youtube: {
+                        yt_UploadFrequency: null,
+                        yt_VideoLength: null,
+                        yt_SubCount: null,
+                        yt_ViewCount: null
+                    }
+                }
+            }
+        }
+
+        case 'REMOVE_INSTAGRAM_DATA_ON_SUBMIT': {
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                    instagram: {
+                        ig_PostFrequency: null,
+                        ig_Followers: null,
+                        ig_Likes: null,
+                        ig_Comments: null
+                    }
+                }
+            }
+        }
+
+        case 'REMOVE_TWITTER_DATA_ON_SUBMIT': {
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                    twitter: {
+                        tw_PostFrequency: null,
+                        tw_Followers: null,
+                        tw_PostLikes: null,
+                        tw_Comments: null,
+                    }
+                }
+            }
+        }
+
+        case 'REMOVE_SNAPCHAT_DATA_ON_SUBMIT': {
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                    snapchat: {
+                        sc_PostFrequency: null,
+                        sc_Followers: null,
+                        sc_StoryOpens: null,
+                    }
+                }
+            }
+        }
+
 
 
         default: {

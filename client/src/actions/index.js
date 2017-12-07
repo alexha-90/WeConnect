@@ -90,6 +90,22 @@ export const snapchatUpdateNewContentPost = (info) => {
     };
 };
 
+export const youtubeRemoveData = () => {
+    return { type: 'REMOVE_YOUTUBE_DATA_ON_SUBMIT' };
+};
+
+export const instagramRemoveData = () => {
+    return { type: 'REMOVE_INSTAGRAM_DATA_ON_SUBMIT' };
+};
+
+export const twitterRemoveData = () => {
+    return { type: 'REMOVE_TWITTER_DATA_ON_SUBMIT' };
+};
+
+export const snapchatRemoveData = () => {
+    return { type: 'REMOVE_SNAPCHAT_DATA_ON_SUBMIT' };
+};
+
 
 //refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {

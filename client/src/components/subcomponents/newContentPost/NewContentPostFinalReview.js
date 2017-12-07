@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import { saveNewContentPost } from '../../../actions';
 
 
-class ReviewNewContentPost extends Component {
+class NewContentPostFinalReview extends Component {
     constructor() {
         super();
         this.state = {
@@ -47,7 +47,7 @@ class ReviewNewContentPost extends Component {
         }
         return (
             <div>
-                <h1>Review your new task below:</h1>
+                <h1>Review your new post below:</h1>
 
                 <ul>
                     <li>Medium: {this.props.newContentPost.contentMedium}</li>
@@ -71,10 +71,10 @@ class ReviewNewContentPost extends Component {
     }
 }
 
+export default connect(mapStateToProps)(NewContentPostFinalReview);
+
 function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
 }
-
-export default connect(mapStateToProps)(ReviewNewContentPost);
