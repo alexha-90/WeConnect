@@ -1,30 +1,114 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import {testNewTaskValidity} from "../../stateFunctions";
-import { Redirect } from 'react-router-dom';
+// import {testNewTaskValidity} from "../../stateFunctions";
+import { Link, Redirect } from 'react-router-dom';
 
-import { saveNewContentPost } from '../../../actions';
-
+import { isLoggedIn, saveNewContentPost } from '../../../actions';
+//===============================================================================================//
 
 class NewContentPostFinalReview extends Component {
     constructor() {
         super();
         this.state = {
+
             redirectToContentCreatorsList: false
         };
-        this.onSubmitNewTask = this.onSubmitNewTask.bind(this);
+        this.onSubmitNewContentPost = this.onSubmitNewContentPost.bind(this);
+        this.youtubeData = this.youtubeData.bind(this);
+        this.instagramData = this.instagramData.bind(this);
+        this.twitterData = this.twitterData.bind(this);
+        this.snapchatData = this.snapchatData.bind(this);
     }
+
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                    .then((result) => {
+                        if (result !== 'OK') {
+                            alert('You are not logged in. Please login or register before making a new listing.');
+                            return this.setState({ redirectToContentCreatorsList: true });
+                        }
+                        return this.setState({ checkingLogin: false });
+                    });
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+    }
+
 
     componentDidMount() {
-        // this needs work
-        //console.log(this.props.contentPosts);
-        //run function for unit test. Ensure information to be submitted is accurate
-        //currently always proceeds regardless. Fix
-        testNewTaskValidity(this.props.newContentPost)
+        // Needs work.... Run function for unit test. Ensure information to be submitted is accurate. Currently always proceeds regardless. Fix
+        // testNewTaskValidity(this.props.newContentPost)
     }
 
-    onSubmitNewTask() {
+    youtubeData () {
+        if (this.props.newContentPost.youtube) {
+            return (
+                <div>
+                    <h3>Youtube:</h3>
+                    <ul>
+                        <li>Upload frequency: {this.props.newContentPost.youtube.yt_UploadFrequency}</li>
+                        <li>Typical video length: {this.props.newContentPost.youtube.yt_VideoLength}</li>
+                        <li>Subscriber count: {this.props.newContentPost.youtube.yt_SubCount}</li>
+                        <li>Total Channel views: {this.props.newContentPost.youtube.yt_ViewCount}</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    instagramData () {
+        if (this.props.newContentPost.instagram) {
+            return (
+                <div>
+                    <h3>Instagram:</h3>
+                    <ul>
+                        <li>Post frequency: {this.props.newContentPost.instagram.ig_PostFrequency}</li>
+                        <li>Followers: {this.props.newContentPost.instagram.ig_Followers}</li>
+                        <li>Typical likes per post: {this.props.newContentPost.instagram.ig_Likes}</li>
+                        <li>Typical comments per post: {this.props.newContentPost.instagram.ig_Comments}</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    twitterData () {
+        if (this.props.newContentPost.twitter) {
+            return (
+                <div>
+                    <h3>Twitter:</h3>
+                    <ul>
+                        <li>Post frequency: {this.props.newContentPost.twitter.tw_PostFrequency}</li>
+                        <li>Followers: {this.props.newContentPost.twitter.tw_Followers}</li>
+                        <li>Typical likes per post: {this.props.newContentPost.twitter.tw_PostLikes}</li>
+                        <li>Typical comments per post: {this.props.newContentPost.twitter.tw_Comments}</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    snapchatData () {
+        if (this.props.newContentPost.snapchat) {
+            return (
+                <div>
+                    <h3>Snapchat:</h3>
+                    <ul>
+                        <li>Post frequency: {this.props.newContentPost.snapchat.sc_PostFrequency}</li>
+                        <li>Followers: {this.props.newContentPost.snapchat.sc_Followers}</li>
+                        <li>Typical story opens: {this.props.newContentPost.snapchat.sc_StoryOpens}</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    onSubmitNewContentPost() {
         (async () => {
             try {
                 return this.props.dispatch(saveNewContentPost(this.props.newContentPost))
@@ -46,24 +130,42 @@ class NewContentPostFinalReview extends Component {
             return <Redirect push to="/contentCreatorsList" />;
         }
         return (
-            <div>
-                <h1>Review your new post below:</h1>
+            <div className="newContentPostContainer">
+                <h1>Review before submitting</h1>
 
-                <ul>
-                    <li>Medium: {this.props.newContentPost.contentMedium}</li>
-                    <li>Content Summary: {this.props.newContentPost.contentSummary}</li>
-                    <li>Content Description: {this.props.newContentPost.contentDescription}</li>
-                    <li>Content Ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                    <li>YouTube upload frequency: {this.props.newContentPost.yt_UploadFrequency}</li>
-                    <li>YouTube typical video length: {this.props.newContentPost.yt_VideoLength}</li>
-                    <li>YouTube subscriber count: {this.props.newContentPost.yt_SubCount}</li>
-                    <li>YouTube channel view count: {this.props.newContentPost.yt_ViewCount}</li>
-                </ul>
+                <div className="contentMediumsPropsInfo">
+                    <h3>Inputs thus far:</h3>
+                    <ul>
+                        <li>User location: {this.props.newContentPost.userLocation}</li>
+                        <li>Content summary: {this.props.newContentPost.contentSummary}</li>
+                        <li>Content description: {this.props.newContentPost.contentDescription}</li>
+                        <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
+                        <li>Content tags: {this.props.newContentPost.contentTags}</li>
+                        {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
+                    </ul>
+                </div>
+
+                <hr/>
+
+                {this.youtubeData()}
+                {this.instagramData()}
+                {this.twitterData()}
+                {this.snapchatData()}
+
+                <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+                <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
 
                 <Button bsStyle="success"
-                    onClick={this.onSubmitNewTask}
-                    >
+                        onClick={this.onSubmitNewContentPost}
+                >
                     Submit!
+                </Button>
+
+
+                <Button id="contentMediumsGoBack" bsStyle="warning">
+                    <Link to="/newContentPost/images">
+                        Back to previous page (Step 3/4)
+                    </Link>
                 </Button>
 
             </div>

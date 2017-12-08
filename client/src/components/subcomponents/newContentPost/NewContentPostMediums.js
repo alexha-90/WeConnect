@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
+import { Button, Form, FormGroup, ControlLabel, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
@@ -9,10 +9,9 @@ import InstagramForm from './InstagramForm';
 import TwitterForm from './TwitterForm';
 import SnapchatForm from './SnapchatForm';
 
-import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions'
+import { isLoggedIn, youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions'
 
-// import { isLoggedIn, newContentPostToProps } from '../actions';
-////
+// uncomment categories check
 
 //===============================================================================================//
 
@@ -34,7 +33,23 @@ class NewContentPostMediums extends Component {
     }
 
     componentWillMount() {
-        // preserve history if user toggled between steps
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                    .then((result) => {
+                        if (result !== 'OK') {
+                            alert('You are not logged in. Please login or register before making a new listing.');
+                            return this.setState({ redirectToContentCreatorsList: true });
+                        }
+                        return this.setState({ checkingLogin: false });
+                    });
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+
+        // preserve show form history if user toggled between steps
         if (this.props.newContentPost.youtube && this.props.newContentPost.youtube.yt_UploadFrequency !== null) {
             this.setState({ showYouTubeForm: true })
         }
@@ -54,7 +69,6 @@ class NewContentPostMediums extends Component {
 
     youtubeForm() {
         if (!this.state.showYouTubeForm) {
-            // retrieve data before uncheck, if available
             return;
         }
         return <YoutubeForm />
@@ -62,7 +76,6 @@ class NewContentPostMediums extends Component {
 
     instagramForm() {
         if (!this.state.showInstagramForm) {
-            // retrieve data before uncheck, if available
             return;
         }
         return <InstagramForm />
@@ -70,7 +83,6 @@ class NewContentPostMediums extends Component {
 
     twitterForm() {
         if (!this.state.showTwitterForm) {
-            // retrieve data before uncheck, if available
             return;
         }
         return <TwitterForm />
@@ -78,7 +90,6 @@ class NewContentPostMediums extends Component {
 
     snapchatForm() {
         if (!this.state.showSnapchatForm) {
-            // retrieve data before uncheck, if available
             return;
         }
         return <SnapchatForm />
@@ -106,7 +117,6 @@ class NewContentPostMediums extends Component {
             return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
         }
 
-
         // clear out values if checkbox is not selected at point of submitting
         if (!this.state.showYouTubeForm) {
             this.props.dispatch(youtubeRemoveData());
@@ -124,34 +134,9 @@ class NewContentPostMediums extends Component {
             this.props.dispatch(snapchatRemoveData());
         }
 
-        // prevent valid entry then becomes invalid. e.prevent.default
-        console.log(this.state);
-        console.log(this.props.newContentPost);
-
-        console.log(Object.keys(this.props.newContentPost).length);
-
-
-        //temp below
-        console.log('yes');
-        this.setState({redirectToNextPage: true})
-
-        // // validation for later. Check that all contentX fields and one entry are filled in.
-        // if (!this.state.contentSummary || !this.state.contentDescription || !this.state.contentMedium) {
-        //     return alert('Error: Please make sure to enter a headline, description, and category before proceeding');
-        // }
-        //
-        //
-        // (async () => {
-        //     try {
-        //         this.props.dispatch(newContentPostToProps({
-        //
-        //         }));
-        //         return await this.setState({redirectToReviewNewContentPost: true});
-        //
-        //     } catch (err) {
-        //         return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
-        //     }
-        // })();
+        setTimeout(() => {
+            this.setState({redirectToNextPage: true})
+        }, 200);
     }
 
 

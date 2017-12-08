@@ -9,7 +9,17 @@ import { isLoggedIn, newContentPostToProps } from '../actions';
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
 
+// google autocomplete api for location
+
+
 /*
+to do: checkbox state preserved when toggling stages. Values are preserving correctly still.
+    checkboxStatus() {
+        //componentWillMount, load status of checkboxes
+        //if event.target.value is in this.props.newContentPost.contentCategories
+    }
+
+
 to-do:
 file uploads
 */
@@ -33,10 +43,11 @@ class NewContentPost extends Component {
             contentCategories: []
         };
         this.handleTextChange = this.handleTextChange.bind(this);
-        this.onReviewNewContentPost  = this.onReviewNewContentPost.bind(this);
+        this.onReviewForNextStep  = this.onReviewForNextStep.bind(this);
         this.openCategoryIndicator = this.openCategoryIndicator.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
     }
+
     componentWillMount() {
         (async () => {
             try {
@@ -107,8 +118,7 @@ class NewContentPost extends Component {
         }
     }
 
-
-    onReviewNewContentPost() {
+    onReviewForNextStep() {
         // can split into an exported function
         // remove duplicates from categories array. Very efficient method borrowed from https://stackoverflow.com/questions/840781/get-all-non-unique-values-i-e-duplicate-more-than-one-occurrence-in-an-array
         let obj = {};
@@ -230,7 +240,7 @@ class NewContentPost extends Component {
                             <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
                                 <tbody>
                                 <tr>
-                                    <td><Checkbox name="Action/Adventure">Action/Adventure</Checkbox></td>
+                                    <td><Checkbox defaultChecked={true} name="Action/Adventure">Action/Adventure</Checkbox></td>
                                     <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
                                     <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
                                 </tr>
@@ -284,7 +294,7 @@ class NewContentPost extends Component {
                     </FormGroup>
 
                     <Button bsStyle="success"
-                            onClick={this.onReviewNewContentPost}
+                            onClick={this.onReviewForNextStep}
                         >
                         Proceed - Select your content mediums (Step 2/4)
                     </Button>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
+import { isLoggedIn } from '../../../actions';
 
 //===============================================================================================//
 
@@ -14,30 +15,43 @@ class NewContentPostImageUpload extends Component {
         };
     }
 
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                    .then((result) => {
+                        if (result !== 'OK') {
+                            alert('You are not logged in. Please login or register before making a new listing.');
+                            return this.setState({ redirectToContentCreatorsList: true });
+                        }
+                        return this.setState({ checkingLogin: false });
+                    });
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+    }
+
     render() {
         if (this.state.onNewContentPostFinalReview) {
             return <Redirect push to="/newContentPost/review" />;
         }
 
-
-        // if this.props for youtube, instagram, twitter, snapchat, return below.
-
-
         return (
             <div className="newContentPostContainer">
                 <h1>Upload images TBD</h1>
-                <div className="contentMediumsPropsInfo">
-                    <h3>Inputs thus far:</h3>
-                    <ul>
-                        <li>User location: {this.props.newContentPost.userLocation}</li>
-                        <li>Content summary: {this.props.newContentPost.contentSummary}</li>
-                        <li>Content description: {this.props.newContentPost.contentDescription}</li>
-                        <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                        <li>Content tags: {this.props.newContentPost.contentTags}</li>
-                        {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
-                    </ul>
-                </div>
 
+                <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+                <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+                <FieldGroup
+                    id="formControlsFile"
+                    type="file"
+                    label="File"
+                    help="Example block-level help text here."
+                />
+
+                <hr/>
 
                 <Button bsStyle="success" onClick={() => this.setState({ onNewContentPostFinalReview: true })}>
                     Proceed to review (Step 4/4)
@@ -61,4 +75,14 @@ function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
+}
+
+function FieldGroup({ id, label, help, ...props }) {
+    return (
+        <FormGroup controlId={id}>
+            <ControlLabel>{label}</ControlLabel>
+            <FormControl {...props} />
+            {help && <HelpBlock>{help}</HelpBlock>}
+        </FormGroup>
+    );
 }
