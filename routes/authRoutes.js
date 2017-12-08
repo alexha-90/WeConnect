@@ -146,22 +146,3 @@ function authenticationCheck() {
         return res.send('error');
     }
 }
-
-
-
-
-//             // all code below successfully hashes password and returns true
-//             bcrypt.hash(plainPassword, 10).then(function (hash) {
-//                 maskedPassword = hash;
-//                 console.log(maskedPassword);
-//             });
-//
-//             setTimeout(() => {
-//                 bcrypt.compare(plainPassword, maskedPassword).then(function (res) {
-//                     console.log(res);
-//                 });
-//             }, 1000);
-//         } catch (res) {
-//             console.log(res);
-//         }
-//     })

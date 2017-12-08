@@ -13,7 +13,6 @@ class NewContentPostFinalReview extends Component {
     constructor() {
         super();
         this.state = {
-
             redirectToContentCreatorsList: false
         };
         this.onSubmitNewContentPost = this.onSubmitNewContentPost.bind(this);

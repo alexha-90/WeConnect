@@ -55,8 +55,10 @@ export const snapchatRemoveData = () => {
 
 //refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
+    console.log('*****');
+    console.log(contentPostsInfo);
     try {
-        const res = await axios.post('api/saveNewContentPost', contentPostsInfo);
+        const res = await axios.post('/api/saveNewContentPost', contentPostsInfo);
         dispatch({ type: 'SAVE_NEW_CONTENT_POST_TO_DB', payload: res.data });
         return res.data;
     } catch(res) {
