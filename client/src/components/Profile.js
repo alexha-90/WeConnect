@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
-import { isLoggedIn, loadProfileData } from '../actions';
+import { loadProfileData } from '../actions';
+import { isLoggedIn } from '../actions/auth';
 import { connect } from 'react-redux';
 
 import profileData from './subcomponents/profileData';

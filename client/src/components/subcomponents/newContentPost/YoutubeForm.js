@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
-import { youtubeUpdateNewContentPost } from '../../../actions';
+import { youtubeUpdateNewContentPost } from '../../../actions/newContentPost';
 
 //===============================================================================================//
 

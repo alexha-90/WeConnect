@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
-import { loginUser } from '../../actions/';
+import { loginUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 //===============================================================================================//

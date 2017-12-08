@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
-import { isLoggedIn } from '../../../actions';
+import { isLoggedIn } from '../../../actions/auth';
 
 //===============================================================================================//
 

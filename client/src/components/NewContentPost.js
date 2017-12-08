@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
 
-import { isLoggedIn, newContentPostToProps } from '../actions';
+import { isLoggedIn } from '../actions/auth';
+import { newContentPostToProps } from '../actions/newContentPost';
 
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch

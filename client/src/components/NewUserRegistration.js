@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Radio, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isLoggedIn } from '../actions';
+import { isLoggedIn } from '../actions/auth';
 import { registerNewUser } from '../actions';
 import { Redirect } from 'react-router';
 import moment from 'moment';

@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 // import {testNewTaskValidity} from "../../stateFunctions";
 import { Link, Redirect } from 'react-router-dom';
+import { youtubeData, instagramData, twitterData, snapchatData } from '../../helper_functions/newContentHelpers';
+import { isLoggedIn } from '../../../actions/auth';
+import { saveNewContentPost } from '../../../actions/newContentPost';
 
-import { isLoggedIn, saveNewContentPost } from '../../../actions';
 //===============================================================================================//
 
 class NewContentPostFinalReview extends Component {
@@ -15,10 +17,6 @@ class NewContentPostFinalReview extends Component {
             redirectToContentCreatorsList: false
         };
         this.onSubmitNewContentPost = this.onSubmitNewContentPost.bind(this);
-        this.youtubeData = this.youtubeData.bind(this);
-        this.instagramData = this.instagramData.bind(this);
-        this.twitterData = this.twitterData.bind(this);
-        this.snapchatData = this.snapchatData.bind(this);
     }
 
     componentWillMount() {
@@ -45,69 +43,6 @@ class NewContentPostFinalReview extends Component {
         // testNewTaskValidity(this.props.newContentPost)
     }
 
-    youtubeData () {
-        if (this.props.newContentPost.youtube) {
-            return (
-                <div>
-                    <h3>Youtube:</h3>
-                    <ul>
-                        <li>Upload frequency: {this.props.newContentPost.youtube.yt_UploadFrequency}</li>
-                        <li>Typical video length: {this.props.newContentPost.youtube.yt_VideoLength}</li>
-                        <li>Subscriber count: {this.props.newContentPost.youtube.yt_SubCount}</li>
-                        <li>Total Channel views: {this.props.newContentPost.youtube.yt_ViewCount}</li>
-                    </ul>
-                </div>
-            )
-        }
-    }
-
-    instagramData () {
-        if (this.props.newContentPost.instagram) {
-            return (
-                <div>
-                    <h3>Instagram:</h3>
-                    <ul>
-                        <li>Post frequency: {this.props.newContentPost.instagram.ig_PostFrequency}</li>
-                        <li>Followers: {this.props.newContentPost.instagram.ig_Followers}</li>
-                        <li>Typical likes per post: {this.props.newContentPost.instagram.ig_Likes}</li>
-                        <li>Typical comments per post: {this.props.newContentPost.instagram.ig_Comments}</li>
-                    </ul>
-                </div>
-            )
-        }
-    }
-
-    twitterData () {
-        if (this.props.newContentPost.twitter) {
-            return (
-                <div>
-                    <h3>Twitter:</h3>
-                    <ul>
-                        <li>Post frequency: {this.props.newContentPost.twitter.tw_PostFrequency}</li>
-                        <li>Followers: {this.props.newContentPost.twitter.tw_Followers}</li>
-                        <li>Typical likes per post: {this.props.newContentPost.twitter.tw_PostLikes}</li>
-                        <li>Typical comments per post: {this.props.newContentPost.twitter.tw_Comments}</li>
-                    </ul>
-                </div>
-            )
-        }
-    }
-
-    snapchatData () {
-        if (this.props.newContentPost.snapchat) {
-            return (
-                <div>
-                    <h3>Snapchat:</h3>
-                    <ul>
-                        <li>Post frequency: {this.props.newContentPost.snapchat.sc_PostFrequency}</li>
-                        <li>Followers: {this.props.newContentPost.snapchat.sc_Followers}</li>
-                        <li>Typical story opens: {this.props.newContentPost.snapchat.sc_StoryOpens}</li>
-                    </ul>
-                </div>
-            )
-        }
-    }
-
     onSubmitNewContentPost() {
         (async () => {
             try {
@@ -129,6 +64,8 @@ class NewContentPostFinalReview extends Component {
         if (this.state.redirectToContentCreatorsList) {
             return <Redirect push to="/contentCreatorsList" />;
         }
+        console.log(this.props.newContentPost);
+
         return (
             <div className="newContentPostContainer">
                 <h1>Review before submitting</h1>
@@ -147,10 +84,11 @@ class NewContentPostFinalReview extends Component {
 
                 <hr/>
 
-                {this.youtubeData()}
-                {this.instagramData()}
-                {this.twitterData()}
-                {this.snapchatData()}
+                {youtubeData(this.props)}
+                {instagramData(this.props)}
+                {twitterData(this.props)}
+                {snapchatData(this.props)}
+
 
                 <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
                 <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
@@ -164,7 +102,7 @@ class NewContentPostFinalReview extends Component {
 
                 <Button id="contentMediumsGoBack" bsStyle="warning">
                     <Link to="/newContentPost/images">
-                        Back to previous page (Step 3/4)
+                        Need to make change(s)? Go back to previous page (Step 3/4)
                     </Link>
                 </Button>
 

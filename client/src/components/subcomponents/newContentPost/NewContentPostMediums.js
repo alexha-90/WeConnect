@@ -9,9 +9,10 @@ import InstagramForm from './InstagramForm';
 import TwitterForm from './TwitterForm';
 import SnapchatForm from './SnapchatForm';
 
-import { isLoggedIn, youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions'
+import { isLoggedIn } from '../../../actions/auth'
+import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
 
-// uncomment categories check
+// uncomment categories check later. In for testing
 
 //===============================================================================================//
 
