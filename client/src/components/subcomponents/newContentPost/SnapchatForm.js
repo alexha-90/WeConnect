@@ -13,6 +13,9 @@ class SnapchatForm extends Component {
             sc_PostFrequency: false,
             sc_Followers: false,
             sc_StoryOpens: false,
+            sc_PostFrequencyDefaultVal: true,
+            sc_FollowersDefaultVal: true,
+            sc_StoryOpensDefaultVal: true,
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -24,41 +27,49 @@ class SnapchatForm extends Component {
                 sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
                 sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
                 sc_StoryOpens: this.props.newContentPost.snapchat.sc_StoryOpens,
+                sc_PostFrequencyDefaultVal: false,
+                sc_FollowersDefaultVal: false,
+                sc_StoryOpensDefaultVal: false,
             })
         }
     }
 
 
     handleChange(event) {
-        // wait until all data is entered before submitting to redux store. Will send once all values are entered
-        // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        // wait until all data is entered before submitting to redux store.
+        // need some redundancy since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        const errorString = 'Error: Default value (-) is not a valid option! If you want to remove this medium, please deselect the checkbox.';
 
         switch (event.target.name) {
             case 'sc_PostFrequency': {
-                this.setState({ sc_PostFrequency: event.target.value });
+                // prevent user from selecting default value ('') after initial change
+                if (!event.target.value && !this.state.sc_PostFrequencyDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ sc_PostFrequency: event.target.value, sc_PostFrequencyDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.sc_PostFrequency && this.state.sc_Followers && this.state.sc_StoryOpens) {
-                        return this.props.dispatch(snapchatUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
             case 'sc_Followers': {
-                this.setState({ sc_Followers: event.target.value });
+                if (!event.target.value && !this.state.sc_FollowersDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ sc_Followers: event.target.value, sc_FollowersDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.sc_PostFrequency && this.state.sc_Followers && this.state.sc_StoryOpens) {
-                        return this.props.dispatch(snapchatUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'sc_StoryOpens': {
-                this.setState({ sc_StoryOpens: event.target.value });
+                if (!event.target.value && !this.state.sc_StoryOpensDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ sc_StoryOpens: event.target.value, sc_StoryOpensDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.sc_PostFrequency && this.state.sc_Followers && this.state.sc_StoryOpens) {
-                        return this.props.dispatch(snapchatUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
@@ -130,8 +141,17 @@ class SnapchatForm extends Component {
 
 export default connect(mapStateToProps)(SnapchatForm);
 
+
 function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
+}
+
+function dispatchCondition(state, props) {
+    setTimeout(() => {
+        if (state.sc_PostFrequency && state.sc_Followers && state.sc_StoryOpens) {
+            return props.dispatch(snapchatUpdateNewContentPost(state));
+        }
+    }, 200);
 }

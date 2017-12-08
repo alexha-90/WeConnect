@@ -13,7 +13,11 @@ class TwitterForm extends Component {
             tw_PostFrequency: false,
             tw_Followers: false,
             tw_PostLikes: false,
-            tw_Comments: false
+            tw_Comments: false,
+            tw_PostFrequencyDefaultVal: true,
+            tw_FollowersDefaultVal: true,
+            tw_PostLikesDefaultVal: true,
+            tw_CommentsDefaultVal: true
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,52 +30,62 @@ class TwitterForm extends Component {
                 tw_Followers: this.props.newContentPost.twitter.tw_Followers,
                 tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
                 tw_Comments: this.props.newContentPost.twitter.tw_Comments,
+                tw_PostFrequencyDefaultVal: false,
+                tw_FollowersDefaultVal: false,
+                tw_PostLikesDefaultVal: false,
+                tw_CommentsDefaultVal: false
             })
         }
     }
 
 
     handleChange(event) {
-        // wait until all data is entered before submitting to redux store. Will send once all values are entered
-        // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        // wait until all data is entered before submitting to redux store.
+        // need some redundancy since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        const errorString = 'Error: Default value (-) is not a valid option! If you want to remove this medium, please deselect the checkbox.';
 
         switch (event.target.name) {
             case 'tw_PostFrequency': {
-                this.setState({ tw_PostFrequency: event.target.value });
+                // prevent user from selecting default value ('') after initial change
+                if (!event.target.value && !this.state.tw_PostFrequencyDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ tw_PostFrequency: event.target.value, tw_PostFrequencyDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
-                        return this.props.dispatch(twitterUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'tw_Followers': {
-                this.setState({ tw_Followers: event.target.value });
+                if (!event.target.value && !this.state.tw_FollowersDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ tw_Followers: event.target.value, tw_FollowersDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
-                        return this.props.dispatch(twitterUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'tw_PostLikes': {
-                this.setState({ tw_PostLikes: event.target.value });
+                if (!event.target.value && !this.state.tw_PostLikesDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ tw_PostLikes: event.target.value, tw_PostLikesDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
-                        return this.props.dispatch(twitterUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'tw_Comments': {
-                this.setState({ tw_Comments: event.target.value });
+                if (!event.target.value && !this.state.tw_PostLikesDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ tw_Comments: event.target.value, tw_PostLikesDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.tw_PostFrequency && this.state.tw_Followers && this.state.tw_PostLikes && this.state.tw_Comments) {
-                        return this.props.dispatch(twitterUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
@@ -158,8 +172,19 @@ class TwitterForm extends Component {
 
 export default connect(mapStateToProps)(TwitterForm);
 
+
+
 function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
+}
+
+
+function dispatchCondition(state, props) {
+    setTimeout(() => {
+        if (state.tw_PostFrequency && state.tw_Followers && state.tw_PostLikes && state.tw_Comments) {
+            return props.dispatch(twitterUpdateNewContentPost(state));
+        }
+    }, 200);
 }

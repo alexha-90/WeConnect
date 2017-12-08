@@ -36,7 +36,7 @@
       <file leaf-file-name="NewContentPostMediums.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2751">
+            <state relative-caret-position="-2283">
               <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -55,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YoutubeForm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="YoutubeForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="-7">
+              <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -70,8 +70,8 @@
       <file leaf-file-name="TwitterForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state relative-caret-position="503">
+              <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -82,8 +82,8 @@
       <file leaf-file-name="SnapchatForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" column="79" lean-forward="false" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
+            <state relative-caret-position="421">
+              <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -91,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstagramForm.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InstagramForm.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state relative-caret-position="2040">
+              <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -234,11 +234,11 @@
         <option value="$PROJECT_DIR$/client/src/actions/index.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostImageUpload.js" />
         <option value="$PROJECT_DIR$/client/src/reducers/newContentPost.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js" />
       </list>
     </option>
   </component>
@@ -432,7 +432,7 @@
       <workItem from="1511231693056" duration="92212000" />
       <workItem from="1511774185904" duration="7541000" />
       <workItem from="1511821115855" duration="24843000" />
-      <workItem from="1511907009606" duration="180200000" />
+      <workItem from="1511907009606" duration="187549000" />
     </task>
     <task id="LOCAL-00001" summary="Resolve renamed file conflicts">
       <created>1511822758826</created>
@@ -459,7 +459,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332719000" />
+    <option name="totallyTimeSpent" value="340068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3637" y="-287" width="1440" height="877" extended-state="0" />
@@ -937,39 +937,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="79" lean-forward="false" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2751">
+        <state relative-caret-position="-2283">
           <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -979,8 +949,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+        <state relative-caret-position="-7">
+          <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

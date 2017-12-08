@@ -14,6 +14,10 @@ class YoutubeForm extends Component {
             yt_VideoLength: false,
             yt_SubCount: false,
             yt_ViewCount: false,
+            yt_UploadFrequencyDefaultVal: true,
+            yt_SubCountDefaultVal: true,
+            yt_VideoLengthDefaultVal: true,
+            yt_ViewCountDefaultVal: true,
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,53 +30,61 @@ class YoutubeForm extends Component {
                 yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
                 yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
                 yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount,
+                yt_UploadFrequencyDefaultVal: false,
+                yt_SubCountDefaultVal: false,
+                yt_VideoLengthDefaultVal: false,
+                yt_ViewCountDefaultVal: false
             })
         }
     }
 
-
-
     handleChange(event) {
-        // wait until all data is entered before submitting to redux store. Will send once all values are entered
-        // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        // wait until all data is entered before submitting to redux store.
+        // need some redundancy since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        const errorString = 'Error: Default value (-) is not a valid option! If you want to remove this medium, please deselect the checkbox.';
 
         switch (event.target.name) {
             case 'yt_UploadFrequency': {
-                this.setState({ yt_UploadFrequency: event.target.value });
+                // prevent user from selecting default value ('') after initial change
+                if (!event.target.value && !this.state.yt_UploadFrequencyDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ yt_UploadFrequency: event.target.value, yt_UploadFrequencyDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'yt_VideoLength': {
-                this.setState({ yt_VideoLength: event.target.value });
+                if (!event.target.value && !this.state.yt_VideoLengthDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ yt_VideoLength: event.target.value, yt_VideoLengthDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'yt_SubCount': {
-                this.setState({ yt_SubCount: event.target.value });
+                if (!event.target.value && !this.state.yt_SubCountDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ yt_SubCount: event.target.value, yt_SubCountDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'yt_ViewCount': {
-                this.setState({ yt_ViewCount: event.target.value });
+                if (!event.target.value && !this.state.yt_ViewCountDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ yt_ViewCount: event.target.value, yt_ViewCountDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.yt_UploadFrequency && this.state.yt_VideoLength && this.state.yt_SubCount && this.state.yt_ViewCount) {
-                        return this.props.dispatch(youtubeUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
@@ -175,8 +187,16 @@ class YoutubeForm extends Component {
 
 export default connect(mapStateToProps)(YoutubeForm);
 
+
+
 function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
+}
+
+function dispatchCondition(state, props) {
+    if (state.yt_UploadFrequency && state.yt_VideoLength && state.yt_SubCount && state.yt_ViewCount) {
+        return props.dispatch(youtubeUpdateNewContentPost(state));
+    }
 }

@@ -13,7 +13,11 @@ class InstagramForm extends Component {
             ig_PostFrequency: false,
             ig_Followers: false,
             ig_Likes: false,
-            ig_Comments: false
+            ig_Comments: false,
+            ig_PostFrequencyDefaultVal: true,
+            ig_FollowersDefaultVal: true,
+            ig_LikesDefaultVal: true,
+            ig_CommentsDefaultVal: true
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,52 +30,62 @@ class InstagramForm extends Component {
                 ig_Followers: this.props.newContentPost.instagram.ig_Followers,
                 ig_Likes: this.props.newContentPost.instagram.ig_Likes,
                 ig_Comments: this.props.newContentPost.instagram.ig_Comments,
+                ig_PostFrequencyDefaultVal: false,
+                ig_FollowersDefaultVal: false,
+                ig_LikesDefaultVal: false,
+                ig_CommentsDefaultVal: false
             })
         }
     }
 
 
     handleChange(event) {
-        // wait until all data is entered before submitting to redux store. Will send once all values are entered
-        // need some repetition since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        // wait until all data is entered before submitting to redux store.
+        // need some redundancy since we do not know what order users will be completing the form. Checking in render led to infinite loop.
+        const errorString = 'Error: Default value (-) is not a valid option! If you want to remove this medium, please deselect the checkbox.';
 
         switch (event.target.name) {
+            // prevent user from selecting default value ('') after initial change
             case 'ig_PostFrequency': {
-                this.setState({ ig_PostFrequency: event.target.value });
+                if (!event.target.value && !this.state.ig_PostFrequencyDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ ig_PostFrequency: event.target.value, ig_PostFrequencyDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.ig_PostFrequency && this.state.ig_Followers && this.state.ig_Likes && this.state.ig_Comments) {
-                        return this.props.dispatch(instagramUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'ig_Followers': {
-                this.setState({ ig_Followers: event.target.value });
+                if (!event.target.value && !this.state.ig_FollowersDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ ig_Followers: event.target.value, ig_FollowersDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.ig_PostFrequency && this.state.ig_Followers && this.state.ig_Likes && this.state.ig_Comments) {
-                        return this.props.dispatch(instagramUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'ig_Likes': {
-                this.setState({ ig_Likes: event.target.value });
+                if (!event.target.value && !this.state.ig_LikesDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ ig_Likes: event.target.value, ig_LikesDefaultVal: false });
                 setTimeout(() => {
-                    if (this.state.ig_PostFrequency && this.state.ig_Followers && this.state.ig_Likes && this.state.ig_Comments) {
-                        return this.props.dispatch(instagramUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
 
             case 'ig_Comments': {
-                this.setState({ ig_Comments: event.target.value });
+                if (!event.target.value && !this.state.ig_CommentsDefaultVal) {
+                    return alert(errorString);
+                }
+                this.setState({ ig_Comments: event.target.value, ig_CommentsDefaultVal: false});
                 setTimeout(() => {
-                    if (this.state.ig_PostFrequency && this.state.ig_Followers && this.state.ig_Likes && this.state.ig_Comments) {
-                        return this.props.dispatch(instagramUpdateNewContentPost(this.state));
-                    }
+                    dispatchCondition(this.state, this.props);
                 }, 200);
                 break;
             }
@@ -158,8 +172,17 @@ class InstagramForm extends Component {
 
 export default connect(mapStateToProps)(InstagramForm);
 
+
 function mapStateToProps(state) {
     return {
         newContentPost: state.newContentPost.newContentPost
     };
+}
+
+function dispatchCondition(state, props) {
+    setTimeout(() => {
+        if (state.ig_PostFrequency && state.ig_Followers && state.ig_Likes && state.ig_Comments) {
+            return props.dispatch(instagramUpdateNewContentPost(state));
+        }
+    }, 200);
 }
