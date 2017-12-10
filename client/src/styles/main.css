@@ -64,6 +64,77 @@
   .newContentPostContainer #contentMediumsGoBack {
     float: right; }
 
+.socialContainer, .singleContentPostContainer .youtubeContainer, .singleContentPostContainer .instagramContainer, .singleContentPostContainer .twitterContainer, .singleContentPostContainer .snapchatContainer {
+  display: inline-block;
+  width: 48%;
+  border-radius: 5px;
+  margin: 20px 0; }
+  .socialContainer div, .singleContentPostContainer .youtubeContainer div, .singleContentPostContainer .instagramContainer div, .singleContentPostContainer .twitterContainer div, .singleContentPostContainer .snapchatContainer div {
+    padding: 5px 0;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    text-align: center; }
+  .socialContainer li, .singleContentPostContainer .youtubeContainer li, .singleContentPostContainer .instagramContainer li, .singleContentPostContainer .twitterContainer li, .singleContentPostContainer .snapchatContainer li {
+    color: inherit;
+    margin: 4px 0 4px 10px; }
+
+/*--------------------------------------*/
+.singleContentPostContainer {
+  width: 65%;
+  display: block;
+  margin: 40px auto 0 auto;
+  background-color: #b3d9ff;
+  border: 2px solid #003366;
+  border-radius: 10px;
+  padding: 15px; }
+  .singleContentPostContainer #profilePic {
+    display: inline-block;
+    width: 15%;
+    height: 100px; }
+    .singleContentPostContainer #profilePic img {
+      border-radius: 50%; }
+  .singleContentPostContainer #headline {
+    width: 85%;
+    min-height: 100px;
+    display: inline-block; }
+    .singleContentPostContainer #headline div {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 5%;
+      width: 100%; }
+      .singleContentPostContainer #headline div h3 {
+        margin-bottom: 8px;
+        font-style: normal;
+        font-weight: bold; }
+      .singleContentPostContainer #headline div span {
+        font-style: italic;
+        text-decoration: overline; }
+  .singleContentPostContainer .spacer {
+    display: inline-block;
+    width: 2%; }
+  .singleContentPostContainer .youtubeContainer {
+    background-color: #ff0000;
+    color: #ffffff; }
+    .singleContentPostContainer .youtubeContainer div {
+      background-color: #282828; }
+  .singleContentPostContainer .instagramContainer {
+    background-color: #833ab4;
+    color: #ffdc80; }
+    .singleContentPostContainer .instagramContainer div {
+      background-color: #5851db; }
+  .singleContentPostContainer .twitterContainer {
+    background-color: #657786;
+    color: #f5f8fa; }
+    .singleContentPostContainer .twitterContainer div {
+      background-color: #1da1f2; }
+  .singleContentPostContainer .snapchatContainer {
+    background-color: #fffc00;
+    color: #000000; }
+    .singleContentPostContainer .snapchatContainer div {
+      background-color: #2fa5d6; }
+  .singleContentPostContainer #messageMe {
+    float: right; }
+
 .newPostBanner {
   width: 100%;
   display: block;
@@ -74,9 +145,10 @@
     height: 26px; }
 
 .searchBar {
+  display: inline-block;
   float: left;
   padding-left: 20px;
-  width: 20%;
+  width: 17%;
   height: 700px;
   background-color: #e6f2ff; }
   .searchBar h3 {
@@ -86,10 +158,16 @@
   .searchBar .filterResult {
     margin-left: 15%; }
 
-.contentPostContainer {
-  display: block;
+.adSpace {
   float: right;
-  width: 80%; }
+  display: inline-block;
+  width: 17%;
+  background-color: #e6f2ff;
+  height: 700px; }
+
+.contentPostContainer {
+  display: inline-block;
+  width: 66%; }
   .contentPostContainer h1 {
     padding-left: 20px;
     margin-top: 10px; }
@@ -124,3 +202,6 @@
 h1, h2, h3, h4 {
   margin: 0;
   padding: 0; }
+
+hr {
+  margin: 8px 0; }

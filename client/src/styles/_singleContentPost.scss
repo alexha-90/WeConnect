@@ -1,0 +1,115 @@
+.socialContainer {
+  display: inline-block;
+  width: 48%;
+  border-radius: 5px;
+  margin: 20px 0;
+
+  div {
+    padding: 5px 0;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+  }
+
+  li {
+    color: inherit;
+    margin: 4px 0 4px 10px;
+  }
+}
+
+/*--------------------------------------*/
+
+.singleContentPostContainer {
+  width: 65%;
+  display: block;
+  margin: 40px auto 0 auto;
+  background-color: #b3d9ff;
+  border: 2px solid #003366;
+  border-radius: 10px;
+  padding: 15px;
+
+  #profilePic {
+    display: inline-block;
+    width: 15%;
+    height: 100px;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  #headline {
+    width: 85%;
+    min-height: 100px;
+    display: inline-block;
+
+    div {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 5%;
+      width: 100%;
+
+      h3 {
+        margin-bottom: 8px;
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      span {
+        font-style: italic;
+        text-decoration: overline;
+      }
+
+    }
+  }
+
+  .spacer {
+    display: inline-block;
+    width: 2%;
+  }
+
+  .youtubeContainer {
+    @extend .socialContainer;
+    background-color: #ff0000;
+    color: #ffffff;
+    div {
+      background-color: #282828;
+    }
+  }
+
+  .instagramContainer {
+    @extend .socialContainer;
+    background-color: #833ab4;
+    color: #ffdc80;
+    div {
+      background-color: #5851db;
+    }
+  }
+
+  .twitterContainer {
+    @extend .socialContainer;
+    background-color: #657786;
+    color: #f5f8fa;
+    div {
+      background-color: #1da1f2;
+    }
+  }
+
+  .snapchatContainer {
+    @extend .socialContainer;
+    background-color: #fffc00;
+    color: #000000;
+    div {
+      background-color: #2fa5d6;
+    }
+  }
+
+  #goBack {
+
+  }
+
+  #messageMe {
+    float: right;
+  }
+
+}

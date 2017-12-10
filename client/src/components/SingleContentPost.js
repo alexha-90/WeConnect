@@ -10,7 +10,7 @@ import singleContentPostResult from './subcomponents/singleContentPostResult';
 // upload images. onclick expand
 //===============================================================================================//
 
-class ContentPostExpanded extends Component {
+class SingleContentPost extends Component {
     constructor() {
         super();
         this.state = {
@@ -54,24 +54,22 @@ class ContentPostExpanded extends Component {
         }
 
         return (
-            <div>
-                <h1>Expanded view for individual contentPost:</h1>
+            <div className="singleContentPostContainer">
 
                 {singleContentPostResult(this.state.contentPost)}
 
-                <Button bsStyle="success">
-                    Interested in partnering with me? Send me a message
-                </Button>
-                ______
-                <Button bsStyle="warning">
+                <Button id="goBack" bsStyle="warning">
                     <Link to="/ContentCreatorsList">
                         Back to results
                     </Link>
                 </Button>
-                <br/>
+
+                <Button id="messageMe" bsStyle="success">
+                    Interested in partnering with me? Send me a message
+                </Button>
             </div>
         )
     }
 }
 
-export default connect(null)(ContentPostExpanded);
+export default connect(null)(SingleContentPost);

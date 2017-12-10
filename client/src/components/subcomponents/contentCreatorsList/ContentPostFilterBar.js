@@ -48,7 +48,7 @@ class ContentPostFilterBar extends Component {
                         <Collapse in={this.state.mediumFilterOpen}>
                             <div>
                                     <div className="filterResult">
-                                        <Checkbox checked>
+                                        <Checkbox>
                                             YouTube
                                         </Checkbox>
                                         <Checkbox>
@@ -72,7 +72,7 @@ class ContentPostFilterBar extends Component {
                         <Collapse in={this.state.CategoryFilterOpen}>
                             <div>
                                 <div className="filterResult">
-                                    <Checkbox checked>
+                                    <Checkbox>
                                         Cosmetics
                                     </Checkbox>
                                     <Checkbox>

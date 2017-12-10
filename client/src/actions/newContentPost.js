@@ -54,7 +54,8 @@ export const snapchatRemoveData = () => {
 
 
 //refactor to remove redux store update
-export const saveNewContentPost = (contentPostsInfo) => async dispatch => {
+export const saveNewContentPost = (contentPostsInfo, timestamp) => async dispatch => {
+    contentPostsInfo.submitted_timestamp = timestamp;
     console.log('*****');
     console.log(contentPostsInfo);
     try {

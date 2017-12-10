@@ -1,6 +1,7 @@
 @import 'header';
 @import 'newUserRegistration';
 @import 'newContentPost';
+@import 'singleContentPost';
 @import 'contentCreatorsList';
 
 * {
@@ -19,6 +20,12 @@ h1, h2, h3, h4 {
     margin: 0;
     padding: 0;
 }
+
+hr {
+    margin: 8px 0;
+}
+
+
 
 
 

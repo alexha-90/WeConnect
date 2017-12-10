@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 // import {testNewTaskValidity} from "../../stateFunctions";
 import { Link, Redirect } from 'react-router-dom';
+import moment from 'moment';
 import { youtubeData, instagramData, twitterData, snapchatData } from '../../helper_functions/newContentHelpers';
 import { isLoggedIn } from '../../../actions/auth';
 import { saveNewContentPost } from '../../../actions/newContentPost';
@@ -43,10 +44,12 @@ class NewContentPostFinalReview extends Component {
     }
 
     onSubmitNewContentPost() {
+        let timestamp = moment().format("MM/DD/YYYY") + ' ' + moment().utcOffset(-480).format('hh:mm a') + ' PST';
         (async () => {
             try {
-                return this.props.dispatch(saveNewContentPost(this.props.newContentPost))
+                return this.props.dispatch(saveNewContentPost(this.props.newContentPost, timestamp))
                 .then((result) => {
+                    console.log(result);
                     if (result === 'OK') {
                         alert('Your post was successfully submitted!');
                         return this.setState({redirectToContentCreatorsList: true})

@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../actions/index';
 
-import ContentPostFilterBar from './subcomponents/ContentPostFilterBar';
-import contentCreatorsResults from './subcomponents/contentCreatorsResults';
+import ContentPostFilterBar from './subcomponents/contentCreatorsList/ContentPostFilterBar';
+import contentCreatorsResults from './subcomponents/contentCreatorsList/contentCreatorsResults';
+import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
 
 // loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 // create rating system
@@ -65,6 +66,7 @@ class ContentCreatorsList extends Component {
                     </span>
                 </div>
 
+
                 {/* Import */}
                 <ContentPostFilterBar/>
 
@@ -72,6 +74,9 @@ class ContentCreatorsList extends Component {
                     <h1>Content creators looking to advertise:</h1>
                     {contentCreatorsResults(this.state.contentPosts)}
                 </div>
+
+                {/* Import */}
+                <ContentPostListAdSpace/>
         </div>
         )
     }
