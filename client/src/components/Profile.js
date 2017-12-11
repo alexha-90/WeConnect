@@ -63,7 +63,7 @@ class Profile extends Component {
 
         return (
             <div>
-                hey
+                <h1>Post activity:</h1>
                 {profileData(this.state.userActivity)}
             </div>
         )

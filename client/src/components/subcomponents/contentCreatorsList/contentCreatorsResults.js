@@ -42,7 +42,7 @@ export default function contentCreatorResults(data) {
                 return (
                     <div className='singleContentPost' key={item[0]}>
                         <div id="postSummary">
-                            <Link to={"/contentPost/id:" + item[0]}>
+                            <Link to={"/contentPost/view/id:" + item[0]}>
                                 {item[1]}
                             </Link>
                         </div>

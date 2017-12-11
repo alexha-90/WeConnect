@@ -30,6 +30,16 @@ module.exports = app => {
             const sql = 'SELECT * FROM content_posts WHERE content_post_id=$1';
             return db.query(sql, params)
             .then((results) => {
+
+                // compare contentPost's author id with passport session id. Show edit button if so
+                results['rows'][0]['is_author'] = false;
+                let passportID = `${JSON.stringify(req.session.passport)}`;
+                passportID = passportID.match(/\d+/)[0];
+
+                if (passportID === results['rows'][0]['user_id']) {
+                    console.log('WWWWWWW');
+                    results['rows'][0]['is_author'] = true;
+                }
                 res.send(results['rows']);
             })
             .catch((err) => {

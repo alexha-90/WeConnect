@@ -10,7 +10,7 @@ import singleContentPostResult from './subcomponents/singleContentPostResult';
 // upload images. onclick expand
 //===============================================================================================//
 
-class SingleContentPost extends Component {
+class EditContentPost extends Component {
     constructor() {
         super();
         this.state = {
@@ -22,8 +22,6 @@ class SingleContentPost extends Component {
 
     componentWillMount() {
         // need to make a rule for when random characters entered after /contentPost/....
-
-
         let postID = this.props.location.pathname.match(/\d+/)[0];
 
         // get current url and extract id number. Query database for this primary key and return all relevant information
@@ -56,22 +54,29 @@ class SingleContentPost extends Component {
         }
 
         return (
-            <div className="singleContentPostContainer">
+            <div>
+                <h2>
+                    Edit post?
+                </h2>
+                <div className="singleContentPostContainer">
+                    {singleContentPostResult(this.state.contentPost)}
 
-                {singleContentPostResult(this.state.contentPost)}
+                    <Button bsStyle="warning">
+                        <Link to="/profile">
+                            Jump to profile
+                        </Link>
+                    </Button>
+                    &nbsp;
+                    <Button bsStyle="warning">
+                        <Link to="/contentCreatorsList">
+                            Jump to content creators list
+                        </Link>
+                    </Button>
 
-                <Button id="goBack" bsStyle="warning">
-                    <Link to="/ContentCreatorsList">
-                        Back to results
-                    </Link>
-                </Button>
-
-                <Button id="messageMe" bsStyle="success">
-                    Interested in partnering with me? Send me a message
-                </Button>
+                </div>
             </div>
         )
     }
 }
 
-export default connect(null)(SingleContentPost);
+export default connect(null)(EditContentPost);

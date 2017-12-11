@@ -11,6 +11,7 @@ import NewContentPostMediums from './components/subcomponents/newContentPost/New
 import NewContentPostImageUpload from './components/subcomponents/newContentPost/NewContentPostImageUpload';
 import NewContentPostFinalReview from './components/subcomponents/newContentPost/NewContentPostFinalReview';
 import SingleContentPost from './components/SingleContentPost';
+import EditContentPost from './components/EditContentPost';
 import AdvertiserProfile from './components/AdvertiserProfile';
 import ContentCreatorsList from './components/ContentCreatorsList';
 import AdvertisersList from './components/AdvertisersList';
@@ -34,8 +35,8 @@ class App extends Component {
                     <Route exact path='/newContentPost/review' component={NewContentPostFinalReview} />
                     <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
-                    <Route path='/contentPost' component={SingleContentPost} />
-
+                    <Route path='/contentPost/view/' component={SingleContentPost} />
+                    <Route path='/contentPost/edit/' component={EditContentPost} />
                     {/* temporary files below*/}
 
                 </div>
