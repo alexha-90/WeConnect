@@ -20,9 +20,9 @@
 /*--------------------------------------*/
 
 .singleContentPostContainer {
-  width: 65%;
-  display: block;
-  margin: 40px auto 0 auto;
+  width: 50%;
+  display: inline-block;
+  margin: 40px 0 0 24%;
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
@@ -104,12 +104,13 @@
     }
   }
 
-  #goBack {
+  #editPost {
+  }
 
+  #goBack {
   }
 
   #messageMe {
     float: right;
   }
-
 }

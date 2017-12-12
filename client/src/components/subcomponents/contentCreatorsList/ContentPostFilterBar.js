@@ -94,6 +94,10 @@ class ContentPostFilterBar extends Component {
                         Filter results
                     </Button>
                 </form>
+
+                <img id="adPlaceholder" alt="adPlaceholder" src="https://i.imgur.com/rdJwvir.png" />
+
+
             </div>
         )
     }

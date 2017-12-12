@@ -7,9 +7,11 @@ export default function contentCreatorResults(data) {
     console.log(data);
 
     let comboArr = [];
+    let arr = [];
 
     // iterate through dynamically sized object holding all contentPost objects and split each post individually
     for (let i = 0; i < data.length; i++) {
+        let temp = [];
 
         // 0 = ID, 1 = summary, 2 = location, 3 = idealMatch, 4 = categories, 5 = tags
         // 6 = youtube, 7 = instagram, 8 = twitter, 9 = snapchat
@@ -34,11 +36,52 @@ export default function contentCreatorResults(data) {
         if (comboArr[i][9] !== null) {
             comboArr[i][9] = <img alt="Snapchat" title="Snapchat" src="https://png.icons8.com/snapchat/dusk/30/000000"/>
         }
+
+        // arr[i] = data[i]['content_post_id'];
+
+        // console.log(comboArr[i][0]);
+        // // console.log(comboArr[i]);
+        // console.log(comboArr[i-1]);
+        // if (i > 0 && comboArr[i-1][0] > comboArr[i][0]) {
+        //     console.log('yes');
+        //     temp = comboArr[i];
+        //     comboArr[i-1] = comboArr[i];
+        //     comboArr[i] = temp;
+        //     // temp = comboArr[i-1];
+        //     // comboArr[i] = comboArr[i-1];
+        //     // comboArr[i-1] = temp;
+        //     // if present id greater than last (ex 7 > 6)
+        //     // temp variable = future (temp = 6)
+        //     // present = future (present = 7)
+        //     // future = temp (future = 6)
+        // }
+
     }
+
+    // function bubbleSort(arr){
+    //     let len = arr.length;
+    //     for (let i = len-1; i>=0; i--){
+    //         for(let j = 1; j<=i; j++){
+    //             if(arr[j-1]>arr[j]){
+    //                 let temp = arr[j-1];
+    //                 arr[j-1] = arr[j];
+    //                 arr[j] = temp;
+    //             }
+    //         }
+    //     }
+    //     return arr;
+    // }
+    //
+    // // bubbleSort(arr);
+    // // // works. need to implement
+    // //
+    // // console.log(arr);
+    // console.log(comboArr);
+
 
     return (
         <div>
-            {comboArr.reverse().map((item) => {
+            {comboArr.map((item) => {
                 return (
                     <div className='singleContentPost' key={item[0]}>
                         <div id="postSummary">

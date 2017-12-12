@@ -306,6 +306,10 @@ class NewContentPost extends Component {
     }
 }
 
+export default connect(mapStateToProps)(NewContentPost);
+
+
+
 function FieldGroup({ id, label, ...props }) {
     return (
         <FormGroup controlId={id}>
@@ -320,5 +324,3 @@ function mapStateToProps(state) {
         newContentPost: state.newContentPost.newContentPost
     };
 }
-
-export default connect(mapStateToProps)(NewContentPost);

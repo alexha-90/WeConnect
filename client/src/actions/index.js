@@ -15,13 +15,22 @@ export const fetchAllContentPosts = () => async () => {
 export const fetchSingleContentPost = (postID) => async () => {
     try {
         const res = await axios.post('/api/getSingleContentPost', postID);
-        console.log(res.data);
-        console.log('^^^^');
         return res.data;
     } catch(res) {
         return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
     }
 };
+
+export const editSingleContentPost = (postID) => async () => {
+    console.log(postID);
+    try {
+        const res = await axios.patch('/api/editSingleContentPost', postID);
+        return res.data;
+    } catch(res) {
+        return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
+    }
+};
+
 
 export const loadProfileData = () => async () => {
     try {

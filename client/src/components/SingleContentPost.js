@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleContentPost } from '../actions/';
 
+import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
 import singleContentPostResult from './subcomponents/singleContentPostResult';
 
 // future expansion: referrals and reviews
@@ -17,6 +18,7 @@ class SingleContentPost extends Component {
             loadingComponent: true,
             contentPost: []
         };
+        this.canEdit = this.canEdit.bind(this);
     }
 
 
@@ -50,25 +52,44 @@ class SingleContentPost extends Component {
         }, 500);
     }
 
+    canEdit() {
+        if (this.state.contentPost[0]['is_author']) {
+            return (
+                <Button id="editPost" bsStyle="info">
+                    <Link to={"/contentPost/edit/id:" + this.state.contentPost[0]['content_post_id']}>
+                        Edit post
+                    </Link>
+                </Button>
+            )
+        }
+    }
+
     render() {
         if (this.state.loadingComponent) {
             return <div className='loader'>Loading...</div>;
         }
 
         return (
-            <div className="singleContentPostContainer">
+            <div>
+                <div className="singleContentPostContainer">
 
-                {singleContentPostResult(this.state.contentPost)}
+                    {singleContentPostResult(this.state.contentPost)}
 
-                <Button id="goBack" bsStyle="warning">
-                    <Link to="/ContentCreatorsList">
-                        Back to results
-                    </Link>
-                </Button>
+                    <Button id="goBack" bsStyle="warning">
+                        <Link to="/ContentCreatorsList">
+                            Back to results
+                        </Link>
+                    </Button>
+                    &nbsp;&nbsp;&nbsp;
 
-                <Button id="messageMe" bsStyle="success">
-                    Interested in partnering with me? Send me a message
-                </Button>
+                    {this.canEdit()}
+
+                    <Button id="messageMe" bsStyle="success">
+                        Interested in partnering with me? Send me a message
+                    </Button>
+                </div>
+
+                <ContentPostListAdSpace/>
             </div>
         )
     }

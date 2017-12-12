@@ -14,7 +14,8 @@ class ContentPostListAdSpace extends Component {
     render () {
         return (
             <div className="adSpace">
-                future adspace!
+                <img alt="adPlaceholder" src="https://i.imgur.com/rdJwvir.png" />
+                <img alt="adPlaceholder" src="https://i.imgur.com/rdJwvir.png" />
             </div>
         )
     }
