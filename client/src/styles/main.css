@@ -66,7 +66,8 @@
 
 .socialContainer, .singleContentPostContainer .youtubeContainer, .singleContentPostContainer .instagramContainer, .singleContentPostContainer .twitterContainer, .singleContentPostContainer .snapchatContainer {
   display: inline-block;
-  width: 48%;
+  width: 100%;
+  height: 200px;
   border-radius: 5px;
   margin: 20px 0; }
   .socialContainer div, .singleContentPostContainer .youtubeContainer div, .singleContentPostContainer .instagramContainer div, .singleContentPostContainer .twitterContainer div, .singleContentPostContainer .snapchatContainer div {
@@ -86,7 +87,8 @@
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
-  padding: 15px; }
+  padding-top: 15px;
+  padding-left: 15px; }
   .singleContentPostContainer #profilePic {
     display: inline-block;
     width: 15%;
@@ -180,7 +182,8 @@
 
 .contentPostContainer {
   display: inline-block;
-  width: 66%; }
+  width: 66%;
+  color: #333333; }
   .contentPostContainer h1 {
     padding-left: 20px;
     margin-top: 10px; }

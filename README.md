@@ -4,7 +4,7 @@
 * React.js
 * Redux
 * Bootstrap
-* SCSS
-* HTML/CSS
+* CSS (SCSS)
+* HTML
 * Node.js (Express)
 * PostgreSQL

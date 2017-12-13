@@ -1,7 +1,7 @@
 {
-  "name": "handyhelper",
+  "name": "WeConnect",
   "version": "1.0.0",
-  "description": "app for connecting renters and homeowners with skilled technicians",
+  "description": "platform that connects content creators with advertisers.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexha-90/Handy_Helper.git"
+    "url": "git+https://github.com/alexha-90/WeConnect.git"
   },
   "author": "Alex Ha",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexha-90/Handy_Helper/issues"
+    "url": "https://github.com/alexha-90/WeConnect/issues"
   },
-  "homepage": "https://github.com/alexha-90/Handy_Helper#readme",
+  "homepage": "https://github.com/alexha-90/WeConnect#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",

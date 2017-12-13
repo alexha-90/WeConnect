@@ -48,7 +48,8 @@ class NewContentPostImageUpload extends Component {
                     id="formControlsFile"
                     type="file"
                     label="File"
-                    help="Example block-level help text here."
+                    multiple="multiple"
+                    help="Upload files to accompany your post."
                 />
 
                 <hr/>
