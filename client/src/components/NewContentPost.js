@@ -207,7 +207,7 @@ class NewContentPost extends Component {
                             name="contentDescription"
                             onChange={this.handleTextChange}
                             value={this.state.contentDescription}
-                            style={{minHeight: "60px"}}
+                            style={{minHeight: "60px", minWidth: "100%" }}
                             placeholder="Describe your content in more detail. Examples: target audience, demographics, previous partnerships, etc"
                         />
                     </FormGroup>
@@ -218,7 +218,7 @@ class NewContentPost extends Component {
                             name="contentIdealMatch"
                             onChange={this.handleTextChange}
                             value={this.state.contentIdealMatch}
-                            style={{minHeight: "60px"}}
+                            style={{minHeight: "60px", minWidth: "100%"}}
                             placeholder="Tell us what your ideal match would be (pay rate, frequency, endorsement gifts, ad placement)"
                         />
                     </FormGroup>

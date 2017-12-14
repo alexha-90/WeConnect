@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 //===============================================================================================//
 
 // environment file
@@ -48,21 +47,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// not used. delete later
-// const flash = require('connect-flash');
-// app.use(flash());
-//require('./config/passport')(passport);
-
-
 // import routes
 //===========================================================================
 require('./routes/saveNewContentPost')(app);
 require('./routes/getContentPosts')(app);
 require('./routes/authRoutes')(app);
-//require('./routes/saveNewUser')(app);
+require('./routes/privateMessages')(app);
 
-// passport authorization routes (login, logout, register, etc)
-//require('./routes/authRoutes')(app, passport);
 
 // basic test routes
 app.get('/', (req, res) => {

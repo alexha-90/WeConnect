@@ -7,11 +7,11 @@ export default function contentCreatorResults(data) {
     console.log(data);
 
     let comboArr = [];
-    let arr = [];
+    // let arr = [];
 
     // iterate through dynamically sized object holding all contentPost objects and split each post individually
     for (let i = 0; i < data.length; i++) {
-        let temp = [];
+        // let temp = [];
 
         // 0 = ID, 1 = summary, 2 = location, 3 = idealMatch, 4 = categories, 5 = tags
         // 6 = youtube, 7 = instagram, 8 = twitter, 9 = snapchat

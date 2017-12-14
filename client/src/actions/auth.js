@@ -38,3 +38,12 @@ export const logoutUser = () => async () => {
         alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
     }
 };
+
+export const fetchUserID = () => async () => {
+    try {
+        const res = await axios.get('/api/fetchUserID');
+        return res.data;
+    } catch(res) {
+        console.log(res);
+    }
+};

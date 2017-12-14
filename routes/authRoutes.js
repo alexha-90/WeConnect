@@ -65,6 +65,17 @@ module.exports = (app) => {
         }
     });
 
+    app.get('/api/fetchUserID', authenticationCheck(), (req, res) => {
+        try {
+            let passportID = `${JSON.stringify(req.session.passport)}`;
+            passportID = passportID.match(/\d+/)[0];
+            res.send(passportID);
+        } catch (err) {
+            console.log(err);
+            res.send('error');
+        }
+    });
+
 
     // authentication is already checked when this is called
     app.post('/api/saveNewUser', (req, res) => {

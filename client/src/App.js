@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 
 // Page imports
-import Header from './components/Header'
+import Header from './components/Header';
 import Landing from './components/Landing';
 import NewContentPost from './components/NewContentPost';
 import NewContentPostMediums from './components/subcomponents/newContentPost/NewContentPostMediums';
@@ -17,6 +17,7 @@ import ContentCreatorsList from './components/ContentCreatorsList';
 import AdvertisersList from './components/AdvertisersList';
 import NewUserRegistration from './components/NewUserRegistration';
 import Profile from './components/Profile';
+import Footer from './components/Footer';
 
 class App extends Component {
   render() {
@@ -37,6 +38,7 @@ class App extends Component {
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost/view/' component={SingleContentPost} />
                     <Route path='/contentPost/edit/' component={EditContentPost} />
+                    <Footer />
                     {/* temporary files below*/}
 
                 </div>

@@ -6,8 +6,8 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Co
 import YoutubeForm from './subcomponents/newContentPost/YoutubeForm';
 
 import { isLoggedIn } from '../actions/auth';
-import { fetchSingleContentPost, editSingleContentPost } from '../actions/';
-
+import { fetchSingleContentPost } from '../actions/';
+// editSingleContentPost  ^^ import
 //===============================================================================================//
 
 //                 return this.props.dispatch(editSingleContentPost(postID))
@@ -313,8 +313,8 @@ function FieldGroup({ id, label, ...props }) {
     );
 }
 
-function mapStateToProps(state) {
-    return {
-        newContentPost: state.newContentPost.newContentPost
-    };
-}
+// function mapStateToProps(state) {
+//     return {
+//         newContentPost: state.newContentPost.newContentPost
+//     };
+// }

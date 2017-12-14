@@ -65,12 +65,15 @@
     float: right; }
 
 .socialContainer, .singleContentPostContainer .youtubeContainer, .singleContentPostContainer .instagramContainer, .singleContentPostContainer .twitterContainer, .singleContentPostContainer .snapchatContainer {
+  background-color: #f2f2f2;
+  color: #666666;
   display: inline-block;
   width: 100%;
   height: 200px;
   border-radius: 5px;
-  margin: 20px 0; }
+  margin: 20px 5px; }
   .socialContainer div, .singleContentPostContainer .youtubeContainer div, .singleContentPostContainer .instagramContainer div, .singleContentPostContainer .twitterContainer div, .singleContentPostContainer .snapchatContainer div {
+    color: #f2f2f2;
     padding: 5px 0;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -87,8 +90,7 @@
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
-  padding-top: 15px;
-  padding-left: 15px; }
+  padding: 15px; }
   .singleContentPostContainer #profilePic {
     display: inline-block;
     width: 15%;
@@ -114,26 +116,14 @@
   .singleContentPostContainer .spacer {
     display: inline-block;
     width: 2%; }
-  .singleContentPostContainer .youtubeContainer {
-    background-color: #ff0000;
-    color: #ffffff; }
-    .singleContentPostContainer .youtubeContainer div {
-      background-color: #282828; }
-  .singleContentPostContainer .instagramContainer {
-    background-color: #833ab4;
-    color: #ffdc80; }
-    .singleContentPostContainer .instagramContainer div {
-      background-color: #5851db; }
-  .singleContentPostContainer .twitterContainer {
-    background-color: #657786;
-    color: #f5f8fa; }
-    .singleContentPostContainer .twitterContainer div {
-      background-color: #1da1f2; }
-  .singleContentPostContainer .snapchatContainer {
-    background-color: #fffc00;
-    color: #000000; }
-    .singleContentPostContainer .snapchatContainer div {
-      background-color: #2fa5d6; }
+  .singleContentPostContainer .youtubeContainer div {
+    background-color: #ff0000; }
+  .singleContentPostContainer .instagramContainer div {
+    background-color: #833ab4; }
+  .singleContentPostContainer .twitterContainer div {
+    background-color: #1da1f2; }
+  .singleContentPostContainer .snapchatContainer div {
+    background-color: #e6ac00; }
   .singleContentPostContainer #messageMe {
     float: right; }
 

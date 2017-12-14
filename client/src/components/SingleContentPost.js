@@ -3,12 +3,14 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleContentPost } from '../actions/';
+import { isLoggedIn, fetchUserID } from '../actions/auth';
 
-import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
-import singleContentPostResult from './subcomponents/singleContentPostResult';
+// import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
+import ContactForm from './subcomponents/singleContentPost/singleContentPostContactForm';
+import singleContentPostResult from './subcomponents/singleContentPost/singleContentPostResult';
 
-// future expansion: referrals and reviews
 // upload images. onclick expand
+// when message expanded, dim button
 //===============================================================================================//
 
 class SingleContentPost extends Component {
@@ -16,13 +18,33 @@ class SingleContentPost extends Component {
         super();
         this.state = {
             loadingComponent: true,
-            contentPost: []
+            showContactForm: false,
+            contentPost: [],
+            posterID: null,
+            userID: null
         };
-        this.canEdit = this.canEdit.bind(this);
+        this.showProperButtons = this.showProperButtons.bind(this);
+        this.contactUser = this.contactUser.bind(this);
     }
 
 
     componentWillMount() {
+        // (async () => {
+        //     try {
+        //         return this.props.dispatch(fetchIdNumbers())
+        //             .then((data) => {
+        //                 if (data === 'error') {
+        //                     return alert ('Unable to retrieve user information from the database. Please try again or notify us if the issue persists.');
+        //                 }
+        //                 return this.setState({ userID: data });
+        //             })
+        //     } catch (err) {
+        //         console.log(err);
+        //         return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
+        //     }
+        // })();
+
+
         // need to make a rule for when random characters entered after /contentPost/....
 
 
@@ -36,7 +58,16 @@ class SingleContentPost extends Component {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
-                    return this.setState({ contentPost: data });
+                    this.setState({ posterID: data[0]['user_id'], contentPost: data });
+                })
+                .then(() => {
+                    return this.props.dispatch(fetchUserID());
+                })
+                .then((num) => {
+                    if (num === 'error') {
+                        return console.log('User is not logged in. Will not be able to message poster');
+                    }
+                    return this.setState({ userID: num })
                 })
             } catch (err) {
                 console.log(err);
@@ -52,22 +83,38 @@ class SingleContentPost extends Component {
         }, 500);
     }
 
-    canEdit() {
+    showProperButtons() {
         if (this.state.contentPost[0]['is_author']) {
             return (
                 <Button id="editPost" bsStyle="info">
                     <Link to={"/contentPost/edit/id:" + this.state.contentPost[0]['content_post_id']}>
-                        Edit post
+                        Edit / Delete post
                     </Link>
                 </Button>
             )
         }
+        return (
+            <Button onClick={() => this.setState({ showContactForm: !this.state.showContactForm})} bsStyle="success">
+                Interested in partnering with me? Send me a message
+            </Button>
+        )
     }
+
+    contactUser() {
+        // check if authenticated. If not, prompt login error
+        // return alert('You are not logged in. You must be logged in before contacting a user.');
+        if (this.state.showContactForm) {
+            return <ContactForm />
+        }
+    }
+
 
     render() {
         if (this.state.loadingComponent) {
             return <div className='loader'>Loading...</div>;
         }
+
+        console.log(this.state);
 
         return (
             <div>
@@ -82,14 +129,13 @@ class SingleContentPost extends Component {
                     </Button>
                     &nbsp;&nbsp;&nbsp;
 
-                    {this.canEdit()}
-
-                    <Button id="messageMe" bsStyle="success">
-                        Interested in partnering with me? Send me a message
-                    </Button>
+                    {this.showProperButtons()}
+                    
                 </div>
 
-                <ContentPostListAdSpace/>
+                {this.contactUser()}
+
+                {/*<ContentPostListAdSpace/>*/}
             </div>
         )
     }

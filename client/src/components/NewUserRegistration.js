@@ -29,6 +29,7 @@ class NewUserRegistration extends Component {
             accountType: '',
             match: false
         };
+        // this.validateInput = this.validateInput.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit  = this.onSubmit.bind(this);
         this.onBlurEmail = this.onBlurEmail.bind(this);
@@ -52,6 +53,14 @@ class NewUserRegistration extends Component {
             }
         })();
     }
+
+    // validateInput() {
+    //     const length = this.state.emailAddress.length;
+    //     if (length > 10) return 'success';
+    //     else if (length > 5) return 'warning';
+    //     else if (length > 0) return 'error';
+    //     return null;
+    // }
 
 
     onBlurEmail () {
@@ -138,6 +147,7 @@ class NewUserRegistration extends Component {
                     <FieldGroup
                         onChange={this.handleChange}
                         value={this.state.emailAddress}
+                        // validationState ={this.validateInput}
                         id="emailAddress"
                         type="email"
                         label="Email address"

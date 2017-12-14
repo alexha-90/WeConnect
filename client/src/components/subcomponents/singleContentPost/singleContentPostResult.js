@@ -3,32 +3,6 @@ import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 export default function singleContentPostResult(data) {
 
-    // show icons like on results page
-
-    // submitted_timestamp
-    // user_location
-    // content_summary
-    // content_description
-    // content_ideal_match
-    // user_id (NA, part of url)
-    // content_tags
-    // content_categories
-    // tw_post_frequency
-    // tw_followers
-    // tw_post_likes
-    // tw_comments
-    // yt_upload_frequency
-    // yt_video_length
-    // yt_sub_count
-    // yt_view_count
-    // ig_post_frequency
-    // ig_followers
-    // ig_likes
-    // ig_comments
-    // sc_post_frequency
-    // sc_followers
-    // sc_story_opens
-
     return (
         <div>
             <div id="profilePic">
@@ -98,23 +72,12 @@ export default function singleContentPostResult(data) {
                             <li>Post frequency: {data[0]['sc_post_frequency']}</li>
                             <li>Followers: {data[0]['sc_followers']}</li>
                             <li>Typical story opens: {data[0]['sc_story_opens']}</li>
-                            <li> </li>
                         </div>
                     </Col>
                 </Row>
             </Grid>
 
-            {/*<img src="https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_640.jpg" alt="temp" />*/}
-            {/*<img src="https://cdn.pixabay.com/photo/2016/01/22/02/06/food-1155130_640.jpg" alt="temp2" />*/}
-
             <hr />
-            {/*<h1>Recent reviews: (to be continued)</h1>*/}
-            {/*<ul>*/}
-                {/*<li>He promoted our content very well. Our sales went up!! 5/5</li>*/}
-                {/*<li>Did not follow instructions we gave him. Subpar. 2/5</li>*/}
-            {/*</ul>*/}
-
-
         </div>
     );
 }

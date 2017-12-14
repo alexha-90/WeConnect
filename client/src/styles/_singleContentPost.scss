@@ -1,11 +1,14 @@
 .socialContainer {
+  background-color: #f2f2f2;
+  color: #666666;
   display: inline-block;
   width: 100%;
   height: 200px;
   border-radius: 5px;
-  margin: 20px 0;
+  margin: 20px 5px;
 
   div {
+    color: #f2f2f2;
     padding: 5px 0;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -29,8 +32,7 @@
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
-  padding-top: 15px;
-  padding-left: 15px;
+  padding: 15px;
 
   #profilePic {
     display: inline-block;
@@ -74,26 +76,20 @@
 
   .youtubeContainer {
     @extend .socialContainer;
-    background-color: #ff0000;
-    color: #ffffff;
     div {
-      background-color: #282828;
+      background-color: #ff0000;
     }
   }
 
   .instagramContainer {
     @extend .socialContainer;
-    background-color: #833ab4;
-    color: #ffdc80;
     div {
-      background-color: #5851db;
+      background-color: #833ab4;
     }
   }
 
   .twitterContainer {
     @extend .socialContainer;
-    background-color: #657786;
-    color: #f5f8fa;
     div {
       background-color: #1da1f2;
     }
@@ -101,10 +97,8 @@
 
   .snapchatContainer {
     @extend .socialContainer;
-    background-color: #fffc00;
-    color: #000000;
     div {
-      background-color: #2fa5d6;
+      background-color: #e6ac00;
     }
   }
 
