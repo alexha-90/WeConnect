@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { Button, Panel, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { newPrivateMessage } from '../../../actions/';
+
 //===============================================================================================//
 
 class ContactForm extends Component {
@@ -31,15 +33,13 @@ class ContactForm extends Component {
             return alert('Please write a message that is at least 5 characters long');
         }
 
-        // if authenticated, fetch
-
+        const timestamp = moment().format("MM/DD/YYYY") + ' ' + moment().utcOffset(-480).format('hh:mm a') + ' PST';
 
         (async () => {
             try {
-                this.props.dispatch(newPrivateMessage(this.state.message));
-                // this.props.dispatch(newPrivateMessage({ advertiserMessages: [this.state.message] } ));
+                this.props.dispatch(newPrivateMessage({ advertiserMessages: [this.state.message, timestamp] } ));
                 alert('Your message has been sent to the user. You can track this message in your profile!');
-                return window.location.reload();
+                // return window.location.reload();
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }

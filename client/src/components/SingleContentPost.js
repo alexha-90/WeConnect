@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSingleContentPost } from '../actions/';
-import { isLoggedIn, fetchUserID } from '../actions/auth';
+import { fetchSingleContentPost, privateMessageIDsToProps } from '../actions/';
+import { fetchUserID } from '../actions/auth';
 
 // import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
 import ContactForm from './subcomponents/singleContentPost/singleContentPostContactForm';
 import singleContentPostResult from './subcomponents/singleContentPost/singleContentPostResult';
 
-// upload images. onclick expand
+// on load check if a conversation already exists. If so, then hide button and show conversation
 // when message expanded, dim button
 //===============================================================================================//
 
@@ -23,34 +23,15 @@ class SingleContentPost extends Component {
             posterID: null,
             userID: null
         };
-        this.showProperButtons = this.showProperButtons.bind(this);
+        this.showActionButton = this.showActionButton.bind(this);
         this.contactUser = this.contactUser.bind(this);
     }
 
 
     componentWillMount() {
-        // (async () => {
-        //     try {
-        //         return this.props.dispatch(fetchIdNumbers())
-        //             .then((data) => {
-        //                 if (data === 'error') {
-        //                     return alert ('Unable to retrieve user information from the database. Please try again or notify us if the issue persists.');
-        //                 }
-        //                 return this.setState({ userID: data });
-        //             })
-        //     } catch (err) {
-        //         console.log(err);
-        //         return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
-        //     }
-        // })();
-
-
-        // need to make a rule for when random characters entered after /contentPost/....
-
-
+        // get current url and extract id number. Query database for this primary key and return all relevant information
         let postID = this.props.location.pathname.match(/\d+/)[0];
 
-        // get current url and extract id number. Query database for this primary key and return all relevant information
         (async () => {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
@@ -58,16 +39,17 @@ class SingleContentPost extends Component {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
-                    this.setState({ posterID: data[0]['user_id'], contentPost: data });
+                    this.setState({ contentPost: data });
                 })
                 .then(() => {
                     return this.props.dispatch(fetchUserID());
                 })
-                .then((num) => {
-                    if (num === 'error') {
+                .then((userID) => {
+                    if (userID === 'error') {
                         return console.log('User is not logged in. Will not be able to message poster');
                     }
-                    return this.setState({ userID: num })
+                    const posterID = this.state.contentPost[0]['user_id'];
+                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID))
                 })
             } catch (err) {
                 console.log(err);
@@ -83,7 +65,7 @@ class SingleContentPost extends Component {
         }, 500);
     }
 
-    showProperButtons() {
+    showActionButton() {
         if (this.state.contentPost[0]['is_author']) {
             return (
                 <Button id="editPost" bsStyle="info">
@@ -101,9 +83,10 @@ class SingleContentPost extends Component {
     }
 
     contactUser() {
-        // check if authenticated. If not, prompt login error
-        // return alert('You are not logged in. You must be logged in before contacting a user.');
         if (this.state.showContactForm) {
+            if (!this.state.userID) {
+                return alert('You are not logged in. You must be logged in before contacting a user.');
+            }
             return <ContactForm />
         }
     }
@@ -129,7 +112,7 @@ class SingleContentPost extends Component {
                     </Button>
                     &nbsp;&nbsp;&nbsp;
 
-                    {this.showProperButtons()}
+                    {this.showActionButton()}
                     
                 </div>
 
