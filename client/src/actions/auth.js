@@ -6,7 +6,7 @@ export const isLoggedIn = () => async () => {
     try {
         const res = await axios.get('/api/isLoggedIn');
         store.dispatch({
-            type: 'AUTHENTICATE_USER',
+            type: 'CHANGE_LOGIN_STATUS',
             payload: res.data
         });
         return res.data;
@@ -14,6 +14,19 @@ export const isLoggedIn = () => async () => {
         alert('Unable to connect to database. Please try again and let us know if this problem persists.');
     }
 };
+
+// export const isLoggedIn = () => async () => {
+//     try {
+//         const res = await axios.get('/api/isLoggedIn');
+//         store.dispatch({
+//             type: 'AUTHENTICATE_USER',
+//             payload: res.data
+//         });
+//         return res.data;
+//     } catch(res) {
+//         alert('Unable to connect to database. Please try again and let us know if this problem persists.');
+//     }
+// };
 
 
 export const loginUser = (emailAddress, password) => async () => {
@@ -33,6 +46,10 @@ export const logoutUser = () => async () => {
         if (res.data === 'error') {
             return alert ('Logout did not work. Please try again or contact us if this problem persists');
         }
+        store.dispatch({
+            type: 'CHANGE_LOGIN_STATUS',
+            payload: res.data
+        });
         console.log('logged out!');
     } catch(res) {
         alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)

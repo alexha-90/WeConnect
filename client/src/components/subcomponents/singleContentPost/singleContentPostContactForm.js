@@ -37,7 +37,13 @@ class ContactForm extends Component {
 
         (async () => {
             try {
-                this.props.dispatch(newPrivateMessage({ advertiserMessages: [this.state.message, timestamp] } ));
+                this.props.dispatch(newPrivateMessage({
+                    message: this.state.message,
+                    timestamp: timestamp,
+                    postID: this.props.privateMessage.postID,
+                    posterID: this.props.privateMessage.posterID,
+                    userID: this.props.privateMessage.userID
+                }));
                 alert('Your message has been sent to the user. You can track this message in your profile!');
                 // return window.location.reload();
             } catch (err) {
@@ -76,4 +82,10 @@ class ContactForm extends Component {
 
 
 
-export default connect(null)(ContactForm);
+export default connect(mapStateToProps)(ContactForm);
+
+function mapStateToProps(state) {
+    return {
+        privateMessage: state.privateMessage.privateMessageIDs
+    };
+}

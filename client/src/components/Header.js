@@ -23,10 +23,7 @@ class Header extends Component {
             try {
                 return this.props.dispatch(isLoggedIn())
                     .then((result) => {
-                        if (result === 'OK') {
-                            this.setState({ isLoggedIn: true });
-                        }
-                        // user is not logged in
+                        this.setState({ isLoggedIn: result });
                     });
             } catch (err) {
                 console.log(err);
@@ -37,7 +34,7 @@ class Header extends Component {
 
 
     loginStatus() {
-        if (this.state.isLoggedIn) {
+        if (this.props.auth.isLoggedIn) {
             return (
                 <div>
                     <a href='/profile'>View profile</a>
@@ -57,20 +54,17 @@ class Header extends Component {
         )
     }
 
-    // return window.location.reload()
-    //
+
     onLogout() {
-        this.props.dispatch(logoutUser())
-            .then(() => {
-                console.log('logged out dude!');
-                this.setState({ isLoggedIn: false });
-            })
+        this.props.dispatch(logoutUser());
+        return window.location.reload()
     }
 
 
 
 
     render() {
+
         return (
             <div className="headerContainer">
                 <div id="navContentCreatorsLink">
@@ -104,4 +98,10 @@ class Header extends Component {
 
 }
 
-export default connect(null)(Header);
+export default connect(mapStateToProps)(Header);
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth
+    };
+}

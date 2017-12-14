@@ -60,7 +60,6 @@ class SingleContentPost extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            console.log(this.state);
             return this.setState({loadingComponent: false})
         }, 500);
     }
@@ -84,7 +83,7 @@ class SingleContentPost extends Component {
 
     contactUser() {
         if (this.state.showContactForm) {
-            if (!this.state.userID) {
+            if (!this.props.privateMessage.userID) {
                 return alert('You are not logged in. You must be logged in before contacting a user.');
             }
             return <ContactForm />
@@ -96,8 +95,6 @@ class SingleContentPost extends Component {
         if (this.state.loadingComponent) {
             return <div className='loader'>Loading...</div>;
         }
-
-        console.log(this.state);
 
         return (
             <div>
@@ -124,4 +121,11 @@ class SingleContentPost extends Component {
     }
 }
 
-export default connect(null)(SingleContentPost);
+export default connect(mapStateToProps)(SingleContentPost);
+
+
+function mapStateToProps(state) {
+    return {
+        privateMessage: state.privateMessage.privateMessageIDs
+    };
+}

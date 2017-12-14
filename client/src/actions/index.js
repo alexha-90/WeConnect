@@ -31,18 +31,6 @@ export const editSingleContentPost = (postID) => async () => {
     }
 };
 
-
-export const newPrivateMessage = (message) => async () => {
-    console.log(message);
-    try {
-        const res = await axios.post('/api/newPrivateMessage', message);
-        return res.data;
-    } catch(res) {
-        return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
-    }
-};
-
-
 export const loadProfileData = () => async () => {
     try {
         const res = await axios.get('/api/loadProfileData');
@@ -73,9 +61,19 @@ export const registerNewUser = (newUserData) => async dispatch => {
 };
 
 export const privateMessageIDsToProps = (postID, posterID, userID) => {
-    console.log(postID, posterID, userID);
+    // console.log(postID, posterID, userID);
     return {
         type: 'PM_IDS_TO_PROPS',
         payload: [postID, posterID, userID]
     };
+};
+
+export const newPrivateMessage = (message) => async () => {
+    console.log(message);
+    try {
+        const res = await axios.post('/api/newPrivateMessage', message);
+        return res.data;
+    } catch(res) {
+        return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
+    }
 };

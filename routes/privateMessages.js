@@ -8,16 +8,15 @@
 module.exports = app => {
     app.post('/api/newPrivateMessage', async (req, res) => {
         try {
-            const newMessage = req.body.advertiserMessages[0];
-            const timestamp = req.body.advertiserMessages[1];
+            const message = req.body.message;
+            const timestamp = req.body.timestamp;
+            const postID = req.body.postID;
+            const posterID = req.body.posterID;
+            const userID = req.body.userID;
 
 
-            console.log(newMessage);
+            console.log(message);
 
-            // associate user ID with contentPosts
-            let passportID = `${JSON.stringify(req.session.passport)}`;
-            passportID = passportID.match(/\d+/)[0];
-            //
             // const sql =
             //     'INSERT INTO content_posts (user_location, content_summary, content_description, ' +
             //     'content_ideal_match, yt_upload_frequency, yt_video_length, yt_sub_count, ' +

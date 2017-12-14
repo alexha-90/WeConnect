@@ -11,7 +11,7 @@ const passport = require('passport');
 module.exports = (app) => {
 
     app.get('/api/isLoggedIn', authenticationCheck(), (req, res) => {
-        return res.sendStatus(200);
+        return res.send(true);
     });
 
 
@@ -154,6 +154,6 @@ function authenticationCheck() {
         }
         console.log('not logged in!');
         // return res.sendStatus(401) - doesn't work since returns undefined
-        return res.send('error');
+        return res.send(false);
     }
 }
