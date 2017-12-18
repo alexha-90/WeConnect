@@ -4,6 +4,26 @@ import React from 'react';
 //remove the !== null line for testing and building
 
 
+export function organizeCategories (categoriesArr) {
+    // remove duplicates from categories array. Very efficient method borrowed from https://stackoverflow.com/questions/840781/get-all-non-unique-values-i-e-duplicate-more-than-one-occurrence-in-an-array
+    let obj = {};
+    let uniqueCategoriesArr = [];
+    for (let i = 0; i < categoriesArr.length; i++) {
+        obj[categoriesArr[i]] = 0;
+    }
+    for (let i in obj) {
+        uniqueCategoriesArr.push(i);
+    }
+
+    return 9;
+    // // sort categories array. Very efficient method borrowed from https://stackoverflow.com/questions/8900732/javascript-sort-objects-in-an-array-alphabetically-on-one-property-of-the-arra
+    // uniqueCategoriesArr.sort((a,b) => {
+    //     return (a < b) ? -1 : (a > b) ? 1 :0;
+    // });
+}
+
+
+
 export function youtubeData (props) {
     // if (props.newContentPost.youtube.yt_UploadFrequency !== null) {
     if (props.newContentPost.youtube) {

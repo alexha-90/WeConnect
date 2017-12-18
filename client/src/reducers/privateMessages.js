@@ -1,5 +1,6 @@
 const privateMessage = (state = {
-    privateMessageIDs: {}
+    privateMessageIDs: {},
+    privateMessages: {}
 }, action) => {
 
     switch (action.type) {
@@ -9,6 +10,15 @@ const privateMessage = (state = {
                     postID: action.payload[0],
                     posterID: action.payload[1],
                     userID: action.payload[2]
+                }
+            };
+        }
+
+        case 'PM_MESSAGES_TO_PROPS': {
+            return {
+                privateMessages: {
+                    //tbd
+
                 }
             };
         }

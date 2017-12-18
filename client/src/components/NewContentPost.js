@@ -3,10 +3,8 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Co
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
-
-import { isLoggedIn } from '../actions/auth';
 import { newContentPostToProps } from '../actions/newContentPost';
-
+import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
 
@@ -50,23 +48,15 @@ class NewContentPost extends Component {
     }
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                .then((result) => {
-                    if (result !== 'OK') {
-                        alert('You are not logged in. Please login or register before making a new listing.');
-                        return this.setState({ redirectToContentCreatorsList: true });
-                    }
-                    return this.setState({ checkingLogin: false });
-                });
-            } catch (err) {
-                console.log(err);
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. Please login or register before making a new listing.');
+                return this.setState({ redirectToContentCreatorsList: true });
             }
-        })();
+            return this.setState({ checkingLogin: false });
+        },500);
 
-        // // repopulate form fields if redirected here from review page
+        // // repopulate form fields if redirected to this component from future step page
         if (this.props.newContentPost.contentSummary) {
             return this.setState({
                 userLocation: this.props.newContentPost.userLocation,
@@ -78,7 +68,6 @@ class NewContentPost extends Component {
             })
         }
     }
-
 
 
     handleTextChange(event) {
@@ -104,6 +93,7 @@ class NewContentPost extends Component {
         }
     }
 
+
     handleCategoryToggle(event) {
         if (event.target.checked) {
             return categoriesArr.push(event.target.name);
@@ -120,6 +110,15 @@ class NewContentPost extends Component {
     }
 
     onReviewForNextStep() {
+        // (async () => {
+        //     return organizeCategories(categoriesArr)
+        //     .then((result) => {
+        //         console.log(result);
+        //         // console.log('^^^^');
+        //         // return this.setState({ contentCategories: result });
+        //     });
+        // })();
+
         // can split into an exported function
         // remove duplicates from categories array. Very efficient method borrowed from https://stackoverflow.com/questions/840781/get-all-non-unique-values-i-e-duplicate-more-than-one-occurrence-in-an-array
         let obj = {};
@@ -321,6 +320,7 @@ function FieldGroup({ id, label, ...props }) {
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        auth: state.auth.auth
     };
 }

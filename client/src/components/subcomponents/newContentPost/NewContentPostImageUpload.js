@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
-import { isLoggedIn } from '../../../actions/auth';
 
 //===============================================================================================//
 
@@ -16,21 +15,13 @@ class NewContentPostImageUpload extends Component {
     }
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                    .then((result) => {
-                        if (result !== 'OK') {
-                            alert('You are not logged in. Please login or register before making a new listing.');
-                            return this.setState({ redirectToContentCreatorsList: true });
-                        }
-                        return this.setState({ checkingLogin: false });
-                    });
-            } catch (err) {
-                console.log(err);
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. Please login or register before making a new listing.');
+                return this.setState({ redirectToContentCreatorsList: true });
             }
-        })();
+            return this.setState({ checkingLogin: false });
+        },500);
     }
 
     render() {
@@ -74,7 +65,8 @@ export default connect(mapStateToProps)(NewContentPostImageUpload);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        auth: state.auth.auth
     };
 }
 

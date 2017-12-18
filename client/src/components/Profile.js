@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
 import { loadProfileData } from '../actions';
-import { isLoggedIn } from '../actions/auth';
 import { connect } from 'react-redux';
-
 import profileData from './subcomponents/profileData';
 //===============================================================================================//
 
@@ -20,18 +18,16 @@ class Profile extends Component {
     }
 
     componentWillMount() {
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. Please login or register before proceeding.');
+                return this.setState({ redirectToHome: true })
+            }
+        },500);
+
         (async () => {
             try {
-                return this.props.dispatch(isLoggedIn())
-                .then((result) => {
-                    if (result !== 'OK') {
-                        alert('You are not logged in. Please login or register before proceeding.');
-                        return this.setState({ redirectToHome: true })
-                    }
-                })
-                .then (() => {
-                    return this.props.dispatch(loadProfileData())
-                })
+                return this.props.dispatch(loadProfileData())
                 .then((data) => {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
@@ -48,7 +44,7 @@ class Profile extends Component {
     componentDidMount() {
         setTimeout(() => {
             return this.setState({ checkingLogin: false });
-        }, 1000);
+        }, 500);
     }
 
 
@@ -70,4 +66,10 @@ class Profile extends Component {
     }
 }
 
-export default connect(null)(Profile)
+export default connect(mapStateToProps)(Profile)
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth
+    };
+}

@@ -9,7 +9,6 @@ import InstagramForm from './InstagramForm';
 import TwitterForm from './TwitterForm';
 import SnapchatForm from './SnapchatForm';
 
-import { isLoggedIn } from '../../../actions/auth'
 import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
 
 // uncomment categories check later. In for testing
@@ -34,21 +33,13 @@ class NewContentPostMediums extends Component {
     }
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                    .then((result) => {
-                        if (result !== 'OK') {
-                            alert('You are not logged in. Please login or register before making a new listing.');
-                            return this.setState({ redirectToContentCreatorsList: true });
-                        }
-                        return this.setState({ checkingLogin: false });
-                    });
-            } catch (err) {
-                console.log(err);
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. Please login or register before making a new listing.');
+                return this.setState({ redirectToContentCreatorsList: true });
             }
-        })();
+            return this.setState({ checkingLogin: false });
+        },500);
 
         // preserve show form history if user toggled between steps
         if (this.props.newContentPost.youtube && this.props.newContentPost.youtube.yt_UploadFrequency !== null) {
@@ -230,6 +221,7 @@ export default connect(mapStateToProps)(NewContentPostMediums);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        auth: state.auth.auth
     };
 }

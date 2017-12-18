@@ -5,7 +5,6 @@ import { Button } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { youtubeData, instagramData, twitterData, snapchatData } from '../../helper_functions/newContentHelpers';
-import { isLoggedIn } from '../../../actions/auth';
 import { saveNewContentPost } from '../../../actions/newContentPost';
 
 //===============================================================================================//
@@ -20,21 +19,13 @@ class NewContentPostFinalReview extends Component {
     }
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                    .then((result) => {
-                        if (result !== 'OK') {
-                            alert('You are not logged in. Please login or register before making a new listing.');
-                            return this.setState({ redirectToContentCreatorsList: true });
-                        }
-                        return this.setState({ checkingLogin: false });
-                    });
-            } catch (err) {
-                console.log(err);
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. Please login or register before making a new listing.');
+                return this.setState({ redirectToContentCreatorsList: true });
             }
-        })();
+            return this.setState({ checkingLogin: false });
+        },500);
     }
 
 
@@ -117,6 +108,7 @@ export default connect(mapStateToProps)(NewContentPostFinalReview);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        auth: state.auth.auth
     };
 }
