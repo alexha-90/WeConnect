@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { loadProfileData } from '../actions';
 import { connect } from 'react-redux';
-import profileData from './subcomponents/profileData';
+import profilePostData from './subcomponents/profilePostData';
+import profileMessageData from './subcomponents/profileMessageData';
+
 //===============================================================================================//
 
 
@@ -60,7 +62,12 @@ class Profile extends Component {
         return (
             <div>
                 <h1>Post activity:</h1>
-                {profileData(this.state.userActivity)}
+                {profilePostData(this.state.userActivity)}
+
+                <hr/>
+                <h1>Private conversations:</h1>
+                {profileMessageData(this.state.userActivity)}
+
             </div>
         )
     }

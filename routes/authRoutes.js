@@ -118,13 +118,32 @@ module.exports = (app) => {
             let passportID = `${JSON.stringify(req.session.passport)}`;
             passportID = passportID.match(/\d+/)[0];
 
-            const sql = 'SELECT * FROM content_posts WHERE user_id=$1';
+            const sql1 = 'SELECT * FROM content_posts WHERE user_id=$1';
+            const sql2 = 'SELECT * FROM private_messages WHERE user_id=$1';
             const params = [passportID];
-            return db.query(sql, params)
-            .then((results) => {
-                console.log(results['rows']);
-                res.send(results['rows']);
+            let data = [];
+            return db.query(sql1, params)
+            .then((posts) => {
+                data.push(posts['rows']);
+                return db.query(sql2, params);
             })
+            .then((messages) => {
+                data.push(messages['rows']);
+                console.log(data);
+                res.send(data);
+            })
+
+
+
+            // const sql1 = 'SELECT * FROM content_posts WHERE user_id=$1';
+            // const sql2 = 'SELECT * FROM private_messages WHERE user_id=$1';
+            // const params = [passportID];
+            // return db.query(sql1, params)
+            //     .then((results) => {
+            //         console.log(results['rows']);
+            //         res.send(results['rows']);
+            //     })
+
         } catch (res) {
             console.log('An error occurred. User data was not retrieved. Reason: ' + res.err);
             console.log(res.err);
