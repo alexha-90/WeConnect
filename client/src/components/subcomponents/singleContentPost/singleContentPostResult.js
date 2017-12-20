@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
-export default function singleContentPostResult(data) {
+export default function singleContentPostResult(data, username) {
+    console.log(data);
 
     return (
         <div>
@@ -12,7 +13,7 @@ export default function singleContentPostResult(data) {
                 <div>
                     <h3>{data[0]['content_summary']}</h3>
                     <span>
-                        (Posted: {data[0]['submitted_timestamp']})
+                        (Posted: {data[0]['submitted_timestamp']} by {data[0]['username']})
                     </span>
                 </div>
             </div>

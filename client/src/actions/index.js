@@ -60,11 +60,11 @@ export const registerNewUser = (newUserData) => async dispatch => {
     }
 };
 
-export const privateMessageIDsToProps = (postID, posterID, userID) => {
-    // console.log(postID, posterID, userID);
+export const privateMessageIDsToProps = (postID, posterID, userID, summary) => {
+    // console.log(postID, posterID, userID, summary);
     return {
         type: 'PM_IDS_TO_PROPS',
-        payload: [postID, posterID, userID]
+        payload: [postID, posterID, userID, summary]
     };
 };
 

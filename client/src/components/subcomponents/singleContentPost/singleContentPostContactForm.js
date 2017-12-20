@@ -42,7 +42,8 @@ class ContactForm extends Component {
                     timestamp: timestamp,
                     postID: this.props.privateMessage.postID,
                     posterID: this.props.privateMessage.posterID,
-                    userID: this.props.privateMessage.userID
+                    userID: this.props.privateMessage.userID,
+                    postSummary: this.props.privateMessage.postSummary
                 }));
                 alert('Your message has been sent to the user. You can track this message in your profile!');
                 // return window.location.reload();

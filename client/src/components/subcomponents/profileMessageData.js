@@ -17,7 +17,7 @@ export default function profileMessageData(data) {
     for (let i = 0; i < data[1].length; i++) {
         comboArr[i] = [
             data[1][i]['message_id'], data[1][i]['poster_id'], data[1][i]['poster_message'],
-            data[1][i]['user_message'], data[1][i]['timestamp'], data[1][i]['post_id']
+            data[1][i]['user_message'], data[1][i]['timestamp'], data[1][i]['post_summary'], data[1][i]['post_id']
         ];
     }
     return (
@@ -26,20 +26,17 @@ export default function profileMessageData(data) {
                 return (
                     <div className='contentCreatorSection' key={item[0] + '-section'}>
                         <div className='contentCreatorContainer' key={item[0]}>
-                            <ul>
-                                <li key={'postID:' + item[0] + '-1'}>Poster's ID (change to screen name): {item[1]}</li>
-                                <li key={'postID:' + item[0] + '-2'}>Poster's message: {item[2]}</li>
-                                <li key={'postID:' + item[0] + '-3'}>Your message: {item[3]}</li>
-                                <li key={'postID:' + item[0] + '-4'}>Timestamp: {item[4]}</li>
-                                <li key={'postID:' + item[0] + '-5'}>post ID: {item[5]}</li>
-                            </ul>
-
-
-                            <Button bsStyle="info">
-                                <Link to={"/contentPost/view/id:" + item[0]}>
-                                    View post
+                            <h3>
+                                Conversation with user ID (change to screen name later): {item[1]} about:<br/>
+                                <Link to={"/contentPost/view/id:" + item[6]}>
+                                      {item[5]}
                                 </Link>
-                            </Button>
+                            </h3>
+                            <ul>
+                                <li key={'postID:' + item[0] + '-2'}>Your message: {item[2]}</li>
+                                <li key={'postID:' + item[0] + '-3'}>User's message: {item[3]}</li>
+                                <li key={'postID:' + item[0] + '-4'}>Timestamp: {item[4]}</li>
+                            </ul>
                         </div>
                     </div>
                 )

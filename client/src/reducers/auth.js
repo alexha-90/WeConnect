@@ -1,16 +1,21 @@
 const auth = (state = {
     auth: {
-        isLoggedIn: false
+        isLoggedIn: false,
+        username: ''
     }
 }, action) => {
 
     switch (action.type) {
         case 'CHANGE_LOGIN_STATUS': {
-            return {
-                auth: {
-                    isLoggedIn: action.payload
-                }
-            };
+            if (action.payload.length) {
+                return {
+                    auth: {
+                        isLoggedIn: true,
+                        username: action.payload
+                    }
+                };
+            }
+            return {...state};
         }
 
         default: {

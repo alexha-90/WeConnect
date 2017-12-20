@@ -13,14 +13,15 @@ module.exports = app => {
             const postID = req.body.postID;
             const posterID = req.body.posterID;
             const userID = req.body.userID;
+            const postSummary = req.body.postSummary;
 
             console.log(userMessage);
 
             const sql =
-                'INSERT INTO private_messages (poster_id, user_id, poster_message, user_message, timestamp, post_id) ' +
-                'VALUES ($1, $2, $3, $4, $5, $6)';
+                'INSERT INTO private_messages (poster_id, user_id, poster_message, user_message, timestamp, post_id, post_summary) ' +
+                'VALUES ($1, $2, $3, $4, $5, $6, $7)';
 
-            const params = [posterID, userID, null, userMessage, timestamp, postID];
+            const params = [posterID, userID, null, userMessage, timestamp, postID, postSummary];
 
             return  db.query(sql, params)
                 .then(() => {

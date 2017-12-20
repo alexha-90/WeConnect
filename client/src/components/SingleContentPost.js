@@ -20,6 +20,7 @@ class SingleContentPost extends Component {
             loadingComponent: true,
             showContactForm: false,
             contentPost: [],
+            posterUsername: null,
             posterID: null,
             userID: null
         };
@@ -49,7 +50,8 @@ class SingleContentPost extends Component {
                         return console.log('User is not logged in. Will not be able to message poster');
                     }
                     const posterID = this.state.contentPost[0]['user_id'];
-                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID))
+                    const postSummary = this.state.contentPost[0]['content_summary'];
+                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary))
                 })
             } catch (err) {
                 console.log(err);

@@ -9,7 +9,8 @@ const privateMessage = (state = {
                 privateMessageIDs: {
                     postID: action.payload[0],
                     posterID: action.payload[1],
-                    userID: action.payload[2]
+                    userID: action.payload[2],
+                    postSummary: action.payload[3]
                 }
             };
         }

@@ -11,7 +11,21 @@ const passport = require('passport');
 module.exports = (app) => {
 
     app.get('/api/isLoggedIn', authenticationCheck(), (req, res) => {
-        return res.send(true);
+        let passportID = `${JSON.stringify(req.session.passport)}`;
+        passportID = passportID.match(/\d+/)[0];
+
+        try {
+            const sql = 'SELECT username FROM users WHERE user_id=$1 LIMIT 1';
+            const params = [passportID];
+            return db.query(sql, params)
+                .then((result) => {
+                    return res.send(result['rows'][0]['username']);
+
+                })
+        } catch (res) {
+            console.log(res.err);
+            res.send('error')
+        }
     });
 
 
@@ -87,8 +101,8 @@ module.exports = (app) => {
 
             bcrypt.hash(newUser.password, 10)
                 .then(function (hashPassword) {
-                    const sql = 'INSERT INTO users (email, password, timestamp, account_type) VALUES ($1, $2, $3, $4)';
-                    const params = [newUser.emailAddress, hashPassword, newUser.timestamp, newUser.accountType];
+                    const sql = 'INSERT INTO users (email, password, timestamp, account_type, username) VALUES ($1, $2, $3, $4, $5)';
+                    const params = [newUser.emailAddress, hashPassword, newUser.timestamp, newUser.accountType, newUser.username];
                     return db.query(sql, params)
                 .then(() => {
                     const sql = "SELECT currval(pg_get_serial_sequence('users', 'user_id'))";
@@ -118,8 +132,8 @@ module.exports = (app) => {
             let passportID = `${JSON.stringify(req.session.passport)}`;
             passportID = passportID.match(/\d+/)[0];
 
-            const sql1 = 'SELECT * FROM content_posts WHERE user_id=$1';
-            const sql2 = 'SELECT * FROM private_messages WHERE user_id=$1';
+            const sql1 = 'SELECT * FROM content_posts WHERE poster_id=$1';
+            const sql2 = 'SELECT * FROM private_messages WHERE user_id=$1 OR poster_id=$1';
             const params = [passportID];
             let data = [];
             return db.query(sql1, params)
@@ -132,18 +146,6 @@ module.exports = (app) => {
                 console.log(data);
                 res.send(data);
             })
-
-
-
-            // const sql1 = 'SELECT * FROM content_posts WHERE user_id=$1';
-            // const sql2 = 'SELECT * FROM private_messages WHERE user_id=$1';
-            // const params = [passportID];
-            // return db.query(sql1, params)
-            //     .then((results) => {
-            //         console.log(results['rows']);
-            //         res.send(results['rows']);
-            //     })
-
         } catch (res) {
             console.log('An error occurred. User data was not retrieved. Reason: ' + res.err);
             console.log(res.err);

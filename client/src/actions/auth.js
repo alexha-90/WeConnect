@@ -11,7 +11,8 @@ export const isLoggedIn = () => async () => {
         });
         return res.data;
     } catch(res) {
-        alert('Unable to connect to database. Please try again and let us know if this problem persists.');
+        console.log(res);
+        alert('Something went wrong. Please try again and let us know if this problem persists.');
     }
 };
 

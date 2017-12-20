@@ -22,6 +22,7 @@ class NewUserRegistration extends Component {
         super();
         this.state = {
             redirectToHome: false,
+            username: '',
             emailAddress: '',
             confirmEmailAddress: '',
             password: '',
@@ -83,6 +84,9 @@ class NewUserRegistration extends Component {
 
     handleChange(event) {
         switch (event.target.id) {
+            case 'username': {
+                return this.setState({username: event.target.value});
+            }
             case 'emailAddress': {
                 return this.setState({emailAddress: event.target.value});
             }
@@ -118,6 +122,7 @@ class NewUserRegistration extends Component {
         (async () => {
             try {
                 return this.props.dispatch(registerNewUser({
+                    username: this.state.username,
                     emailAddress: this.state.emailAddress,
                     password: this.state.password,
                     accountType: this.state.accountType,
@@ -144,6 +149,14 @@ class NewUserRegistration extends Component {
             <div className="newUserRegistrationContainer">
                 <h2>Register</h2>
                 <form>
+                    <FieldGroup
+                        onChange={this.handleChange}
+                        value={this.state.username}
+                        id="username"
+                        type="text"
+                        label="Username"
+                        placeholder="Create a new username"
+                    />
                     <FieldGroup
                         onChange={this.handleChange}
                         value={this.state.emailAddress}

@@ -11,8 +11,8 @@ class Header extends Component {
     constructor() {
         super();
         this.state = {
+            username: '',
             loginShow: false,
-            isLoggedIn: false
         };
         this.loginStatus = this.loginStatus.bind(this);
         this.onLogout = this.onLogout.bind(this);
@@ -23,7 +23,7 @@ class Header extends Component {
             try {
                 return this.props.dispatch(isLoggedIn())
                     .then((result) => {
-                        this.setState({ isLoggedIn: result });
+                        this.setState({ username: result });
                     });
             } catch (err) {
                 console.log(err);
@@ -37,7 +37,7 @@ class Header extends Component {
         if (this.props.auth.isLoggedIn) {
             return (
                 <div>
-                    <a href='/profile'>View profile</a>
+                    Logged in as {this.state.username}. <a href='/profile'>View profile</a>
                     &nbsp;&nbsp;
                     <Button bsStyle="warning" onClick={this.onLogout}>
                         Logout
