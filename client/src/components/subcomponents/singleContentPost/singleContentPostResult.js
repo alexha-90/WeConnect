@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
-export default function singleContentPostResult(data, username) {
+export default function singleContentPostResult(data) {
     console.log(data);
 
     return (
@@ -22,7 +22,7 @@ export default function singleContentPostResult(data, username) {
             <br />
             Tags: {data[0]['content_tags']}
             <br />
-            Location: {data[0]['user_location']}
+            Location: {data[0]['poster_location']}
             <hr />
             <h4>{data[0]['content_description']}</h4>
             <hr />

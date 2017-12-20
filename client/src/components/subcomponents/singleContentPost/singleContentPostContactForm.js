@@ -43,7 +43,9 @@ class ContactForm extends Component {
                     postID: this.props.privateMessage.postID,
                     posterID: this.props.privateMessage.posterID,
                     userID: this.props.privateMessage.userID,
-                    postSummary: this.props.privateMessage.postSummary
+                    postSummary: this.props.privateMessage.postSummary,
+                    posterUsername: this.props.privateMessage.posterUsername,
+                    username: this.props.auth.username
                 }));
                 alert('Your message has been sent to the user. You can track this message in your profile!');
                 // return window.location.reload();
@@ -87,6 +89,7 @@ export default connect(mapStateToProps)(ContactForm);
 
 function mapStateToProps(state) {
     return {
+        auth: state.auth.auth,
         privateMessage: state.privateMessage.privateMessageIDs
     };
 }

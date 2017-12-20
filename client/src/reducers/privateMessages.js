@@ -5,12 +5,15 @@ const privateMessage = (state = {
 
     switch (action.type) {
         case 'PM_IDS_TO_PROPS': {
+            console.log('rweorewoworw');
+            console.log(action.payload);
             return {
                 privateMessageIDs: {
                     postID: action.payload[0],
                     posterID: action.payload[1],
                     userID: action.payload[2],
-                    postSummary: action.payload[3]
+                    postSummary: action.payload[3],
+                    posterUsername: action.payload[4]
                 }
             };
         }

@@ -13,6 +13,8 @@ import singleContentPostResult from './subcomponents/singleContentPost/singleCon
 // when message expanded, dim button
 //===============================================================================================//
 
+// get posterID. needed before submitting PM. that data will then be relayed to profile page
+
 class SingleContentPost extends Component {
     constructor() {
         super();
@@ -20,7 +22,6 @@ class SingleContentPost extends Component {
             loadingComponent: true,
             showContactForm: false,
             contentPost: [],
-            posterUsername: null,
             posterID: null,
             userID: null
         };
@@ -49,9 +50,10 @@ class SingleContentPost extends Component {
                     if (userID === 'error') {
                         return console.log('User is not logged in. Will not be able to message poster');
                     }
-                    const posterID = this.state.contentPost[0]['user_id'];
+                    const posterID = this.state.contentPost[0]['poster_id'];
                     const postSummary = this.state.contentPost[0]['content_summary'];
-                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary))
+                    const posterUsername = this.state.contentPost[0]['username'];
+                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary, posterUsername))
                 })
             } catch (err) {
                 console.log(err);

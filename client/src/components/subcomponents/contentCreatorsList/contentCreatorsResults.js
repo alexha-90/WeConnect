@@ -16,7 +16,7 @@ export default function contentCreatorResults(data) {
         // 0 = ID, 1 = summary, 2 = location, 3 = idealMatch, 4 = categories, 5 = tags
         // 6 = youtube, 7 = instagram, 8 = twitter, 9 = snapchat
         comboArr[i] = [
-            data[i]['content_post_id'], data[i]['content_summary'], data[i]['user_location'],
+            data[i]['content_post_id'], data[i]['content_summary'], data[i]['poster_location'],
             data[i]['content_ideal_match'], data[i]['content_categories'].join(', '), data[i]['content_tags'],
             data[i]['yt_upload_frequency'], data[i]['ig_post_frequency'], data[i]['tw_post_frequency'], data[i]['sc_post_frequency']
         ];
