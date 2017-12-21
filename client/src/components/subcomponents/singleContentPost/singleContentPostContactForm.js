@@ -58,7 +58,7 @@ class ContactForm extends Component {
 
     render() {
         return (
-            <div className="singleContentPostContainer">
+            <div>
                 <Panel collapsible expanded={this.state.open}>
                     <form>
                         <FormGroup>

@@ -5,7 +5,7 @@ class Footer extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{display: "block"}}>
                 <br/>
                 <br/>
                 <br/>

@@ -23,9 +23,67 @@
 
 /*--------------------------------------*/
 
-
-
 .singleContentPostContainer {
+  display: block;
+  position: relative;
+  margin: 65px auto;
+  width: 80%;
+
+  .mainContainer {
+    left: 0;
+    position: absolute;
+    width: 70%;
+    background-color: #ffffff;
+  }
+
+  .infoContainer {
+    right: 0;
+    position: absolute;
+    width: 300px;
+    background-color: #e6ac00;
+
+    #profileBlock {
+      padding-left: 10px;
+      display: inline-block;
+      height: 70px;
+      margin-top: 15px;
+
+      img {
+        border-radius: 50%;
+        width: 20%;
+      }
+
+      span {
+        margin-left: 5%;
+        width: 70%;
+        font-size: 4rem;
+        vertical-align: top;
+      }
+    }
+    h5 {
+      padding-left: 10px;
+      margin: 5px 0;
+    }
+
+    .panel.panel-default {
+      background-color: inherit;
+    }
+
+    #editButton, #messageButton{
+      display: block;
+      margin: 10px auto;
+      width: 80%;
+    }
+  }
+
+
+
+}
+
+
+
+
+.test {
   width: 50%;
   display: inline-block;
   margin: 40px 0 0 24%;

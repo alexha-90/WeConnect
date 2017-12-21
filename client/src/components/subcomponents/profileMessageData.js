@@ -48,6 +48,11 @@ export default function profileMessageData(data, username) {
                                 <li key={'postID:' + item[0] + '-4'}>Timestamp: {item[5]}</li>
                             </ul>
                         </div>
+                        <Button bsStyle="success">
+                            Reply
+                        </Button>
+
+
                     </div>
                 )
             })}

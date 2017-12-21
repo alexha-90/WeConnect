@@ -36,7 +36,7 @@ module.exports = app => {
                 if (req.session.passport) {
                     let passportID = `${JSON.stringify(req.session.passport)}`;
                     passportID = passportID.match(/\d+/)[0];
-                    if (passportID == results['rows'][0]['user_id']) {
+                    if (passportID == results['rows'][0]['poster_id']) {
                         results['rows'][0]['is_author'] = true;
                     }
                 }
@@ -63,16 +63,16 @@ module.exports = app => {
                 .then((results) => {
                     console.log(results['rows']);
 
-                    // // compare contentPost's author id with passport session id. Show 'Edit post' button if so
-                    // results['rows'][0]['is_author'] = false;
-                    // if (req.session.passport) {
-                    //     let passportID = `${JSON.stringify(req.session.passport)}`;
-                    //     passportID = passportID.match(/\d+/)[0];
-                    //     if (passportID == results['rows'][0]['user_id']) {
-                    //         results['rows'][0]['is_author'] = true;
-                    //     }
-                    // }
-                    // res.send(results['rows']);
+                    // compare contentPost's author id with passport session id. Show 'Edit post' button if so
+                    results['rows'][0]['is_author'] = false;
+                    if (req.session.passport) {
+                        let passportID = `${JSON.stringify(req.session.passport)}`;
+                        passportID = passportID.match(/\d+/)[0];
+                        if (passportID == results['rows'][0]['poster_id']) {
+                            results['rows'][0]['is_author'] = true;
+                        }
+                    }
+                    res.send(results['rows']);
                 })
                 .catch((err) => {
                     console.log('An error occurred. Single contentPost not retrieved. Reason: ' + err);

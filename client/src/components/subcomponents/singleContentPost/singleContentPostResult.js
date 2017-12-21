@@ -6,9 +6,6 @@ export default function singleContentPostResult(data) {
 
     return (
         <div>
-            <div id="profilePic">
-                <img alt="profilePic" src="http://alexha.io/images/profile_pic.jpeg"/>
-            </div>
             <div id="headline">
                 <div>
                     <h3>{data[0]['content_summary']}</h3>

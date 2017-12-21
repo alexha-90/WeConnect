@@ -69,9 +69,10 @@ class SingleContentPost extends Component {
     }
 
     showActionButton() {
+        console.log(this.state.contentPost);
         if (this.state.contentPost[0]['is_author']) {
             return (
-                <Button id="editPost" bsStyle="info">
+                <Button id="editButton" bsStyle="info">
                     <Link to={"/contentPost/edit/id:" + this.state.contentPost[0]['content_post_id']}>
                         Edit / Delete post
                     </Link>
@@ -79,8 +80,8 @@ class SingleContentPost extends Component {
             )
         }
         return (
-            <Button onClick={() => this.setState({ showContactForm: !this.state.showContactForm})} bsStyle="success">
-                Interested in partnering with me? Send me a message
+            <Button id="messageButton" onClick={() => this.setState({ showContactForm: !this.state.showContactForm})} bsStyle="success">
+                Interested in partnering with me?<br/>Send me a message!
             </Button>
         )
     }
@@ -101,8 +102,8 @@ class SingleContentPost extends Component {
         }
 
         return (
-            <div>
-                <div className="singleContentPostContainer">
+            <div className="singleContentPostContainer">
+                <div className="mainContainer">
 
                     {singleContentPostResult(this.state.contentPost)}
 
@@ -113,13 +114,25 @@ class SingleContentPost extends Component {
                     </Button>
                     &nbsp;&nbsp;&nbsp;
 
-                    {this.showActionButton()}
-                    
                 </div>
 
-                {this.contactUser()}
+                <div className="infoContainer">
+                    <div id="profileBlock">
+                        <img alt="profilePic" src="http://alexha.io/images/profile_pic.jpeg"/>
+                        <span>
+                            {this.state.contentPost[0]['username']}
+                        </span>
+                    </div>
+                    <h5>
+                        Location: {this.state.contentPost[0]['poster_location']}
+                        <br/>
+                        Share post:
+                    </h5>
+                    {this.showActionButton()}
+                    {this.contactUser()}
+                    {/*<ContentPostListAdSpace/>*/}
+                </div>
 
-                {/*<ContentPostListAdSpace/>*/}
             </div>
         )
     }
