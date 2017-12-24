@@ -102,37 +102,37 @@ class SingleContentPost extends Component {
         }
 
         return (
-            <div className="singleContentPostContainer">
-                <div className="mainContainer">
+            <div>
+                <br/>
+                <Link id="goBackLink" to="/ContentCreatorsList">
+                    {'<-- '}Back to results
+                </Link>
 
-                    {singleContentPostResult(this.state.contentPost)}
-
-                    <Button id="goBack" bsStyle="warning">
-                        <Link to="/ContentCreatorsList">
-                            Back to results
-                        </Link>
-                    </Button>
-                    &nbsp;&nbsp;&nbsp;
-
-                </div>
-
-                <div className="infoContainer">
-                    <div id="profileBlock">
-                        <img alt="profilePic" src="http://alexha.io/images/profile_pic.jpeg"/>
-                        <span>
-                            {this.state.contentPost[0]['username']}
-                        </span>
+                <div className="singleContentPostContainer">
+                    <div className="mainContainer">
+                        {singleContentPostResult(this.state.contentPost)}
                     </div>
-                    <h5>
-                        Location: {this.state.contentPost[0]['poster_location']}
-                        <br/>
-                        Share post:
-                    </h5>
-                    {this.showActionButton()}
-                    {this.contactUser()}
-                    {/*<ContentPostListAdSpace/>*/}
-                </div>
 
+                    <div className="infoContainer">
+                        <div id="profileBlock">
+                            <img alt="profilePic" src="http://alexha.io/images/profile_pic.jpeg"/>
+                            <span>
+                                {this.state.contentPost[0]['username']}
+                            </span>
+                        </div>
+                        <h5>
+                            Location: {this.state.contentPost[0]['poster_location']}
+                            <br/>
+                            Share post:
+                        </h5>
+                        {this.showActionButton()}
+                        {this.contactUser()}
+                        {/*<ContentPostListAdSpace/>*/}
+                        <div style={{backgroundColor: "#e6e6e6"}}>
+                            Listing made: {this.state.contentPost[0]['submitted_timestamp']}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
