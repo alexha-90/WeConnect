@@ -1,13 +1,16 @@
 import React from 'react';
 import { Grid, Row, Col, Clearfix, Table } from 'react-bootstrap';
+import LightboxExample from './ImageLightbox';
+
 
 export default function singleContentPostResult(data) {
     console.log(data);
 
     return (
         <div>
-            <div id="imageCarousel">
-                placeholder image carousel
+            <div id="imageLightbox">
+                placeholder image lightbox
+                <LightboxExample />
 
 
             </div>
@@ -91,42 +94,66 @@ export default function singleContentPostResult(data) {
                             </Table>
                         </div>
                     </div>
-                    
+
+
+                    <div className="socialMediumContainer">
+                        <h3>Twitter</h3>
+                        <div id="socialLogoContainer">
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"/>
+                        </div>
+                        <div id="socialStatistics">
+                            <Table condensed hover>
+                                <tbody>
+                                <tr>
+                                    <td>Post frequency</td>
+                                    <td>{data[0]['tw_post_frequency']}</td>
+                                </tr>
+                                <tr>
+                                    <td>Followers</td>
+                                    <td>{data[0]['tw_followers']}</td>
+                                </tr>
+                                <tr>
+                                    <td>Typical post likes</td>
+                                    <td>{data[0]['tw_post_likes']}</td>
+                                </tr>
+                                <tr>
+                                    <td>Typical post comments</td>
+                                    <td>{data[0]['tw_comments']}</td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                        </div>
+                    </div>
+
+                    <div className="socialMediumContainer">
+                        <h3>Snapchat</h3>
+                        <div id="socialLogoContainer">
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/>
+                        </div>
+                        <div id="socialStatistics">
+                            <Table condensed hover>
+                                <tbody>
+                                <tr>
+                                    <td>Post frequency</td>
+                                    <td>{data[0]['sc_post_frequency']}</td>
+                                </tr>
+                                <tr>
+                                    <td>Followers</td>
+                                    <td>{data[0]['sc_followers']}</td>
+                                </tr>
+                                <tr>
+                                    <td>Typical story opens</td>
+                                    <td>{data[0]['sc_story_opens']}</td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                        </div>
+                    </div>
 
                 </div>
-
-
                 <hr />
 
             </div>
-
-
-            <Grid>
-                <Row className="gridTest">
-                    <Clearfix visibleSmBlock><code>&lt;{'Clearfix visibleSmBlock'} /&gt;</code></Clearfix>
-                    <Col sm={12} lg={6}>
-                        <div className="twitterContainer">
-                            <div>
-                                <h3>Twitter</h3>
-                            </div>
-                            <li>Post frequency: {data[0]['tw_post_frequency']}</li>
-                            <li>Followers: {data[0]['tw_followers']}</li>
-                            <li>Typical post likes: {data[0]['tw_post_likes']}</li>
-                            <li>Typical comments: {data[0]['tw_comments']}</li>
-                        </div>
-                    </Col>
-                    <Col sm={12} lg={6}>
-                        <div className="snapchatContainer">
-                            <div>
-                                <h3>Snapchat</h3>
-                            </div>
-                            <li>Post frequency: {data[0]['sc_post_frequency']}</li>
-                            <li>Followers: {data[0]['sc_followers']}</li>
-                            <li>Typical story opens: {data[0]['sc_story_opens']}</li>
-                        </div>
-                    </Col>
-                </Row>
-            </Grid>
 
             <hr />
         </div>
