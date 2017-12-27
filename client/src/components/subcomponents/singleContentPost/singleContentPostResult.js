@@ -1,6 +1,12 @@
 import React from 'react';
-import { Grid, Row, Col, Clearfix, Table } from 'react-bootstrap';
-import LightboxExample from './ImageLightbox';
+import { Table } from 'react-bootstrap';
+import ImageLightbox from './ImageLightbox';
+import { Carousel } from 'react-responsive-carousel';
+import Lightbox from 'react-images';
+import '../../../styles/carousel.css'
+
+
+//===============================================================================================//
 
 
 export default function singleContentPostResult(data) {
@@ -9,9 +15,33 @@ export default function singleContentPostResult(data) {
     return (
         <div>
             <div id="imageLightbox">
-                placeholder image lightbox
-                <LightboxExample />
 
+                {/*<Lightbox*/}
+                    {/*images={[*/}
+                        {/*{ src: 'https://i.ebayimg.com/thumbs/images/m/m8XY6RoHeIrd7C6qmJk1npA/s-l225.webp' },*/}
+                        {/*{ src: 'https://i.ebayimg.com/thumbs/images/g/Lw4AAOSwbw1aIpWE/s-l225.webp' }]*/}
+                    {/*}*/}
+                    {/*isOpen={this.state.lightboxIsOpen}*/}
+                    {/*onClickPrev={this.gotoPrevious}*/}
+                    {/*onClickNext={this.gotoNext}*/}
+                    {/*onClose={this.closeLightbox}*/}
+                {/*/>*/}
+
+
+                {/*<Carousel className="carouselLanding" showThumbs={false} autoPlay={true} dynamicHeight height={"200px"}*/}
+                  {/*useKeyboardArrows={false} infiniteLoop={true}*/}
+                {/*>*/}
+                    {/*<div>*/}
+                        {/*<img src="https://i.ebayimg.com/thumbs/images/m/m8XY6RoHeIrd7C6qmJk1npA/s-l225.webp" />*/}
+                    {/*</div>*/}
+                    {/*<div>*/}
+                        {/*<img src="https://i.ebayimg.com/thumbs/images/g/Lw4AAOSwbw1aIpWE/s-l225.webp" />*/}
+                    {/*</div>*/}
+                {/*</Carousel>*/}
+
+
+
+                <ImageLightbox />
 
             </div>
 

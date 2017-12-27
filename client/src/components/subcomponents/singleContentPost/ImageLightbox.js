@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
+// import Lightbox from 'react-images';
+
+//===============================================================================================//
+
+
+
 
 const images = [
     '//placekitten.com/1500/500',
@@ -9,7 +15,7 @@ const images = [
 ];
 
 
-class LightboxExample extends Component {
+class ImageLightbox extends Component {
     constructor(props) {
         super(props);
 
@@ -56,4 +62,4 @@ class LightboxExample extends Component {
     }
 }
 
-export default LightboxExample;
+export default ImageLightbox;
