@@ -35,7 +35,7 @@ class NewContentPostFinalReview extends Component {
     }
 
     onSubmitNewContentPost() {
-        let timestamp = moment().format("MM/DD/YYYY") + ' ' + moment().utcOffset(-480).format('hh:mm a') + ' PST';
+        let timestamp = moment().format("MM/DD/YYYY") + ' at ' + moment().utcOffset(-480).format('hh:mm a') + ' PST';
         (async () => {
             try {
                 return this.props.dispatch(saveNewContentPost(this.props.newContentPost, timestamp))

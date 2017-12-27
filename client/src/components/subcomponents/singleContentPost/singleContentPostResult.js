@@ -1,10 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import ImageLightbox from './ImageLightbox';
-import { Carousel } from 'react-responsive-carousel';
-import Lightbox from 'react-images';
 import '../../../styles/carousel.css'
-
 
 //===============================================================================================//
 
@@ -12,35 +9,27 @@ import '../../../styles/carousel.css'
 export default function singleContentPostResult(data) {
     console.log(data);
 
+    let youtubeShow, instagramShow, twitterShow, snapchatShow;
+
+    if (!data[0]['yt_upload_frequency']) {
+        youtubeShow = {display: 'none'};
+    }
+
+    if (!data[0]['ig_post_frequency']) {
+        instagramShow = {display: 'none'};
+    }
+
+    if (!data[0]['tw_post_frequency']) {
+        twitterShow = {display: 'none'};
+    }
+
+    if (!data[0]['sc_post_frequency']) {
+        snapchatShow = {display: 'none'};
+    }
+
     return (
         <div>
             <div id="imageLightbox">
-
-                {/*<Lightbox*/}
-                    {/*images={[*/}
-                        {/*{ src: 'https://i.ebayimg.com/thumbs/images/m/m8XY6RoHeIrd7C6qmJk1npA/s-l225.webp' },*/}
-                        {/*{ src: 'https://i.ebayimg.com/thumbs/images/g/Lw4AAOSwbw1aIpWE/s-l225.webp' }]*/}
-                    {/*}*/}
-                    {/*isOpen={this.state.lightboxIsOpen}*/}
-                    {/*onClickPrev={this.gotoPrevious}*/}
-                    {/*onClickNext={this.gotoNext}*/}
-                    {/*onClose={this.closeLightbox}*/}
-                {/*/>*/}
-
-
-                {/*<Carousel className="carouselLanding" showThumbs={false} autoPlay={true} dynamicHeight height={"200px"}*/}
-                  {/*useKeyboardArrows={false} infiniteLoop={true}*/}
-                {/*>*/}
-                    {/*<div>*/}
-                        {/*<img src="https://i.ebayimg.com/thumbs/images/m/m8XY6RoHeIrd7C6qmJk1npA/s-l225.webp" />*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                        {/*<img src="https://i.ebayimg.com/thumbs/images/g/Lw4AAOSwbw1aIpWE/s-l225.webp" />*/}
-                    {/*</div>*/}
-                {/*</Carousel>*/}
-
-
-
                 <ImageLightbox />
 
             </div>
@@ -63,11 +52,11 @@ export default function singleContentPostResult(data) {
 
                 <hr/>
 
-                <h4>Social accounts</h4>
+                <h4>Social account(s)</h4>
 
-                <div className="socialMediums">
+                <div className="socialMediums" style={youtubeShow}>
 
-                    <div className="socialMediumContainer">
+                    <div className="socialMediumContainer" id="youtubeMedium">
                         <h3>YouTube</h3>
                         <div id="socialLogoContainer">
                             <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png"/>
@@ -96,7 +85,7 @@ export default function singleContentPostResult(data) {
                         </div>
                     </div>
 
-                    <div className="socialMediumContainer">
+                    <div className="socialMediumContainer" style={instagramShow}>
                         <h3>Instagram</h3>
                         <div id="socialLogoContainer">
                             <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png"/>
@@ -126,7 +115,7 @@ export default function singleContentPostResult(data) {
                     </div>
 
 
-                    <div className="socialMediumContainer">
+                    <div className="socialMediumContainer" style={twitterShow}>
                         <h3>Twitter</h3>
                         <div id="socialLogoContainer">
                             <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"/>
@@ -155,7 +144,7 @@ export default function singleContentPostResult(data) {
                         </div>
                     </div>
 
-                    <div className="socialMediumContainer">
+                    <div className="socialMediumContainer" style={snapchatShow}>
                         <h3>Snapchat</h3>
                         <div id="socialLogoContainer">
                             <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/>

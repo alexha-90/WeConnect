@@ -64,6 +64,12 @@
   .newContentPostContainer #contentMediumsGoBack {
     float: right; }
 
+#instagramShow {
+  display: block; }
+
+#instagramHide {
+  display: none; }
+
 .socialContainer, .test .youtubeContainer, .test .instagramContainer, .test .twitterContainer, .test .snapchatContainer {
   background-color: #f2f2f2;
   color: #666666;
