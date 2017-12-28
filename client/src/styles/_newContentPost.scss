@@ -1,21 +1,43 @@
-.newContentPostContainer {
-  width: 65%;
+#newPostGraphic {
   display: block;
-  margin: 40px auto 0 auto;
+  margin: 10px auto;
+  height: 400px;
+}
+
+.newContentPostContainer {
+  width: 50%;
+  letter-spacing: 0.15rem;
+  display: block;
+  margin: 20px auto 0 auto;
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px;
 
-  #categoryTable {
-    min-width: 100%;
-
-    td {
-      width: 226px;
+  .form-group {
+    textarea.form-control:active {
     }
   }
 
-  h3{
+  .categories {
+    display: block;
+    position: relative;
+    letter-spacing: normal;
+
+    #categoryTable {
+      width: 100%;
+
+      td {
+        width: 226px;
+      }
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h3 {
     margin-bottom: 15px;
     text-decoration: underline;
   }

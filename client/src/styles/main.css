@@ -43,18 +43,30 @@
   border-radius: 10px;
   padding: 15px; }
 
-.newContentPostContainer {
-  width: 65%;
+#newPostGraphic {
   display: block;
-  margin: 40px auto 0 auto;
+  margin: 10px auto;
+  height: 400px; }
+
+.newContentPostContainer {
+  width: 50%;
+  letter-spacing: 0.15rem;
+  display: block;
+  margin: 20px auto 0 auto;
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px; }
-  .newContentPostContainer #categoryTable {
-    min-width: 100%; }
-    .newContentPostContainer #categoryTable td {
-      width: 226px; }
+  .newContentPostContainer .categories {
+    display: block;
+    position: relative;
+    letter-spacing: normal; }
+    .newContentPostContainer .categories #categoryTable {
+      width: 100%; }
+      .newContentPostContainer .categories #categoryTable td {
+        width: 226px; }
+  .newContentPostContainer h1 {
+    text-align: center; }
   .newContentPostContainer h3 {
     margin-bottom: 15px;
     text-decoration: underline; }
@@ -313,6 +325,41 @@
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#54a9ff',GradientType=0 );
     /* IE6-9 */ }
+
+.footerContainer {
+  margin-top: 40px;
+  bottom: 0;
+  padding-top: 15px;
+  background: #216894;
+  text-align: center;
+  color: #ffffff; }
+  .footerContainer #centeredFooterText {
+    width: 100%;
+    line-height: 150%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    background-color: #216894; }
+  .footerContainer #footerBar {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ffffff;
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding: 0; }
+  .footerContainer #footerLicensingColor {
+    background-color: #216894;
+    color: #cecece; }
+    .footerContainer #footerLicensingColor h6 {
+      margin-bottom: 0; }
+  .footerContainer #footerLicensing a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 15px; }
+  .footerContainer #footerLicensing h6 {
+    margin: 0; }
 
 * {
   margin: 0;

@@ -38,7 +38,7 @@ class App extends Component {
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost/view/' component={SingleContentPost} />
                     <Route path='/contentPost/edit/' component={EditContentPost} />
-                    {/*<Footer />*/}
+                    <Footer />
                     {/* temporary files below*/}
 
                 </div>

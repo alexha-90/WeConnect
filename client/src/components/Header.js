@@ -37,7 +37,7 @@ class Header extends Component {
         if (this.props.auth.isLoggedIn) {
             return (
                 <div>
-                    Logged in as {this.state.username}. <a href='/profile'>View profile</a>
+                    Logged in as <a href='/profile'>{this.state.username}</a>
                     &nbsp;&nbsp;
                     <Button bsStyle="warning" onClick={this.onLogout}>
                         Logout

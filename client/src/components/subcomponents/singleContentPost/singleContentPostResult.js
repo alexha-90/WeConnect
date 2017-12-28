@@ -11,6 +11,7 @@ export default function singleContentPostResult(data) {
 
     let youtubeShow, instagramShow, twitterShow, snapchatShow;
 
+    // hide respective container if no data available
     if (!data[0]['yt_upload_frequency']) {
         youtubeShow = {display: 'none'};
     }

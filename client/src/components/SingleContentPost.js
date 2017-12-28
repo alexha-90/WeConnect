@@ -123,7 +123,7 @@ class SingleContentPost extends Component {
                         <h5>
                             Location: {this.state.contentPost[0]['poster_location']}
                             <br/>
-                            Share post:
+                            {/*Share post:*/}
                         </h5>
                         {this.showActionButton()}
                         {this.contactUser()}
