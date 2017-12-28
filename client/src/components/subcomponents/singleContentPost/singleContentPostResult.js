@@ -171,8 +171,6 @@ export default function singleContentPostResult(data) {
                     </div>
 
                 </div>
-                <hr />
-
             </div>
 
             <hr />

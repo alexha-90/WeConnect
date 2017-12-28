@@ -1,18 +1,24 @@
-#newPostGraphic {
+#stepComponent {
   display: block;
-  margin: 10px auto;
-  height: 400px;
+  margin: 40px auto 30px auto;
+  width: 50%;
 }
 
 .newContentPostContainer {
   width: 50%;
   letter-spacing: 0.15rem;
   display: block;
-  margin: 20px auto 0 auto;
+  margin: 10px auto 0 auto;
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px;
+
+  #newPostGraphic {
+    display: block;
+    margin: 10px auto;
+    height: 200px;
+  }
 
   .form-group {
     textarea.form-control:active {
@@ -42,9 +48,44 @@
     text-decoration: underline;
   }
 
+  Form {
+    margin-bottom: 50px;
+  }
+
+  #socialMediumHeadline {
+    text-align: center;
+    img {
+      display: block;
+      margin: 0 auto;
+      height: 125px;
+    }
+  }
+
+  .socialMedium {
+    form {
+      margin: 0;
+    }
+
+    hr {
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+  }
+
   .contentMediumsPropsInfo{
-    margin-left: 20px;
-    font-size: 1.2em;
+    font-size: 1.1em;
+
+    ul {
+      margin: 15px 0;
+      list-style: none;
+    }
+
+  }
+
+  #nextStepButton {
+    display: block;
+    float: right;
   }
 
   #contentMediumsGoBack {

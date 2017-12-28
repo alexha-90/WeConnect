@@ -98,8 +98,12 @@ class InstagramForm extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Instagram page details</h2>
+            <div className="socialMedium">
+                <div id="socialMediumHeadline">
+                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png" alt="instagram" />
+                    <h2>Instagram profile details</h2>
+                </div>
+
                 <br/>
                 <Form>
                     <FormGroup>
@@ -165,6 +169,7 @@ class InstagramForm extends Component {
                         </FormGroup>
                     </FormGroup>
                 </Form>
+                <hr/>
             </div>
         )
     }

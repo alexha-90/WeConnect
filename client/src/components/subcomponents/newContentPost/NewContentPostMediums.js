@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
+import 'rc-steps/assets/index.css';
+import 'rc-steps/assets/iconfont.css';
+import Steps, { Step } from 'rc-steps';
+
+
 import YoutubeForm from './YoutubeForm';
 import InstagramForm from './InstagramForm';
 import TwitterForm from './TwitterForm';
@@ -90,7 +95,7 @@ class NewContentPostMediums extends Component {
     onNextPage() {
         // check that inputs are valid
         if (!this.state.showYouTubeForm && !this.state.showInstagramForm && !this.state.showTwitterForm && !this.state.showSnapchatForm) {
-            return alert('Error: You must select at least one medium before proceeding!')
+            return alert('Error: You must select and enter information for at least one medium before proceeding!')
         }
 
         if (this.state.showYouTubeForm && !this.props.newContentPost.youtube) {
@@ -139,77 +144,91 @@ class NewContentPostMediums extends Component {
         }
 
         return (
-            <div className="newContentPostContainer">
-
-                <div className="contentMediumsPropsInfo">
-                    <h3>Inputs thus far:</h3>
-                    <ul>
-                        <li>User location: {this.props.newContentPost.userLocation}</li>
-                        <li>Content summary: {this.props.newContentPost.contentSummary}</li>
-                        <li>Content description: {this.props.newContentPost.contentDescription}</li>
-                        <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                        <li>Content tags: {this.props.newContentPost.contentTags}</li>
-                        {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
-                    </ul>
+            <div>
+                <div id="stepComponent">
+                    <Steps labelPlacement="vertical" current={1}>
+                        <Step title="Description" />
+                        <Step title="Mediums" />
+                        <Step title="Images" />
+                        <Step title="Review" />
+                        <Step title="Submit!" />
+                    </Steps>
                 </div>
-                <hr/>
-                <Form>
-                    <FormGroup>
-                        <ControlLabel>Marketable medium(s)</ControlLabel>
 
+                <div className="newContentPostContainer">
+
+                    <div className="contentMediumsPropsInfo">
+                        <h1>Inputs thus far:</h1>
+                        <ul>
+                            <li>User location: {this.props.newContentPost.userLocation}</li>
+                            <li>Content summary: {this.props.newContentPost.contentSummary}</li>
+                            <li>Content description: {this.props.newContentPost.contentDescription}</li>
+                            <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
+                            <li>Content tags: {this.props.newContentPost.contentTags}</li>
+                            {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
+                        </ul>
+                    </div>
+                    <hr/>
+                    <Form>
                         <FormGroup>
-                            <Checkbox
-                                inline
-                                name="YouTube"
-                                defaultChecked={this.state.showYouTubeForm}
-                                onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
-                                >
-                                YouTube
-                            </Checkbox>
-                            <Checkbox
-                                inline
-                                name="Instagram"
-                                defaultChecked={this.state.showInstagramForm}
-                                onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
-                                >
-                                Instagram
-                            </Checkbox>
-                            <Checkbox
-                                inline
-                                name="Twitter"
-                                defaultChecked={this.state.showTwitterForm}
-                                onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
-                                >
-                                Twitter
-                            </Checkbox>
-                            <Checkbox
-                                inline
-                                name="Snapchat"
-                                defaultChecked={this.state.showSnapchatForm}
-                                onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
-                                >
-                                Snapchat
-                            </Checkbox>
+                            <h1>Marketable medium(s):</h1>
+
+                            <ControlLabel>Marketable medium(s)</ControlLabel>
+
+                            <FormGroup>
+                                <Checkbox
+                                    inline
+                                    name="YouTube"
+                                    defaultChecked={this.state.showYouTubeForm}
+                                    onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
+                                    >
+                                    YouTube
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Instagram"
+                                    defaultChecked={this.state.showInstagramForm}
+                                    onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
+                                    >
+                                    Instagram
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Twitter"
+                                    defaultChecked={this.state.showTwitterForm}
+                                    onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
+                                    >
+                                    Twitter
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Snapchat"
+                                    defaultChecked={this.state.showSnapchatForm}
+                                    onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
+                                    >
+                                    Snapchat
+                                </Checkbox>
+                            </FormGroup>
                         </FormGroup>
-                    </FormGroup>
-                </Form>
+                    </Form>
 
-                {/* Import social media specific forms */}
-                {this.youtubeForm()}
-                {this.instagramForm()}
-                {this.twitterForm()}
-                {this.snapchatForm()}
+                    {/* Import social media specific forms */}
+                    {this.youtubeForm()}
+                    {this.instagramForm()}
+                    {this.twitterForm()}
+                    {this.snapchatForm()}
 
-                <Button bsStyle="success" onClick={this.onNextPage}>
-                    Proceed to optional images (Step 3/4)
-                </Button>
+                    <Button bsStyle="warning">
+                        <Link to="/newContentPost">
+                            Back to previous page (Step 1/4)
+                        </Link>
+                    </Button>
 
-                <Button id="contentMediumsGoBack" bsStyle="warning">
-                    <Link to="/newContentPost">
-                        Back to previous page (Step 1/4)
-                    </Link>
-                </Button>
+                    <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onNextPage}>
+                        Proceed to optional images (Step 3/4)
+                    </Button>
 
+                </div>
             </div>
         )
     }

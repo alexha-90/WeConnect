@@ -96,8 +96,11 @@ class YoutubeForm extends Component {
 
     render() {
         return (
-            <div>
-                <h2>YouTube channel details</h2>
+            <div className="socialMedium">
+                <div id="socialMediumHeadline">
+                    <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png" alt="youtube" />
+                    <h2>YouTube channel details</h2>
+                </div>
                 <br/>
                 <Form>
                     <FormGroup>
@@ -179,6 +182,7 @@ class YoutubeForm extends Component {
                         </FormGroup>
                     </FormGroup>
                 </Form>
+                <hr/>
             </div>
         )
     }

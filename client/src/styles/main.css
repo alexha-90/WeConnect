@@ -43,20 +43,24 @@
   border-radius: 10px;
   padding: 15px; }
 
-#newPostGraphic {
+#stepComponent {
   display: block;
-  margin: 10px auto;
-  height: 400px; }
+  margin: 40px auto 30px auto;
+  width: 50%; }
 
 .newContentPostContainer {
   width: 50%;
   letter-spacing: 0.15rem;
   display: block;
-  margin: 20px auto 0 auto;
+  margin: 10px auto 0 auto;
   background-color: #b3d9ff;
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px; }
+  .newContentPostContainer #newPostGraphic {
+    display: block;
+    margin: 10px auto;
+    height: 200px; }
   .newContentPostContainer .categories {
     display: block;
     position: relative;
@@ -70,9 +74,27 @@
   .newContentPostContainer h3 {
     margin-bottom: 15px;
     text-decoration: underline; }
+  .newContentPostContainer Form {
+    margin-bottom: 50px; }
+  .newContentPostContainer #socialMediumHeadline {
+    text-align: center; }
+    .newContentPostContainer #socialMediumHeadline img {
+      display: block;
+      margin: 0 auto;
+      height: 125px; }
+  .newContentPostContainer .socialMedium form {
+    margin: 0; }
+  .newContentPostContainer .socialMedium hr {
+    margin-top: 30px;
+    margin-bottom: 20px; }
   .newContentPostContainer .contentMediumsPropsInfo {
-    margin-left: 20px;
-    font-size: 1.2em; }
+    font-size: 1.1em; }
+    .newContentPostContainer .contentMediumsPropsInfo ul {
+      margin: 15px 0;
+      list-style: none; }
+  .newContentPostContainer #nextStepButton {
+    display: block;
+    float: right; }
   .newContentPostContainer #contentMediumsGoBack {
     float: right; }
 
@@ -82,7 +104,7 @@
 #instagramHide {
   display: none; }
 
-.socialContainer, .test .youtubeContainer, .test .instagramContainer, .test .twitterContainer, .test .snapchatContainer {
+.socialContainer {
   background-color: #f2f2f2;
   color: #666666;
   display: inline-block;
@@ -90,13 +112,13 @@
   height: 200px;
   border-radius: 5px;
   margin: 20px 5px; }
-  .socialContainer div, .test .youtubeContainer div, .test .instagramContainer div, .test .twitterContainer div, .test .snapchatContainer div {
+  .socialContainer div {
     color: #f2f2f2;
     padding: 5px 0;
     width: 100%;
     border-radius: 5px 5px 0 0;
     text-align: center; }
-  .socialContainer li, .test .youtubeContainer li, .test .instagramContainer li, .test .twitterContainer li, .test .snapchatContainer li {
+  .socialContainer li {
     color: inherit;
     margin: 4px 0 4px 10px; }
 
@@ -104,134 +126,91 @@
 #goBackLink {
   margin-left: 15px; }
 
-.singleContentPostContainer {
-  display: block;
-  position: relative;
-  margin: 40px auto;
-  width: 80%; }
-  .singleContentPostContainer .mainContainer {
-    left: 0;
-    position: absolute;
-    width: 70%;
-    background-color: #ffffff;
-    padding-top: 15px; }
-    .singleContentPostContainer .mainContainer #imageLightbox {
-      display: inline-block;
-      width: 23%;
-      background-color: red;
-      margin-left: 2%; }
-    .singleContentPostContainer .mainContainer #headline {
-      position: absolute;
-      display: inline-block;
-      margin-left: 5%;
-      margin-right: 1%;
-      width: 69%; }
-      .singleContentPostContainer .mainContainer #headline h3 {
-        font-size: 3rem; }
-      .singleContentPostContainer .mainContainer #headline ul {
-        list-style: none; }
-        .singleContentPostContainer .mainContainer #headline ul li {
-          margin: 5px 0; }
-          .singleContentPostContainer .mainContainer #headline ul li span {
-            text-decoration: underline; }
-    .singleContentPostContainer .mainContainer .content {
-      margin: 15px 1% 15px 2%; }
-      .singleContentPostContainer .mainContainer .content h4 {
-        font-size: 2.2rem;
-        margin-bottom: 15px; }
-      .singleContentPostContainer .mainContainer .content .socialMediums {
-        margin-top: 20px; }
-        .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer {
-          display: block;
-          width: 90%;
-          margin: 0 auto 20px auto;
-          background-color: #d9d9d9;
-          opacity: 0.9; }
-          .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer h3 {
-            display: block;
-            padding-top: 8px;
-            text-align: center; }
-          .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer {
-            display: inline-block;
-            margin: 0 0 10px 5%;
-            width: 20%; }
-            .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer img {
-              display: block; }
-          .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialStatistics {
-            display: inline-block;
-            width: 62%;
-            margin: 0 5% 0 8%; }
-  .singleContentPostContainer .infoContainer {
-    right: 0;
-    position: absolute;
-    width: 300px;
-    background-color: #e6ac00; }
-    .singleContentPostContainer .infoContainer #profileBlock {
-      padding-left: 10px;
-      display: inline-block;
-      height: 70px;
-      margin-top: 15px; }
-      .singleContentPostContainer .infoContainer #profileBlock img {
-        border-radius: 50%;
-        width: 20%; }
-      .singleContentPostContainer .infoContainer #profileBlock span {
+.tests {
+  display: block; }
+  .tests .singleContentPostContainer {
+    display: block;
+    position: relative;
+    margin: 40px auto;
+    width: 80%; }
+    .tests .singleContentPostContainer .mainContainer {
+      left: 0;
+      width: 70%;
+      background-color: #ffffff;
+      padding-top: 15px; }
+      .tests .singleContentPostContainer .mainContainer #imageLightbox {
+        display: inline-block;
+        width: 23%;
+        background-color: red;
+        margin-left: 2%; }
+      .tests .singleContentPostContainer .mainContainer #headline {
+        display: inline-block;
         margin-left: 5%;
-        width: 70%;
-        font-size: 4rem;
-        vertical-align: top; }
-    .singleContentPostContainer .infoContainer h5 {
-      padding-left: 10px;
-      margin: 5px 0; }
-    .singleContentPostContainer .infoContainer .panel.panel-default {
-      background-color: inherit; }
-    .singleContentPostContainer .infoContainer #editButton, .singleContentPostContainer .infoContainer #messageButton {
-      display: block;
-      margin: 10px auto;
-      width: 80%; }
-
-.test {
-  width: 50%;
-  display: inline-block;
-  margin: 40px 0 0 24%;
-  background-color: #b3d9ff;
-  border: 2px solid #003366;
-  border-radius: 10px;
-  padding: 15px; }
-  .test #profilePic {
-    display: inline-block;
-    width: 15%;
-    height: 100px; }
-    .test #profilePic img {
-      border-radius: 50%; }
-  .test #headline {
-    width: 85%;
-    min-height: 100px;
-    display: inline-block; }
-    .test #headline div {
-      display: inline-block;
-      vertical-align: middle;
-      padding: 0 5%;
-      width: 100%; }
-      .test #headline div h3 {
-        margin-bottom: 8px;
-        font-style: normal;
-        font-weight: bold; }
-      .test #headline div span {
-        font-style: italic;
-        text-decoration: overline; }
-  .test .spacer {
-    display: inline-block;
-    width: 2%; }
-  .test .youtubeContainer div {
-    background-color: #ff0000; }
-  .test .instagramContainer div {
-    background-color: #833ab4; }
-  .test .twitterContainer div {
-    background-color: #1da1f2; }
-  .test .snapchatContainer div {
-    background-color: #e6ac00; }
-  .test #messageMe {
-    float: right; }
+        margin-right: 1%;
+        width: 69%; }
+        .tests .singleContentPostContainer .mainContainer #headline h3 {
+          font-size: 3rem; }
+        .tests .singleContentPostContainer .mainContainer #headline ul {
+          list-style: none; }
+          .tests .singleContentPostContainer .mainContainer #headline ul li {
+            margin: 5px 0; }
+            .tests .singleContentPostContainer .mainContainer #headline ul li span {
+              text-decoration: underline; }
+      .tests .singleContentPostContainer .mainContainer .content {
+        margin: 15px 1% 15px 2%; }
+        .tests .singleContentPostContainer .mainContainer .content h4 {
+          font-size: 2.2rem;
+          margin-bottom: 15px; }
+        .tests .singleContentPostContainer .mainContainer .content .socialMediums {
+          margin-top: 20px; }
+          .tests .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer {
+            display: block;
+            width: 90%;
+            margin: 0 auto 20px auto;
+            background-color: #d9d9d9;
+            opacity: 0.9; }
+            .tests .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer h3 {
+              display: block;
+              padding-top: 8px;
+              text-align: center; }
+            .tests .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer {
+              display: inline-block;
+              margin: 0 0 10px 5%;
+              width: 20%; }
+              .tests .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer img {
+                display: block; }
+            .tests .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialStatistics {
+              display: inline-block;
+              width: 62%;
+              margin: 0 5% 0 8%; }
+    .tests .singleContentPostContainer .infoContainer {
+      top: 0;
+      right: 0;
+      position: absolute;
+      width: 300px;
+      background-color: #e6ac00; }
+      .tests .singleContentPostContainer .infoContainer #profileBlock {
+        padding-left: 10px;
+        display: inline-block;
+        height: 70px;
+        margin-top: 15px; }
+        .tests .singleContentPostContainer .infoContainer #profileBlock img {
+          border-radius: 50%;
+          width: 20%; }
+        .tests .singleContentPostContainer .infoContainer #profileBlock span {
+          margin-left: 5%;
+          width: 70%;
+          font-size: 4rem;
+          vertical-align: top; }
+      .tests .singleContentPostContainer .infoContainer h5 {
+        padding-left: 10px;
+        margin: 5px 0; }
+      .tests .singleContentPostContainer .infoContainer .panel.panel-default {
+        background-color: inherit; }
+      .tests .singleContentPostContainer .infoContainer #editButton, .tests .singleContentPostContainer .infoContainer #messageButton {
+        display: block;
+        margin: 10px auto;
+        width: 80%; }
 
 .newPostBanner {
   width: 100%;

@@ -98,8 +98,11 @@ class TwitterForm extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Twitter page details</h2>
+            <div className="socialMedium">
+                <div id="socialMediumHeadline">
+                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="twitter" />
+                    <h2>Twitter account details</h2>
+                </div>
                 <br/>
                 <Form>
                     <FormGroup>
@@ -165,6 +168,7 @@ class TwitterForm extends Component {
                         </FormGroup>
                     </FormGroup>
                 </Form>
+                <hr/>
             </div>
         )
     }

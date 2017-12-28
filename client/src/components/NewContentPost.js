@@ -3,10 +3,17 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Co
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
+import 'rc-steps/assets/index.css';
+import 'rc-steps/assets/iconfont.css';
+import Steps, { Step } from 'rc-steps';
+
 import { newContentPostToProps } from '../actions/newContentPost';
 import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
+
+// add location autocomplete from here: https://kenny-hibino.github.io/react-places-autocomplete/
+
 
 // google autocomplete api for location
 
@@ -176,9 +183,18 @@ class NewContentPost extends Component {
 
         return (
             <div>
-                <img src="https://i.imgur.com/JRruDP6.png" id="newPostGraphic" alt="newPostGraphic" />
+                <div id="stepComponent">
+                    <Steps labelPlacement="vertical" current={0}>
+                        <Step title="Description" />
+                        <Step title="Mediums" />
+                        <Step title="Images" />
+                        <Step title="Review" />
+                        <Step title="Submit!" />
+                    </Steps>
+                </div>
                 <div className="newContentPostContainer">
                     <h1>Describe your content:</h1>
+                    <img src="https://i.imgur.com/JRruDP6.png" id="newPostGraphic" alt="newPostGraphic" />
                     <Form>
                         <FieldGroup
                             label="Location"
@@ -297,10 +313,10 @@ class NewContentPost extends Component {
                             </FormGroup>
                         </div>
 
-                        <Button bsStyle="success"
+                        <Button id="nextStepButton" bsStyle="success"
                                 onClick={this.onReviewForNextStep}
                             >
-                            Proceed - Select your content mediums (Step 2/4)
+                            Proceed - Select your content mediums (Step 2/5)
                         </Button>
                     </Form>
                 </div>

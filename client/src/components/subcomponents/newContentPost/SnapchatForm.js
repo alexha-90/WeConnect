@@ -82,8 +82,12 @@ class SnapchatForm extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Snapchat account details</h2>
+            <div className="socialMedium">
+                <div id="socialMediumHeadline">
+                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png" alt="snapchat" />
+                    <h2>Snapchat account details</h2>
+                </div>
+
                 <br/>
                 <Form>
                     <FormGroup>
@@ -134,6 +138,7 @@ class SnapchatForm extends Component {
                         </FormControl>
                     </FormGroup>
                 </Form>
+                <hr/>
             </div>
         )
     }
