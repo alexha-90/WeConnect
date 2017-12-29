@@ -7,7 +7,7 @@ import YoutubeForm from './subcomponents/newContentPost/YoutubeForm';
 import InstagramForm from './subcomponents/newContentPost/InstagramForm';
 import TwitterForm from './subcomponents/newContentPost/TwitterForm';
 import SnapchatForm from './subcomponents/newContentPost/SnapchatForm';
-import { fetchSingleContentPost, editPostDetailsToProps } from '../actions/';
+import { fetchSingleContentPost, editPostDetailsToProps, updateSingleContentPost } from '../actions/';
 import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../actions/newContentPost'
 
 // editSingleContentPost  ^^ import
@@ -195,8 +195,6 @@ class EditContentPost extends Component {
         // check that inputs are valid
 
         // if form is open and has neither contentPost or newPost data, prompt error.
-
-        console.log(this.props);
         if (this.state.showYouTubeForm && (!this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube)) {
             return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
         }
@@ -213,7 +211,8 @@ class EditContentPost extends Component {
             return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
         }
 
-        // clear out values if checkbox is not selected at point of submitting
+        // clear out values if checkbox is not selected at point of submission
+        // NOTE: if user selected a new value for existing medium, the changes will be reflected on newContentPost
         if (!this.state.showYouTubeForm) {
             this.props.dispatch(youtubeRemoveData());
         }
@@ -230,7 +229,41 @@ class EditContentPost extends Component {
             this.props.dispatch(snapchatRemoveData());
         }
 
-
+        setTimeout(() => {
+            // treat updates as a new post. Unchanged mediums data are ignored
+            let editedPost = {
+                userLocation: this.state.userLocation,
+                contentSummary: this.state.contentSummary,
+                contentDescription: this.state.contentDescription,
+                contentIdealMatch: this.state.contentIdealMatch,
+                contentTags: this.state.contentTags,
+                contentCategories: this.state.contentCategories,
+                youtube: {
+                    yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
+                    yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
+                    yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
+                    yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount
+                },
+                instagram: {
+                    ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
+                    ig_Followers: this.props.newContentPost.instagram.ig_Followers,
+                    ig_Likes: this.props.newContentPost.instagram.ig_Likes,
+                    ig_Comments: this.props.newContentPost.instagram.ig_Comments
+                },
+                twitter: {
+                    tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
+                    tw_Followers: this.props.newContentPost.twitter.tw_Followers,
+                    tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
+                    tw_Comments: this.props.newContentPost.twitter.tw_Comments,
+                },
+                snapchat: {
+                    sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
+                    sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
+                    sc_StoryOpens: this.props.newContentPost.snapchat.sc_StoryOpens
+                }
+            };
+            this.props.dispatch(updateSingleContentPost(editedPost));
+        }, 200);
     }
 
 

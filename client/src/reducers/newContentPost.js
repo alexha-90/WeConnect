@@ -1,5 +1,35 @@
 const newContentPost = (state ={
-    newContentPost: {}
+    newContentPost: {
+        userLocation: null,
+        contentSummary: null,
+        contentDescription: null,
+        contentIdealMatch: null,
+        contentTags: null,
+        contentCategories: null,
+        youtube: {
+            yt_UploadFrequency: null,
+            yt_VideoLength: null,
+            yt_SubCount: null,
+            yt_ViewCount: null
+        },
+        instagram: {
+            ig_PostFrequency: null,
+            ig_Followers: null,
+            ig_Likes: null,
+            ig_Comments: null
+        },
+        twitter: {
+            tw_PostFrequency: null,
+            tw_Followers: null,
+            tw_PostLikes: null,
+            tw_Comments: null,
+        },
+        snapchat: {
+            sc_PostFrequency: null,
+            sc_Followers: null,
+            sc_StoryOpens: null,
+        }
+    }
     }, action) => {
 
     switch (action.type) {
@@ -124,6 +154,22 @@ const newContentPost = (state ={
                         sc_Followers: null,
                         sc_StoryOpens: null,
                     }
+                }
+            }
+        }
+
+        case 'EDITS_AS_NEW_POST': {
+            console.log(action.payload);
+            console.log('hey');
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                    // userLocation: action.payload.userLocation,
+                    // contentSummary: action.payload.contentSummary,
+                    // contentDescription: action.payload.contentDescription,
+                    // contentIdealMatch: action.payload.contentIdealMatch,
+                    // contentTags: action.payload.contentTags,
+                    // contentCategories: action.payload.contentCategories,
                 }
             }
         }

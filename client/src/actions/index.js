@@ -29,15 +29,41 @@ export const editPostDetailsToProps = (data) => {
     };
 };
 
-export const editSingleContentPost = (postID) => async () => {
-    console.log(postID);
+// export const editSingleContentPost = (postID) => async () => {
+//     console.log(postID);
+//     try {
+//         const res = await axios.patch('/api/editSingleContentPost', postID);
+//         return res.data;
+//     } catch(res) {
+//         return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
+//     }
+// };
+
+
+export const updateSingleContentPost = (editedPost) => async () => {
+    console.log(editedPost);
+    console.log('^^^^');
     try {
-        const res = await axios.patch('/api/editSingleContentPost', postID);
+        const res = await axios.patch('/api/saveEditedPost', editedPost);
         return res.data;
     } catch(res) {
-        return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
+        return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
     }
+
+    // try {
+    //     const res = await axios.patch('/api/saveEditedPost',
+    //         dispatch({
+    //             type: 'UPDATE_EXISTING_POST',
+    //             payload: data
+    //         })
+    //     );
+    //     return res.data;
+    // } catch(res) {
+    //     alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
+    // }
 };
+
+
 
 export const loadProfileData = () => async () => {
     try {

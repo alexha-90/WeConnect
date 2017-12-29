@@ -23,7 +23,7 @@ class YoutubeForm extends Component {
 
     componentWillMount() {
         // repopulate form fields if user toggled back and forth steps and has youtube medium selected
-        if (this.props.newContentPost.youtube) {
+        if (this.props.newContentPost.youtube.yt_UploadFrequency) {
             return this.setState({
                 yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
                 yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
@@ -66,7 +66,7 @@ class YoutubeForm extends Component {
                 this.setState({ yt_UploadFrequency: event.target.value, yt_UploadFrequencyDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 50);
                 break;
             }
 
@@ -77,7 +77,7 @@ class YoutubeForm extends Component {
                 this.setState({ yt_VideoLength: event.target.value, yt_VideoLengthDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -88,7 +88,7 @@ class YoutubeForm extends Component {
                 this.setState({ yt_SubCount: event.target.value, yt_SubCountDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -99,7 +99,7 @@ class YoutubeForm extends Component {
                 this.setState({ yt_ViewCount: event.target.value, yt_ViewCountDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 

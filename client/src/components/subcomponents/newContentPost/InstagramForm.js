@@ -24,7 +24,7 @@ class InstagramForm extends Component {
 
     componentWillMount() {
         // repopulate form fields if user toggled back and forth steps
-        if (this.props.newContentPost.instagram) {
+        if (this.props.newContentPost.instagram.ig_PostFrequency) {
             return this.setState({
                 ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
                 ig_Followers: this.props.newContentPost.instagram.ig_Followers,
@@ -67,7 +67,7 @@ class InstagramForm extends Component {
                 this.setState({ ig_PostFrequency: event.target.value, ig_PostFrequencyDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -78,7 +78,7 @@ class InstagramForm extends Component {
                 this.setState({ ig_Followers: event.target.value, ig_FollowersDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -89,7 +89,7 @@ class InstagramForm extends Component {
                 this.setState({ ig_Likes: event.target.value, ig_LikesDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -100,7 +100,7 @@ class InstagramForm extends Component {
                 this.setState({ ig_Comments: event.target.value, ig_CommentsDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 

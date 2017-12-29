@@ -22,7 +22,7 @@ class SnapchatForm extends Component {
 
     componentWillMount() {
         // repopulate form fields if user toggled back and forth steps
-        if (this.props.newContentPost.snapchat) {
+        if (this.props.newContentPost.snapchat.sc_PostFrequency) {
             return this.setState({
                 sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
                 sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
@@ -62,7 +62,7 @@ class SnapchatForm extends Component {
                 this.setState({ sc_PostFrequency: event.target.value, sc_PostFrequencyDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
             case 'sc_Followers': {
@@ -72,7 +72,7 @@ class SnapchatForm extends Component {
                 this.setState({ sc_Followers: event.target.value, sc_FollowersDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -83,7 +83,7 @@ class SnapchatForm extends Component {
                 this.setState({ sc_StoryOpens: event.target.value, sc_StoryOpensDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 

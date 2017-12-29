@@ -49,7 +49,7 @@ app.use(passport.session());
 
 // import routes
 //===========================================================================
-require('./routes/saveNewContentPost')(app);
+require('./routes/saveContentPost')(app);
 require('./routes/getContentPosts')(app);
 require('./routes/authRoutes')(app);
 require('./routes/privateMessages')(app);

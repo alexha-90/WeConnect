@@ -24,7 +24,7 @@ class TwitterForm extends Component {
 
     componentWillMount() {
         // repopulate form fields if user toggled back and forth steps
-        if (this.props.newContentPost.twitter) {
+        if (this.props.newContentPost.twitter.tw_PostFrequency) {
             return this.setState({
                 tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
                 tw_Followers: this.props.newContentPost.twitter.tw_Followers,
@@ -67,7 +67,7 @@ class TwitterForm extends Component {
                 this.setState({ tw_PostFrequency: event.target.value, tw_PostFrequencyDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -78,7 +78,7 @@ class TwitterForm extends Component {
                 this.setState({ tw_Followers: event.target.value, tw_FollowersDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -89,7 +89,7 @@ class TwitterForm extends Component {
                 this.setState({ tw_PostLikes: event.target.value, tw_PostLikesDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
@@ -100,7 +100,7 @@ class TwitterForm extends Component {
                 this.setState({ tw_Comments: event.target.value, tw_PostLikesDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
-                }, 200);
+                }, 0);
                 break;
             }
 
