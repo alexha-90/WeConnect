@@ -16,7 +16,7 @@ import SnapchatForm from './SnapchatForm';
 
 import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
 
-import { validateMediums} from '../../helper_functions/newContentHelpers';
+// import { validateMediums} from '../../helper_functions/newContentHelpers';
 
 // uncomment categories check later. In for testing
 

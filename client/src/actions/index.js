@@ -29,20 +29,9 @@ export const editPostDetailsToProps = (data) => {
     };
 };
 
-// export const editSingleContentPost = (postID) => async () => {
-//     console.log(postID);
-//     try {
-//         const res = await axios.patch('/api/editSingleContentPost', postID);
-//         return res.data;
-//     } catch(res) {
-//         return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
-//     }
-// };
-
 
 export const updateSingleContentPost = (editedPost) => async () => {
     console.log(editedPost);
-    console.log('^^^^');
     try {
         const res = await axios.patch('/api/saveEditedPost', editedPost);
         return res.data;

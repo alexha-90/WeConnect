@@ -230,8 +230,18 @@ class EditContentPost extends Component {
         }
 
         setTimeout(() => {
+
+            // youtube_yt_upload_freq = this.props.newContentPost.youtube
+            // if this.props.contentPost.youtube and not this.props.newContentPost.youtube.length
+            //      then editedPost should get information from this.props.contentPost instead
+
+            if (this.props.contentPost.yt_UploadFrequency && !this.props.newContentPost.youtube) {
+                console.log(this.props.newContentPost.youtube.length);
+            }
+
             // treat updates as a new post. Unchanged mediums data are ignored
             let editedPost = {
+                contentPostID: this.state.contentPostID,
                 userLocation: this.state.userLocation,
                 contentSummary: this.state.contentSummary,
                 contentDescription: this.state.contentDescription,
