@@ -4,11 +4,16 @@ import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 
 import YoutubeForm from './subcomponents/newContentPost/YoutubeForm';
+import InstagramForm from './subcomponents/newContentPost/InstagramForm';
+import TwitterForm from './subcomponents/newContentPost/TwitterForm';
+import SnapchatForm from './subcomponents/newContentPost/SnapchatForm';
 import { fetchSingleContentPost, editPostDetailsToProps } from '../actions/';
+import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../actions/newContentPost'
+
 // editSingleContentPost  ^^ import
+// need to validaet mediums like did in newPost....
 //===============================================================================================//
 
-//                 return this.props.dispatch(editSingleContentPost(postID))
 
 let categoriesArr = [];
 
@@ -27,11 +32,19 @@ class EditContentPost extends Component {
             contentIdealMatch: '',
             contentTags: '',
             contentCategories: [],
+            showYouTubeForm: false,
+            showInstagramForm: false,
+            showTwitterForm: false,
+            showSnapchatForm: false,
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.openCategoryIndicator = this.openCategoryIndicator.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
-        // this.youtubeForm = this.youtubeForm.bind(this);
+        this.youtubeForm = this.youtubeForm.bind(this);
+        this.instagramForm = this.instagramForm.bind(this);
+        this.twitterForm = this.twitterForm.bind(this);
+        this.snapchatForm = this.snapchatForm.bind(this);
+        this.onUpdatePost = this.onUpdatePost.bind(this);
     }
 
 
@@ -52,24 +65,19 @@ class EditContentPost extends Component {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
                 .then((data) => {
+                    console.log(data);
+                    this.setState( {contentPostID: data[0]['content_post_id']} );
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
                     if (!data[0]['is_author']) {
                         alert ('Sorry! You are not authorized to edit this post.');
-                        this.setState( {contentPostID: data[0]['content_post_id']} );
-                        return this.setState({redirectToPost: true})
+                        setTimeout(() => {
+                            return this.setState({redirectToPost: true})
+                        }, 250);
                     }
 
-                    // dispatch to props.
-                    this.props.dispatch(editPostDetailsToProps(data));
-                    console.log('&&#@##@#');
-                    console.log(this.props.contentPost);
-
-                    //note 2:30am. use props instead of state. Remove state references
-
-                    // console.log(data);
-                    return this.setState({
+                    this.setState({
                         userLocation: data[0]['poster_location'],
                         contentSummary: data[0]['content_summary'],
                         contentDescription: data[0]['content_description'],
@@ -77,6 +85,26 @@ class EditContentPost extends Component {
                         contentTags: data[0]['content_tags'],
                         contentCategories: data[0]['content_categories']
                     });
+                    return data;
+                })
+                .then((data) => {
+                    return this.props.dispatch(editPostDetailsToProps(data));
+                })
+                .then(() => {
+                    if (this.props.contentPost['yt_upload_frequency']) {
+                        this.setState({ showYouTubeForm: true })
+                    }
+
+                    if (this.props.contentPost['ig_post_frequency']) {
+                        this.setState({ showInstagramForm: true })
+                    }
+                    if (this.props.contentPost['tw_post_frequency']) {
+                        this.setState({ showTwitterForm: true })
+                    }
+
+                    if (this.props.contentPost['sc_post_frequency']) {
+                        this.setState({ showSnapchatForm: true })
+                    }
                 })
             } catch (err) {
                 console.log(err);
@@ -132,13 +160,78 @@ class EditContentPost extends Component {
     }
 
 
-    // youtubeForm() {
-    //     if (!this.state.showYouTubeForm) {
-    //         return;
-    //     }
-    //     return <YoutubeForm />
-    // }
+    youtubeForm() {
+        if (!this.state.showYouTubeForm) {
+            return;
+        }
+        return <YoutubeForm />
+    }
 
+    instagramForm() {
+        if (!this.state.showInstagramForm) {
+            return;
+        }
+        return <InstagramForm />
+    }
+
+    twitterForm() {
+        if (!this.state.showTwitterForm) {
+            return;
+        }
+        return <TwitterForm />
+    }
+
+    snapchatForm() {
+        if (!this.state.showSnapchatForm) {
+            return;
+        }
+        return <SnapchatForm />
+    }
+
+
+
+    onUpdatePost () {
+        // refactor later
+        // check that inputs are valid
+
+        // if form is open and has neither contentPost or newPost data, prompt error.
+
+        console.log(this.props);
+        if (this.state.showYouTubeForm && (!this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube)) {
+            return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
+        }
+
+        if (this.state.showInstagramForm && (!this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram)) {
+            return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
+        }
+
+        if (this.state.showTwitterForm && (!this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter)) {
+            return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
+        }
+
+        if (this.state.showSnapchatForm && (!this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat)) {
+            return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
+        }
+
+        // clear out values if checkbox is not selected at point of submitting
+        if (!this.state.showYouTubeForm) {
+            this.props.dispatch(youtubeRemoveData());
+        }
+
+        if (!this.state.showInstagramForm) {
+            this.props.dispatch(instagramRemoveData());
+        }
+
+        if (!this.state.showTwitterForm) {
+            this.props.dispatch(twitterRemoveData());
+        }
+
+        if (!this.state.showSnapchatForm) {
+            this.props.dispatch(snapchatRemoveData());
+        }
+
+
+    }
 
 
 
@@ -270,26 +363,63 @@ class EditContentPost extends Component {
                         </FormGroup>
                     </Form>
 
+                    <Form>
+                        <FormGroup>
+                            <h1>Marketable medium(s):</h1>
+
+                            <ControlLabel>Marketable medium(s)</ControlLabel>
+
+                            <FormGroup>
+                                <Checkbox
+                                    inline
+                                    name="YouTube"
+                                    defaultChecked={this.state.showYouTubeForm}
+                                    onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
+                                >
+                                    YouTube
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Instagram"
+                                    defaultChecked={this.state.showInstagramForm}
+                                    onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
+                                >
+                                    Instagram
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Twitter"
+                                    defaultChecked={this.state.showTwitterForm}
+                                    onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
+                                >
+                                    Twitter
+                                </Checkbox>
+                                <Checkbox
+                                    inline
+                                    name="Snapchat"
+                                    defaultChecked={this.state.showSnapchatForm}
+                                    onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
+                                >
+                                    Snapchat
+                                </Checkbox>
+                            </FormGroup>
+                        </FormGroup>
+                    </Form>
+
                     {/* Import social media specific forms */}
-                    <YoutubeForm />
+                    {this.youtubeForm()}
+                    {this.instagramForm()}
+                    {this.twitterForm()}
+                    {this.snapchatForm()}
 
 
-                    <Button bsStyle="success"
-                        // onClick={this.onReviewForNextStep}
-                    >
+                    <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
                         Update!
-                    </Button>
-
-
-                    <Button bsStyle="warning">
-                        <Link to="/profile">
-                            Jump to profile
-                        </Link>
                     </Button>
                     &nbsp;
                     <Button bsStyle="warning">
-                        <Link to="/contentCreatorsList">
-                            Jump to content creators list
+                        <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
+                            Back to post
                         </Link>
                     </Button>
             </div>
@@ -312,6 +442,7 @@ function FieldGroup({ id, label, ...props }) {
 function mapStateToProps(state) {
     return {
         contentPost: state.contentPosts.contentPostDetails[0],
+        newContentPost: state.newContentPost.newContentPost,
         auth: state.auth.auth
     };
 }

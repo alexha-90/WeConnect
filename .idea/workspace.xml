@@ -36,11 +36,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EditContentPost.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EditContentPost.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/components/EditContentPost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3802">
-              <caret line="64" column="70" lean-forward="true" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="70" />
+            <state relative-caret-position="517">
+              <caret line="221" column="55" lean-forward="true" selection-start-line="221" selection-start-column="55" selection-end-line="221" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <marker date="1514539262000" expanded="true" signature="7141:7403" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_singleContentPost.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/styles/_singleContentPost.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1557">
+              <caret line="53" column="27" lean-forward="false" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_newContentPost.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/styles/_newContentPost.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="3" selection-end-line="90" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewContentPostMediums.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="133" column="9" lean-forward="true" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -48,11 +81,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YoutubeForm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newContentHelpers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/helper_functions/newContentHelpers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingleContentPost.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/SingleContentPost.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="746">
+              <caret line="61" column="13" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="61" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#392#481#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YoutubeForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+            <state relative-caret-position="292">
+              <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newContentPost.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/actions/newContentPost.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="26" lean-forward="true" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SnapchatForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="36" column="38" lean-forward="false" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwitterForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="42" column="52" lean-forward="false" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -74,11 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>session</find>
-      <find>checkingLogin</find>
-      <find>data[i]</find>
-      <find>privateMessageIDsToProps</find>
-      <find>user_id</find>
       <find>posterUsername</find>
       <find>singleContentPostContainer</find>
       <find>socialContainer</find>
@@ -104,10 +189,13 @@
       <find>this.props.newContent</find>
       <find>newContentPost</find>
       <find>console.log</find>
+      <find>showYou</find>
+      <find>this.props.newContentPost</find>
+      <find>contentPostID</find>
+      <find>onReviewForNextStep</find>
+      <find>onUpdate</find>
     </findStrings>
     <replaceStrings>
-      <replace>contentPostDetails</replace>
-      <replace>propogateContentPost</replace>
       <replace>propogateContentPosts</replace>
       <replace>propagateContentPosts</replace>
       <replace>propagateExpandedContent</replace>
@@ -136,6 +224,8 @@
       <replace>data[0][i]</replace>
       <replace>imageLightbox</replace>
       <replace>data[1][i]</replace>
+      <replace>this.props.contentPost</replace>
+      <replace>onUpdatePost</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -151,7 +241,6 @@
         <option value="$PROJECT_DIR$/client/src/reducers/postIDs.js" />
         <option value="$PROJECT_DIR$/client/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/client/src/components/helper_functions/authHelpers.js" />
-        <option value="$PROJECT_DIR$/client/src/components/helper_functions/newContentHelpers.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/profileData.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/profilePostData.js" />
         <option value="$PROJECT_DIR$/client/src/components/NewUserRegistration.js" />
@@ -177,13 +266,9 @@
         <option value="$PROJECT_DIR$/client/.gitignore" />
         <option value="$PROJECT_DIR$/client/node_modules/rc-steps/assets/index.css" />
         <option value="$PROJECT_DIR$/client/src/styles/main.scss" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js" />
         <option value="$PROJECT_DIR$/client/src/styles/_footer.scss" />
         <option value="$PROJECT_DIR$/client/src/styles/_newContentPost.scss" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostImageUpload.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js" />
         <option value="$PROJECT_DIR$/journal.txt" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostFinalReview.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/singleContentPostResult.js" />
@@ -191,11 +276,16 @@
         <option value="$PROJECT_DIR$/client/src/components/NewContentPost.js" />
         <option value="$PROJECT_DIR$/client/src/reducers/contentPosts.js" />
         <option value="$PROJECT_DIR$/client/src/actions/index.js" />
-        <option value="$PROJECT_DIR$/client/src/components/SingleContentPost.js" />
         <option value="$PROJECT_DIR$/client/src/styles/_singleContentPost.scss" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/EditContentPostForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/SingleContentPost.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js" />
         <option value="$PROJECT_DIR$/client/src/components/EditContentPost.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/EditContentPostForm.js" />
+        <option value="$PROJECT_DIR$/client/src/components/helper_functions/newContentHelpers.js" />
       </list>
     </option>
   </component>
@@ -276,6 +366,14 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="helper_functions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
@@ -402,7 +500,7 @@
       <workItem from="1511774185904" duration="7541000" />
       <workItem from="1511821115855" duration="24843000" />
       <workItem from="1511907009606" duration="271849000" />
-      <workItem from="1513624432507" duration="53304000" />
+      <workItem from="1513624432507" duration="62427000" />
     </task>
     <task id="LOCAL-00001" summary="Resolve renamed file conflicts">
       <created>1511822758826</created>
@@ -429,7 +527,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477672000" />
+    <option name="totallyTimeSpent" value="486795000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1835" y="-411" width="1625" height="936" extended-state="0" />
@@ -501,22 +599,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/components/NewUserRegistration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="154" column="37" lean-forward="true" selection-start-line="154" selection-start-column="37" selection-end-line="154" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/actions/newContentPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/actions/auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -719,26 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="171" column="21" lean-forward="false" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="170" column="21" lean-forward="false" selection-start-line="170" selection-start-column="21" selection-end-line="170" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/singleContentPostContactForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -752,7 +814,7 @@
         <state relative-caret-position="266">
           <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,39 +827,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/styles/_newContentPost.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="160" column="37" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostImageUpload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1472">
-          <caret line="140" column="21" lean-forward="false" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,8 +848,8 @@
         <state relative-caret-position="2232">
           <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#184#234#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#184#234#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -870,45 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/SingleContentPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="104" column="50" lean-forward="false" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#392#481#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/styles/_singleContentPost.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="53" column="27" lean-forward="false" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/NewContentPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/EditContentPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3802">
-          <caret line="64" column="70" lean-forward="true" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/EditContentPostForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -927,12 +922,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+        <state relative-caret-position="351">
+          <caret line="40" column="38" lean-forward="false" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="36" column="38" lean-forward="false" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="81" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="42" column="52" lean-forward="false" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/NewContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/SingleContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="61" column="13" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#392#481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/newContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="26" lean-forward="true" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/YoutubeForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostMediums.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="133" column="9" lean-forward="true" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/styles/_newContentPost.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="3" selection-end-line="90" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/styles/_singleContentPost.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1557">
+          <caret line="53" column="27" lean-forward="false" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/helper_functions/newContentHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/EditContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="221" column="55" lean-forward="true" selection-start-line="221" selection-start-column="55" selection-end-line="221" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <marker date="1514539262000" expanded="true" signature="7141:7403" ph="..." />
           </folding>
         </state>
       </provider>

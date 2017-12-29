@@ -32,6 +32,19 @@ class SnapchatForm extends Component {
                 sc_StoryOpensDefaultVal: false,
             })
         }
+
+        // repopulate form fields if user is editing post and has snapchat medium selected
+        if (this.props.contentPost && this.props.contentPost['sc_post_frequency']) {
+            return this.setState({
+                sc_PostFrequency: this.props.contentPost['sc_post_frequency'],
+                sc_Followers: this.props.contentPost['sc_followers'],
+                sc_StoryOpens: this.props.contentPost['sc_story_opens'],
+                sc_PostFrequencyDefaultVal: false,
+                sc_FollowersDefaultVal: false,
+                sc_StoryOpensDefaultVal: false,
+            })
+        }
+
     }
 
 
@@ -149,7 +162,8 @@ export default connect(mapStateToProps)(SnapchatForm);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        contentPost: state.contentPosts.contentPostDetails[0],
     };
 }
 

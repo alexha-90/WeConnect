@@ -36,6 +36,20 @@ class InstagramForm extends Component {
                 ig_CommentsDefaultVal: false
             })
         }
+
+        // repopulate form fields if user is editing post and has instagram medium selected
+        if (this.props.contentPost && this.props.newContentPost['ig_post_frequency']) {
+            return this.setState({
+                ig_PostFrequency: this.props.newContentPost['ig_post_frequency'],
+                ig_Followers: this.props.newContentPost['ig_followers'],
+                ig_Likes: this.props.newContentPost['ig_likes'],
+                ig_Comments: this.props.newContentPost['ig_comments'],
+                ig_PostFrequencyDefaultVal: false,
+                ig_FollowersDefaultVal: false,
+                ig_LikesDefaultVal: false,
+                ig_CommentsDefaultVal: false
+            })
+        }
     }
 
 
@@ -180,7 +194,8 @@ export default connect(mapStateToProps)(InstagramForm);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        contentPost: state.contentPosts.contentPostDetails[0],
     };
 }
 

@@ -37,7 +37,7 @@ class YoutubeForm extends Component {
         }
 
         // repopulate form fields if user is editing post and has youtube medium selected
-        if (this.props.contentPost) {
+        if (this.props.contentPost && this.props.contentPost['yt_upload_frequency']) {
             return this.setState({
                 yt_UploadFrequency: this.props.contentPost['yt_upload_frequency'],
                 yt_VideoLength: this.props.contentPost['yt_video_length'],

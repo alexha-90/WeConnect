@@ -36,6 +36,20 @@ class TwitterForm extends Component {
                 tw_CommentsDefaultVal: false
             })
         }
+
+        // repopulate form fields if user is editing post and has instagram medium selected
+        if (this.props.contentPost && this.props.contentPost['tw_post_frequency']) {
+            return this.setState({
+                tw_PostFrequency: this.props.contentPost['tw_post_frequency'],
+                tw_Followers: this.props.contentPost['tw_followers'],
+                tw_PostLikes: this.props.contentPost['tw_post_likes'],
+                tw_Comments: this.props.contentPost['tw_comments'],
+                tw_PostFrequencyDefaultVal: false,
+                tw_FollowersDefaultVal: false,
+                tw_PostLikesDefaultVal: false,
+                tw_CommentsDefaultVal: false
+            })
+        }
     }
 
 
@@ -180,7 +194,8 @@ export default connect(mapStateToProps)(TwitterForm);
 
 function mapStateToProps(state) {
     return {
-        newContentPost: state.newContentPost.newContentPost
+        newContentPost: state.newContentPost.newContentPost,
+        contentPost: state.contentPosts.contentPostDetails[0],
     };
 }
 
