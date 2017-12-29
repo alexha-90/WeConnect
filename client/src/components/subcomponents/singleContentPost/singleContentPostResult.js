@@ -9,6 +9,8 @@ import '../../../styles/carousel.css'
 export default function singleContentPostResult(data) {
     console.log(data);
 
+    const categories = data[0]['content_categories'].toString().replace(/,/gi, ', ');
+
     let youtubeShow, instagramShow, twitterShow, snapchatShow;
 
     // hide respective container if no data available
@@ -39,7 +41,7 @@ export default function singleContentPostResult(data) {
                 <h3>{data[0]['content_summary']}</h3>
                 <hr/>
                 <ul>
-                    <li><span>Categories:</span> {data[0]['content_categories']}</li>
+                    <li><span>Categories:</span> {categories}</li>
                     <li><span>Ideal match:</span> {data[0]['content_ideal_match']}</li>
                     <li><span>Tags:</span> {data[0]['content_tags']}</li>
                 </ul>
@@ -60,7 +62,7 @@ export default function singleContentPostResult(data) {
                     <div className="socialMediumContainer" id="youtubeMedium">
                         <h3>YouTube</h3>
                         <div id="socialLogoContainer">
-                            <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png"/>
+                            <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png" alt="youtubeLogo"/>
                         </div>
                         <div id="socialStatistics">
                             <Table condensed hover>
@@ -89,7 +91,7 @@ export default function singleContentPostResult(data) {
                     <div className="socialMediumContainer" style={instagramShow}>
                         <h3>Instagram</h3>
                         <div id="socialLogoContainer">
-                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png"/>
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png" alt="instagramLogo"/>
                         </div>
                         <div id="socialStatistics">
                             <Table condensed hover>
@@ -119,7 +121,7 @@ export default function singleContentPostResult(data) {
                     <div className="socialMediumContainer" style={twitterShow}>
                         <h3>Twitter</h3>
                         <div id="socialLogoContainer">
-                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"/>
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="twitterLogo"/>
                         </div>
                         <div id="socialStatistics">
                             <Table condensed hover>
@@ -148,7 +150,7 @@ export default function singleContentPostResult(data) {
                     <div className="socialMediumContainer" style={snapchatShow}>
                         <h3>Snapchat</h3>
                         <div id="socialLogoContainer">
-                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/>
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png" alt="snapchatLogo"/>
                         </div>
                         <div id="socialStatistics">
                             <Table condensed hover>
@@ -164,6 +166,10 @@ export default function singleContentPostResult(data) {
                                 <tr>
                                     <td>Typical story opens</td>
                                     <td>{data[0]['sc_story_opens']}</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                 </tr>
                                 </tbody>
                             </Table>

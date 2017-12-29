@@ -7,6 +7,10 @@ import moment from 'moment';
 import { youtubeData, instagramData, twitterData, snapchatData } from '../../helper_functions/newContentHelpers';
 import { saveNewContentPost } from '../../../actions/newContentPost';
 
+import 'rc-steps/assets/index.css';
+import 'rc-steps/assets/iconfont.css';
+import Steps, { Step } from 'rc-steps';
+
 //===============================================================================================//
 
 class NewContentPostFinalReview extends Component {
@@ -60,45 +64,58 @@ class NewContentPostFinalReview extends Component {
         console.log(this.props.newContentPost);
 
         return (
-            <div className="newContentPostContainer">
-                <h1>Review before submitting</h1>
-
-                <div className="contentMediumsPropsInfo">
-                    <h3>Inputs thus far:</h3>
-                    <ul>
-                        <li>User location: {this.props.newContentPost.userLocation}</li>
-                        <li>Content summary: {this.props.newContentPost.contentSummary}</li>
-                        <li>Content description: {this.props.newContentPost.contentDescription}</li>
-                        <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                        <li>Content tags: {this.props.newContentPost.contentTags}</li>
-                        {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
-                    </ul>
+            <div>
+                <div id="stepComponent">
+                    <Steps labelPlacement="vertical" current={4}>
+                        <Step title="Description" />
+                        <Step title="Mediums" />
+                        <Step title="Images" />
+                        <Step title="Review" />
+                        <Step title="Submit!" />
+                    </Steps>
                 </div>
 
-                <hr/>
 
-                {youtubeData(this.props)}
-                {instagramData(this.props)}
-                {twitterData(this.props)}
-                {snapchatData(this.props)}
+                <div className="newContentPostContainer">
+                    <div className="contentMediumsPropsInfo">
+                        <h1>Review before submitting:</h1>
+                        <ul>
+                            <li><span>User location:</span> {this.props.newContentPost.userLocation}</li>
+                            <li><span>Content summary:</span> {this.props.newContentPost.contentSummary}</li>
+                            <li><span>Content description:</span> {this.props.newContentPost.contentDescription}</li>
+                            <li><span>Content ideal match:</span> {this.props.newContentPost.contentIdealMatch}</li>
+                            <li><span>Content tags:</span> {this.props.newContentPost.contentTags}</li>
+                            {/*<li><span>Content categories:</span> {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
+                        </ul>
+                    </div>
+
+                    <hr/>
+
+                    {youtubeData(this.props)}
+                    {instagramData(this.props)}
+                    {twitterData(this.props)}
+                    {snapchatData(this.props)}
 
 
-                <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
-                <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
-
-                <Button bsStyle="success"
-                        onClick={this.onSubmitNewContentPost}
-                >
-                    Submit!
-                </Button>
+                    <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+                    <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
 
 
-                <Button id="contentMediumsGoBack" bsStyle="warning">
-                    <Link to="/newContentPost/images">
-                        Need to make change(s)? Go back to previous page (Step 3/4)
-                    </Link>
-                </Button>
+                    <br />
+                    <br />
 
+                    <Button bsStyle="warning">
+                        <Link to="/newContentPost/images">
+                            Need to make change(s)? Back to previous page (Step 3/5)
+                        </Link>
+                    </Button>
+
+
+                    <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onSubmitNewContentPost}>
+                        Submit! (Step 5/5)
+                    </Button>
+
+                </div>
             </div>
         );
     }

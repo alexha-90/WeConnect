@@ -8,15 +8,11 @@ import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 
 import { newContentPostToProps } from '../actions/newContentPost';
-import { organizeCategories } from './helper_functions/newContentHelpers';
+// import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
 
 // add location autocomplete from here: https://kenny-hibino.github.io/react-places-autocomplete/
-
-
-// google autocomplete api for location
-
 
 /*
 to do: checkbox state preserved when toggling stages. Values are preserving correctly still.

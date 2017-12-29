@@ -21,6 +21,14 @@ export const fetchSingleContentPost = (postID) => async () => {
     }
 };
 
+export const editPostDetailsToProps = (data) => {
+    // console.log(data);
+    return {
+        type: 'EDIT_POST_DETAILS_TO_PROPS',
+        payload: data
+    };
+};
+
 export const editSingleContentPost = (postID) => async () => {
     console.log(postID);
     try {

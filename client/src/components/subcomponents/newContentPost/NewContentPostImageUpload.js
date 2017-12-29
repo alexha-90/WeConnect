@@ -45,7 +45,7 @@ class NewContentPostImageUpload extends Component {
                 </div>
 
                 <div className="newContentPostContainer">
-                    <h1>Upload images TBD</h1>
+                    <h1>Upload images:</h1>
 
                     <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
                     <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
@@ -61,12 +61,12 @@ class NewContentPostImageUpload extends Component {
 
                     <Button bsStyle="warning">
                         <Link to="/newContentPost/mediums">
-                            Back to previous page (Step 2/4)
+                            Back to previous page (Step 2/5)
                         </Link>
                     </Button>
 
                     <Button id="contentMediumsGoBack" bsStyle="success" onClick={() => this.setState({ onNewContentPostFinalReview: true })}>
-                        Proceed to review (Step 4/4)
+                        Proceed to review (Step 4/5)
                     </Button>
 
                 </div>

@@ -33,7 +33,7 @@ class ImageLightbox extends Component {
         return (
             <div>
 
-                <img src="https://i.ebayimg.com/thumbs/images/g/-BIAAOSws6ZaMiqt/s-l225.webp"
+                <img src="https://i.ebayimg.com/thumbs/images/g/-BIAAOSws6ZaMiqt/s-l225.webp" alt="temp"
 
                      onClick={() => this.setState({ isOpen: true })}
                 />

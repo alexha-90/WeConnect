@@ -4,9 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 
 import YoutubeForm from './subcomponents/newContentPost/YoutubeForm';
-
-import { isLoggedIn } from '../actions/auth';
-import { fetchSingleContentPost } from '../actions/';
+import { fetchSingleContentPost, editPostDetailsToProps } from '../actions/';
 // editSingleContentPost  ^^ import
 //===============================================================================================//
 
@@ -19,9 +17,10 @@ class EditContentPost extends Component {
         super();
         this.state = {
             loadingComponent: true,
-            redirectToHome: false,
+            redirectToPost: false,
             checkingLogin: true,
-            categoryListOpen: false,
+            categoryListOpen: true,
+            contentPostID: '',
             userLocation: '',
             contentSummary: '',
             contentDescription: '',
@@ -37,22 +36,13 @@ class EditContentPost extends Component {
 
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                    .then((result) => {
-                        if (result !== 'OK') {
-                            alert('You are not logged in. Please login or register before making a new listing.');
-                            return this.setState({ redirectToHome: true });
-                        }
-                        return this.setState({ checkingLogin: false });
-                    });
-            } catch (err) {
-                console.log(err);
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (!this.props.auth.isLoggedIn) {
+                alert('You are not logged in. If you are the author of this post, please login before proceeding.');
+                return this.setState({ redirectToPost: true });
             }
-        })();
-
+            return this.setState({ checkingLogin: false });
+        },500);
 
         // NOTE: need to make a rule for when random characters entered after /contentPost/....
 
@@ -65,9 +55,22 @@ class EditContentPost extends Component {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
-                    console.log(data);
+                    if (!data[0]['is_author']) {
+                        alert ('Sorry! You are not authorized to edit this post.');
+                        this.setState( {contentPostID: data[0]['content_post_id']} );
+                        return this.setState({redirectToPost: true})
+                    }
+
+                    // dispatch to props.
+                    this.props.dispatch(editPostDetailsToProps(data));
+                    console.log('&&#@##@#');
+                    console.log(this.props.contentPost);
+
+                    //note 2:30am. use props instead of state. Remove state references
+
+                    // console.log(data);
                     return this.setState({
-                        userLocation: data[0]['user_location'],
+                        userLocation: data[0]['poster_location'],
                         contentSummary: data[0]['content_summary'],
                         contentDescription: data[0]['content_description'],
                         contentIdealMatch: data[0]['content_ideal_match'],
@@ -84,7 +87,6 @@ class EditContentPost extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            console.log(this.state);
             return this.setState({loadingComponent: false})
         }, 1000);
     }
@@ -145,17 +147,13 @@ class EditContentPost extends Component {
             return <div className='loader'>Loading...</div>;
         }
 
-        if (this.state.redirectToHome) {
-            return <Redirect push to="/contentCreatorsList"/>
+        if (this.state.redirectToPost) {
+            return <Redirect push to={"/contentPost/view/id:" + this.state.contentPostID}/>
         }
 
         return (
-            <div>
-                <h2>
-                    Edit post?
-                </h2>
-                <div className="singleContentPostContainer">
-
+            <div className="newContentPostContainer">
+                <h1>Edit post:</h1>
                     <Form>
                         <FieldGroup
                             label="Location"
@@ -294,14 +292,12 @@ class EditContentPost extends Component {
                             Jump to content creators list
                         </Link>
                     </Button>
-
-                </div>
             </div>
         )
     }
 }
 
-export default connect(null)(EditContentPost);
+export default connect(mapStateToProps)(EditContentPost);
 
 
 function FieldGroup({ id, label, ...props }) {
@@ -313,8 +309,9 @@ function FieldGroup({ id, label, ...props }) {
     );
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         newContentPost: state.newContentPost.newContentPost
-//     };
-// }
+function mapStateToProps(state) {
+    return {
+        contentPost: state.contentPosts.contentPostDetails[0],
+        auth: state.auth.auth
+    };
+}

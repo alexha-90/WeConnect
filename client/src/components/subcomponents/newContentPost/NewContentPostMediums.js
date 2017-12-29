@@ -160,12 +160,12 @@ class NewContentPostMediums extends Component {
                     <div className="contentMediumsPropsInfo">
                         <h1>Inputs thus far:</h1>
                         <ul>
-                            <li>User location: {this.props.newContentPost.userLocation}</li>
-                            <li>Content summary: {this.props.newContentPost.contentSummary}</li>
-                            <li>Content description: {this.props.newContentPost.contentDescription}</li>
-                            <li>Content ideal match: {this.props.newContentPost.contentIdealMatch}</li>
-                            <li>Content tags: {this.props.newContentPost.contentTags}</li>
-                            {/*<li>Content categories: {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
+                            <li><span>User location:</span> {this.props.newContentPost.userLocation}</li>
+                            <li><span>Content summary:</span> {this.props.newContentPost.contentSummary}</li>
+                            <li><span>Content description:</span> {this.props.newContentPost.contentDescription}</li>
+                            <li><span>Content ideal match:</span> {this.props.newContentPost.contentIdealMatch}</li>
+                            <li><span>Content tags:</span> {this.props.newContentPost.contentTags}</li>
+                            {/*<li><span>Content categories:</span> {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
                         </ul>
                     </div>
                     <hr/>
@@ -220,12 +220,12 @@ class NewContentPostMediums extends Component {
 
                     <Button bsStyle="warning">
                         <Link to="/newContentPost">
-                            Back to previous page (Step 1/4)
+                            Back to previous page (Step 1/5)
                         </Link>
                     </Button>
 
                     <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onNextPage}>
-                        Proceed to optional images (Step 3/4)
+                        Proceed to optional images (Step 3/5)
                     </Button>
 
                 </div>

@@ -102,7 +102,7 @@ class SingleContentPost extends Component {
         }
 
         return (
-            <div className="tests">
+            <div className="singlePostBigContainer">
                 <br/>
                 <Link id="goBackLink" to="/ContentCreatorsList">
                     {'<-- '}Back to results
