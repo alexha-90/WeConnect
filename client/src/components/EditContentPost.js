@@ -9,8 +9,8 @@ import TwitterForm from './subcomponents/newContentPost/TwitterForm';
 import SnapchatForm from './subcomponents/newContentPost/SnapchatForm';
 import { fetchSingleContentPost, editPostDetailsToProps, updateSingleContentPost } from '../actions/';
 import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../actions/newContentPost'
+import moment from 'moment';
 
-// editSingleContentPost  ^^ import
 // need to validaet mediums like did in newPost....
 //===============================================================================================//
 
@@ -319,6 +319,7 @@ class EditContentPost extends Component {
 
             // treat updates as a new post
             let editedPost = {
+                lastEdited: moment().format("MM/DD/YYYY") + ' at ' + moment().utcOffset(-480).format('hh:mm a') + ' PST',
                 contentPostID: this.state.contentPostID,
                 userLocation: this.state.userLocation,
                 contentSummary: this.state.contentSummary,

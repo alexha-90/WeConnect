@@ -38,12 +38,12 @@ class InstagramForm extends Component {
         }
 
         // repopulate form fields if user is editing post and has instagram medium selected
-        if (this.props.contentPost && this.props.newContentPost['ig_post_frequency']) {
+        if (this.props.contentPost && this.props.contentPost['ig_post_frequency']) {
             return this.setState({
-                ig_PostFrequency: this.props.newContentPost['ig_post_frequency'],
-                ig_Followers: this.props.newContentPost['ig_followers'],
-                ig_Likes: this.props.newContentPost['ig_likes'],
-                ig_Comments: this.props.newContentPost['ig_comments'],
+                ig_PostFrequency: this.props.contentPost['ig_post_frequency'],
+                ig_Followers: this.props.contentPost['ig_followers'],
+                ig_Likes: this.props.contentPost['ig_likes'],
+                ig_Comments: this.props.contentPost['ig_comments'],
                 ig_PostFrequencyDefaultVal: false,
                 ig_FollowersDefaultVal: false,
                 ig_LikesDefaultVal: false,
