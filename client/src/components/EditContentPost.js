@@ -64,48 +64,48 @@ class EditContentPost extends Component {
         (async () => {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
-                .then((data) => {
-                    console.log(data);
-                    this.setState( {contentPostID: data[0]['content_post_id']} );
-                    if (data === 'error') {
-                        return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
-                    }
-                    if (!data[0]['is_author']) {
-                        alert ('Sorry! You are not authorized to edit this post.');
-                        setTimeout(() => {
-                            return this.setState({redirectToPost: true})
-                        }, 250);
-                    }
+                    .then((data) => {
+                        console.log(data);
+                        this.setState( {contentPostID: data[0]['content_post_id']} );
+                        if (data === 'error') {
+                            return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
+                        }
+                        if (!data[0]['is_author']) {
+                            alert ('Sorry! You are not authorized to edit this post.');
+                            setTimeout(() => {
+                                return this.setState({redirectToPost: true})
+                            }, 250);
+                        }
 
-                    this.setState({
-                        userLocation: data[0]['poster_location'],
-                        contentSummary: data[0]['content_summary'],
-                        contentDescription: data[0]['content_description'],
-                        contentIdealMatch: data[0]['content_ideal_match'],
-                        contentTags: data[0]['content_tags'],
-                        contentCategories: data[0]['content_categories']
-                    });
-                    return data;
-                })
-                .then((data) => {
-                    return this.props.dispatch(editPostDetailsToProps(data));
-                })
-                .then(() => {
-                    if (this.props.contentPost['yt_upload_frequency']) {
-                        this.setState({ showYouTubeForm: true })
-                    }
+                        this.setState({
+                            userLocation: data[0]['poster_location'],
+                            contentSummary: data[0]['content_summary'],
+                            contentDescription: data[0]['content_description'],
+                            contentIdealMatch: data[0]['content_ideal_match'],
+                            contentTags: data[0]['content_tags'],
+                            contentCategories: data[0]['content_categories']
+                        });
+                        return data;
+                    })
+                    .then((data) => {
+                        return this.props.dispatch(editPostDetailsToProps(data));
+                    })
+                    .then(() => {
+                        if (this.props.contentPost['yt_upload_frequency']) {
+                            this.setState({ showYouTubeForm: true })
+                        }
 
-                    if (this.props.contentPost['ig_post_frequency']) {
-                        this.setState({ showInstagramForm: true })
-                    }
-                    if (this.props.contentPost['tw_post_frequency']) {
-                        this.setState({ showTwitterForm: true })
-                    }
+                        if (this.props.contentPost['ig_post_frequency']) {
+                            this.setState({ showInstagramForm: true })
+                        }
+                        if (this.props.contentPost['tw_post_frequency']) {
+                            this.setState({ showTwitterForm: true })
+                        }
 
-                    if (this.props.contentPost['sc_post_frequency']) {
-                        this.setState({ showSnapchatForm: true })
-                    }
-                })
+                        if (this.props.contentPost['sc_post_frequency']) {
+                            this.setState({ showSnapchatForm: true })
+                        }
+                    })
             } catch (err) {
                 console.log(err);
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
@@ -230,16 +230,94 @@ class EditContentPost extends Component {
         }
 
         setTimeout(() => {
+            // NOTE: upon adding a new medium and entering required info, values are updated automatically in respective social components and placed into this.props.newContentPost
 
-            // youtube_yt_upload_freq = this.props.newContentPost.youtube
-            // if this.props.contentPost.youtube and not this.props.newContentPost.youtube.length
-            //      then editedPost should get information from this.props.contentPost instead
-
-            if (this.props.contentPost.yt_UploadFrequency && !this.props.newContentPost.youtube) {
-                console.log(this.props.newContentPost.youtube.length);
+            if (!this.state.showYouTubeForm && !this.state.showInstagramForm && !this.state.showTwitterForm && !this.state.showSnapchatForm) {
+                return alert('Error: You must select and enter information for at least one medium before proceeding!')
             }
 
-            // treat updates as a new post. Unchanged mediums data are ignored
+            // on submission attempt, assign null values for mediums that did not get updated
+            let youtube = {
+                yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
+                    yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
+                    yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
+                    yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount
+            };
+
+            let instagram = {
+                ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
+                ig_Followers: this.props.newContentPost.instagram.ig_Followers,
+                ig_Likes: this.props.newContentPost.instagram.ig_Likes,
+                ig_Comments: this.props.newContentPost.instagram.ig_Comments
+            };
+
+            let twitter = {
+                tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
+                tw_Followers: this.props.newContentPost.twitter.tw_Followers,
+                tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
+                tw_Comments: this.props.newContentPost.twitter.tw_Comments,
+            };
+
+            let snapchat = {
+                sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
+                sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
+                sc_StoryOpens: this.props.newContentPost.snapchat.sc_StoryOpens
+            };
+
+            // medium was not updated (has existing values), fetch values from this.props.contentPost instead
+            if (this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube.yt_UploadFrequency) {
+                youtube = {
+                    yt_UploadFrequency: this.props.contentPost['yt_upload_frequency'],
+                    yt_VideoLength: this.props.contentPost['yt_video_length'],
+                    yt_SubCount: this.props.contentPost['yt_sub_count'],
+                    yt_ViewCount: this.props.contentPost['yt_view_count']
+                };
+
+                // user wants to remove this medium, populate default null values
+                if (!this.state.showYouTubeForm) {
+                    youtube = {...this.props.newContentPost.youtube};
+                }
+            }
+
+            if (this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram.ig_PostFrequency) {
+                instagram = {
+                    ig_PostFrequency: this.props.contentPost['ig_post_frequency'],
+                    ig_Followers: this.props.contentPost['ig_followers'],
+                    ig_Likes: this.props.contentPost['ig_likes'],
+                    ig_Comments: this.props.contentPost['ig_comments']
+                };
+
+                if (!this.state.showInstagramForm) {
+                    instagram = {...this.props.newContentPost.instagram};
+                }
+            }
+
+            if (this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter.tw_PostFrequency) {
+                twitter = {
+                    tw_PostFrequency: this.props.contentPost['tw_post_frequency'],
+                    tw_Followers: this.props.contentPost['tw_followers'],
+                    tw_PostLikes: this.props.contentPost['tw_post_likes'],
+                    tw_Comments: this.props.contentPost['tw_comments'],
+                };
+
+                if (!this.state.showTwitterForm) {
+                    twitter = {...this.props.newContentPost.twitter};
+                }
+            }
+
+            if (this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat.sc_PostFrequency) {
+                snapchat = {
+                    sc_PostFrequency: this.props.contentPost['sc_post_frequency'],
+                    sc_Followers: this.props.contentPost['sc_followers'],
+                    sc_StoryOpens: this.props.contentPost['sc_story_opens']
+                };
+
+                if (!this.state.showSnapchatForm) {
+                    snapchat = {...this.props.newContentPost.snapchat};
+                }
+            }
+
+            // treat updates as a new post
             let editedPost = {
                 contentPostID: this.state.contentPostID,
                 userLocation: this.state.userLocation,
@@ -248,30 +326,13 @@ class EditContentPost extends Component {
                 contentIdealMatch: this.state.contentIdealMatch,
                 contentTags: this.state.contentTags,
                 contentCategories: this.state.contentCategories,
-                youtube: {
-                    yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
-                    yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
-                    yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
-                    yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount
-                },
-                instagram: {
-                    ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
-                    ig_Followers: this.props.newContentPost.instagram.ig_Followers,
-                    ig_Likes: this.props.newContentPost.instagram.ig_Likes,
-                    ig_Comments: this.props.newContentPost.instagram.ig_Comments
-                },
-                twitter: {
-                    tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
-                    tw_Followers: this.props.newContentPost.twitter.tw_Followers,
-                    tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
-                    tw_Comments: this.props.newContentPost.twitter.tw_Comments,
-                },
-                snapchat: {
-                    sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
-                    sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
-                    sc_StoryOpens: this.props.newContentPost.snapchat.sc_StoryOpens
-                }
+                youtube,
+                instagram,
+                twitter,
+                snapchat
             };
+
+            console.log(editedPost);
             this.props.dispatch(updateSingleContentPost(editedPost));
         }, 200);
     }
@@ -290,181 +351,181 @@ class EditContentPost extends Component {
         return (
             <div className="newContentPostContainer">
                 <h1>Edit post:</h1>
-                    <Form>
-                        <FieldGroup
-                            label="Location"
-                            id="userLocation"
-                            type="text"
-                            name="userLocation"
-                            placeholder="Where do you live? Please list your city, country, and other relevant information. DO NOT ENTER YOUR FULL ADDRESS."
-                            maxLength="100"
-                            value={this.state.userLocation}
+                <Form>
+                    <FieldGroup
+                        label="Location"
+                        id="userLocation"
+                        type="text"
+                        name="userLocation"
+                        placeholder="Where do you live? Please list your city, country, and other relevant information. DO NOT ENTER YOUR FULL ADDRESS."
+                        maxLength="100"
+                        value={this.state.userLocation}
+                        onChange={this.handleTextChange}
+                    />
+                    <FieldGroup
+                        label="Summary"
+                        id="contentSummary"
+                        type="text"
+                        name="contentSummary"
+                        placeholder="Provide a brief summary about your content (100 characters max)"
+                        maxLength="100"
+                        value={this.state.contentSummary}
+                        onChange={this.handleTextChange}
+                    />
+                    <FormGroup>
+                        <ControlLabel>Full description</ControlLabel>
+                        <FormControl
+                            componentClass="textarea"
+                            name="contentDescription"
                             onChange={this.handleTextChange}
+                            value={this.state.contentDescription}
+                            style={{minHeight: "60px"}}
+                            placeholder="Describe your content in more detail. Examples: target audience, demographics, previous partnerships, etc"
                         />
-                        <FieldGroup
-                            label="Summary"
-                            id="contentSummary"
-                            type="text"
-                            name="contentSummary"
-                            placeholder="Provide a brief summary about your content (100 characters max)"
-                            maxLength="100"
-                            value={this.state.contentSummary}
+                    </FormGroup>
+                    <FormGroup>
+                        <ControlLabel>Ideal match</ControlLabel>
+                        <FormControl
+                            componentClass="textarea"
+                            name="contentIdealMatch"
                             onChange={this.handleTextChange}
+                            value={this.state.contentIdealMatch}
+                            style={{minHeight: "60px"}}
+                            placeholder="Tell us what your ideal match would be (pay rate, frequency, endorsement gifts, ad placement)"
                         />
-                        <FormGroup>
-                            <ControlLabel>Full description</ControlLabel>
-                            <FormControl
-                                componentClass="textarea"
-                                name="contentDescription"
-                                onChange={this.handleTextChange}
-                                value={this.state.contentDescription}
-                                style={{minHeight: "60px"}}
-                                placeholder="Describe your content in more detail. Examples: target audience, demographics, previous partnerships, etc"
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <ControlLabel>Ideal match</ControlLabel>
-                            <FormControl
-                                componentClass="textarea"
-                                name="contentIdealMatch"
-                                onChange={this.handleTextChange}
-                                value={this.state.contentIdealMatch}
-                                style={{minHeight: "60px"}}
-                                placeholder="Tell us what your ideal match would be (pay rate, frequency, endorsement gifts, ad placement)"
-                            />
-                        </FormGroup>
-                        <FieldGroup
-                            label="Tags"
-                            id="contentTags"
-                            type="text"
-                            name="contentTags"
-                            placeholder="Enter some keywords that describe your content (separate each item with a comma)"
-                            maxLength="100"
-                            value={this.state.contentTags}
-                            onChange={this.handleTextChange}
-                        />
-                        <FormGroup>
+                    </FormGroup>
+                    <FieldGroup
+                        label="Tags"
+                        id="contentTags"
+                        type="text"
+                        name="contentTags"
+                        placeholder="Enter some keywords that describe your content (separate each item with a comma)"
+                        maxLength="100"
+                        value={this.state.contentTags}
+                        onChange={this.handleTextChange}
+                    />
+                    <FormGroup>
                         <span onClick={() => this.setState({ categoryListOpen: !this.state.categoryListOpen })}>
                             <ControlLabel>{this.openCategoryIndicator()} Associated categories</ControlLabel>
                         </span>
-                            <br />
-                            <Collapse in={this.state.categoryListOpen}>
-                                <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
-                                    <tbody>
-                                    <tr>
-                                        <td><Checkbox defaultChecked={true} name="Action/Adventure">Action/Adventure</Checkbox></td>
-                                        <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
-                                        <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Classics">Classics</Checkbox></td>
-                                        <td><Checkbox name="Comedy">Comedy</Checkbox></td>
-                                        <td><Checkbox name="Documentary">Documentary</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Drama">Drama</Checkbox></td>
-                                        <td><Checkbox name="Education">Education</Checkbox></td>
-                                        <td><Checkbox name="Entertainment">Entertainment</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Family">Family</Checkbox></td>
-                                        <td><Checkbox name="Film & Animation">Film & Animation</Checkbox></td>
-                                        <td><Checkbox name="Foreign">Foreign</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Gaming">Gaming</Checkbox></td>
-                                        <td><Checkbox name="Horror">Horror</Checkbox></td>
-                                        <td><Checkbox name="How-to & Style">How-to & Style</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Movies">Movies</Checkbox></td>
-                                        <td><Checkbox name="Music">Music</Checkbox></td>
-                                        <td><Checkbox name="News & Politics">News & Politics</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Nonprofits & Activism">Nonprofits & Activism</Checkbox></td>
-                                        <td><Checkbox name="People & Blog">People & Blogs</Checkbox></td>
-                                        <td><Checkbox name="Pets & Animals">Pets & Animals</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Sci-Fi/Fantasy">Sci-Fi/Fantasy</Checkbox></td>
-                                        <td><Checkbox name="Science & Technology">Science & Technology</Checkbox></td>
-                                        <td><Checkbox name="Short Movies">Short Movies</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Sports">Sports</Checkbox></td>
-                                        <td><Checkbox name="Thriller">Thriller</Checkbox></td>
-                                        <td><Checkbox name="Travel & Events">Travel & Events</Checkbox></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Checkbox name="Vlogging">Vlogging</Checkbox></td>
-                                        <td><Checkbox name="Other">Other</Checkbox></td>
-                                    </tr>
-                                    </tbody>
-                                </Table>
-                            </Collapse>
-                        </FormGroup>
-                    </Form>
+                        <br />
+                        <Collapse in={this.state.categoryListOpen}>
+                            <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
+                                <tbody>
+                                <tr>
+                                    <td><Checkbox defaultChecked={true} name="Action/Adventure">Action/Adventure</Checkbox></td>
+                                    <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
+                                    <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Classics">Classics</Checkbox></td>
+                                    <td><Checkbox name="Comedy">Comedy</Checkbox></td>
+                                    <td><Checkbox name="Documentary">Documentary</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Drama">Drama</Checkbox></td>
+                                    <td><Checkbox name="Education">Education</Checkbox></td>
+                                    <td><Checkbox name="Entertainment">Entertainment</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Family">Family</Checkbox></td>
+                                    <td><Checkbox name="Film & Animation">Film & Animation</Checkbox></td>
+                                    <td><Checkbox name="Foreign">Foreign</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Gaming">Gaming</Checkbox></td>
+                                    <td><Checkbox name="Horror">Horror</Checkbox></td>
+                                    <td><Checkbox name="How-to & Style">How-to & Style</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Movies">Movies</Checkbox></td>
+                                    <td><Checkbox name="Music">Music</Checkbox></td>
+                                    <td><Checkbox name="News & Politics">News & Politics</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Nonprofits & Activism">Nonprofits & Activism</Checkbox></td>
+                                    <td><Checkbox name="People & Blog">People & Blogs</Checkbox></td>
+                                    <td><Checkbox name="Pets & Animals">Pets & Animals</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Sci-Fi/Fantasy">Sci-Fi/Fantasy</Checkbox></td>
+                                    <td><Checkbox name="Science & Technology">Science & Technology</Checkbox></td>
+                                    <td><Checkbox name="Short Movies">Short Movies</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Sports">Sports</Checkbox></td>
+                                    <td><Checkbox name="Thriller">Thriller</Checkbox></td>
+                                    <td><Checkbox name="Travel & Events">Travel & Events</Checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td><Checkbox name="Vlogging">Vlogging</Checkbox></td>
+                                    <td><Checkbox name="Other">Other</Checkbox></td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                        </Collapse>
+                    </FormGroup>
+                </Form>
 
-                    <Form>
+                <Form>
+                    <FormGroup>
+                        <h1>Marketable medium(s):</h1>
+
+                        <ControlLabel>Marketable medium(s)</ControlLabel>
+
                         <FormGroup>
-                            <h1>Marketable medium(s):</h1>
-
-                            <ControlLabel>Marketable medium(s)</ControlLabel>
-
-                            <FormGroup>
-                                <Checkbox
-                                    inline
-                                    name="YouTube"
-                                    defaultChecked={this.state.showYouTubeForm}
-                                    onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
-                                >
-                                    YouTube
-                                </Checkbox>
-                                <Checkbox
-                                    inline
-                                    name="Instagram"
-                                    defaultChecked={this.state.showInstagramForm}
-                                    onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
-                                >
-                                    Instagram
-                                </Checkbox>
-                                <Checkbox
-                                    inline
-                                    name="Twitter"
-                                    defaultChecked={this.state.showTwitterForm}
-                                    onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
-                                >
-                                    Twitter
-                                </Checkbox>
-                                <Checkbox
-                                    inline
-                                    name="Snapchat"
-                                    defaultChecked={this.state.showSnapchatForm}
-                                    onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
-                                >
-                                    Snapchat
-                                </Checkbox>
-                            </FormGroup>
+                            <Checkbox
+                                inline
+                                name="YouTube"
+                                defaultChecked={this.state.showYouTubeForm}
+                                onClick={() => this.setState({ showYouTubeForm: !this.state.showYouTubeForm })}
+                            >
+                                YouTube
+                            </Checkbox>
+                            <Checkbox
+                                inline
+                                name="Instagram"
+                                defaultChecked={this.state.showInstagramForm}
+                                onClick={() => this.setState({ showInstagramForm: !this.state.showInstagramForm })}
+                            >
+                                Instagram
+                            </Checkbox>
+                            <Checkbox
+                                inline
+                                name="Twitter"
+                                defaultChecked={this.state.showTwitterForm}
+                                onClick={() => this.setState({ showTwitterForm: !this.state.showTwitterForm })}
+                            >
+                                Twitter
+                            </Checkbox>
+                            <Checkbox
+                                inline
+                                name="Snapchat"
+                                defaultChecked={this.state.showSnapchatForm}
+                                onClick={() => this.setState({ showSnapchatForm: !this.state.showSnapchatForm })}
+                            >
+                                Snapchat
+                            </Checkbox>
                         </FormGroup>
-                    </Form>
+                    </FormGroup>
+                </Form>
 
-                    {/* Import social media specific forms */}
-                    {this.youtubeForm()}
-                    {this.instagramForm()}
-                    {this.twitterForm()}
-                    {this.snapchatForm()}
+                {/* Import social media specific forms */}
+                {this.youtubeForm()}
+                {this.instagramForm()}
+                {this.twitterForm()}
+                {this.snapchatForm()}
 
 
-                    <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
-                        Update!
-                    </Button>
-                    &nbsp;
-                    <Button bsStyle="warning">
-                        <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
-                            Back to post
-                        </Link>
-                    </Button>
+                <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
+                    Update!
+                </Button>
+                &nbsp;
+                <Button bsStyle="warning">
+                    <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
+                        Back to post
+                    </Link>
+                </Button>
             </div>
         )
     }

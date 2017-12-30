@@ -51,22 +51,22 @@ module.exports = app => {
     app.patch('/api/saveEditedPost', async (req, res) => {
         try {
             let editDetails = req.body;
-
-            if (!editDetails.youtube.yt_UploadFrequency) {
-                delete editDetails.youtube;
-            }
-
-            if (!editDetails.instagram.ig_PostFrequency) {
-                delete editDetails.instagram;
-            }
-
-            if (!editDetails.twitter.tw_PostFrequency) {
-                delete editDetails.twitter;
-            }
-
-            if (!editDetails.snapchat.sc_PostFrequency) {
-                delete editDetails.snapchat;
-            }
+            //
+            // if (!editDetails.youtube.yt_UploadFrequency) {
+            //     delete editDetails.youtube;
+            // }
+            //
+            // if (!editDetails.instagram.ig_PostFrequency) {
+            //     delete editDetails.instagram;
+            // }
+            //
+            // if (!editDetails.twitter.tw_PostFrequency) {
+            //     delete editDetails.twitter;
+            // }
+            //
+            // if (!editDetails.snapchat.sc_PostFrequency) {
+            //     delete editDetails.snapchat;
+            // }
 
             console.log(editDetails);
 
