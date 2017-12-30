@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import ImageLightbox from './ImageLightbox';
-import '../../../styles/carousel.css'
+import '../../styles/carousel.css'
 
 //===============================================================================================//
 export default function singleContentPostResult(data) {

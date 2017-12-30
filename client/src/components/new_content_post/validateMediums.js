@@ -1,4 +1,4 @@
-import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
+import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../actions/newContentPost'
 //===============================================================================================//
 
 

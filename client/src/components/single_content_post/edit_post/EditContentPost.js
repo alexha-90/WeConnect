@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 
-import { fetchSingleContentPost, editPostDetailsToProps } from '../actions/';
-import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm } from './helper_functions';
-import { submissionFlow } from './subcomponents/singleContentPost/edit_post/submissionFlow';
+import DeleteContentPost from './DeleteContentPost';
+import { fetchSingleContentPost, editPostDetailsToProps } from '../../../actions/index';
+import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm } from '../../helper_functions/index';
+import { submissionFlow } from './submissionFlow';
 //===============================================================================================//
 
 let categoriesArr = [];
@@ -29,10 +30,12 @@ class EditContentPost extends Component {
             showInstagramForm: false,
             showTwitterForm: false,
             showSnapchatForm: false,
+            showDeleteModal: false,
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
         this.onUpdatePost = this.onUpdatePost.bind(this);
+        //onDelete handled within DeleteContentPost class
     }
 
 
@@ -139,8 +142,16 @@ class EditContentPost extends Component {
 
     onUpdatePost () {
         // cross references inputs and existing data, checks that inputs are valid, get timestamp, submit to backend
-        submissionFlow(this.state, this.props);
+        if (submissionFlow(this.state, this.props)) {
+            setTimeout(() => {
+                return this.setState({ redirectToPost: true });
+            }, 1200);
+        }
     }
+
+
+    //onDelete handled within DeleteContentPost class
+
 
     render() {
         if (this.state.loadingComponent) {
@@ -152,7 +163,7 @@ class EditContentPost extends Component {
         }
 
         return (
-            <div className="newContentPostContainer">
+            <div className="newContentPostContainer" style={{marginTop: "80px"}}>
                 <h1>Edit post:</h1>
                 <Form>
                     <FieldGroup
@@ -320,15 +331,24 @@ class EditContentPost extends Component {
                 {snapchatForm(this.state.showSnapchatForm)}
 
 
-                <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
-                    Update!
-                </Button>
-                &nbsp;
+
                 <Button bsStyle="warning">
                     <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
                         Back to post
                     </Link>
                 </Button>
+                &nbsp;
+
+                <Button bsStyle="danger" onClick={() => this.setState({ showDeleteModal: true })}>
+                    Delete post
+                </Button>
+
+                <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
+                    Update!
+                </Button>
+
+                <DeleteContentPost show={this.state.showDeleteModal} onHide={()=>this.setState({ showDeleteModal: false })} />
+
             </div>
         )
     }

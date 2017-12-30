@@ -4,8 +4,8 @@ import { Button } from 'react-bootstrap';
 // import {testNewTaskValidity} from "../../stateFunctions";
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
-import { youtubeData, instagramData, twitterData, snapchatData } from '../../helper_functions/newContentHelpers';
-import { saveNewContentPost } from '../../../actions/newContentPost';
+import { youtubeData, instagramData, twitterData, snapchatData } from '../helper_functions/newContentHelpers';
+import { saveNewContentPost } from '../../actions/newContentPost';
 
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
@@ -35,7 +35,7 @@ class NewContentPostFinalReview extends Component {
 
     componentDidMount() {
         // Needs work.... Run function for unit test. Ensure information to be submitted is accurate. Currently always proceeds regardless. Fix
-        // testNewTaskValidity(this.props.newContentPost)
+        // testNewTaskValidity(this.props.new_content_post)
     }
 
     onSubmitNewContentPost() {
@@ -85,7 +85,7 @@ class NewContentPostFinalReview extends Component {
                             <li><span>Content description:</span> {this.props.newContentPost.contentDescription}</li>
                             <li><span>Content ideal match:</span> {this.props.newContentPost.contentIdealMatch}</li>
                             <li><span>Content tags:</span> {this.props.newContentPost.contentTags}</li>
-                            {/*<li><span>Content categories:</span> {this.props.newContentPost.contentCategories.join(', ')}</li>*/}
+                            {/*<li><span>Content categories:</span> {this.props.new_content_post.contentCategories.join(', ')}</li>*/}
                         </ul>
                     </div>
 

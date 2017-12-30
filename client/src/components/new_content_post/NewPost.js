@@ -7,8 +7,8 @@ import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 
-import { newContentPostToProps } from '../actions/newContentPost';
-import { FieldGroup, openCategoryIndicator } from './helper_functions';
+import { newContentPostToProps } from '../../actions/newContentPost';
+import { FieldGroup, openCategoryIndicator } from '../helper_functions/index';
 
 // import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
@@ -20,7 +20,7 @@ import { FieldGroup, openCategoryIndicator } from './helper_functions';
 to do: checkbox state preserved when toggling stages. Values are preserving correctly still.
     checkboxStatus() {
         //componentWillMount, load status of checkboxes
-        //if event.target.value is in this.props.newContentPost.contentCategories
+        //if event.target.value is in this.props.new_content_post.contentCategories
     }
 
 

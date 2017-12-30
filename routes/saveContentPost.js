@@ -13,7 +13,7 @@ module.exports = app => {
             let passportID = `${JSON.stringify(req.session.passport)}`;
             passportID = passportID.match(/\d+/)[0];
 
-            // query db for username then save all newContentPost details to db
+            // query db for username then save all new_content_post details to db
             const sql1 = 'SELECT username FROM users WHERE user_id=$1 LIMIT 1';
             const params1 = [passportID];
             return db.query(sql1, params1)

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Button, Radio, FormGroup, ControlLabel } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isLoggedIn } from '../actions/auth';
-import { registerNewUser } from '../actions';
+import { isLoggedIn } from '../../actions/auth';
+import { registerNewUser } from '../../actions/index';
 import { Redirect } from 'react-router';
 import moment from 'moment';
-import { FieldGroup } from './helper_functions/';
+import { FieldGroup } from '../helper_functions/index';
 
 //redux needed here for this.props.dispatch
 // provide login link just in case user misclicked

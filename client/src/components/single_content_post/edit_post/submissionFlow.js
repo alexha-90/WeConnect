@@ -1,6 +1,5 @@
-import React from 'react';
-import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../../actions/newContentPost'
-import { updateSingleContentPost } from '../../../../actions'
+import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
+import { updateSingleContentPost } from '../../../actions/index'
 
 import moment from 'moment';
 //===============================================================================================//
@@ -8,23 +7,27 @@ import moment from 'moment';
 export function submissionFlow(state, props) {
     // if form is open and has neither contentPost or newPost data, prompt error.
     if (state.showYouTubeForm && (!props.contentPost['yt_upload_frequency'] && !props.newContentPost.youtube.yt_UploadFrequency)) {
-        return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
+        alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.');
+        return false;
     }
 
     if (state.showInstagramForm && (!props.contentPost['ig_post_frequency'] && !props.newContentPost.instagram.ig_PostFrequency)) {
-        return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
+        alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.');
+        return false;
     }
 
     if (state.showTwitterForm && (!props.contentPost['tw_post_frequency'] && !props.newContentPost.twitter.tw_PostFrequency)) {
-        return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
+        alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.');
+        return false;
     }
 
     if (state.showSnapchatForm && (!props.contentPost['sc_post_frequency'] && !props.newContentPost.snapchat.sc_PostFrequency)) {
-        return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
+        alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.');
+        return false;
     }
 
     // clear out values if checkbox is not selected at point of submission
-    // NOTE: if user selected a new value for existing medium, the changes will be reflected on newContentPost
+    // NOTE: if user selected a new value for existing medium, the changes will be reflected on new_content_post
     if (!state.showYouTubeForm) {
         props.dispatch(youtubeRemoveData());
     }
@@ -43,10 +46,11 @@ export function submissionFlow(state, props) {
 
 
     setTimeout(() => {
-        // NOTE: upon adding a new medium and entering required info, values are updated automatically in respective social components and placed into this.props.newContentPost
+        // NOTE: upon adding a new medium and entering required info, values are updated automatically in respective social components and placed into this.props.new_content_post
 
         if (!state.showYouTubeForm && !state.showInstagramForm && !state.showTwitterForm && !state.showSnapchatForm) {
-            return alert('Error: You must select and enter information for at least one medium before proceeding!')
+            alert('Error: You must select and enter information for at least one medium before proceeding!');
+            return false;
         }
 
         // on submission attempt, assign null values for mediums that did not get updated
@@ -147,9 +151,7 @@ export function submissionFlow(state, props) {
         };
         console.log(editedPost);
         props.dispatch(updateSingleContentPost(editedPost));
-        setTimeout(() => {
-            alert('Your post has been successfully updated.');
-            return window.location.reload();
-        }, 200);
+        alert('Your post has been successfully updated.');
     }, 200);
+    return true;
 }

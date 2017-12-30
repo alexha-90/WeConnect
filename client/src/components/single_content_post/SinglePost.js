@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSingleContentPost, privateMessageIDsToProps } from '../actions/';
-import { fetchUserID } from '../actions/auth';
+import { fetchSingleContentPost, privateMessageIDsToProps } from '../../actions/index';
+import { fetchUserID } from '../../actions/auth';
 
-// import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
-import ContactForm from './subcomponents/singleContentPost/singleContentPostContactForm';
-import singleContentPostResult from './subcomponents/singleContentPost/singleContentPostResult';
+// import ContentPostListAdSpace from './subcomponents/content_creators_list/ContentPostListAdSpace';
+import ContactForm from './SinglePostContactForm';
+import singleContentPostResult from './SinglePostResult';
 
 // on load check if a conversation already exists. If so, then hide button and show conversation
 // when message expanded, dim button

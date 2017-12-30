@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Button, Panel, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { newPrivateMessage } from '../../../actions/';
+import { newPrivateMessage } from '../../actions/index';
 
 //===============================================================================================//
 

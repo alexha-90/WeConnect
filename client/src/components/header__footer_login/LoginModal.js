@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { loginUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { FieldGroup } from '../helper_functions';
+import { FieldGroup } from '../helper_functions/index';
 //===============================================================================================//
 
 // future feature: add forgot password feature

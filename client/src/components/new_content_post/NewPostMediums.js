@@ -8,7 +8,7 @@ import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 import { validateMediums} from './validateMediums';
-import { youtubeForm, instagramForm, twitterForm, snapchatForm } from '../../helper_functions';
+import { youtubeForm, instagramForm, twitterForm, snapchatForm } from '../helper_functions/index';
 
 // uncomment categories check later. In for testing
 //===============================================================================================//

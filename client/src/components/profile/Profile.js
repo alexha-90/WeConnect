@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
-import { loadProfileData } from '../actions';
+import { loadProfileData } from '../../actions/index';
 import { connect } from 'react-redux';
-import profilePostData from './subcomponents/profilePostData';
-import profileMessageData from './subcomponents/profileMessageData';
+import profilePostData from './profilePostData';
+import profileMessageData from './profileMessageData';
 
 //===============================================================================================//
 

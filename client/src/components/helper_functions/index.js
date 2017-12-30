@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import YoutubeForm from '../subcomponents/newContentPost/YoutubeForm'
-import InstagramForm from '../subcomponents/newContentPost/InstagramForm'
-import TwitterForm from '../subcomponents/newContentPost/TwitterForm'
-import SnapchatForm from '../subcomponents/newContentPost/SnapchatForm'
+import YoutubeForm from '../new_content_post/YoutubeForm'
+import InstagramForm from '../new_content_post/InstagramForm'
+import TwitterForm from '../new_content_post/TwitterForm'
+import SnapchatForm from '../new_content_post/SnapchatForm'
 //===============================================================================================//
 
 export function FieldGroup({ id, label, ...props }) {

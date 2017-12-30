@@ -1,5 +1,5 @@
 import React from 'react';
-// import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../actions/newContentPost'
+// import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../actions/new_content_post'
 
 //===============================================================================================//
 
@@ -27,7 +27,7 @@ export function organizeCategories (categoriesArr) {
 
 
 export function youtubeData (props) {
-    // if (props.newContentPost.youtube.yt_UploadFrequency !== null) {
+    // if (props.new_content_post.youtube.yt_UploadFrequency !== null) {
     if (props.newContentPost.youtube) {
         return (
             <div>
@@ -44,7 +44,7 @@ export function youtubeData (props) {
 }
 
 export function instagramData (props) {
-    // if (props.newContentPost.instagram.ig_PostFrequency !== null) {
+    // if (props.new_content_post.instagram.ig_PostFrequency !== null) {
     if (props.newContentPost.instagram) {
         return (
             <div>
@@ -61,7 +61,7 @@ export function instagramData (props) {
 }
 
 export function twitterData (props) {
-    // if (props.newContentPost.twitter.tw_PostFrequency !== null) {
+    // if (props.new_content_post.twitter.tw_PostFrequency !== null) {
     if (props.newContentPost.twitter) {
             return (
             <div>
@@ -78,7 +78,7 @@ export function twitterData (props) {
 }
 
 export function snapchatData (props) {
-    // if (props.newContentPost.snapchat.sc_PostFrequency !== null) {
+    // if (props.new_content_post.snapchat.sc_PostFrequency !== null) {
     if (props.newContentPost.snapchat) {
             return (
             <div>

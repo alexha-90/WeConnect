@@ -4,20 +4,18 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 
 // Page imports
-import Header from './components/Header';
+import Header from './components/header__footer_login/Header';
 import Landing from './components/Landing';
-import NewContentPost from './components/NewContentPost';
-import NewContentPostMediums from './components/subcomponents/newContentPost/NewContentPostMediums';
-import NewContentPostImageUpload from './components/subcomponents/newContentPost/NewContentPostImageUpload';
-import NewContentPostFinalReview from './components/subcomponents/newContentPost/NewContentPostFinalReview';
-import SingleContentPost from './components/SingleContentPost';
-import EditContentPost from './components/EditContentPost';
-import AdvertiserProfile from './components/AdvertiserProfile';
-import ContentCreatorsList from './components/ContentCreatorsList';
-import AdvertisersList from './components/AdvertisersList';
-import NewUserRegistration from './components/NewUserRegistration';
-import Profile from './components/Profile';
-import Footer from './components/Footer';
+import NewContentPost from './components/new_content_post/NewPost';
+import NewContentPostMediums from './components/new_content_post/NewPostMediums';
+import NewContentPostImageUpload from './components/new_content_post/NewPostImageUpload';
+import NewContentPostFinalReview from './components/new_content_post/NewPostFinalReview';
+import SingleContentPost from './components/single_content_post/SinglePost';
+import EditContentPost from './components/single_content_post/edit_post/EditContentPost';
+import ContentCreatorsList from './components/content_creators_list/CreatorList';
+import NewUserRegistration from './components/header__footer_login/NewUserRegistration';
+import Profile from './components/profile/Profile';
+import Footer from './components/header__footer_login/Footer';
 
 class App extends Component {
   render() {
@@ -29,12 +27,10 @@ class App extends Component {
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/ContentCreatorsList' component={ContentCreatorsList} />
-                    <Route exact path='/advertisersList' component={AdvertisersList} />
                     <Route exact path='/newContentPost' component={NewContentPost} />
                     <Route exact path='/newContentPost/mediums' component={NewContentPostMediums} />
                     <Route exact path='/newContentPost/images' component={NewContentPostImageUpload} />
                     <Route exact path='/newContentPost/review' component={NewContentPostFinalReview} />
-                    <Route exact path='/advertiserProfile' component={AdvertiserProfile} />
                     <Route exact path='/newUserRegistration' component={NewUserRegistration} />
                     <Route path='/contentPost/view/' component={SingleContentPost} />
                     <Route path='/contentPost/edit/' component={EditContentPost} />

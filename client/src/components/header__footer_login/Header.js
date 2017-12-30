@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LoginModal from './subcomponents/LoginModal';
+import LoginModal from './LoginModal';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { isLoggedIn, logoutUser } from '../actions/auth';
+import { isLoggedIn, logoutUser } from '../../actions/auth';
 //===============================================================================================//
 // don't like how login button shows up for a split second
 

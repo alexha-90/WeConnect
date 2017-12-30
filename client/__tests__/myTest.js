@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { testNewTaskValidity } from "../src/components/stateFunctions";
+import { testNewTaskValidity } from "../src/components/helper_functions/stateFunctions";
 
 
 const sampleNewTaskData = {

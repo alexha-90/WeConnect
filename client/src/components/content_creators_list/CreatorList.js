@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { fetchAllContentPosts } from '../actions/index';
+import { fetchAllContentPosts } from '../../actions/index';
 
-import ContentPostFilterBar from './subcomponents/contentCreatorsList/ContentPostFilterBar';
-import contentCreatorsResults from './subcomponents/contentCreatorsList/contentCreatorsResults';
-import ContentPostListAdSpace from './subcomponents/contentCreatorsList/ContentPostListAdSpace';
+import ContentPostFilterBar from './CreatorListFilterSidebar';
+import contentCreatorsResults from './CreatorListResults';
+import ContentPostListAdSpace from './CreatorListAdSpace';
 
 // loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
 // create rating system

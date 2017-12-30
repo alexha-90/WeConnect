@@ -2,52 +2,52 @@ import React, { Component } from 'react';
 import { Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { twitterUpdateNewContentPost } from '../../../actions/newContentPost';
+import { instagramUpdateNewContentPost } from '../../actions/newContentPost';
 
 //===============================================================================================//
 
-class TwitterForm extends Component {
+class InstagramForm extends Component {
     constructor () {
         super();
         this.state = {
-            tw_PostFrequency: false,
-            tw_Followers: false,
-            tw_PostLikes: false,
-            tw_Comments: false,
-            tw_PostFrequencyDefaultVal: true,
-            tw_FollowersDefaultVal: true,
-            tw_PostLikesDefaultVal: true,
-            tw_CommentsDefaultVal: true
+            ig_PostFrequency: false,
+            ig_Followers: false,
+            ig_Likes: false,
+            ig_Comments: false,
+            ig_PostFrequencyDefaultVal: true,
+            ig_FollowersDefaultVal: true,
+            ig_LikesDefaultVal: true,
+            ig_CommentsDefaultVal: true
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
     componentWillMount() {
         // repopulate form fields if user toggled back and forth steps
-        if (this.props.newContentPost.twitter.tw_PostFrequency) {
+        if (this.props.newContentPost.instagram.ig_PostFrequency) {
             return this.setState({
-                tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
-                tw_Followers: this.props.newContentPost.twitter.tw_Followers,
-                tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
-                tw_Comments: this.props.newContentPost.twitter.tw_Comments,
-                tw_PostFrequencyDefaultVal: false,
-                tw_FollowersDefaultVal: false,
-                tw_PostLikesDefaultVal: false,
-                tw_CommentsDefaultVal: false
+                ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
+                ig_Followers: this.props.newContentPost.instagram.ig_Followers,
+                ig_Likes: this.props.newContentPost.instagram.ig_Likes,
+                ig_Comments: this.props.newContentPost.instagram.ig_Comments,
+                ig_PostFrequencyDefaultVal: false,
+                ig_FollowersDefaultVal: false,
+                ig_LikesDefaultVal: false,
+                ig_CommentsDefaultVal: false
             })
         }
 
         // repopulate form fields if user is editing post and has instagram medium selected
-        if (this.props.contentPost && this.props.contentPost['tw_post_frequency']) {
+        if (this.props.contentPost && this.props.contentPost['ig_post_frequency']) {
             return this.setState({
-                tw_PostFrequency: this.props.contentPost['tw_post_frequency'],
-                tw_Followers: this.props.contentPost['tw_followers'],
-                tw_PostLikes: this.props.contentPost['tw_post_likes'],
-                tw_Comments: this.props.contentPost['tw_comments'],
-                tw_PostFrequencyDefaultVal: false,
-                tw_FollowersDefaultVal: false,
-                tw_PostLikesDefaultVal: false,
-                tw_CommentsDefaultVal: false
+                ig_PostFrequency: this.props.contentPost['ig_post_frequency'],
+                ig_Followers: this.props.contentPost['ig_followers'],
+                ig_Likes: this.props.contentPost['ig_likes'],
+                ig_Comments: this.props.contentPost['ig_comments'],
+                ig_PostFrequencyDefaultVal: false,
+                ig_FollowersDefaultVal: false,
+                ig_LikesDefaultVal: false,
+                ig_CommentsDefaultVal: false
             })
         }
     }
@@ -59,45 +59,45 @@ class TwitterForm extends Component {
         const errorString = 'Error: Default value (-) is not a valid option! If you want to remove this medium, please deselect the checkbox.';
 
         switch (event.target.name) {
-            case 'tw_PostFrequency': {
-                // prevent user from selecting default value ('') after initial change
-                if (!event.target.value && !this.state.tw_PostFrequencyDefaultVal) {
+            // prevent user from selecting default value ('') after initial change
+            case 'ig_PostFrequency': {
+                if (!event.target.value && !this.state.ig_PostFrequencyDefaultVal) {
                     return alert(errorString);
                 }
-                this.setState({ tw_PostFrequency: event.target.value, tw_PostFrequencyDefaultVal: false});
+                this.setState({ ig_PostFrequency: event.target.value, ig_PostFrequencyDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
                 }, 0);
                 break;
             }
 
-            case 'tw_Followers': {
-                if (!event.target.value && !this.state.tw_FollowersDefaultVal) {
+            case 'ig_Followers': {
+                if (!event.target.value && !this.state.ig_FollowersDefaultVal) {
                     return alert(errorString);
                 }
-                this.setState({ tw_Followers: event.target.value, tw_FollowersDefaultVal: false});
+                this.setState({ ig_Followers: event.target.value, ig_FollowersDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
                 }, 0);
                 break;
             }
 
-            case 'tw_PostLikes': {
-                if (!event.target.value && !this.state.tw_PostLikesDefaultVal) {
+            case 'ig_Likes': {
+                if (!event.target.value && !this.state.ig_LikesDefaultVal) {
                     return alert(errorString);
                 }
-                this.setState({ tw_PostLikes: event.target.value, tw_PostLikesDefaultVal: false });
+                this.setState({ ig_Likes: event.target.value, ig_LikesDefaultVal: false });
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
                 }, 0);
                 break;
             }
 
-            case 'tw_Comments': {
-                if (!event.target.value && !this.state.tw_PostLikesDefaultVal) {
+            case 'ig_Comments': {
+                if (!event.target.value && !this.state.ig_CommentsDefaultVal) {
                     return alert(errorString);
                 }
-                this.setState({ tw_Comments: event.target.value, tw_PostLikesDefaultVal: false });
+                this.setState({ ig_Comments: event.target.value, ig_CommentsDefaultVal: false});
                 setTimeout(() => {
                     dispatchCondition(this.state, this.props);
                 }, 0);
@@ -114,18 +114,19 @@ class TwitterForm extends Component {
         return (
             <div className="socialMedium">
                 <div id="socialMediumHeadline">
-                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="twitter" />
-                    <h2>Twitter account details</h2>
+                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png" alt="instagram" />
+                    <h2>Instagram profile details</h2>
                 </div>
+
                 <br/>
                 <Form>
                     <FormGroup>
                         <ControlLabel>Post frequency</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="tw_PostFrequency"
+                            name="ig_PostFrequency"
                             onChange={this.handleChange}
-                            value={this.state.tw_PostFrequency}
+                            value={this.state.ig_PostFrequency}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="0-1 posts/week">0-1 posts/week</option>
@@ -138,9 +139,9 @@ class TwitterForm extends Component {
                         <ControlLabel>Followers</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="tw_Followers"
+                            name="ig_Followers"
                             onChange={this.handleChange}
-                            value={this.state.tw_Followers}
+                            value={this.state.ig_Followers}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="Under 200 users">Under 200 users</option>
@@ -155,9 +156,9 @@ class TwitterForm extends Component {
                         <ControlLabel>Typical likes per post</ControlLabel>
                         <FormControl
                             componentClass="select"
-                            name="tw_PostLikes"
+                            name="ig_Likes"
                             onChange={this.handleChange}
-                            value={this.state.tw_PostLikes}
+                            value={this.state.ig_Likes}
                             placeholder="select">
                             <option value="">-</option>
                             <option value="Under 50 likes">Under 50 likes</option>
@@ -169,9 +170,9 @@ class TwitterForm extends Component {
                             <ControlLabel>Typical comments per post</ControlLabel>
                             <FormControl
                                 componentClass="select"
-                                name="tw_Comments"
+                                name="ig_Comments"
                                 onChange={this.handleChange}
-                                value={this.state.tw_Comments}
+                                value={this.state.ig_Comments}
                                 placeholder="select">
                                 <option value="">-</option>
                                 <option value="Under 10 comments">Under 10 comments</option>
@@ -188,8 +189,7 @@ class TwitterForm extends Component {
     }
 }
 
-export default connect(mapStateToProps)(TwitterForm);
-
+export default connect(mapStateToProps)(InstagramForm);
 
 
 function mapStateToProps(state) {
@@ -199,11 +199,10 @@ function mapStateToProps(state) {
     };
 }
 
-
 function dispatchCondition(state, props) {
     setTimeout(() => {
-        if (state.tw_PostFrequency && state.tw_Followers && state.tw_PostLikes && state.tw_Comments) {
-            return props.dispatch(twitterUpdateNewContentPost(state));
+        if (state.ig_PostFrequency && state.ig_Followers && state.ig_Likes && state.ig_Comments) {
+            return props.dispatch(instagramUpdateNewContentPost(state));
         }
     }, 200);
 }

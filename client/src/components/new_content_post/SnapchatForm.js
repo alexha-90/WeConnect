@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { snapchatUpdateNewContentPost } from '../../../actions/newContentPost';
+import { snapchatUpdateNewContentPost } from '../../actions/newContentPost';
 
 //===============================================================================================//
 

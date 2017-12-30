@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
-import { FieldGroup } from '../../helper_functions';
+import { FieldGroup } from '../helper_functions/index';
 
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
