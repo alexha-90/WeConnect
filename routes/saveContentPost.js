@@ -62,17 +62,6 @@ module.exports = app => {
                 'sc_post_frequency = $20, sc_followers = $21, sc_story_opens = $22' +
                 'WHERE content_post_id = $23';
 
-            /*
-            const params = [1editDetails.lastEdited, 2editDetails.userLocation, 3editDetails.contentSummary, 4editDetails.contentDescription,
-                5editDetails.contentIdealMatch, 6editDetails.contentTags, 7editDetails.contentCategories, 8editDetails.youtube.yt_UploadFrequency,
-                9editDetails.youtube.yt_VideoLength, 10editDetails.youtube.yt_SubCount, 11editDetails.youtube.yt_ViewCount,
-                12editDetails.instagram.ig_PostFrequency, 13editDetails.instagram.ig_Followers, 14editDetails.instagram.ig_Likes, 15editDetails.instagram.ig_Comments,
-                16editDetails.twitter.tw_PostFrequency, 17editDetails.twitter.tw_Followers, 18editDetails.twitter.tw_PostLikes, 19editDetails.twitter.tw_Comments,
-                20editDetails.snapchat.sc_PostFrequency, 21editDetails.snapchat.sc_Followers, 22editDetails.snapchat.sc_StoryOpens,
-                23editDetails.contentPostID,
-            ];
-            */
-
             const params = [editDetails.lastEdited, editDetails.userLocation, editDetails.contentSummary, editDetails.contentDescription,
                 editDetails.contentIdealMatch, editDetails.contentTags, editDetails.contentCategories, editDetails.youtube.yt_UploadFrequency,
                 editDetails.youtube.yt_VideoLength, editDetails.youtube.yt_SubCount, editDetails.youtube.yt_ViewCount,
@@ -86,23 +75,9 @@ module.exports = app => {
                 .then(() => {
                     res.sendStatus(200);
                 })
-
         } catch (err) {
             console.log('An error occurred. Entry was not saved. Reason: ' + err);
             res.send('error');
         }
     });
 };
-
-
-
-/*
-                'UPDATE content_posts SET ' +
-                'last_edited = $1, poster_location = $2 , content_summary, content_description, content_ideal_match, content_tags, content_categories, ' +
-                'yt_upload_frequency, yt_video_length, yt_sub_count, yt_view_count, ' +
-                'ig_post_frequency, ig_followers, ig_likes, ig_comments, ' +
-                'tw_post_frequency, tw_followers, tw_post_likes, tw_comments, ' +
-                'sc_post_frequency, sc_followers, sc_story_opens ' +
-                'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24) ' +
-                'WHERE content_post_id=$25';
- */

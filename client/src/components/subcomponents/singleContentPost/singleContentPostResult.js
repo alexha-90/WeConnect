@@ -9,16 +9,16 @@ import '../../../styles/carousel.css'
 export default function singleContentPostResult(data) {
     console.log(data);
 
-    const categories = data[0]['content_categories'].toString().replace(/,/gi, ', ');
-
     let youtubeShow, instagramShow, twitterShow, snapchatShow;
 
     // hide respective container if no data available
     if (!data[0]['yt_upload_frequency']) {
+        // alert('yt test');
         youtubeShow = {display: 'none'};
     }
 
     if (!data[0]['ig_post_frequency']) {
+        // alert('ig test');
         instagramShow = {display: 'none'};
     }
 
@@ -29,6 +29,9 @@ export default function singleContentPostResult(data) {
     if (!data[0]['sc_post_frequency']) {
         snapchatShow = {display: 'none'};
     }
+
+    const categories = data[0]['content_categories'].toString().replace(/,/gi, ', ');
+
 
     return (
         <div>
@@ -57,9 +60,9 @@ export default function singleContentPostResult(data) {
 
                 <h4>Social account(s)</h4>
 
-                <div className="socialMediums" style={youtubeShow}>
+                <div className="socialMediums">
 
-                    <div className="socialMediumContainer" id="youtubeMedium">
+                    <div className="socialMediumContainer" style={youtubeShow}>
                         <h3>YouTube</h3>
                         <div id="socialLogoContainer">
                             <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png" alt="youtubeLogo"/>

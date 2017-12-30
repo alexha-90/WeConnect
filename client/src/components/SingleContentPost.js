@@ -53,7 +53,7 @@ class SingleContentPost extends Component {
                     const posterID = this.state.contentPost[0]['poster_id'];
                     const postSummary = this.state.contentPost[0]['content_summary'];
                     const posterUsername = this.state.contentPost[0]['username'];
-                    return this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary, posterUsername))
+                    this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary, posterUsername))
                 })
             } catch (err) {
                 console.log(err);
@@ -69,7 +69,7 @@ class SingleContentPost extends Component {
     }
 
     showActionButton() {
-        console.log(this.state.contentPost);
+        // console.log(this.state.contentPost);
         if (this.state.contentPost[0]['is_author']) {
             return (
                 <Button id="editButton" bsStyle="info">
@@ -94,7 +94,6 @@ class SingleContentPost extends Component {
             return <ContactForm />
         }
     }
-
 
     render() {
         if (this.state.loadingComponent) {

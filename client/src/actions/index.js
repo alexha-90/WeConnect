@@ -31,7 +31,7 @@ export const editPostDetailsToProps = (data) => {
 
 
 export const updateSingleContentPost = (editedPost) => async () => {
-    console.log(editedPost);
+    // console.log(editedPost);
     try {
         const res = await axios.patch('/api/saveEditedPost', editedPost);
         return res.data;

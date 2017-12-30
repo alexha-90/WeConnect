@@ -195,19 +195,19 @@ class EditContentPost extends Component {
         // check that inputs are valid
 
         // if form is open and has neither contentPost or newPost data, prompt error.
-        if (this.state.showYouTubeForm && (!this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube)) {
+        if (this.state.showYouTubeForm && (!this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube.yt_UploadFrequency)) {
             return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
         }
 
-        if (this.state.showInstagramForm && (!this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram)) {
+        if (this.state.showInstagramForm && (!this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram.ig_PostFrequency)) {
             return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
         }
 
-        if (this.state.showTwitterForm && (!this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter)) {
+        if (this.state.showTwitterForm && (!this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter.tw_PostFrequency)) {
             return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
         }
 
-        if (this.state.showSnapchatForm && (!this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat)) {
+        if (this.state.showSnapchatForm && (!this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat.sc_PostFrequency)) {
             return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
         }
 
@@ -332,9 +332,12 @@ class EditContentPost extends Component {
                 twitter,
                 snapchat
             };
-
             console.log(editedPost);
             this.props.dispatch(updateSingleContentPost(editedPost));
+            setTimeout(() => {
+                alert('Your post has been successfully updated.');
+                return window.location.reload();
+            }, 200);
         }, 200);
     }
 
