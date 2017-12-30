@@ -7,19 +7,10 @@ import { Redirect } from 'react-router-dom';
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
-
-
-import YoutubeForm from './YoutubeForm';
-import InstagramForm from './InstagramForm';
-import TwitterForm from './TwitterForm';
-import SnapchatForm from './SnapchatForm';
-
-import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
-
-// import { validateMediums} from '../../helper_functions/newContentHelpers';
+import { validateMediums} from './validateMediums';
+import { youtubeForm, instagramForm, twitterForm, snapchatForm } from '../../helper_functions';
 
 // uncomment categories check later. In for testing
-
 //===============================================================================================//
 
 class NewContentPostMediums extends Component {
@@ -33,10 +24,6 @@ class NewContentPostMediums extends Component {
             redirectToNextPage: false
         };
         this.onNextPage = this.onNextPage.bind(this);
-        this.youtubeForm = this.youtubeForm.bind(this);
-        this.instagramForm = this.instagramForm.bind(this);
-        this.twitterForm = this.twitterForm.bind(this);
-        this.snapchatForm = this.snapchatForm.bind(this);
     }
 
     componentWillMount() {
@@ -65,79 +52,11 @@ class NewContentPostMediums extends Component {
         }
     }
 
-
-    youtubeForm() {
-        if (!this.state.showYouTubeForm) {
-            return;
-        }
-        return <YoutubeForm />
-    }
-
-    instagramForm() {
-        if (!this.state.showInstagramForm) {
-            return;
-        }
-        return <InstagramForm />
-    }
-
-    twitterForm() {
-        if (!this.state.showTwitterForm) {
-            return;
-        }
-        return <TwitterForm />
-    }
-
-    snapchatForm() {
-        if (!this.state.showSnapchatForm) {
-            return;
-        }
-        return <SnapchatForm />
-    }
-
     onNextPage() {
-        // check that inputs are valid
-        if (!this.state.showYouTubeForm && !this.state.showInstagramForm && !this.state.showTwitterForm && !this.state.showSnapchatForm) {
-            return alert('Error: You must select and enter information for at least one medium before proceeding!')
-        }
-
-        if (this.state.showYouTubeForm && !this.props.newContentPost.youtube) {
-            return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
-        }
-
-        if (this.state.showInstagramForm && !this.props.newContentPost.instagram) {
-            return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
-        }
-
-        if (this.state.showTwitterForm && !this.props.newContentPost.twitter) {
-            return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
-        }
-
-        if (this.state.showSnapchatForm && !this.props.newContentPost.snapchat) {
-            return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
-        }
-
-        // clear out values if checkbox is not selected at point of submitting
-        if (!this.state.showYouTubeForm) {
-            this.props.dispatch(youtubeRemoveData());
-        }
-
-        if (!this.state.showInstagramForm) {
-            this.props.dispatch(instagramRemoveData());
-        }
-
-        if (!this.state.showTwitterForm) {
-            this.props.dispatch(twitterRemoveData());
-        }
-
-        if (!this.state.showSnapchatForm) {
-            this.props.dispatch(snapchatRemoveData());
-        }
-
-        setTimeout(() => {
+        if (validateMediums(this.state, this.props)) {
             this.setState({redirectToNextPage: true})
-        }, 200);
+        }
     }
-
 
     render() {
         console.log(this.props.newContentPost);
@@ -215,10 +134,10 @@ class NewContentPostMediums extends Component {
                     </Form>
 
                     {/* Import social media specific forms */}
-                    {this.youtubeForm()}
-                    {this.instagramForm()}
-                    {this.twitterForm()}
-                    {this.snapchatForm()}
+                    {youtubeForm(this.state.showYouTubeForm)}
+                    {instagramForm(this.state.showInstagramForm)}
+                    {twitterForm(this.state.showTwitterForm)}
+                    {snapchatForm(this.state.showSnapchatForm)}
 
                     <Button bsStyle="warning">
                         <Link to="/newContentPost">
@@ -235,7 +154,6 @@ class NewContentPostMediums extends Component {
         )
     }
 }
-
 
 
 export default connect(mapStateToProps)(NewContentPostMediums);

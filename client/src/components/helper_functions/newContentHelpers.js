@@ -25,49 +25,6 @@ export function organizeCategories (categoriesArr) {
 }
 
 
-// did this for refactor. not working. For newPost would redirect no matter what. Can't return function due to promise err
-export function validateMediums(state, props) {
-    // if (!state.showYouTubeForm && !state.showInstagramForm && !state.showTwitterForm && !state.showSnapchatForm) {
-    //     return alert('Error: You must select and enter information for at least one medium before proceeding!');
-    // }
-    //
-    // if (state.showYouTubeForm && !props.newContentPost.youtube) {
-    //     return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.');
-    // }
-    //
-    // if (state.showInstagramForm && !props.newContentPost.instagram) {
-    //     return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.');
-    // }
-    //
-    // if (state.showTwitterForm && !props.newContentPost.twitter) {
-    //     return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.');
-    // }
-    //
-    // if (state.showSnapchatForm && !props.newContentPost.snapchat) {
-    //     return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.');
-    // }
-    //
-    // // clear out values if checkbox is not selected at point of submitting
-    // if (!state.showYouTubeForm) {
-    //     props.dispatch(youtubeRemoveData());
-    // }
-    //
-    // if (!state.showInstagramForm) {
-    //     props.dispatch(instagramRemoveData());
-    // }
-    //
-    // if (!state.showTwitterForm) {
-    //     props.dispatch(twitterRemoveData());
-    // }
-    //
-    // if (!state.showSnapchatForm) {
-    //     props.dispatch(snapchatRemoveData());
-    // }
-    //
-    // return 'test'; // valid submission
-
-}
-
 
 export function youtubeData (props) {
     // if (props.newContentPost.youtube.yt_UploadFrequency !== null) {

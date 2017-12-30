@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Modal, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { loginUser } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { FieldGroup } from '../helper_functions';
 //===============================================================================================//
 
 // future feature: add forgot password feature
@@ -105,16 +106,4 @@ class LoginModal extends Component {
     }
 }
 
-
 export default connect(null)(LoginModal);
-
-
-function FieldGroup({ id, label, help, ...props }) {
-    return (
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-            {help && <HelpBlock>{help}</HelpBlock>}
-        </FormGroup>
-    );
-}

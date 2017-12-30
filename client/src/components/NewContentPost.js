@@ -8,6 +8,8 @@ import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 
 import { newContentPostToProps } from '../actions/newContentPost';
+import { FieldGroup, openCategoryIndicator } from './helper_functions';
+
 // import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
 //can avoid a redux action dispatch
@@ -46,7 +48,6 @@ class NewContentPost extends Component {
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.onReviewForNextStep  = this.onReviewForNextStep.bind(this);
-        this.openCategoryIndicator = this.openCategoryIndicator.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
     }
 
@@ -100,15 +101,6 @@ class NewContentPost extends Component {
     handleCategoryToggle(event) {
         if (event.target.checked) {
             return categoriesArr.push(event.target.name);
-        }
-    }
-
-    openCategoryIndicator() {
-        if (this.state.categoryListOpen) {
-            return '(-)'
-        }
-        if (!this.state.categoryListOpen) {
-            return '(+)'
         }
     }
 
@@ -248,7 +240,7 @@ class NewContentPost extends Component {
                         <div className="categories">
                             <FormGroup>
                                 <span onClick={() => this.setState({ categoryListOpen: !this.state.categoryListOpen })}>
-                                    <ControlLabel>{this.openCategoryIndicator()} Associated categories</ControlLabel>
+                                    <ControlLabel>{openCategoryIndicator(this.state.categoryListOpen)} Associated categories</ControlLabel>
                                 </span>
                                 <br />
                                 <Collapse in={this.state.categoryListOpen}>
@@ -322,17 +314,6 @@ class NewContentPost extends Component {
 }
 
 export default connect(mapStateToProps)(NewContentPost);
-
-
-
-function FieldGroup({ id, label, ...props }) {
-    return (
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-        </FormGroup>
-    );
-}
 
 function mapStateToProps(state) {
     return {

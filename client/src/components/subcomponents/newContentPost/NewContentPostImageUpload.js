@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
+import { FieldGroup } from '../../helper_functions';
 
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
@@ -82,14 +83,4 @@ function mapStateToProps(state) {
         newContentPost: state.newContentPost.newContentPost,
         auth: state.auth.auth
     };
-}
-
-function FieldGroup({ id, label, help, ...props }) {
-    return (
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-            {help && <HelpBlock>{help}</HelpBlock>}
-        </FormGroup>
-    );
 }

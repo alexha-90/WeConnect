@@ -3,17 +3,10 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 
-import YoutubeForm from './subcomponents/newContentPost/YoutubeForm';
-import InstagramForm from './subcomponents/newContentPost/InstagramForm';
-import TwitterForm from './subcomponents/newContentPost/TwitterForm';
-import SnapchatForm from './subcomponents/newContentPost/SnapchatForm';
-import { fetchSingleContentPost, editPostDetailsToProps, updateSingleContentPost } from '../actions/';
-import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../actions/newContentPost'
-import moment from 'moment';
-
-// need to validaet mediums like did in newPost....
+import { fetchSingleContentPost, editPostDetailsToProps } from '../actions/';
+import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm } from './helper_functions';
+import { submissionFlow } from './subcomponents/singleContentPost/edit_post/submissionFlow';
 //===============================================================================================//
-
 
 let categoriesArr = [];
 
@@ -38,12 +31,7 @@ class EditContentPost extends Component {
             showSnapchatForm: false,
         };
         this.handleTextChange = this.handleTextChange.bind(this);
-        this.openCategoryIndicator = this.openCategoryIndicator.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
-        this.youtubeForm = this.youtubeForm.bind(this);
-        this.instagramForm = this.instagramForm.bind(this);
-        this.twitterForm = this.twitterForm.bind(this);
-        this.snapchatForm = this.snapchatForm.bind(this);
         this.onUpdatePost = this.onUpdatePost.bind(this);
     }
 
@@ -120,7 +108,6 @@ class EditContentPost extends Component {
     }
 
 
-
     handleTextChange(event) {
         switch (event.target.name) {
             case 'userLocation': {
@@ -150,198 +137,10 @@ class EditContentPost extends Component {
         }
     }
 
-    openCategoryIndicator() {
-        if (this.state.categoryListOpen) {
-            return '(-)'
-        }
-        if (!this.state.categoryListOpen) {
-            return '(+)'
-        }
-    }
-
-
-    youtubeForm() {
-        if (!this.state.showYouTubeForm) {
-            return;
-        }
-        return <YoutubeForm />
-    }
-
-    instagramForm() {
-        if (!this.state.showInstagramForm) {
-            return;
-        }
-        return <InstagramForm />
-    }
-
-    twitterForm() {
-        if (!this.state.showTwitterForm) {
-            return;
-        }
-        return <TwitterForm />
-    }
-
-    snapchatForm() {
-        if (!this.state.showSnapchatForm) {
-            return;
-        }
-        return <SnapchatForm />
-    }
-
-
-
     onUpdatePost () {
-        // refactor later
-        // check that inputs are valid
-
-        // if form is open and has neither contentPost or newPost data, prompt error.
-        if (this.state.showYouTubeForm && (!this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube.yt_UploadFrequency)) {
-            return alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.')
-        }
-
-        if (this.state.showInstagramForm && (!this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram.ig_PostFrequency)) {
-            return alert('Error: Please make sure to fill out all details for the Instagram form or deselect the option.')
-        }
-
-        if (this.state.showTwitterForm && (!this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter.tw_PostFrequency)) {
-            return alert('Error: Please make sure to fill out all details for the Twitter form or deselect the option.')
-        }
-
-        if (this.state.showSnapchatForm && (!this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat.sc_PostFrequency)) {
-            return alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.')
-        }
-
-        // clear out values if checkbox is not selected at point of submission
-        // NOTE: if user selected a new value for existing medium, the changes will be reflected on newContentPost
-        if (!this.state.showYouTubeForm) {
-            this.props.dispatch(youtubeRemoveData());
-        }
-
-        if (!this.state.showInstagramForm) {
-            this.props.dispatch(instagramRemoveData());
-        }
-
-        if (!this.state.showTwitterForm) {
-            this.props.dispatch(twitterRemoveData());
-        }
-
-        if (!this.state.showSnapchatForm) {
-            this.props.dispatch(snapchatRemoveData());
-        }
-
-        setTimeout(() => {
-            // NOTE: upon adding a new medium and entering required info, values are updated automatically in respective social components and placed into this.props.newContentPost
-
-            if (!this.state.showYouTubeForm && !this.state.showInstagramForm && !this.state.showTwitterForm && !this.state.showSnapchatForm) {
-                return alert('Error: You must select and enter information for at least one medium before proceeding!')
-            }
-
-            // on submission attempt, assign null values for mediums that did not get updated
-            let youtube = {
-                yt_UploadFrequency: this.props.newContentPost.youtube.yt_UploadFrequency,
-                    yt_VideoLength: this.props.newContentPost.youtube.yt_VideoLength,
-                    yt_SubCount: this.props.newContentPost.youtube.yt_SubCount,
-                    yt_ViewCount: this.props.newContentPost.youtube.yt_ViewCount
-            };
-
-            let instagram = {
-                ig_PostFrequency: this.props.newContentPost.instagram.ig_PostFrequency,
-                ig_Followers: this.props.newContentPost.instagram.ig_Followers,
-                ig_Likes: this.props.newContentPost.instagram.ig_Likes,
-                ig_Comments: this.props.newContentPost.instagram.ig_Comments
-            };
-
-            let twitter = {
-                tw_PostFrequency: this.props.newContentPost.twitter.tw_PostFrequency,
-                tw_Followers: this.props.newContentPost.twitter.tw_Followers,
-                tw_PostLikes: this.props.newContentPost.twitter.tw_PostLikes,
-                tw_Comments: this.props.newContentPost.twitter.tw_Comments,
-            };
-
-            let snapchat = {
-                sc_PostFrequency: this.props.newContentPost.snapchat.sc_PostFrequency,
-                sc_Followers: this.props.newContentPost.snapchat.sc_Followers,
-                sc_StoryOpens: this.props.newContentPost.snapchat.sc_StoryOpens
-            };
-
-            // medium was not updated (has existing values), fetch values from this.props.contentPost instead
-            if (this.props.contentPost['yt_upload_frequency'] && !this.props.newContentPost.youtube.yt_UploadFrequency) {
-                youtube = {
-                    yt_UploadFrequency: this.props.contentPost['yt_upload_frequency'],
-                    yt_VideoLength: this.props.contentPost['yt_video_length'],
-                    yt_SubCount: this.props.contentPost['yt_sub_count'],
-                    yt_ViewCount: this.props.contentPost['yt_view_count']
-                };
-
-                // user wants to remove this medium, populate default null values
-                if (!this.state.showYouTubeForm) {
-                    youtube = {...this.props.newContentPost.youtube};
-                }
-            }
-
-            if (this.props.contentPost['ig_post_frequency'] && !this.props.newContentPost.instagram.ig_PostFrequency) {
-                instagram = {
-                    ig_PostFrequency: this.props.contentPost['ig_post_frequency'],
-                    ig_Followers: this.props.contentPost['ig_followers'],
-                    ig_Likes: this.props.contentPost['ig_likes'],
-                    ig_Comments: this.props.contentPost['ig_comments']
-                };
-
-                if (!this.state.showInstagramForm) {
-                    instagram = {...this.props.newContentPost.instagram};
-                }
-            }
-
-            if (this.props.contentPost['tw_post_frequency'] && !this.props.newContentPost.twitter.tw_PostFrequency) {
-                twitter = {
-                    tw_PostFrequency: this.props.contentPost['tw_post_frequency'],
-                    tw_Followers: this.props.contentPost['tw_followers'],
-                    tw_PostLikes: this.props.contentPost['tw_post_likes'],
-                    tw_Comments: this.props.contentPost['tw_comments'],
-                };
-
-                if (!this.state.showTwitterForm) {
-                    twitter = {...this.props.newContentPost.twitter};
-                }
-            }
-
-            if (this.props.contentPost['sc_post_frequency'] && !this.props.newContentPost.snapchat.sc_PostFrequency) {
-                snapchat = {
-                    sc_PostFrequency: this.props.contentPost['sc_post_frequency'],
-                    sc_Followers: this.props.contentPost['sc_followers'],
-                    sc_StoryOpens: this.props.contentPost['sc_story_opens']
-                };
-
-                if (!this.state.showSnapchatForm) {
-                    snapchat = {...this.props.newContentPost.snapchat};
-                }
-            }
-
-            // treat updates as a new post
-            let editedPost = {
-                lastEdited: moment().format("MM/DD/YYYY") + ' at ' + moment().utcOffset(-480).format('hh:mm a') + ' PST',
-                contentPostID: this.state.contentPostID,
-                userLocation: this.state.userLocation,
-                contentSummary: this.state.contentSummary,
-                contentDescription: this.state.contentDescription,
-                contentIdealMatch: this.state.contentIdealMatch,
-                contentTags: this.state.contentTags,
-                contentCategories: this.state.contentCategories,
-                youtube,
-                instagram,
-                twitter,
-                snapchat
-            };
-            console.log(editedPost);
-            this.props.dispatch(updateSingleContentPost(editedPost));
-            setTimeout(() => {
-                alert('Your post has been successfully updated.');
-                return window.location.reload();
-            }, 200);
-        }, 200);
+        // cross references inputs and existing data, checks that inputs are valid, get timestamp, submit to backend
+        submissionFlow(this.state, this.props);
     }
-
-
 
     render() {
         if (this.state.loadingComponent) {
@@ -410,7 +209,7 @@ class EditContentPost extends Component {
                     />
                     <FormGroup>
                         <span onClick={() => this.setState({ categoryListOpen: !this.state.categoryListOpen })}>
-                            <ControlLabel>{this.openCategoryIndicator()} Associated categories</ControlLabel>
+                            <ControlLabel>{openCategoryIndicator(this.state.categoryListOpen)} Associated categories</ControlLabel>
                         </span>
                         <br />
                         <Collapse in={this.state.categoryListOpen}>
@@ -515,10 +314,10 @@ class EditContentPost extends Component {
                 </Form>
 
                 {/* Import social media specific forms */}
-                {this.youtubeForm()}
-                {this.instagramForm()}
-                {this.twitterForm()}
-                {this.snapchatForm()}
+                {youtubeForm(this.state.showYouTubeForm)}
+                {instagramForm(this.state.showInstagramForm)}
+                {twitterForm(this.state.showTwitterForm)}
+                {snapchatForm(this.state.showSnapchatForm)}
 
 
                 <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
@@ -537,15 +336,6 @@ class EditContentPost extends Component {
 
 export default connect(mapStateToProps)(EditContentPost);
 
-
-function FieldGroup({ id, label, ...props }) {
-    return (
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-        </FormGroup>
-    );
-}
 
 function mapStateToProps(state) {
     return {

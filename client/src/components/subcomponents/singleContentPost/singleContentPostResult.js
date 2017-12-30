@@ -4,8 +4,6 @@ import ImageLightbox from './ImageLightbox';
 import '../../../styles/carousel.css'
 
 //===============================================================================================//
-
-
 export default function singleContentPostResult(data) {
     console.log(data);
 

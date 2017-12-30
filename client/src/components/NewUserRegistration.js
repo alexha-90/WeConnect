@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Radio, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
+import { Button, Radio, FormGroup, ControlLabel } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isLoggedIn } from '../actions/auth';
 import { registerNewUser } from '../actions';
 import { Redirect } from 'react-router';
 import moment from 'moment';
+import { FieldGroup } from './helper_functions/';
 
 //redux needed here for this.props.dispatch
 // provide login link just in case user misclicked
@@ -228,15 +229,3 @@ class NewUserRegistration extends Component {
 }
 
 export default connect(null)(NewUserRegistration);
-
-
-
-function FieldGroup({ id, label, help, ...props }) {
-    return (
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-            {help && <HelpBlock>{help}</HelpBlock>}
-        </FormGroup>
-    );
-}
