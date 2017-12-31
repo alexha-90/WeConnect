@@ -4,35 +4,37 @@
   height: 65px;
   line-height: 65px;
 
-  a {
-    color: #f2f2f2;
+  a, span {
+    color: #ffffff;
     text-decoration: none;
+    letter-spacing: 0.05rem;
   }
 
-  a:hover {
-    color: #b3b3b3;
+  a:hover, span:hover {
+    color: #bfbfbf;
   }
 
   .headerContainer {
     display: block;
     margin: 0 auto;
-    width: 90%;
+    width: 85%;
     height: inherit;
-    background-color: green;
 
     #navLogo {
-      width: 20%;
+      width: 25%;
       display: inline-block;
       height: inherit;
-      background-color: gold;
       margin: 0;
+      img {
+        margin: auto 0;
+        height: 70%;
+      }
     }
 
     .rightContent {
       font-size: 1.75rem;
       width: 40%;
       display: inline-block;
-      background-color: red;
       margin: 0;
       height: inherit;
       float: right;
@@ -41,17 +43,14 @@
       .loggedInLinks {
         display: inline-block;
         width: 100%;
-        background-color: blue;
 
         #contentCreatorsLink {
           display: inline-block;
           width: 40%;
-          background-color: deeppink;
         }
 
         #viewProfileLink {
           display: inline-block;
-          background-color: purple;
           width: 35%;
 
           img {
@@ -70,17 +69,14 @@
       .loggedOutLinks {
         #blankFiller {
           display: inline-block;
-          background-color: red;
           width: 30%;
         }
         #contentCreatorsLink {
           display: inline-block;
           width: 40%;
-          background-color: deeppink;
         }
 
         #registerLoginLink {
-          background-color: limegreen;
           float: right;
           display: inline-block;
           width: 30%;
@@ -92,81 +88,3 @@
     }
   }
 }
-
-
-/*
-.header {
-  width: 100%;
-  background-color: #216894;
-  height: 65px;
-  line-height: 65px;
-
-  a {
-    color: #f2f2f2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #b3b3b3;
-  }
-
-  .headerContainer {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-    height: inherit;
-    background-color: green;
-
-    #navLogo {
-      width: 20%;
-      display: inline-block;
-      height: inherit;
-      background-color: gold;
-      margin: 0;
-    }
-
-    .rightContent {
-      font-size: 1.75rem;
-      width: 35%;
-      display: inline-block;
-      background-color: red;
-      margin: 0;
-      height: inherit;
-      float: right;
-      text-align: center;
-
-      #contentCreatorsLink {
-        display: inline-block;
-        width: 45%;
-        background-color: deeppink;
-      }
-      .loggedInLinks {
-        display: inline-block;
-        width: 55%;
-        background-color: blue;
-        #viewProfileLink {
-          display: inline-block;
-          background-color: purple;
-          width: 70%;
-
-          img {
-            height: 35px;
-            border-radius: 50%;
-            margin-right: 8px;
-          }
-
-        }
-        #logoutLink {
-          display: inline-block;
-          width: 30%;
-        }
-        #loginRegisterLink {
-          span {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
-}
- */

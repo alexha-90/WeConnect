@@ -45,8 +45,7 @@ class Footer extends Component {
                         golden gate bridge graphic by <a href="https://thenounproject.com/prosymbols">tnp_prosymbols</a>
                         from <a href="https://thenounproject.com/">TheNounProject</a> is licensed
                         under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>.
-                        Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Maker">
-                        LogoMaker.com. </a><a href="https://icons8.com">Icon pack by Icons8</a>
+                        Logo made with Logomakr.com. <a href="https://icons8.com">Icon pack by Icons8</a>
                     </h6>
                 </div>
 
