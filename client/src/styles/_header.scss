@@ -33,25 +33,27 @@
 
     .rightContent {
       font-size: 1.75rem;
-      width: 40%;
       display: inline-block;
       margin: 0;
       height: inherit;
-      float: right;
       text-align: center;
+      float: right;
 
       .loggedInLinks {
         display: inline-block;
         width: 100%;
+        padding: 0 25px;
 
         #contentCreatorsLink {
           display: inline-block;
-          width: 40%;
+          padding: 0 25px;
+
         }
 
         #viewProfileLink {
           display: inline-block;
-          width: 35%;
+          padding: 0 25px;
+
 
           img {
             height: 35px;
@@ -62,7 +64,7 @@
         }
         #logoutLink {
           display: inline-block;
-          width: 25%;
+          padding: 0 25px;
         }
       }
 

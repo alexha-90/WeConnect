@@ -24,28 +24,28 @@
         height: 70%; }
     .header .headerContainer .rightContent {
       font-size: 1.75rem;
-      width: 40%;
       display: inline-block;
       margin: 0;
       height: inherit;
-      float: right;
-      text-align: center; }
+      text-align: center;
+      float: right; }
       .header .headerContainer .rightContent .loggedInLinks {
         display: inline-block;
-        width: 100%; }
+        width: 100%;
+        padding: 0 25px; }
         .header .headerContainer .rightContent .loggedInLinks #contentCreatorsLink {
           display: inline-block;
-          width: 40%; }
+          padding: 0 25px; }
         .header .headerContainer .rightContent .loggedInLinks #viewProfileLink {
           display: inline-block;
-          width: 35%; }
+          padding: 0 25px; }
           .header .headerContainer .rightContent .loggedInLinks #viewProfileLink img {
             height: 35px;
             border-radius: 50%;
             margin-right: 8px; }
         .header .headerContainer .rightContent .loggedInLinks #logoutLink {
           display: inline-block;
-          width: 25%; }
+          padding: 0 25px; }
       .header .headerContainer .rightContent .loggedOutLinks #blankFiller {
         display: inline-block;
         width: 30%; }
@@ -59,6 +59,71 @@
         .header .headerContainer .rightContent .loggedOutLinks #registerLoginLink span {
           cursor: pointer; }
 
+.footerContainer {
+  bottom: 0;
+  padding-top: 15px;
+  background: #216894;
+  text-align: center;
+  color: #ffffff; }
+  .footerContainer #centeredFooterText {
+    width: 100%;
+    line-height: 150%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    background-color: #216894; }
+  .footerContainer #footerBar {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ffffff;
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding: 0; }
+  .footerContainer #footerLicensingColor {
+    background-color: #216894;
+    color: #cecece; }
+    .footerContainer #footerLicensingColor h6 {
+      margin-bottom: 0; }
+  .footerContainer #footerLicensing a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 15px; }
+  .footerContainer #footerLicensing h6 {
+    margin: 0; }
+
+.landing .mainSplash {
+  background-color: #113b55;
+  height: 77.8vh; }
+  .landing .mainSplash .container {
+    width: 80%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+    .landing .mainSplash .container img {
+      display: block;
+      margin: auto 0;
+      width: 100%; }
+    .landing .mainSplash .container #jumbotron {
+      background: none;
+      text-align: center;
+      color: #f2f2f2; }
+      .landing .mainSplash .container #jumbotron h1 {
+        font-size: 3.5em; }
+      .landing .mainSplash .container #jumbotron p {
+        font-size: 1.3em; }
+
+/*
+  .mainSplash {
+    padding-top: 50px;
+    height: 400px;
+    background: url("https://media.giphy.com/media/d3OG2CkbmVcW0nWU/giphy.gif") no-repeat #113b55;
+    background-size: cover;
+    .container {
+      width: 80%;
+    }
+ */
 .newUserRegistrationContainer {
   width: 65%;
   display: block;
@@ -334,41 +399,6 @@
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#54a9ff',GradientType=0 );
     /* IE6-9 */ }
-
-.footerContainer {
-  margin-top: 40px;
-  bottom: 0;
-  padding-top: 15px;
-  background: #216894;
-  text-align: center;
-  color: #ffffff; }
-  .footerContainer #centeredFooterText {
-    width: 100%;
-    line-height: 150%;
-    margin-top: 5px;
-    text-align: center;
-    font-size: 13px;
-    background-color: #216894; }
-  .footerContainer #footerBar {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ffffff;
-    margin-top: 1em;
-    margin-bottom: 0;
-    padding: 0; }
-  .footerContainer #footerLicensingColor {
-    background-color: #216894;
-    color: #cecece; }
-    .footerContainer #footerLicensingColor h6 {
-      margin-bottom: 0; }
-  .footerContainer #footerLicensing a {
-    display: inline-block;
-    color: inherit;
-    text-decoration: none;
-    margin-bottom: 15px; }
-  .footerContainer #footerLicensing h6 {
-    margin: 0; }
 
 * {
   margin: 0;
