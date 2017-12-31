@@ -49,8 +49,10 @@ app.use(passport.session());
 
 // import routes
 //===========================================================================
-require('./routes/saveContentPost')(app);
-require('./routes/getContentPosts')(app);
+require('./routes/createContentPost')(app);
+require('./routes/readContentPosts')(app);
+require('./routes/updateContentPost')(app);
+require('./routes/deleteContentPost')(app);
 require('./routes/authRoutes')(app);
 require('./routes/privateMessages')(app);
 

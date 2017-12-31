@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import { deleteContentPost} from '../../../actions';
 //===============================================================================================//
 
 class DeleteContentPost extends Component {
@@ -15,9 +16,22 @@ class DeleteContentPost extends Component {
     }
 
     onDeletePost () {
-        console.log('initiate delete');
-        // this.props.dispatch delete
-        // this.setState({ redirectToContentCreatorsList: true });
+        (async () => {
+            try {
+                return this.props.dispatch(deleteContentPost(this.props.contentPost['content_post_id']))
+                    .then((res) => {
+                        console.log(res);
+                        if (res === 'error') {
+                            return alert('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
+                        }
+                        alert('Your post has been deleted.');
+                        return this.setState({redirectToContentCreatorsList: true})
+                    })
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
+            }
+        })();
     }
 
     render () {
@@ -50,4 +64,10 @@ class DeleteContentPost extends Component {
     }
 }
 
-export default connect(null)(DeleteContentPost);
+export default connect(mapStateToProps)(DeleteContentPost);
+
+function mapStateToProps(state) {
+    return {
+        contentPost: state.contentPosts.contentPostDetails[0],
+    };
+}

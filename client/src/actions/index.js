@@ -38,18 +38,15 @@ export const updateSingleContentPost = (editedPost) => async () => {
     } catch(res) {
         return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
     }
+};
 
-    // try {
-    //     const res = await axios.patch('/api/saveEditedPost',
-    //         dispatch({
-    //             type: 'UPDATE_EXISTING_POST',
-    //             payload: data
-    //         })
-    //     );
-    //     return res.data;
-    // } catch(res) {
-    //     alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
-    // }
+export const deleteContentPost = (postID) => async () => {
+    try {
+        const res = await axios.post('/api/deleteContentPost', postID);
+        return res.data;
+    } catch(res) {
+        alert('Error: Unable to establish a connection with database. Please try again and let us know if this problem persists.' + res.err)
+    }
 };
 
 

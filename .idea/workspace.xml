@@ -20,6 +20,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/subcomponents/LoginModal.js" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/stateFunctions.js" afterPath="$PROJECT_DIR$/client/src/components/helper_functions/stateFunctions.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/styles/style.css" afterPath="$PROJECT_DIR$/client/src/styles/main.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/getContentPosts.js" afterPath="$PROJECT_DIR$/routes/readContentPosts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/saveContentPost.js" afterPath="$PROJECT_DIR$/routes/createContentPost.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.gitignore" afterPath="$PROJECT_DIR$/client/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/__tests__/myTest.js" afterPath="$PROJECT_DIR$/client/__tests__/myTest.js" />
@@ -33,7 +35,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/reducers/contentPosts.js" afterPath="$PROJECT_DIR$/client/src/reducers/contentPosts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/reducers/index.js" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/reducers/newContentPost.js" afterPath="$PROJECT_DIR$/client/src/reducers/newContentPost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/saveContentPost.js" afterPath="$PROJECT_DIR$/routes/saveContentPost.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,8 +52,8 @@
       <file leaf-file-name="EditContentPost.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/single_content_post/edit_post/EditContentPost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="151" column="0" lean-forward="true" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+            <state relative-caret-position="1082">
+              <caret line="103" column="9" lean-forward="false" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -59,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeleteContentPost.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeleteContentPost.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/single_content_post/edit_post/DeleteContentPost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+            <state relative-caret-position="500">
+              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -71,48 +73,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewPost.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/new_content_post/NewPost.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="161" selection-end-column="9" />
+            <state relative-caret-position="500">
+              <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginModal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/header__footer_login/LoginModal.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="495">
+              <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/App.js">
+      <file leaf-file-name="deleteContentPost.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/deleteContentPost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding>
-                <element signature="e#193#255#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="280">
+              <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/header__footer_login/Header.js">
+      <file leaf-file-name="createContentPost.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/createContentPost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="90" column="68" lean-forward="true" selection-start-line="90" selection-start-column="68" selection-end-line="90" selection-end-column="107" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-83">
+              <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateContentPost.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/updateContentPost.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="35" lean-forward="true" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readContentPosts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/readContentPosts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,7 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>contentMediumsPropsInfo</find>
       <find>Categories</find>
       <find>location</find>
       <find>is_author</find>
@@ -144,7 +159,6 @@
       <find>onReviewForNextStep</find>
       <find>onUpdate</find>
       <find>200</find>
-      <find>editSingleContentPost</find>
       <find>editsAsNewPost</find>
       <find>editDetails</find>
       <find>newPost</find>
@@ -161,6 +175,8 @@
       <find>redirectToPost</find>
       <find>close</find>
       <find>getInit</find>
+      <find>editSingleContentPost</find>
+      <find>limit</find>
     </findStrings>
     <replaceStrings>
       <replace>getContentPosts</replace>
@@ -197,14 +213,11 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/profileMessageData.js" />
-        <option value="$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/singleContentPostContactForm.js" />
-        <option value="$PROJECT_DIR$/routes/getContentPosts.js" />
         <option value="$PROJECT_DIR$/client/src/styles/carousel.css.scss" />
         <option value="$PROJECT_DIR$/client/src/styles/carousel.css" />
         <option value="$PROJECT_DIR$/client/public/index.html" />
@@ -217,7 +230,6 @@
         <option value="$PROJECT_DIR$/client/src/styles/main.scss" />
         <option value="$PROJECT_DIR$/client/src/styles/_footer.scss" />
         <option value="$PROJECT_DIR$/client/src/styles/_newContentPost.scss" />
-        <option value="$PROJECT_DIR$/journal.txt" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/NewContentPostFinalReview.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/ImageLightbox.js" />
         <option value="$PROJECT_DIR$/client/src/reducers/contentPosts.js" />
@@ -228,10 +240,7 @@
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/SnapchatForm.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/TwitterForm.js" />
         <option value="$PROJECT_DIR$/client/src/actions/newContentPost.js" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/newContentPost/InstagramForm.js" />
-        <option value="$PROJECT_DIR$/client/src/actions/index.js" />
-        <option value="$PROJECT_DIR$/routes/saveContentPost.js" />
         <option value="$PROJECT_DIR$/client/src/components/SingleContentPost.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/singleContentPostResult.js" />
         <option value="$PROJECT_DIR$/client/src/components/subcomponents/singleContentPost/edit_post/submissionFlow.js" />
@@ -252,6 +261,13 @@
         <option value="$PROJECT_DIR$/client/src/components/header__footer_login/NewUserRegistration.js" />
         <option value="$PROJECT_DIR$/client/src/components/single_content_post/edit_post/submissionFlow.js" />
         <option value="$PROJECT_DIR$/client/src/components/single_content_post/edit_post/EditContentPost.js" />
+        <option value="$PROJECT_DIR$/journal.txt" />
+        <option value="$PROJECT_DIR$/routes/getContentPosts.js" />
+        <option value="$PROJECT_DIR$/routes/saveContentPost.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/routes/updateContentPost.js" />
+        <option value="$PROJECT_DIR$/client/src/actions/index.js" />
+        <option value="$PROJECT_DIR$/routes/deleteContentPost.js" />
         <option value="$PROJECT_DIR$/client/src/components/single_content_post/edit_post/DeleteContentPost.js" />
       </list>
     </option>
@@ -325,40 +341,7 @@
               <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="header__footer_login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="new_content_post" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="single_content_post" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HandyHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="single_content_post" type="462c0819:PsiDirectoryNode" />
-              <item name="edit_post" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HandyHelper" type="b2602c69:ProjectViewProjectNode" />
@@ -443,7 +426,7 @@
       <workItem from="1511774185904" duration="7541000" />
       <workItem from="1511821115855" duration="24843000" />
       <workItem from="1511907009606" duration="271849000" />
-      <workItem from="1513624432507" duration="93209000" />
+      <workItem from="1513624432507" duration="96746000" />
     </task>
     <task id="LOCAL-00001" summary="Resolve renamed file conflicts">
       <created>1511822758826</created>
@@ -470,7 +453,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="517577000" />
+    <option name="totallyTimeSpent" value="521114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1835" y="-411" width="1625" height="936" extended-state="0" />
@@ -542,22 +525,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/rc-steps/assets/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -596,14 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/journal.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="121" column="53" lean-forward="false" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -658,14 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/authRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -678,14 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="30" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/getContentPosts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="29" column="77" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="77" />
           <folding />
         </state>
       </provider>
@@ -740,22 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/saveContentPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1180">
-          <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -930,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/header__footer_login/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="90" column="68" lean-forward="true" selection-start-line="90" selection-start-column="68" selection-end-line="90" selection-end-column="107" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -947,6 +864,22 @@
           <folding>
             <element signature="e#193#255#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/new_content_post/NewPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="161" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/journal.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -960,31 +893,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/single_content_post/edit_post/EditContentPost.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/header__footer_login/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="151" column="0" lean-forward="true" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+        <state relative-caret-position="665">
+          <caret line="90" column="68" lean-forward="true" selection-start-line="90" selection-start-column="68" selection-end-line="90" selection-end-column="107" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/new_content_post/NewPost.js">
+    <entry file="file://$PROJECT_DIR$/routes/readContentPosts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="161" selection-end-column="9" />
+        <state relative-caret-position="520">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="63" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/createContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-83">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/deleteContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/updateContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="true" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/single_content_post/edit_post/EditContentPost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1082">
+          <caret line="103" column="9" lean-forward="false" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/single_content_post/edit_post/DeleteContentPost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        <state relative-caret-position="500">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
