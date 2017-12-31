@@ -36,67 +36,76 @@ class Header extends Component {
     loginStatus() {
         if (this.props.auth.isLoggedIn) {
             return (
-                <div>
-                    Logged in as <a href='/profile'>{this.state.username}</a>
-                    &nbsp;&nbsp;
-                    <Button bsStyle="warning" onClick={this.onLogout}>
-                        Logout
-                    </Button>
+                <div className="loggedInLinks">
+                    <div id="contentCreatorsLink">
+                        <a href='/contentCreatorsList'>
+                            Browse Content Creators
+                        </a>
+                    </div>
+
+                    <div id="viewProfileLink">
+                        <a href='/profile'>
+                            <img src="http://alexha.io/images/profile_pic.jpeg" alt="profileImg" />
+                            {this.state.username}
+                        </a>
+                    </div>
+                    <div id="logoutLink">
+                        <a href='' onClick={this.onLogout}>
+                            Logout
+                        </a>
+                    </div>
                 </div>
             )
         }
         return (
-            <div>
-                <Button bsStyle="primary" onClick={ () => this.setState({ loginShow: true }) }>
-                    Sign-up / Login
-                </Button>
+            <div className="loggedOutLinks">
+                <div id="blankFiller" />
+                <div id="contentCreatorsLink">
+                    <a href='/contentCreatorsList'>
+                        Browse Content Creators
+                    </a>
+                </div>
+
+                <div id="registerLoginLink">
+                    <span onClick={ () => this.setState({ loginShow: true }) }>
+                        Register&nbsp;/&nbsp;Login
+                    </span>
+                </div>
             </div>
         )
     }
 
 
+
     onLogout() {
-        this.props.dispatch(logoutUser());
-        return window.location.reload()
+        alert('logout placeholder');
+        // this.props.dispatch(logoutUser());
+        // return window.location.reload()
     }
-
-
-
 
     render() {
         // console.log(this.props.auth);
 
         return (
-            <div className="headerContainer">
-                <div id="navContentCreatorsLink">
-                    <a href='/contentCreatorsList'>
-                        <h4>Content Creators</h4>
-                    </a>
-                </div>
+            <div className="header">
+                <div className="headerContainer">
+                    <div id="navLogo">
+                        test
+                        <a href='/'>
+                            &#8212; WeConnect &#8212;
+                        </a>
+                    </div>
 
-                <div id="navLogo">
-                    <a href='/'>
-                        <h1>&#8212; WeConnect &#8212;</h1>
-                    </a>
-                </div>
+                    <div className="rightContent">
+                        {this.loginStatus()}
+                    </div>
 
-                <div id="navAdvertisersLink">
-                    <a href='/advertisersList'>
-                        <h4>Advertisers</h4>
-                    </a>
-                </div>
-
-                <div id="loginAndProfileLinks">
-                    {this.loginStatus()}
                     <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
+
                 </div>
-
             </div>
-
         )
     }
-
-
 }
 
 export default connect(mapStateToProps)(Header);
@@ -106,3 +115,121 @@ function mapStateToProps(state) {
         auth: state.auth.auth
     };
 }
+
+
+
+/*
+import React, { Component } from 'react';
+import LoginModal from './LoginModal';
+import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { isLoggedIn, logoutUser } from '../../actions/auth';
+//===============================================================================================//
+// don't like how login button shows up for a split second
+
+
+class Header extends Component {
+    constructor() {
+        super();
+        this.state = {
+            username: '',
+            loginShow: false,
+        };
+        this.loginStatus = this.loginStatus.bind(this);
+        this.onLogout = this.onLogout.bind(this);
+    }
+
+    componentWillMount() {
+        (async () => {
+            try {
+                return this.props.dispatch(isLoggedIn())
+                    .then((result) => {
+                        this.setState({ username: result });
+                    });
+            } catch (err) {
+                console.log(err);
+                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+            }
+        })();
+    }
+
+
+    loginStatus() {
+        if (this.props.auth.isLoggedIn) {
+            return (
+                <div>
+                    <div id="viewProfileLink">
+                        <a href='/profile'>
+                            <img src="http://alexha.io/images/profile_pic.jpeg" alt="profileImg" />
+                            {this.state.username}
+                        </a>
+                    </div>
+                    <div id="logoutLink">
+                        <a href='' onClick={this.onLogout}>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            )
+        }
+        return (
+            <div className="loggedInLinks">
+                <div id="loginRegisterLink">
+                    <span onClick={ () => this.setState({ loginShow: true }) }>
+                        Register&nbsp;/&nbsp;Login
+                    </span>
+                </div>
+            </div>
+        )
+    }
+
+
+    onLogout() {
+        alert('logout placeholder');
+        // this.props.dispatch(logoutUser());
+        // return window.location.reload()
+    }
+
+
+
+
+    render() {
+        // console.log(this.props.auth);
+
+        return (
+            <div className="header">
+                <div className="headerContainer">
+                    <div id="navLogo">
+                        test
+                        <a href='/'>
+                            &#8212; WeConnect &#8212;
+                        </a>
+                    </div>
+
+                    <div className="rightContent">
+                        <div id="contentCreatorsLink">
+                            <a href='/contentCreatorsList'>
+                                Browse Content Creators
+                            </a>
+                        </div>
+                        <div className="loggedInLinks">
+                            {this.loginStatus()}
+                        </div>
+                    </div>
+
+                    <LoginModal show={this.state.loginShow} onHide={()=>this.setState({ loginShow: false })} />
+
+                </div>
+            </div>
+        )
+    }
+}
+
+export default connect(mapStateToProps)(Header);
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth
+    };
+}
+ */

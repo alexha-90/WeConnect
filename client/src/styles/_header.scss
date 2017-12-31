@@ -1,12 +1,8 @@
-.headerContainer {
+.header {
   width: 100%;
   background-color: #216894;
-  height: 80px;
-  text-align: center;
-  padding-top: 20px;
-
-  h1 {
-  }
+  height: 65px;
+  line-height: 65px;
 
   a {
     color: #f2f2f2;
@@ -17,40 +13,160 @@
     color: #b3b3b3;
   }
 
-  #navContentCreatorsLink, #navAdvertisersLink {
-    display: inline-block;
-    width: 200px;
+  .headerContainer {
+    display: block;
     margin: 0 auto;
+    width: 90%;
+    height: inherit;
+    background-color: green;
 
-  }
+    #navLogo {
+      width: 20%;
+      display: inline-block;
+      height: inherit;
+      background-color: gold;
+      margin: 0;
+    }
 
-  #navLogo {
-    display: inline-block;
-    width: 300px;
-    margin: 0 auto;
-  }
+    .rightContent {
+      font-size: 1.75rem;
+      width: 40%;
+      display: inline-block;
+      background-color: red;
+      margin: 0;
+      height: inherit;
+      float: right;
+      text-align: center;
 
-  #loginAndProfileLinks {
-    top: 0;
-    right: 0;
-    position: absolute;
-    margin: 10px 15px 0 0;
+      .loggedInLinks {
+        display: inline-block;
+        width: 100%;
+        background-color: blue;
 
-    Button:active {
-      position: static;
+        #contentCreatorsLink {
+          display: inline-block;
+          width: 40%;
+          background-color: deeppink;
+        }
+
+        #viewProfileLink {
+          display: inline-block;
+          background-color: purple;
+          width: 35%;
+
+          img {
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+
+        }
+        #logoutLink {
+          display: inline-block;
+          width: 25%;
+        }
+      }
+
+      .loggedOutLinks {
+        #blankFiller {
+          display: inline-block;
+          background-color: red;
+          width: 30%;
+        }
+        #contentCreatorsLink {
+          display: inline-block;
+          width: 40%;
+          background-color: deeppink;
+        }
+
+        #registerLoginLink {
+          background-color: limegreen;
+          float: right;
+          display: inline-block;
+          width: 30%;
+          span {
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 }
 
-#contained-modal-title-sm {
-  font-size: 2em;
-  text-align: center;
-}
 
-#registerButton {
+/*
+.header {
   width: 100%;
+  background-color: #216894;
+  height: 65px;
+  line-height: 65px;
+
   a {
+    color: #f2f2f2;
     text-decoration: none;
-    color: #ffffff;
+  }
+
+  a:hover {
+    color: #b3b3b3;
+  }
+
+  .headerContainer {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: inherit;
+    background-color: green;
+
+    #navLogo {
+      width: 20%;
+      display: inline-block;
+      height: inherit;
+      background-color: gold;
+      margin: 0;
+    }
+
+    .rightContent {
+      font-size: 1.75rem;
+      width: 35%;
+      display: inline-block;
+      background-color: red;
+      margin: 0;
+      height: inherit;
+      float: right;
+      text-align: center;
+
+      #contentCreatorsLink {
+        display: inline-block;
+        width: 45%;
+        background-color: deeppink;
+      }
+      .loggedInLinks {
+        display: inline-block;
+        width: 55%;
+        background-color: blue;
+        #viewProfileLink {
+          display: inline-block;
+          background-color: purple;
+          width: 70%;
+
+          img {
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+
+        }
+        #logoutLink {
+          display: inline-block;
+          width: 30%;
+        }
+        #loginRegisterLink {
+          span {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }
+ */
