@@ -1,44 +1,98 @@
 .landing {
   .mainSplash {
     background-color: #113b55;
-    height: 77.8vh;
+    height: 85vh;
 
-    .container {
+    #jumbotron {
+      background: none;
+      max-height: 500px;
+      display: block;
+      margin: 0 auto;
       width: 80%;
+      height: 500px;
+      text-align: center;
+      color: #f2f2f2;
       position: relative;
       top: 50%;
       transform: translateY(-50%);
 
-      img {
-        display: block;
-        margin: auto 0;
-        width: 100%;
+      #blurb {
+        display: inline-block;
+        width: 40%;
+        height: 100%;
+        position: relative;
+        float: left;
+
+        div {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
 
-      #jumbotron {
-        background: none;
-        text-align: center;
-        color: #f2f2f2;
+      img {
+        display: inline-block;
+        position: relative;
+        float: right;
+        height: 100%;
+      }
 
-        h1 {
-          font-size: 3.5em;
+      h1 {
+        font-size: 3em;
+        span {
+          font-size: 2.5em;
         }
+      }
 
-        p {
-          font-size: 1.3em;
-        }
+      p {
+        font-size: 1.3em;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        letter-spacing: 0.05rem;
       }
     }
   }
-}
 
-/*
-  .mainSplash {
-    padding-top: 50px;
-    height: 400px;
-    background: url("https://media.giphy.com/media/d3OG2CkbmVcW0nWU/giphy.gif") no-repeat #113b55;
-    background-size: cover;
-    .container {
-      width: 80%;
+  .statistic {
+    clear: both;
+    display: block;
+    background-color: #004d3d;
+    padding: 50px 0 40px 0;
+    img {
+      height: 300px;
+      display: block;
+      margin: 0 auto;
     }
- */
+
+    h4 {
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      padding-bottom: 0;
+      color: #f2f2f2;
+      text-align: center;
+    }
+  }
+
+  .demo {
+    display: block;
+    background-color: #081d2b;
+    padding: 50px 0 40px 0;
+    img {
+      height: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h4 {
+      padding-top: 10px;
+      padding-bottom: 0;
+      color: #f2f2f2;
+      text-align: center;
+    }
+
+  }
+}

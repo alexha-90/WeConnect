@@ -23,10 +23,12 @@ class SingleContentPost extends Component {
             showContactForm: false,
             contentPost: [],
             posterID: null,
-            userID: null
+            userID: null,
+            lastEdited: null
         };
         this.showActionButton = this.showActionButton.bind(this);
         this.contactUser = this.contactUser.bind(this);
+        this.lastEdited = this.lastEdited.bind(this);
     }
 
 
@@ -41,7 +43,7 @@ class SingleContentPost extends Component {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
-                    this.setState({ contentPost: data });
+                    this.setState({ contentPost: data, lastEdited: data[0]['last_edited'] });
                 })
                 .then(() => {
                     return this.props.dispatch(fetchUserID());
@@ -66,6 +68,12 @@ class SingleContentPost extends Component {
         setTimeout(() => {
             return this.setState({loadingComponent: false})
         }, 500);
+    }
+
+    lastEdited() {
+        if (this.state.lastEdited) {
+            return <div>Last edited: {this.state.lastEdited}</div>
+        }
     }
 
     showActionButton() {
@@ -129,6 +137,7 @@ class SingleContentPost extends Component {
                         {/*<ContentPostListAdSpace/>*/}
                         <div style={{backgroundColor: "#e6e6e6"}}>
                             Listing made: {this.state.contentPost[0]['submitted_timestamp']}
+                            {this.lastEdited()}
                         </div>
                     </div>
                 </div>

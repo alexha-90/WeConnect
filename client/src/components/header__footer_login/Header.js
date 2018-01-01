@@ -78,9 +78,8 @@ class Header extends Component {
 
 
     onLogout() {
-        alert('logout placeholder');
-        // this.props.dispatch(logoutUser());
-        // return window.location.reload()
+        this.props.dispatch(logoutUser());
+        return window.location.reload()
     }
 
     render() {

@@ -95,35 +95,76 @@
 
 .landing .mainSplash {
   background-color: #113b55;
-  height: 77.8vh; }
-  .landing .mainSplash .container {
+  height: 85vh; }
+  .landing .mainSplash #jumbotron {
+    background: none;
+    max-height: 500px;
+    display: block;
+    margin: 0 auto;
     width: 80%;
+    height: 500px;
+    text-align: center;
+    color: #f2f2f2;
     position: relative;
     top: 50%;
     transform: translateY(-50%); }
-    .landing .mainSplash .container img {
-      display: block;
-      margin: auto 0;
-      width: 100%; }
-    .landing .mainSplash .container #jumbotron {
-      background: none;
-      text-align: center;
-      color: #f2f2f2; }
-      .landing .mainSplash .container #jumbotron h1 {
-        font-size: 3.5em; }
-      .landing .mainSplash .container #jumbotron p {
-        font-size: 1.3em; }
+    .landing .mainSplash #jumbotron #blurb {
+      display: inline-block;
+      width: 40%;
+      height: 100%;
+      position: relative;
+      float: left; }
+      .landing .mainSplash #jumbotron #blurb div {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%); }
+    .landing .mainSplash #jumbotron img {
+      display: inline-block;
+      position: relative;
+      float: right;
+      height: 100%; }
+    .landing .mainSplash #jumbotron h1 {
+      font-size: 3em; }
+      .landing .mainSplash #jumbotron h1 span {
+        font-size: 2.5em; }
+    .landing .mainSplash #jumbotron p {
+      font-size: 1.3em; }
+    .landing .mainSplash #jumbotron a {
+      color: inherit;
+      text-decoration: none;
+      letter-spacing: 0.05rem; }
 
-/*
-  .mainSplash {
-    padding-top: 50px;
-    height: 400px;
-    background: url("https://media.giphy.com/media/d3OG2CkbmVcW0nWU/giphy.gif") no-repeat #113b55;
-    background-size: cover;
-    .container {
-      width: 80%;
-    }
- */
+.landing .statistic {
+  clear: both;
+  display: block;
+  background-color: #004d3d;
+  padding: 50px 0 40px 0; }
+  .landing .statistic img {
+    height: 300px;
+    display: block;
+    margin: 0 auto; }
+  .landing .statistic h4 {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding-bottom: 0;
+    color: #f2f2f2;
+    text-align: center; }
+
+.landing .demo {
+  display: block;
+  background-color: #081d2b;
+  padding: 50px 0 40px 0; }
+  .landing .demo img {
+    height: 300px;
+    display: block;
+    margin: 0 auto; }
+  .landing .demo h4 {
+    padding-top: 10px;
+    padding-bottom: 0;
+    color: #f2f2f2;
+    text-align: center; }
+
 .newUserRegistrationContainer {
   width: 65%;
   display: block;
