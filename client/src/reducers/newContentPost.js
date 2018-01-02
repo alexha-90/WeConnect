@@ -29,7 +29,7 @@ const newContentPost = (state ={
             sc_Followers: null,
             sc_StoryOpens: null,
         },
-        imagesArr: null
+        imagesArr: []
     }
     }, action) => {
 
@@ -174,6 +174,7 @@ const newContentPost = (state ={
             return {
                 newContentPost: {
                     ...state.newContentPost,
+                    imagesArr: action.payload
                 }
             }
         }

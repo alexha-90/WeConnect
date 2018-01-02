@@ -5,6 +5,24 @@ import React from 'react';
 
 //remove the !== null line for testing and building
 
+export function uploadedImages(imagesArr) {
+    if (imagesArr.length) {
+        return (
+            <div>
+                {imagesArr.map((image) => {
+                    //image[0] = url, image[1] = upload count
+                    return (
+                        <div key={image[1]} className="uploadedImages">
+                            {/*<span onClick={() => imagesArr.splice(imagesArr[0],1)}>X</span>*/}
+                            <img src={image[0]} alt={('img'-image[1]).toString()}/>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+}
+
 
 export function organizeCategories (categoriesArr) {
     // remove duplicates from categories array. Very efficient method borrowed from https://stackoverflow.com/questions/840781/get-all-non-unique-values-i-e-duplicate-more-than-one-occurrence-in-an-array

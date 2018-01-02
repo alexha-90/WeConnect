@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 // import {testNewTaskValidity} from "../../stateFunctions";
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
-import { youtubeData, instagramData, twitterData, snapchatData } from '../helper_functions/newContentHelpers';
+import { youtubeData, instagramData, twitterData, snapchatData, uploadedImages } from '../helper_functions/newContentHelpers';
 import { saveNewContentPost } from '../../actions/newContentPost';
 
 import 'rc-steps/assets/index.css';
@@ -61,7 +61,6 @@ class NewContentPostFinalReview extends Component {
         if (this.state.redirectToContentCreatorsList) {
             return <Redirect push to="/contentCreatorsList" />;
         }
-        console.log(this.props.newContentPost);
 
         return (
             <div>
@@ -96,10 +95,7 @@ class NewContentPostFinalReview extends Component {
                     {twitterData(this.props)}
                     {snapchatData(this.props)}
 
-
-                    <img name="temp1" width="400px" height="300px" alt="temp1" src="https://images.unsplash.com/photo-1483383490964-8335c18b6666?auto=format&fit=crop&w=1567&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
-                    <img name="temp2" width="400px" height="300px" alt="temp2" src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
-
+                    {uploadedImages(this.props.newContentPost.imagesArr)}
 
                     <br />
                     <br />

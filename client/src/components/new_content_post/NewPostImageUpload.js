@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import Dropzone from 'react-dropzone';
 import { uploadImages, imageArrToProps } from '../../actions/newContentPost';
+import { uploadedImages } from '../helper_functions/newContentHelpers';
 
 import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
@@ -25,7 +26,7 @@ class NewContentPostImageUpload extends Component {
             hasUploadedImage: false
         };
         this.onUploadImages = this.onUploadImages.bind(this);
-        this.uploadedImages = this.uploadedImages.bind(this);
+        this.onNextStep = this.onNextStep.bind(this);
     }
 
     componentWillMount() {
@@ -52,7 +53,6 @@ class NewContentPostImageUpload extends Component {
             formData.append('file', file);
             formData.append('timestamp', timestamp);
             formData.append('tags', [this.props.auth.username, this.state.uploadCount]); // username as identifier
-            // formData.append('signature', signature);
             return this.props.dispatch(uploadImages(url, formData))
                 .then((imageURL) => {
                     if (imageURL === 'error') {
@@ -64,27 +64,9 @@ class NewContentPostImageUpload extends Component {
         });
     }
 
-    uploadedImages() {
-        if (imagesArr.length) {
-            return (
-                <div>
-                    {imagesArr.map((image) => {
-                        //image[0] = url, image[1] = upload count
-                        return (
-                            <div key={image[1]} className="uploadedImages">
-                                {/*<span onClick={() => imagesArr.splice(imagesArr[0],1)}>X</span>*/}
-                                <img src={image[0]} alt={('img'-image[1]).toString()}/>
-                            </div>
-                        )
-                    })}
-                </div>
-            )
-        }
-    }
-
     onNextStep() {
         if (imagesArr.length) {
-            this.props.dispatch(imageArrToProps());
+            this.props.dispatch(imageArrToProps(imagesArr));
         }
         console.log(this.props);
         return this.setState({ onNewContentPostFinalReview: true })
@@ -119,7 +101,7 @@ class NewContentPostImageUpload extends Component {
                         <p>*****<br/>Click here or drag images into box to initiate upload<span>*****</span></p>
                     </Dropzone>
 
-                    {this.uploadedImages()}
+                    {uploadedImages(imagesArr)}
 
                     <hr/>
 

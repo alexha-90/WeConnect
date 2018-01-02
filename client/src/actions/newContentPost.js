@@ -70,7 +70,6 @@ export const uploadImages = (url, formData) => async() => {
 };
 
 export const imageArrToProps = (imageArr) => {
-    console.log('test');
     return {
         type: 'IMAGE_ARRAY_POST_TO_PROPS',
         payload: imageArr
