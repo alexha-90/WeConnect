@@ -1,5 +1,5 @@
 import { youtubeRemoveData, instagramRemoveData, twitterRemoveData, snapchatRemoveData } from '../../../actions/newContentPost'
-import { updateSingleContentPost } from '../../../actions/index'
+import { updateSingleContentPost } from '../../../actions/contentPosts'
 
 import moment from 'moment';
 //===============================================================================================//

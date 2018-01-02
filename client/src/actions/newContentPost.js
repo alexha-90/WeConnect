@@ -53,6 +53,23 @@ export const snapchatRemoveData = () => {
 };
 
 
+// images are uploaded to cloudinary.com via API. No backend here.
+export const uploadImages = (url, formData) => async() => {
+    try {
+        axios.post(
+            url, formData, { headers: {"X-Requested-With": "XMLHttpRequest"}
+        })
+        .then((res) => {
+          const data = res.data;
+          console.log(data);
+          return data.secure_url;
+        })
+    } catch(res) {
+        alert('Unable to upload your images. Please try again and let us know if this problem persists.');
+    }
+};
+
+
 //refactor to remove redux store update
 export const saveNewContentPost = (contentPostsInfo, timestamp) => async dispatch => {
     contentPostsInfo.submitted_timestamp = timestamp;

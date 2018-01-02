@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSingleContentPost, privateMessageIDsToProps } from '../../actions/index';
+import { privateMessageIDsToProps } from '../../actions/profile';
+import { fetchSingleContentPost } from '../../actions/contentPosts';
 import { fetchUserID } from '../../actions/auth';
 
 // import ContentPostListAdSpace from './subcomponents/content_creators_list/ContentPostListAdSpace';

@@ -42,10 +42,8 @@ class Footer extends Component {
 
                 <div id="footerLicensingColor">
                     <h6 id="footerLicensing">
-                        golden gate bridge graphic by <a href="https://thenounproject.com/prosymbols">tnp_prosymbols</a>
-                        from <a href="https://thenounproject.com/">TheNounProject</a> is licensed
-                        under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>.
-                        Logo made with Logomakr.com. <a href="https://icons8.com">Icon pack by Icons8</a>
+                        <a href="https://www.freepik.com">Flat graphics designed by Freepik</a>.
+                        Logo made with <a href="https://logomakr.com/10Sseo">Logomakr.com</a>. <a href="https://icons8.com">Icon pack by Icons8</a>.
                     </h6>
                 </div>
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { fetchAllContentPosts } from '../../actions/index';
+import { fetchAllContentPosts } from '../../actions/contentPosts';
 
 import ContentPostFilterBar from './CreatorListFilterSidebar';
 import contentCreatorsResults from './CreatorListResults';

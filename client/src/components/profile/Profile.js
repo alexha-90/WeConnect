@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
-import { loadProfileData } from '../../actions/index';
+import { loadProfileData } from '../../actions/profile';
 import { connect } from 'react-redux';
 import profilePostData from './profilePostData';
 import profileMessageData from './profileMessageData';

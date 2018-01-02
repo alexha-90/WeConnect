@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import LoginModal from './LoginModal';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { isLoggedIn, logoutUser } from '../../actions/auth';
 //===============================================================================================//

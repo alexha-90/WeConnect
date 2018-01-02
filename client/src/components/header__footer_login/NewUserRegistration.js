@@ -3,7 +3,7 @@ import { Button, Radio, FormGroup, ControlLabel } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isLoggedIn } from '../../actions/auth';
-import { registerNewUser } from '../../actions/index';
+import { registerNewUser } from '../../actions/profile';
 import { Redirect } from 'react-router';
 import moment from 'moment';
 import { FieldGroup } from '../helper_functions/index';

@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Collapse } from 'react-bootstrap';
 
 import DeleteContentPost from './DeleteContentPost';
-import { fetchSingleContentPost, editPostDetailsToProps } from '../../../actions/index';
+import { fetchSingleContentPost, editPostDetailsToProps } from '../../../actions/contentPosts';
 import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm } from '../../helper_functions/index';
 import { submissionFlow } from './submissionFlow';
 //===============================================================================================//

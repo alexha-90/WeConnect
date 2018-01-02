@@ -9,6 +9,16 @@ $footer-color: #216894;
   color: #ffffff;
 
 
+  a {
+    color: #80ccff;
+    text-decoration: none;
+    letter-spacing: 0.05rem;
+  }
+
+  a:hover {
+    color: #33adff;
+  }
+
   #centeredFooterText {
     width: 100%;
     line-height: 150%;

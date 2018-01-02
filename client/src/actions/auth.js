@@ -16,20 +16,6 @@ export const isLoggedIn = () => async () => {
     }
 };
 
-// export const isLoggedIn = () => async () => {
-//     try {
-//         const res = await axios.get('/api/isLoggedIn');
-//         store.dispatch({
-//             type: 'AUTHENTICATE_USER',
-//             payload: res.data
-//         });
-//         return res.data;
-//     } catch(res) {
-//         alert('Unable to connect to database. Please try again and let us know if this problem persists.');
-//     }
-// };
-
-
 export const loginUser = (emailAddress, password) => async () => {
     try {
         const res = await axios.post('/api/loginUser', [emailAddress, password]);
