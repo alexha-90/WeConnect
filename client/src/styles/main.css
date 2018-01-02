@@ -236,6 +236,33 @@
     float: right; }
   .newContentPostContainer #contentMediumsGoBack {
     float: right; }
+  .newContentPostContainer #dropzone {
+    height: 50px;
+    border: 2px dashed #a6a6a6;
+    margin: 25px auto; }
+    .newContentPostContainer #dropzone p {
+      color: #003366;
+      text-align: center;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%); }
+      .newContentPostContainer #dropzone p span {
+        display: block;
+        margin-top: 8px; }
+  .newContentPostContainer .uploadedImages {
+    display: inline-block;
+    margin-top: 25px; }
+    .newContentPostContainer .uploadedImages span {
+      display: block;
+      text-align: center;
+      color: #e62e00;
+      font-size: 1.2em;
+      margin-bottom: -10px; }
+    .newContentPostContainer .uploadedImages img {
+      border: 2px solid #737373;
+      margin: 10px;
+      max-width: 300px;
+      max-height: 300px; }
 
 #instagramShow {
   display: block; }

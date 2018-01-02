@@ -28,7 +28,8 @@ const newContentPost = (state ={
             sc_PostFrequency: null,
             sc_Followers: null,
             sc_StoryOpens: null,
-        }
+        },
+        imagesArr: null
     }
     }, action) => {
 
@@ -164,15 +165,19 @@ const newContentPost = (state ={
             return {
                 newContentPost: {
                     ...state.newContentPost,
-                    // userLocation: action.payload.userLocation,
-                    // contentSummary: action.payload.contentSummary,
-                    // contentDescription: action.payload.contentDescription,
-                    // contentIdealMatch: action.payload.contentIdealMatch,
-                    // contentTags: action.payload.contentTags,
-                    // contentCategories: action.payload.contentCategories,
                 }
             }
         }
+
+        case 'IMAGE_ARRAY_POST_TO_PROPS': {
+            console.log(action.payload);
+            return {
+                newContentPost: {
+                    ...state.newContentPost,
+                }
+            }
+        }
+
 
 
 

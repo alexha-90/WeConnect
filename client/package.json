@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "cloudinary-react": "^1.0.4",
+    "dotenv": "^4.0.0",
     "node-sass-chokidar": "0.0.3",
     "rc-steps": "^3.0.1",
     "react": "^16.0.0",
