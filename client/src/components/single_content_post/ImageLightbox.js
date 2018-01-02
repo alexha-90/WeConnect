@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
-// import Lightbox from 'react-images';
 
 //===============================================================================================//
 
@@ -23,36 +22,43 @@ class ImageLightbox extends Component {
             photoIndex: 0,
             isOpen: false,
         };
+        this.showImages = this.showImages.bind(this);
+    }
+
+
+    showImages() {
+        if (this.props.contentPost) {
+            return (
+                <img src={this.props.contentPost[0][0]} alt="temp"
+                     onClick={() => this.setState({ isOpen: true })}
+                />
+            )
+        }
     }
 
 
 
     render() {
-        const { photoIndex, isOpen } = this.state;
-
+        console.log(this.props);
         return (
             <div>
 
-                <img src="https://i.ebayimg.com/thumbs/images/g/-BIAAOSws6ZaMiqt/s-l225.webp" alt="temp"
+                {this.showImages()}
 
-                     onClick={() => this.setState({ isOpen: true })}
-                />
-
-
-                {isOpen && (
+                {this.state.isOpen && (
                     <Lightbox
-                        mainSrc={images[photoIndex]}
-                        nextSrc={images[(photoIndex + 1) % images.length]}
-                        prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                        mainSrc={images[this.state.photoIndex]}
+                        nextSrc={images[(this.state.photoIndex + 1) % images.length]}
+                        prevSrc={images[(this.state.photoIndex + images.length - 1) % images.length]}
                         onCloseRequest={() => this.setState({ isOpen: false })}
                         onMovePrevRequest={() =>
                             this.setState({
-                                photoIndex: (photoIndex + images.length - 1) % images.length,
+                                photoIndex: (this.state.photoIndex + images.length - 1) % images.length,
                             })
                         }
                         onMoveNextRequest={() =>
                             this.setState({
-                                photoIndex: (photoIndex + 1) % images.length,
+                                photoIndex: (this.state.photoIndex + 1) % images.length,
                             })
                         }
                     />
@@ -63,3 +69,4 @@ class ImageLightbox extends Component {
 }
 
 export default ImageLightbox;
+

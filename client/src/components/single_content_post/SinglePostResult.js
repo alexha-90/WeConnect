@@ -1,8 +1,6 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import ImageLightbox from './ImageLightbox';
 import '../../styles/carousel.css'
-
 //===============================================================================================//
 export default function singleContentPostResult(data) {
     console.log(data);
@@ -33,11 +31,6 @@ export default function singleContentPostResult(data) {
 
     return (
         <div>
-            <div id="imageLightbox">
-                <ImageLightbox />
-
-            </div>
-
             <div id="headline">
                 <h3>{data[0]['content_summary']}</h3>
                 <hr/>

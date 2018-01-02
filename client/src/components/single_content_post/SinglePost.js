@@ -9,6 +9,7 @@ import { fetchUserID } from '../../actions/auth';
 // import ContentPostListAdSpace from './subcomponents/content_creators_list/ContentPostListAdSpace';
 import ContactForm from './SinglePostContactForm';
 import singleContentPostResult from './SinglePostResult';
+import ImageLightbox from './ImageLightbox';
 
 // on load check if a conversation already exists. If so, then hide button and show conversation
 // when message expanded, dim button
@@ -17,8 +18,8 @@ import singleContentPostResult from './SinglePostResult';
 // get posterID. needed before submitting PM. that data will then be relayed to profile page
 
 class SingleContentPost extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             loadingComponent: true,
             showContactForm: false,
@@ -41,6 +42,8 @@ class SingleContentPost extends Component {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
                 .then((data) => {
+                    console.log('adsasdad');
+                    console.log(this.props.contentPost);
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
@@ -118,6 +121,10 @@ class SingleContentPost extends Component {
 
                 <div className="singleContentPostContainer">
                     <div className="mainContainer">
+                        <div id="imageLightbox">
+                            <ImageLightbox {...this.props}/>
+                        </div>
+
                         {singleContentPostResult(this.state.contentPost)}
                     </div>
 
@@ -152,6 +159,7 @@ export default connect(mapStateToProps)(SingleContentPost);
 
 function mapStateToProps(state) {
     return {
+        contentPost: state.contentPosts.contentPostDetails,
         privateMessage: state.privateMessage.privateMessageIDs
     };
 }

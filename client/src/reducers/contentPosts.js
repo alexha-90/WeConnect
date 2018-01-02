@@ -3,14 +3,15 @@ const contentPosts = (state = {
     }, action) => {
 
     switch (action.type) {
-        case 'ALL_CONTENT_POSTS_TO_PROPS': {
+        case 'EDIT_POST_DETAILS_TO_PROPS': {
             return {
                 ...state,
                 contentPostDetails: action.payload
             };
         }
 
-        case 'EDIT_POST_DETAILS_TO_PROPS': {
+        case 'IMAGE_URLS_TO_PROPS': {
+            // console.log(action.payload);
             return {
                 ...state,
                 contentPostDetails: action.payload

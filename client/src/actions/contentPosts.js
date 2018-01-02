@@ -10,9 +10,10 @@ export const fetchAllContentPosts = () => async () => {
 };
 
 
-export const fetchSingleContentPost = (postID) => async () => {
+export const fetchSingleContentPost = (postID) => async dispatch => {
     try {
         const res = await axios.post('/api/getSingleContentPost', postID);
+        dispatch({ type: 'IMAGE_URLS_TO_PROPS', payload: res.data[0]['images_arr'] });
         return res.data;
     } catch(res) {
         return alert('Error: Something went wrong. We are unable to locate this entry. Please try again or notify us if the issue persists.');
