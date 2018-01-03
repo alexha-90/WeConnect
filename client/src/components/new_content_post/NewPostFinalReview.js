@@ -95,10 +95,8 @@ class NewContentPostFinalReview extends Component {
                     {twitterData(this.props)}
                     {snapchatData(this.props)}
 
+                    <hr />
                     {uploadedImages(this.props.newContentPost.imagesArr)}
-
-                    <br />
-                    <br />
 
                     <Button bsStyle="warning">
                         <Link to="/newContentPost/images">

@@ -264,6 +264,8 @@
       margin: 10px;
       max-width: 300px;
       max-height: 300px; }
+  .newContentPostContainer .finalReviewList {
+    list-style: none; }
 
 #instagramShow {
   display: block; }

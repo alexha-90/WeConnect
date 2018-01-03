@@ -3,16 +3,7 @@ import Lightbox from 'react-image-lightbox';
 
 //===============================================================================================//
 
-
-
-
-const images = [
-    '//placekitten.com/1500/500',
-    '//placekitten.com/4000/3000',
-    '//placekitten.com/800/1200',
-    '//placekitten.com/1500/1500',
-];
-
+const images = [];
 
 class ImageLightbox extends Component {
     constructor(props) {
@@ -28,6 +19,11 @@ class ImageLightbox extends Component {
 
     showImages() {
         if (this.props.contentPost) {
+
+            this.props.contentPost.map((image) => {
+                return images.push(image[0]);
+            });
+
             return (
                 <img src={this.props.contentPost[0][0]} alt="temp"
                      onClick={() => this.setState({ isOpen: true })}
@@ -39,7 +35,6 @@ class ImageLightbox extends Component {
 
 
     render() {
-        console.log(this.props);
         return (
             <div>
 

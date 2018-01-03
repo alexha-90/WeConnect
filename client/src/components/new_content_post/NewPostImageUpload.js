@@ -11,7 +11,7 @@ import 'rc-steps/assets/index.css';
 import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 
-// to-do: validate file type, size, and max number of images (6)
+// to-do: array length counter is messed up. No limit if uploaded all at once.
 // need to mask credentials
 //===============================================================================================//
 
@@ -23,7 +23,7 @@ class NewContentPostImageUpload extends Component {
         this.state = {
             onNewContentPostFinalReview: false,
             uploadCount: 0,
-            hasUploadedImage: false
+            hasUploadedImage: false,
         };
         this.onUploadImages = this.onUploadImages.bind(this);
         this.onNextStep = this.onNextStep.bind(this);
@@ -40,13 +40,46 @@ class NewContentPostImageUpload extends Component {
     }
 
     onUploadImages(files) {
+        if (imagesArr.length > 3) {
+            return alert('You can only upload a maximum of four images. Please delete existing image(s) to make space (Work in progress)');
+        }
+
+        let validType = false;
+        let validSize = false;
+
+        files.map(image => {
+            // issue here
+            console.log(image.type);
+            let test = 'image/jpeg';
+
+            if (image.type === test) {
+                console.log('test');
+            }
+
+            if (image.type === 'image/png' || image.type === 'image/gif' || image.type === 'image/jpeg' || image.type === 'image/jpg') {
+                validType = true;
+            }
+
+            if (image.size < 5242880) {
+                validSize = true;
+            }
+        });
+
+        if (!validType) {
+            return alert('You attempted to upload an unsupported file type. We only allow: .jpeg, .jpg, .png, .gif');
+        }
+
+        if (!validSize) {
+            return alert('One or more of your images exceeds our 5MB file size limit. Please select other image(s)');
+        }
+
         const cloudName = 'dbcmum1bq';
         const url = 'https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload';
         const uploadPreset = 'udi4daeq';
         const apiKey = '958649161433688';
         const timestamp = Date.now() / 1000; // required unix timestamp
 
-        const upload = files.map(file => {
+        files.map(file => {
             const formData = new FormData();
             formData.append('upload_preset', uploadPreset);
             formData.append('api_key', apiKey);
@@ -56,7 +89,7 @@ class NewContentPostImageUpload extends Component {
             return this.props.dispatch(uploadImages(url, formData))
                 .then((imageURL) => {
                     if (imageURL === 'error') {
-                        return alert ('You attempted to upload an unsupported file type. We only allow: .jpeg, .jpg, .png, .gif');
+                        return alert ('Something went wrong. Please notify us about this issue.');
                     }
                     imagesArr.push([imageURL, this.state.uploadCount]);
                     return this.setState({ hasUploadedImage: true, uploadCount: this.state.uploadCount + 1 });
