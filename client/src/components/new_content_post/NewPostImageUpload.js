@@ -48,14 +48,6 @@ class NewContentPostImageUpload extends Component {
         let validSize = false;
 
         files.map(image => {
-            // issue here
-            console.log(image.type);
-            let test = 'image/jpeg';
-
-            if (image.type === test) {
-                console.log('test');
-            }
-
             if (image.type === 'image/png' || image.type === 'image/gif' || image.type === 'image/jpeg' || image.type === 'image/jpg') {
                 validType = true;
             }
@@ -63,6 +55,7 @@ class NewContentPostImageUpload extends Component {
             if (image.size < 5242880) {
                 validSize = true;
             }
+            return '';
         });
 
         if (!validType) {
