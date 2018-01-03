@@ -51,75 +51,76 @@
       padding-top: 15px;
 
       #imageLightbox {
-        position: relative;
-        top: 0;
         display: inline-block;
-        width: 23%;
-        background-color: red;
         margin-left: 2%;
+
+        img {
+          margin: 0 10px;
+          display: inline-block;
+          max-width: 175px;
+          max-height: 175px;
+        }
       }
 
-      #headline {
-        top: 0;
-        display: inline-block;
-        margin-left: 5%;
-        margin-right: 1%;
-        width: 69%;
-        h3 {
-          font-size: 3rem;
-        }
+      .postResult {
+        margin: 15px 1% 15px 2%;
 
-        ul {
-          list-style: none;
-          li {
-            margin: 5px 0;
-            span {
-              text-decoration: underline;
+        #headline {
+          h3 {
+            font-size: 3rem;
+          }
+
+          ul {
+            list-style: none;
+            li {
+              margin: 5px 0;
+              span {
+                text-decoration: underline;
+              }
             }
           }
         }
-      }
 
-      .content {
-        margin: 15px 1% 15px 2%;
-        h4 {
-          font-size: 2.2rem;
-          margin-bottom: 15px;
-        }
+        .content {
+          h4 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+          }
 
-        .socialMediums {
-          margin-top: 20px;
+          .socialMediums {
+            margin-top: 20px;
 
-          .socialMediumContainer {
-            display: block;
-            width: 90%;
-            margin: 0 auto 20px auto;
-            background-color: #d9d9d9;
-            opacity: 0.9;
-
-            h3 {
+            .socialMediumContainer {
               display: block;
-              padding-top: 8px;
-              text-align: center;
-            }
+              width: 90%;
+              margin: 0 auto 20px auto;
+              background-color: #d9d9d9;
+              opacity: 0.9;
 
-            #socialLogoContainer {
-              display: inline-block;
-              margin: 0 0 10px 5%;
-              width: 20%;
-
-              img {
+              h3 {
                 display: block;
+                padding-top: 8px;
+                text-align: center;
               }
+
+              #socialLogoContainer {
+                display: inline-block;
+                margin: 0 0 10px 5%;
+                width: 20%;
+
+                img {
+                  display: block;
+                }
+              }
+
+              #socialStatistics {
+                display: inline-block;
+                width: 62%;
+                margin: 0 5% 0 8%;
+
+              }
+
             }
-
-            #socialStatistics {
-              display: inline-block;
-              width: 62%;
-              margin: 0 5% 0 8%;
-
-            }
-
           }
         }
       }

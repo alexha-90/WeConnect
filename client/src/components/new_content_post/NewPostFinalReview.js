@@ -90,10 +90,12 @@ class NewContentPostFinalReview extends Component {
 
                     <hr/>
 
-                    {youtubeData(this.props)}
-                    {instagramData(this.props)}
-                    {twitterData(this.props)}
-                    {snapchatData(this.props)}
+                    <div className="finalReviewList">
+                        {youtubeData(this.props)}
+                        {instagramData(this.props)}
+                        {twitterData(this.props)}
+                        {snapchatData(this.props)}
+                    </div>
 
                     <hr />
                     {uploadedImages(this.props.newContentPost.imagesArr)}

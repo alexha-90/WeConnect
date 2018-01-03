@@ -264,8 +264,10 @@
       margin: 10px;
       max-width: 300px;
       max-height: 300px; }
-  .newContentPostContainer .finalReviewList {
-    list-style: none; }
+  .newContentPostContainer .finalReviewList h3 {
+    margin-bottom: 5px; }
+  .newContentPostContainer .finalReviewList ul {
+    margin-left: 30px; }
 
 #instagramShow {
   display: block; }
@@ -308,50 +310,45 @@
       background-color: #ffffff;
       padding-top: 15px; }
       .singlePostBigContainer .singleContentPostContainer .mainContainer #imageLightbox {
-        position: relative;
-        top: 0;
         display: inline-block;
-        width: 23%;
-        background-color: red;
         margin-left: 2%; }
-      .singlePostBigContainer .singleContentPostContainer .mainContainer #headline {
-        top: 0;
-        display: inline-block;
-        margin-left: 5%;
-        margin-right: 1%;
-        width: 69%; }
-        .singlePostBigContainer .singleContentPostContainer .mainContainer #headline h3 {
-          font-size: 3rem; }
-        .singlePostBigContainer .singleContentPostContainer .mainContainer #headline ul {
-          list-style: none; }
-          .singlePostBigContainer .singleContentPostContainer .mainContainer #headline ul li {
-            margin: 5px 0; }
-            .singlePostBigContainer .singleContentPostContainer .mainContainer #headline ul li span {
-              text-decoration: underline; }
-      .singlePostBigContainer .singleContentPostContainer .mainContainer .content {
+        .singlePostBigContainer .singleContentPostContainer .mainContainer #imageLightbox img {
+          margin: 0 10px;
+          display: inline-block;
+          max-width: 175px;
+          max-height: 175px; }
+      .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult {
         margin: 15px 1% 15px 2%; }
-        .singlePostBigContainer .singleContentPostContainer .mainContainer .content h4 {
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult #headline h3 {
+          font-size: 3rem; }
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult #headline ul {
+          list-style: none; }
+          .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult #headline ul li {
+            margin: 5px 0; }
+            .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult #headline ul li span {
+              text-decoration: underline; }
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content h4 {
           font-size: 2.2rem;
           margin-bottom: 15px; }
-        .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums {
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums {
           margin-top: 20px; }
-          .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer {
+          .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer {
             display: block;
             width: 90%;
             margin: 0 auto 20px auto;
             background-color: #d9d9d9;
             opacity: 0.9; }
-            .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer h3 {
+            .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer h3 {
               display: block;
               padding-top: 8px;
               text-align: center; }
-            .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer {
+            .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialLogoContainer {
               display: inline-block;
               margin: 0 0 10px 5%;
               width: 20%; }
-              .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialLogoContainer img {
+              .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialLogoContainer img {
                 display: block; }
-            .singlePostBigContainer .singleContentPostContainer .mainContainer .content .socialMediums .socialMediumContainer #socialStatistics {
+            .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialStatistics {
               display: inline-block;
               width: 62%;
               margin: 0 5% 0 8%; }

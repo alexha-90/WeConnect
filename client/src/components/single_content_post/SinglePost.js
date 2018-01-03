@@ -124,8 +124,9 @@ class SingleContentPost extends Component {
                         <div id="imageLightbox">
                             <ImageLightbox {...this.props}/>
                         </div>
-
-                        {singleContentPostResult(this.state.contentPost)}
+                        <div className="postResult">
+                            {singleContentPostResult(this.state.contentPost)}
+                        </div>
                     </div>
 
                     <div className="infoContainer">

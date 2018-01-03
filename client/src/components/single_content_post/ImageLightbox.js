@@ -25,9 +25,16 @@ class ImageLightbox extends Component {
             });
 
             return (
-                <img src={this.props.contentPost[0][0]} alt="temp"
-                     onClick={() => this.setState({ isOpen: true })}
-                />
+                <div>
+                    {this.props.contentPost.map((image) => {
+                        return (
+                            <img src={image[0]} alt="postImage"
+                                 onClick={() => this.setState({isOpen: true})}
+                                 key={this.props.privateMessage.postID + '-' + image[1]}
+                            />
+                        )
+                    })}
+                </div>
             )
         }
     }

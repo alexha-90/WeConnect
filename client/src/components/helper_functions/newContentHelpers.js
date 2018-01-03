@@ -67,7 +67,7 @@ export function instagramData (props) {
         return (
             <div>
                 <h3>Instagram:</h3>
-                <ul className="finalReviewList">
+                <ul>
                     <li>Post frequency: {props.newContentPost.instagram.ig_PostFrequency}</li>
                     <li>Followers: {props.newContentPost.instagram.ig_Followers}</li>
                     <li>Typical likes per post: {props.newContentPost.instagram.ig_Likes}</li>
