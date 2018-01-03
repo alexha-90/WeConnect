@@ -27,18 +27,18 @@ app.use(bodyParser.urlencoded({ extended: true })); // handle URL-encoded data
 
 
 // session secret. See https://github.com/expressjs/session#options . May need some adjusting later
-const session = require('express-session');
-const pgSession = require('connect-pg-simple')(session);
-app.use(session({
-    store: new pgSession({
-        conString: process.env.PGHOST
-    }),
-    secret: 'ooeortkoksdfisij',  //process.env.SECRET_KEY
-    resave: false, // review
-    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
-    saveUninitialized: false
-    // for HTTPS cookie: { secure: true }
-}));
+// const session = require('express-session');
+// const pgSession = require('connect-pg-simple')(session);
+// app.use(session({
+//     store: new pgSession({
+//         conString: process.env.PGHOST
+//     }),
+//     secret: 'ooeortkoksdfisij',  //process.env.SECRET_KEY
+//     resave: false, // review
+//     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+//     saveUninitialized: false
+//     // for HTTPS cookie: { secure: true }
+// }));
 
 
 // user authentication middleware
