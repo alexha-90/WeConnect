@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 //===============================================================================================//
 
 // environment file
@@ -49,12 +50,12 @@ app.use(passport.session());
 
 // import routes
 //===========================================================================
-require('./routes/createContentPost')(app);
-require('./routes/readContentPosts')(app);
-require('./routes/updateContentPost')(app);
-require('./routes/deleteContentPost')(app);
-require('./routes/authRoutes')(app);
-require('./routes/privateMessages')(app);
+// require('./routes/createContentPost')(app);
+// require('./routes/readContentPosts')(app);
+// require('./routes/updateContentPost')(app);
+// require('./routes/deleteContentPost')(app);
+// require('./routes/authRoutes')(app);
+// require('./routes/privateMessages')(app);
 
 
 // basic test routes
