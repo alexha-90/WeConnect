@@ -2,8 +2,9 @@ $footer-color: #216894;
 
 
 .footerContainer {
-  bottom: 0;
+  //bottom: 0;
   padding-top: 15px;
+  height: 65px;
   background: $footer-color;
   text-align: center;
   color: #ffffff;
@@ -40,7 +41,8 @@ $footer-color: #216894;
 
   #footerLicensingColor {
     h6 {
-      margin-bottom: 0;
+      padding-top: 5px;
+      margin: 0;
     }
     background-color: $footer-color;
     color: #f2f2f2 * 0.85;
@@ -56,9 +58,4 @@ $footer-color: #216894;
   #footerLicensing h6 {
     margin: 0;
   }
-
-
-
-
-
 }

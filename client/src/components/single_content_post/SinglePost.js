@@ -10,13 +10,11 @@ import { fetchUserID } from '../../actions/auth';
 import ContactForm from './SinglePostContactForm';
 import singleContentPostResult from './SinglePostResult';
 import ImageLightbox from './ImageLightbox';
+import { loadingSpinner } from '../helper_functions';
 
 // on load check if a conversation already exists. If so, then hide button and show conversation
 // when message expanded, dim button
 //===============================================================================================//
-
-// get posterID. needed before submitting PM. that data will then be relayed to profile page
-
 class SingleContentPost extends Component {
     constructor(props) {
         super(props);
@@ -109,7 +107,7 @@ class SingleContentPost extends Component {
 
     render() {
         if (this.state.loadingComponent) {
-            return <div className='loader'>Loading...</div>;
+            return loadingSpinner();
         }
 
         return (

@@ -13,11 +13,11 @@ class Footer extends Component {
                     <Row>
                         <Col sm={2} md={2}>{' '}</Col>
                         <Col sm={8} md={8}>
-                            <Link to="/about">About Us</Link>
+                            <Link to="#">About Us</Link>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <Link to="/contact">Contact Us</Link>
+                            <Link to="#">Contact Us</Link>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <Link to="/terms">Terms of Use</Link>
+                            <Link to="#">Terms of Use</Link>
                             <br />
                             Follow us on social media:&nbsp;
                             <a target="_blank" href="https://www.facebook.com" rel="noopener noreferrer">
@@ -32,7 +32,7 @@ class Footer extends Component {
                                 <img src="https://png.icons8.com/instagram-old/dusk/20" title="Instagram Old" alt="instagram"/>
                             </a>
                             <br />
-                            © 2017 Alex Ha
+                            © 2018 Alex Ha
                             <br />
                             <hr id="footerBar"/>
                         </Col>

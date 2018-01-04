@@ -5,6 +5,7 @@ import { Button, Panel, FormGroup, FormControl, ControlLabel } from 'react-boots
 import { newPrivateMessage } from '../../actions/profile';
 
 //===============================================================================================//
+// future: show message on page after it was sent.
 
 class ContactForm extends Component {
     constructor(...args) {
@@ -48,7 +49,7 @@ class ContactForm extends Component {
                     username: this.props.auth.username
                 }));
                 alert('Your message has been sent to the user. You can track this message in your profile!');
-                // return window.location.reload();
+                return window.location.reload();
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
             }

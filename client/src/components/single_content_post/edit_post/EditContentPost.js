@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Checkbox, Table, Co
 
 import DeleteContentPost from './DeleteContentPost';
 import { fetchSingleContentPost, editPostDetailsToProps } from '../../../actions/contentPosts';
-import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm } from '../../helper_functions/index';
+import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm, loadingSpinner } from '../../helper_functions';
 import { submissionFlow } from './submissionFlow';
 //===============================================================================================//
 
@@ -155,7 +155,7 @@ class EditContentPost extends Component {
 
     render() {
         if (this.state.loadingComponent) {
-            return <div className='loader'>Loading...</div>;
+            return loadingSpinner();
         }
 
         if (this.state.redirectToPost) {

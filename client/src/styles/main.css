@@ -1,8 +1,8 @@
 .header {
   width: 100%;
   background-color: #216894;
-  height: 65px;
-  line-height: 65px; }
+  height: 7vh;
+  line-height: 7vh; }
   .header a, .header span {
     color: #ffffff;
     text-decoration: none;
@@ -60,8 +60,8 @@
           cursor: pointer; }
 
 .footerContainer {
-  bottom: 0;
   padding-top: 15px;
+  height: 65px;
   background: #216894;
   text-align: center;
   color: #ffffff; }
@@ -90,7 +90,8 @@
     background-color: #216894;
     color: #cecece; }
     .footerContainer #footerLicensingColor h6 {
-      margin-bottom: 0; }
+      padding-top: 5px;
+      margin: 0; }
   .footerContainer #footerLicensing a {
     display: inline-block;
     color: inherit;
@@ -480,9 +481,10 @@
   border: 0;
   max-width: 100%; }
 
-body {
+html, body {
   font-family: 'Nunito Sans', sans-serif;
-  background-color: #e6e6e6; }
+  background-color: #e6e6e6;
+  height: 100%; }
 
 h1, h2, h3, h4 {
   margin: 0;

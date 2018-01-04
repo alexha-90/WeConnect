@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../../actions/contentPosts';
 
+import { loadingSpinner } from '../helper_functions';
 import ContentPostFilterBar from './CreatorListFilterSidebar';
 import contentCreatorsResults from './CreatorListResults';
 import ContentPostListAdSpace from './CreatorListAdSpace';
@@ -50,7 +51,7 @@ class ContentCreatorsList extends Component {
 
     render() {
         if (this.state.loadingComponent) {
-            return <div className='loader'>Loading...</div>;
+            return loadingSpinner();
         }
 
         return (

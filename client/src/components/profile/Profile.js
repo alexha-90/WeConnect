@@ -5,6 +5,7 @@ import { loadProfileData } from '../../actions/profile';
 import { connect } from 'react-redux';
 import profilePostData from './profilePostData';
 import profileMessageData from './profileMessageData';
+import { loadingSpinner } from '../helper_functions';
 
 //===============================================================================================//
 
@@ -13,7 +14,7 @@ class Profile extends Component {
     constructor() {
         super();
         this.state = {
-            checkingLogin: true,
+            loadingComponent: true,
             redirectToHome: false,
             userActivity: []
         };
@@ -47,14 +48,14 @@ class Profile extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            return this.setState({ checkingLogin: false });
+            return this.setState({ loadingComponent: false });
         }, 500);
     }
 
 
     render() {
-        if (this.state.checkingLogin) {
-            return <div className='loader'>Loading profile...</div>;
+        if (this.state.loadingComponent) {
+            return loadingSpinner();
         }
 
         if (this.state.redirectToHome) {

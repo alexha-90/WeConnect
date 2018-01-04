@@ -8,7 +8,7 @@ import 'rc-steps/assets/iconfont.css';
 import Steps, { Step } from 'rc-steps';
 
 import { newContentPostToProps } from '../../actions/newContentPost';
-import { FieldGroup, openCategoryIndicator } from '../helper_functions/index';
+import { FieldGroup, openCategoryIndicator, loadingSpinner } from '../helper_functions';
 
 // import { organizeCategories } from './helper_functions/newContentHelpers';
 //this can be refactored into smaller components so that either new form or review is shown.
@@ -16,16 +16,13 @@ import { FieldGroup, openCategoryIndicator } from '../helper_functions/index';
 
 // add location autocomplete from here: https://kenny-hibino.github.io/react-places-autocomplete/
 
+
 /*
 to do: checkbox state preserved when toggling stages. Values are preserving correctly still.
     checkboxStatus() {
         //componentWillMount, load status of checkboxes
         //if event.target.value is in this.props.new_content_post.contentCategories
     }
-
-
-to-do:
-file uploads
 */
 //===============================================================================================//
 
@@ -162,7 +159,7 @@ class NewContentPost extends Component {
         }
 
         if (this.state.checkingLogin) {
-            return <div className='loader'>Authorizing...</div>;
+            return loadingSpinner();
         }
 
         if (this.state.redirectToNewContentMediums) {
