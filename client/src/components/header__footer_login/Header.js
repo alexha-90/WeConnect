@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import LoginModal from './LoginModal';
 import { connect } from 'react-redux';
 import { isLoggedIn, logoutUser } from '../../actions/auth';
-import { Redirect } from 'react-router'
-import { ButtonToolbar, DropdownButton, MenuItem } from 'react-bootstrap';
+import { ButtonToolbar, DropdownButton } from 'react-bootstrap';
 //===============================================================================================//
 // don't like how login button shows up for a split second
 

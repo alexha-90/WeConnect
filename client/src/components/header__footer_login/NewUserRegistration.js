@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Radio, FormGroup, ControlLabel } from 'react-bootstrap';
-//import { Link } from 'react-router-dom';
+import { Button, Radio, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { isLoggedIn } from '../../actions/auth';
 import { registerNewUser } from '../../actions/profile';
 import { Redirect } from 'react-router';
 import moment from 'moment';
 import { FieldGroup } from '../helper_functions/index';
-
-//redux needed here for this.props.dispatch
-// provide login link just in case user misclicked
-
-// feedback at time of entering
-// to do later:
-//validate password characters
-//validate length
-//validate not empty
-//direct to confirm page
+//===============================================================================================//
 
 class NewUserRegistration extends Component {
     constructor() {
@@ -29,63 +18,52 @@ class NewUserRegistration extends Component {
             password: '',
             confirmPassword: '',
             accountType: '',
-            match: false
         };
-        // this.validateInput = this.validateInput.bind(this);
+        this.validatePassword = this.validatePassword.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit  = this.onSubmit.bind(this);
-        this.onBlurEmail = this.onBlurEmail.bind(this);
         this.onBlurPW = this.onBlurPW.bind(this);
     }
 
 
     componentWillMount() {
-        (async () => {
-            try {
-                return this.props.dispatch(isLoggedIn())
-                .then((result) => {
-                    if (result === 'OK') {
-                        this.setState({ redirectToHome: true });
-                        return alert('You are already signed in and registered!');
-                    }
-                    // user not logged in, allow them to register
-                });
-            } catch (err) {
-                return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');
+        setTimeout(() => {
+            if (this.props.auth.isLoggedIn) {
+                alert('You are already signed in! If you would like to register a new account, please logout first.');
+                return this.setState({ redirectToHome: true });
             }
-        })();
+            return this.setState({ checkingLogin: false });
+        },250);
     }
 
-    // validateInput() {
-    //     const length = this.state.emailAddress.length;
-    //     if (length > 10) return 'success';
-    //     else if (length > 5) return 'warning';
-    //     else if (length > 0) return 'error';
-    //     return null;
-    // }
-
-
-    onBlurEmail () {
-        if (this.state.emailAddress !== this.state.confirmEmailAddress) {
-            console.log('not match. Render red checkbox for email');
-            return this.setState({ match: false });
-        }
-        console.log('match found! Render green checkbox for email');
-        return this.setState({ match: true });
+    validatePassword() {
+        const length = this.state.password.length;
+        if (length > 4) return 'success';
+        else if (length > 2) return 'warning';
+        else if (length > 0) return 'error';
+        return null;
     }
 
     onBlurPW () {
         if (this.state.password !== this.state.confirmPassword) {
-            console.log('not match. Render red checkbox for pw');
-            return this.setState({ match: false });
+            return 'error';
         }
-        console.log('match found! Render green checkbox for pw');
-        return this.setState({ match: true });
+        else if (this.state.confirmPassword.length > 0 && (this.state.password === this.state.confirmPassword)) {
+            return 'success';
+        }
+        return null;
     }
 
     handleChange(event) {
-        switch (event.target.id) {
+        switch (event.target.name) {
             case 'username': {
+                const alphaNumeric = /^[0-9a-zA-Z]+$/;
+                if (!event.target.value.match(alphaNumeric)) {
+                    return alert('Invalid input. You are only allowed to enter alphabetical characters and numbers here.')
+                }
+                if (this.state.username.length > 11) {
+                    return alert('You have reached the limit for username length.')
+                }
                 return this.setState({username: event.target.value});
             }
             case 'emailAddress': {
@@ -115,9 +93,20 @@ class NewUserRegistration extends Component {
     }
 
     onSubmit() {
-        if (!this.state.match || !this.state.accountType) {
+        console.log(this.state.password.length)
+        console.log(this.state.confirmPassword.length);
+        if (this.state.emailAddress !== this.state.confirmEmailAddress || !this.state.accountType) {
             return alert('Please make sure your email address and password inputs match. An account type must also be selected');
         }
+
+        if (this.state.password.length < 2 || this.state.confirmPassword.length < 2) {
+            return alert('Please make sure your password is at least three characters long.');
+        }
+
+        if (this.state.password !== this.state.confirmPassword) {
+            return alert('Please make sure your password inputs match.');
+        }
+
         console.log('valid inputs');
 
         (async () => {
@@ -131,6 +120,7 @@ class NewUserRegistration extends Component {
             }))
                 .then((result) => {
                     if (result === 'OK') {
+                        window.location.reload();
                         alert('New account registered!');
                         return this.setState({redirectToHome: true});
                     }
@@ -154,6 +144,7 @@ class NewUserRegistration extends Component {
                         onChange={this.handleChange}
                         value={this.state.username}
                         id="username"
+                        name="username"
                         type="text"
                         label="Username"
                         placeholder="Create a new username"
@@ -161,43 +152,57 @@ class NewUserRegistration extends Component {
                     <FieldGroup
                         onChange={this.handleChange}
                         value={this.state.emailAddress}
-                        // validationState ={this.validateInput}
                         id="emailAddress"
+                        name="emailAddress"
                         type="email"
                         label="Email address"
                         placeholder="Enter email address"
                     />
+
                     <FieldGroup
-                        onBlur={this.onBlurEmail}
                         onChange={this.handleChange}
                         value={this.state.confirmEmailAddress}
                         id="confirmEmailAddress"
+                        name="confirmEmailAddress"
                         type="email"
                         label="Confirm email"
                         placeholder="Confirm email address"
                     />
-                    <FieldGroup
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        id="password"
-                        label="Password"
-                        type="password"
-                    />
-                    <FieldGroup
-                        onBlur={this.onBlurPW}
-                        onChange={this.handleChange}
-                        value={this.state.confirmPassword}
-                        id="confirmPassword"
-                        label="Confirm password"
-                        type="password"
-                    />
+
+                    <FormGroup
+                        validationState={this.validatePassword()}
+                    >
+                        <ControlLabel>Password</ControlLabel>
+                        <FormControl
+                            type="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <FormControl.Feedback />
+                    </FormGroup>
+
+                    <FormGroup
+                        validationState={this.onBlurPW()}
+                    >
+                        <ControlLabel>Confirm password</ControlLabel>
+                        <FormControl
+                            type="password"
+                            name="confirmPassword"
+                            value={this.state.confirmPassword}
+                            onChange={this.handleChange}
+                            onBlur={this.onBlurPW}
+                        />
+                        <FormControl.Feedback />
+                    </FormGroup>
+
                     <FormGroup
                         onChange={this.handleChange}
                     >
-                        <ControlLabel>I am a...</ControlLabel>
+                        <ControlLabel>DEMO NOTE: selection below does not matter at the moment.<br/>I am a...</ControlLabel>
                         <Radio
                             name="accountType"
-                            id="accountType"
+                            id="contentCreator"
                             value="Content Creator"
                         >
                             Content Creator
@@ -209,23 +214,36 @@ class NewUserRegistration extends Component {
                         {' '}
                         <Radio
                             name="accountType"
-                            id="accountType"
+                            id="advertiser"
                             value="Advertiser"
                         >
                             Advertiser
                             <br />
-                            Want to increase your exposure in the digital spectrum? Internet is growing blah blah.
-                            Leverage our platform to increase exposure and promote your business.
+                            Want to increase your exposure in the digital spectrum? Leverage our platform to increase
+                            exposure and promote your business
                         </Radio>
                     </FormGroup>
                     <Button bsStyle="warning" onClick={this.onSubmit}>
                         Register!
                     </Button>
+                    <FormControl.Feedback />
                 </form>
+
+
+                <form>
+
+                </form>
+
 
             </div>
         )
     }
 }
 
-export default connect(null)(NewUserRegistration);
+export default connect(mapStateToProps)(NewUserRegistration);
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth
+    };
+}

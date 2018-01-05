@@ -134,7 +134,8 @@
       background-color: #b3d9ff;
 
       #profileBlock {
-        padding-left: 10px;
+        // 3%padding + 20%profile img + 6%margin + 68%width + 3% padding
+        padding: 0 3%;
         display: inline-block;
         height: 70px;
         margin-top: 15px;
@@ -143,14 +144,14 @@
         img {
           display: inline-block;
           border-radius: 50%;
-          width: 58px;
-          height: 58px;
+          width: 20%;
         }
 
         span {
+          width: 68%;
           display: inline-block;
-          margin-left: 5%;
-          font-size: 30px;
+          margin-left: 6%;
+          //font-size: 30px;
           line-height: 55px; //70px height minus 15px margin-top
           vertical-align: top;
         }

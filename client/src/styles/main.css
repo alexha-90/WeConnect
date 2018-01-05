@@ -169,7 +169,7 @@
 
 .landing .mainSplash {
   background-color: #113b55;
-  height: 85vh; }
+  height: 90vh; }
   .landing .mainSplash #jumbotron {
     background: none;
     max-height: 500px;
@@ -242,7 +242,7 @@
 .newUserRegistrationContainer {
   width: 65%;
   display: block;
-  margin: 40px auto 0 auto;
+  margin: 40px auto;
   border: 2px solid #003366;
   border-radius: 10px;
   padding: 15px; }
@@ -427,7 +427,7 @@
       width: 300px;
       background-color: #b3d9ff; }
       .singlePostBigContainer .singleContentPostContainer .infoContainer #profileBlock {
-        padding-left: 10px;
+        padding: 0 3%;
         display: inline-block;
         height: 70px;
         margin-top: 15px;
@@ -435,12 +435,11 @@
         .singlePostBigContainer .singleContentPostContainer .infoContainer #profileBlock img {
           display: inline-block;
           border-radius: 50%;
-          width: 58px;
-          height: 58px; }
+          width: 20%; }
         .singlePostBigContainer .singleContentPostContainer .infoContainer #profileBlock span {
+          width: 68%;
           display: inline-block;
-          margin-left: 5%;
-          font-size: 30px;
+          margin-left: 6%;
           line-height: 55px;
           vertical-align: top; }
       .singlePostBigContainer .singleContentPostContainer .infoContainer h5 {

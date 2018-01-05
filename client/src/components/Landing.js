@@ -3,6 +3,7 @@ import { Button, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadingSpinner } from './helper_functions';
+import { ToastContainer, toast } from 'react-toastify';
 //===============================================================================================//
 
 class Landing extends Component {
@@ -24,7 +25,6 @@ class Landing extends Component {
         }, 300);
     }
 
-
     displayRegisterButton () {
         if (this.state.displayButton) {
             return <Button bsStyle="success">Register</Button>
@@ -40,6 +40,10 @@ class Landing extends Component {
         return (
             <div className="landing">
                 <div className="mainSplash">
+
+                    {toastDevelopmentMessage()}
+                    <ToastContainer autoClose={false} style={{color: '#ffffff', width: '70%', fontSize: '1.1em'}}/>
+
                     <Jumbotron id="jumbotron">
                         <div id="blurb">
                             <div>
@@ -54,7 +58,11 @@ class Landing extends Component {
                                 </p>
 
                                 <br/>
-                                <Button bsStyle="primary">Learn more</Button>
+                                <Button bsStyle="primary">
+                                    <a href="https://github.com/alexha-90/WeConnect">
+                                        GitHub source code
+                                    </a>
+                                </Button>
                                 &nbsp;
                                 <Button bsStyle="info">
                                     <Link to="/contentCreatorsList">
@@ -93,3 +101,13 @@ function mapStateToProps(state) {
         auth: state.auth.auth
     };
 }
+
+const toastDevelopmentMessage = () => {
+
+    const string = 'NOTE: this application is still under development. ' +
+        'Please click the "GitHub source code" button above to see a list of bugs and what is being worked on.';
+
+    toast.info(string , {
+        position: toast.POSITION.BOTTOM_LEFT
+    });
+};

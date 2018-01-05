@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import { privateMessageIDsToProps } from '../../actions/profile';
 import { fetchSingleContentPost } from '../../actions/contentPosts';
 import { fetchUserID } from '../../actions/auth';
-
-// import ContentPostListAdSpace from './subcomponents/content_creators_list/ContentPostListAdSpace';
 import ContactForm from './SinglePostContactForm';
 import singleContentPostResult from './SinglePostResult';
 import ImageLightbox from './ImageLightbox';
 import { loadingSpinner } from '../helper_functions';
+import { Textfit } from 'react-textfit';
 
 // on load check if a conversation already exists. If so, then hide button and show conversation
 // when message expanded, dim button
@@ -131,7 +130,9 @@ class SingleContentPost extends Component {
                         <div id="profileBlock">
                             <img alt="profilePic" src="https://i.imgur.com/FHLVEDd.png"/>
                             <span>
+                              <Textfit mode="single">
                                 {this.state.contentPost[0]['username']}
+                              </Textfit>
                             </span>
                         </div>
                         <h5>
