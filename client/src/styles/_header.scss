@@ -39,6 +39,71 @@
       text-align: center;
       float: right;
 
+      #registerLoginLink, #newContentPostLink, #contentCreatorsLink {
+        display: inline-block;
+        padding: 0 25px;
+        span {
+          cursor: pointer;
+        }
+      }
+
+      #profileDropdown {
+        display: inline-block;
+        background: none;
+        border: none;
+
+        .dropdown.open.btn-group {
+          Button {
+            color: #bfbfbf;
+            background: none;
+            border: none;
+            box-shadow: none;
+          }
+        }
+
+        Button {
+          padding-top: 15px;
+          font-size: 1.75rem;
+          color: #ffffff;
+          height: 4vh;
+          background: none;
+          border: none;
+          img {
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+        }
+        ul {
+          background-color: #216894;
+          margin-top: 25px;
+          text-align: center;
+          span {
+            color: #ffffff;
+            cursor: pointer;
+            a {
+              display: block;
+              color: #ffffff;
+            }
+            a:hover {
+              background-color: #cc8800;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ .rightContent {
+      font-size: 1.75rem;
+      display: inline-block;
+      margin: 0;
+      height: inherit;
+      text-align: center;
+      float: right;
+
       .loggedInLinks {
         display: inline-block;
         width: 100%;
@@ -88,5 +153,4 @@
         }
       }
     }
-  }
-}
+ */

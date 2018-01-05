@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import LoginModal from './LoginModal';
 import { connect } from 'react-redux';
 import { isLoggedIn, logoutUser } from '../../actions/auth';
+import { Redirect } from 'react-router'
+import { ButtonToolbar, DropdownButton, MenuItem } from 'react-bootstrap';
 //===============================================================================================//
 // don't like how login button shows up for a split second
 
@@ -12,9 +14,11 @@ class Header extends Component {
         this.state = {
             username: '',
             loginShow: false,
+            redirectToProfile: false
         };
         this.loginStatus = this.loginStatus.bind(this);
         this.onLogout = this.onLogout.bind(this);
+        this.profileIcon = this.profileIcon.bind(this);
     }
 
     componentWillMount() {
@@ -31,54 +35,70 @@ class Header extends Component {
         })();
     }
 
+    profileIcon() {
+        return (
+            <div style={{display: 'inline-block'}}>
+                <img src="https://i.imgur.com/FHLVEDd.png" alt="profileImg" />
+                {this.state.username}
+            </div>
+        )
+    }
+
+    onLogout() {
+        this.props.dispatch(logoutUser());
+        return window.location.reload()
+    }
+
 
     loginStatus() {
         if (this.props.auth.isLoggedIn) {
             return (
-                <div className="loggedInLinks">
+                <div>
+
+                    <div id="newContentPostLink">
+                        <a href='/newContentPost'>
+                            Create new post
+                        </a>
+                    </div>
+
                     <div id="contentCreatorsLink">
+                        <a href='/contentCreatorsList'>
+                            Browse content creators
+                        </a>
+                    </div>
+
+                    <ButtonToolbar id='profileDropdown'>
+                        <DropdownButton title={this.profileIcon()} id=''>
+                            <span className='dropdownItem'>
+                                <a href='/profile'>
+                                    View Profile
+                                </a>
+                            </span>
+                            <hr/>
+                            <span className='dropdownItem' onClick={this.onLogout}>
+                                Logout
+                            </span>
+                        </DropdownButton>
+                    </ButtonToolbar>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <div id="newContentPostLink">
                         <a href='/contentCreatorsList'>
                             Browse Content Creators
                         </a>
                     </div>
 
-                    <div id="viewProfileLink">
-                        <a href='/profile'>
-                            <img src="http://alexha.io/images/profile_pic.jpeg" alt="profileImg" />
-                            {this.state.username}
-                        </a>
-                    </div>
-                    <div id="logoutLink">
-                        <a href='' onClick={this.onLogout}>
-                            Logout
-                        </a>
+                    <div id="registerLoginLink">
+                        <span onClick={() => this.setState({loginShow: true})}>
+                            Register&nbsp;/&nbsp;Login
+                        </span>
                     </div>
                 </div>
             )
         }
-        return (
-            <div className="loggedOutLinks">
-                <div id="blankFiller" />
-                <div id="contentCreatorsLink">
-                    <a href='/contentCreatorsList'>
-                        Browse Content Creators
-                    </a>
-                </div>
-
-                <div id="registerLoginLink">
-                    <span onClick={ () => this.setState({ loginShow: true }) }>
-                        Register&nbsp;/&nbsp;Login
-                    </span>
-                </div>
-            </div>
-        )
-    }
-
-
-
-    onLogout() {
-        this.props.dispatch(logoutUser());
-        return window.location.reload()
     }
 
     render() {

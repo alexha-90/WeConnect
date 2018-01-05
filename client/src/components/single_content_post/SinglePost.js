@@ -129,7 +129,7 @@ class SingleContentPost extends Component {
 
                     <div className="infoContainer">
                         <div id="profileBlock">
-                            <img alt="profilePic" src="http://alexha.io/images/profile_pic.jpeg"/>
+                            <img alt="profilePic" src="https://i.imgur.com/FHLVEDd.png"/>
                             <span>
                                 {this.state.contentPost[0]['username']}
                             </span>
