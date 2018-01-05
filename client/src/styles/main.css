@@ -60,7 +60,7 @@
           cursor: pointer; }
 
 .footerContainer {
-  padding-top: 15px;
+  padding-top: 6px;
   height: 65px;
   background: #216894;
   text-align: center;
@@ -388,10 +388,12 @@
   background-color: #cccccc;
   color: #00394d;
   text-align: center;
-  height: 35px; }
+  height: 35px;
+  line-height: 35px; }
   .newPostBanner span Button {
     display: inline-block;
-    height: 29px;
+    height: 30px;
+    line-height: 15px;
     margin: 3px 0; }
 
 .searchBar {
@@ -461,8 +463,11 @@
       .contentPostContainer .singleContentPost #postOtherDetails #socialIcons {
         position: absolute;
         right: 0;
+        bottom: 0;
         text-align: right;
         margin-top: -28px; }
+        .contentPostContainer .singleContentPost #postOtherDetails #socialIcons img {
+          height: 22px; }
   .contentPostContainer .singleContentPost:hover {
     background: #7abcff;
     /* Old browsers */
@@ -474,6 +479,42 @@
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#54a9ff',GradientType=0 );
     /* IE6-9 */ }
+
+.profileContainer {
+  display: block;
+  margin: 30px auto;
+  width: 66%; }
+  .profileContainer h1 {
+    margin-bottom: -15px; }
+  .profileContainer hr {
+    border-color: #595959; }
+  .profileContainer .contentPostsSection {
+    color: #00394d;
+    background-color: #b3cccc;
+    border-radius: 10px;
+    box-shadow: 10px 10px #004d4d;
+    margin: 30px 0; }
+    .profileContainer .contentPostsSection .contentPostsContainer {
+      position: relative;
+      padding: 10px; }
+      .profileContainer .contentPostsSection .contentPostsContainer ul {
+        list-style: none; }
+      .profileContainer .contentPostsSection .contentPostsContainer #postOtherDetails {
+        position: relative; }
+        .profileContainer .contentPostsSection .contentPostsContainer #postOtherDetails span {
+          text-decoration: underline; }
+        .profileContainer .contentPostsSection .contentPostsContainer #postOtherDetails #postSummary {
+          font-size: 1.4em;
+          letter-spacing: 0.125em;
+          font-weight: 700; }
+        .profileContainer .contentPostsSection .contentPostsContainer #postOtherDetails #socialIcons {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          text-align: right;
+          margin-top: -28px; }
+          .profileContainer .contentPostsSection .contentPostsContainer #postOtherDetails #socialIcons img {
+            height: 22px; }
 
 * {
   margin: 0;

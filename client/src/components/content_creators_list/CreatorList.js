@@ -3,16 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../../actions/contentPosts';
-
 import { loadingSpinner } from '../helper_functions';
 import ContentPostFilterBar from './CreatorListFilterSidebar';
 import contentCreatorsResults from './CreatorListResults';
 import ContentPostListAdSpace from './CreatorListAdSpace';
 
-// loading screen reference: https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
-// create rating system
-
-// make searchable filters
 // simplify response so not everything needs to be queried from DB. Just enough for preview. Then user can load more upon expanding
 //===============================================================================================//
 
@@ -58,10 +53,10 @@ class ContentCreatorsList extends Component {
             <div>
                 <div className="newPostBanner">
                     <span>
-                        Want to leverage your social media presence to earn extra money?
+                        Want to leverage your social media presence to earn extra money?&nbsp;&nbsp;
                         <Button bsStyle="success">
                             <Link to="newContentPost">
-                                Create new listing
+                                Create a new listing!
                             </Link>
                         </Button>
                     </span>

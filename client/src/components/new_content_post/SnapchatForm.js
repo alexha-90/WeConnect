@@ -97,7 +97,7 @@ class SnapchatForm extends Component {
         return (
             <div className="socialMedium">
                 <div id="socialMediumHeadline">
-                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png" alt="snapchat" />
+                    <img src="https://i.imgur.com/k8yUXhd.png" alt="snapchat" style={{marginBottom: '15px'}}/>
                     <h2>Snapchat account details</h2>
                 </div>
 

@@ -114,7 +114,7 @@ class TwitterForm extends Component {
         return (
             <div className="socialMedium">
                 <div id="socialMediumHeadline">
-                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="twitter" />
+                    <img src="https://i.imgur.com/raOh0ik.png" alt="twitter" />
                     <h2>Twitter account details</h2>
                 </div>
                 <br/>

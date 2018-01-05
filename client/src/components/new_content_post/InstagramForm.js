@@ -114,7 +114,7 @@ class InstagramForm extends Component {
         return (
             <div className="socialMedium">
                 <div id="socialMediumHeadline">
-                    <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png" alt="instagram" />
+                    <img src="https://i.imgur.com/3Tz4oda.png" alt="instagram" style={{marginBottom: '15px'}}/>
                     <h2>Instagram profile details</h2>
                 </div>
 

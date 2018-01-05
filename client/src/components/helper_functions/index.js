@@ -57,7 +57,7 @@ export function loadingSpinner() {
         <div className="loadingSpinner"
             style={{
                 width: '100%',
-                minHeight: 'calc(100vh - 85px)',
+                minHeight: 'calc(100vh - 78px)',
             }}
         >
             <div

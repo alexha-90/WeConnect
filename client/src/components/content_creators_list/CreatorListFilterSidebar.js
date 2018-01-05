@@ -39,7 +39,7 @@ class ContentPostFilterBar extends Component {
             <div className="searchBar">
 
                 <form>
-                    <h3>Filter</h3>
+                    <h3>Filter (FEATURE TBD)</h3>
 
                     <div className="filterCategory">
                         <span onClick={() => this.setState({ mediumFilterOpen: !this.state.mediumFilterOpen })}>

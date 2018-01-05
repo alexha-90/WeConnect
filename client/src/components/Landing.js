@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Button, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { loadingSpinner } from './helper_functions';
 //===============================================================================================//
 
 class Landing extends Component {
     constructor() {
         super();
         this.state = {
+            loadingComponent: true,
             displayButton: true
         };
         this.displayRegisterButton = this.displayRegisterButton.bind(this);
@@ -18,7 +20,8 @@ class Landing extends Component {
             if (this.props.auth.isLoggedIn) {
                 this.setState({ displayButton: false });
             }
-        }, 500);
+            return this.setState({ loadingComponent: false });
+        }, 300);
     }
 
 
@@ -30,6 +33,10 @@ class Landing extends Component {
 
 
     render() {
+        if (this.state.loadingComponent) {
+            return loadingSpinner();
+        }
+
         return (
             <div className="landing">
                 <div className="mainSplash">

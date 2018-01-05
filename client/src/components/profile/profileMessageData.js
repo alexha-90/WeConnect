@@ -34,8 +34,8 @@ export default function profileMessageData(data, username) {
         <div>
             {comboArr.map((item) => {
                 return (
-                    <div className='contentCreatorSection' key={item[0] + '-section'}>
-                        <div className='contentCreatorContainer' key={item[0]}>
+                    <div className='' key={item[0] + '-section'}>
+                        <div className='' key={item[0]}>
                             <h3>
                                 Conversation with {item[1]}{item[2]} about:<br/>
                                 <Link to={"/contentPost/view/id:" + item[7]}>

@@ -7,11 +7,13 @@ $sidebar-color: #e6f2ff;
   color: #00394d;
   text-align: center;
   height: 35px;
+  line-height: 35px;
 
   span {
     Button {
       display: inline-block;
-      height: 29px;
+      height: 30px;
+      line-height: 15px;
       margin: 3px 0;
     }
   }
@@ -101,8 +103,12 @@ $sidebar-color: #e6f2ff;
       #socialIcons {
         position: absolute;
         right: 0;
+        bottom: 0;
         text-align: right;
         margin-top: -28px;
+        img {
+          height: 22px;
+        }
       }
     }
   }

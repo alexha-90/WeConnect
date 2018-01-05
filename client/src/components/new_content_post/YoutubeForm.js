@@ -113,7 +113,7 @@ class YoutubeForm extends Component {
         return (
             <div className="socialMedium">
                 <div id="socialMediumHeadline">
-                    <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png" alt="youtube" />
+                    <img src="https://i.imgur.com/LAuBK1j.png" alt="youtube" />
                     <h2>YouTube channel details</h2>
                 </div>
                 <br/>

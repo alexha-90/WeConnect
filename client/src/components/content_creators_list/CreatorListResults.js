@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //===============================================================================================//
 
+// note 4:30am. Downland and change social media icons to match actual posting
+
 export default function contentCreatorResults(data) {
 
     console.log(data);
@@ -22,19 +24,19 @@ export default function contentCreatorResults(data) {
         ];
 
         if (comboArr[i][6] !== null) {
-            comboArr[i][6] = <img alt="YouTube" title="YouTube" src="https://png.icons8.com/play-button/dusk/30/000000"/>
+            comboArr[i][6] = <img alt="YouTube" title="YouTube" src="https://i.imgur.com/OgKnkx6.png" style={{margin: '0 4px'}}/>
         }
 
         if (comboArr[i][7] !== null) {
-            comboArr[i][7] = <img alt="Instagram" title="Instagram" src="https://png.icons8.com/instagram-old/dusk/30"/>
+            comboArr[i][7] = <img alt="Instagram" title="Instagram" src="https://i.imgur.com/ua8nc0a.png" style={{margin: '0 4px'}}/>
         }
 
         if (comboArr[i][8] !== null) {
-            comboArr[i][8] = <img alt="Twitter" title="Twitter" src="https://png.icons8.com/twitter/dusk/30"/>
+            comboArr[i][8] = <img alt="Twitter" title="Twitter" src="https://i.imgur.com/rqlMTDJ.png" style={{margin: '0 4px'}}/>
         }
 
         if (comboArr[i][9] !== null) {
-            comboArr[i][9] = <img alt="Snapchat" title="Snapchat" src="https://png.icons8.com/snapchat/dusk/30/000000"/>
+            comboArr[i][9] = <img alt="Snapchat" title="Snapchat" src="https://i.imgur.com/37IM31N.png" style={{margin: '0 4px'}}/>
         }
 
         // arr[i] = data[i]['content_post_id'];

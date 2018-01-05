@@ -63,8 +63,8 @@ class Profile extends Component {
         }
 
         return (
-            <div>
-                <h1>Post activity:</h1>
+            <div className="profileContainer">
+                <h1>Your posts:</h1>
                 {profilePostData(this.state.userActivity)}
 
                 <hr/>
