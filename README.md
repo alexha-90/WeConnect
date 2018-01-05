@@ -1,11 +1,14 @@
 # WeConnect
 
-I am building a website that connects content creators
+A platform that connects content creators
 (specifically people with strong followings on YouTube, Twitter, Snapchat, and Instagram) with advertisers.
 Content creators can anonymously list their metrics, target audience, goals, and other supplemental information.
 Advertisers can view posts made by content creators and contact them for potential partnerships.
 
 ## tl;dr: Service for connecting advertisers with content creators (YT, TWTR, SC, IG)
+
+### Live demo: 
+<https://we-connect-social.herokuapp.com> (THIS IS A WORK IN PROGRESS!)
 
 ## Built with
 * React.js
@@ -18,11 +21,11 @@ Advertisers can view posts made by content creators and contact them for potenti
 
 ## Notable tools
 * Cloudinary.com image storage/processing API
-* Passport.js
-* Heroku
-* axios
+* Passport.js + bcrypt.js
+* Heroku + Heroku Data
+* axios + redux-thunk
 
-###As of 1/5/2018:
+### As of 1/5/2018...
 ## Known functional bugs and issues
 * Cannot delete image after uploading on newPost
 * Cannot modify images on edit post
