@@ -5,10 +5,10 @@ A platform that connects content creators
 Content creators can anonymously list their metrics, target audience, goals, and other supplemental information.
 Advertisers can view posts made by content creators and contact them for potential partnerships.
 
-## tl;dr: Service for connecting advertisers with content creators (YT, TWTR, SC, IG)
+## tl;dr: Service for connecting advertisers with content creators (YT, IG, TWTR, SC)
 
 ### Live demo: 
-<https://we-connect-social.herokuapp.com> (THIS IS A WORK IN PROGRESS!)
+<https://we-connect-social.herokuapp.com> (WORK IN PROGRESS!)
 
 ## Built with
 * React.js
@@ -23,7 +23,8 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Cloudinary.com image storage/processing API
 * Passport.js + bcrypt.js
 * Heroku + Heroku Data
-* axios + redux-thunk
+* Axios + redux-thunk
+
 
 ### As of 1/5/2018...
 ## Known functional bugs and issues
