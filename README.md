@@ -36,7 +36,7 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Can't change user avatar. Assigned.
 * Prompt better error if user attempts to access nonexistent post via URL
 * Sticky footer not working. Floats up when not enough content on page
-
+* List results not ordered
 
 ## Known visual bugs and issues
 * Not optimized for mobile

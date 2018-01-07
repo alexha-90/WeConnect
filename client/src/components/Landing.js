@@ -42,7 +42,7 @@ class Landing extends Component {
                 <div className="mainSplash">
 
                     {toastDevelopmentMessage()}
-                    <ToastContainer autoClose={false} style={{color: '#ffffff', width: '70%', fontSize: '1.1em'}}/>
+                    <ToastContainer autoClose={false} style={{color: '#ffffff', width: '80%', fontSize: '1.1em'}}/>
 
                     <Jumbotron id="jumbotron">
                         <div id="blurb">

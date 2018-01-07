@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { privateMessageIDsToProps } from '../../actions/profile';
 import { fetchSingleContentPost } from '../../actions/contentPosts';
@@ -23,7 +24,8 @@ class SingleContentPost extends Component {
             contentPost: [],
             posterID: null,
             userID: null,
-            lastEdited: null
+            lastEdited: null,
+            redirectToContentCreatorsList: false,
         };
         this.showActionButton = this.showActionButton.bind(this);
         this.contactUser = this.contactUser.bind(this);
@@ -42,7 +44,12 @@ class SingleContentPost extends Component {
                     console.log('adsasdad');
                     console.log(this.props.contentPost);
                     if (data === 'error') {
-                        return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
+                        alert('Unable to locate this entry. You are now being redirected to the list of posts.');
+                        setTimeout(() => {
+                            return this.setState({ redirectToContentCreatorsList: true });
+                        }, 500);
+
+                        // return this.setState({ redirectToContentCreatorsList: true });
                     }
                     this.setState({ contentPost: data, lastEdited: data[0]['last_edited'] });
                 })
@@ -105,6 +112,9 @@ class SingleContentPost extends Component {
     }
 
     render() {
+        if (this.state.redirectToContentCreatorsList) {
+            return <Redirect push to="/contentCreatorsList"/>
+        }
         if (this.state.loadingComponent) {
             return loadingSpinner();
         }

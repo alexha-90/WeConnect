@@ -61,7 +61,7 @@ class NewUserRegistration extends Component {
                 if (!event.target.value.match(alphaNumeric)) {
                     return alert('Invalid input. You are only allowed to enter alphabetical characters and numbers here.')
                 }
-                if (this.state.username.length > 11) {
+                if (this.state.username.length > 14) {
                     return alert('You have reached the limit for username length.')
                 }
                 return this.setState({username: event.target.value});
