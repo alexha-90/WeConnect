@@ -124,6 +124,11 @@ class NewUserRegistration extends Component {
                         alert('New account registered!');
                         return this.setState({redirectToHome: true});
                     }
+
+                    /* if result = not ok {
+                        return alert('Sorry an account already exists with this username and/or email address. Please try different inputs');
+
+                    */
                 });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');

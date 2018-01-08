@@ -33,8 +33,6 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Cannot edit category on edit post
 * Private messages should be in conversation format
 * Can register new account with existing username and/or email
-* Can't change user avatar. Assigned.
-* Prompt better error if user attempts to access nonexistent post via URL
 * Sticky footer not working. Floats up when not enough content on page
 * List results not ordered
 
@@ -51,3 +49,4 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Location field in newPost integrates Google Places autocomplete
 * Profile description and change avatar
 * Filter post results
+* Can't change user avatar. Assigned.

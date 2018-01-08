@@ -41,35 +41,39 @@ class SingleContentPost extends Component {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
                 .then((data) => {
-                    console.log('adsasdad');
-                    console.log(this.props.contentPost);
                     if (data === 'error') {
                         alert('Unable to locate this entry. You are now being redirected to the list of posts.');
-                        setTimeout(() => {
-                            return this.setState({ redirectToContentCreatorsList: true });
-                        }, 500);
-
-                        // return this.setState({ redirectToContentCreatorsList: true });
+                        return this.setState({ redirectToContentCreatorsList: true });
                     }
                     this.setState({ contentPost: data, lastEdited: data[0]['last_edited'] });
-                })
-                .then(() => {
-                    return this.props.dispatch(fetchUserID());
-                })
-                .then((userID) => {
-                    if (userID === 'error') {
-                        return console.log('User is not logged in. Will not be able to message poster');
-                    }
-                    const posterID = this.state.contentPost[0]['poster_id'];
-                    const postSummary = this.state.contentPost[0]['content_summary'];
-                    const posterUsername = this.state.contentPost[0]['username'];
-                    this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary, posterUsername))
                 })
             } catch (err) {
                 console.log(err);
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
             }
         })();
+
+        setTimeout(() => {
+            if (this.state.contentPost[0]) {
+                (async () => {
+                    try {
+                        return this.props.dispatch(fetchUserID())
+                        .then((userID) => {
+                            if (userID === 'error') {
+                                return console.log('User is not logged in. Will not be able to message poster');
+                            }
+                            const posterID = this.state.contentPost[0]['poster_id'];
+                            const postSummary = this.state.contentPost[0]['content_summary'];
+                            const posterUsername = this.state.contentPost[0]['username'];
+                            this.props.dispatch(privateMessageIDsToProps(postID, posterID, userID, postSummary, posterUsername))
+                        })
+                    } catch (err) {
+                        console.log(err);
+                        return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
+                    }
+                })();
+            }
+        }, 200)
     }
 
     componentDidMount() {
