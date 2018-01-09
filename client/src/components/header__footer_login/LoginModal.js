@@ -48,7 +48,7 @@ class LoginModal extends Component {
                     if (result === 'OK') {
                         return window.location.reload()
                     }
-                    return alert('Error: user was not found from the provided inputs. TO DO: change CSS instead of alert');
+                    return alert('Error: user was not found from the provided inputs!!');
                 });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');

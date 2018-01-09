@@ -9,21 +9,6 @@ export const loadProfileData = () => async () => {
     }
 };
 
-export const registerNewUser = (newUserData) => async dispatch => {
-    console.log(newUserData);
-    try {
-        const res = await axios.post('/api/saveNewUser',
-            dispatch({
-                type: 'SAVE_NEW_USER_TO_DB',
-                payload: newUserData
-            })
-        );
-        return res.data;
-    } catch(res) {
-        alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
-    }
-};
-
 export const privateMessageIDsToProps = (postID, posterID, userID, postSummary, posterUsername, username) => {
     // console.log(postID, posterID, userID, postSummary, posterUsername, username);
     return {

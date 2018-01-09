@@ -43,7 +43,7 @@ export default function singleContentPostResult(data) {
             <hr />
 
             <div className="content">
-                <h4>Summary</h4>
+                <h4>Description</h4>
 
                 {data[0]['content_description']}
 

@@ -35,7 +35,6 @@ class Profile extends Component {
                     if (data === 'error') {
                         return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
                     }
-                    console.log('QQQQ');
                     console.log(data);
                     return this.setState({ userActivity: data });
                 })

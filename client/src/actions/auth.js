@@ -2,6 +2,21 @@ import axios from 'axios';
 import store from '../index';
 //===============================================================================================//
 
+export const registerNewUser = (newUserData) => async dispatch => {
+    console.log(newUserData);
+    try {
+        const res = await axios.post('/api/registerNewUser',
+            dispatch({
+                type: 'SAVE_NEW_USER_TO_DB',
+                payload: newUserData
+            })
+        );
+        return res.data;
+    } catch(res) {
+        alert('Error: Something went wrong on the server-side. Please try again and let us know if this problem persists.' + res.err)
+    }
+};
+
 export const isLoggedIn = () => async () => {
     try {
         const res = await axios.get('/api/isLoggedIn');

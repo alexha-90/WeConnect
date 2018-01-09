@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Radio, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { registerNewUser } from '../../actions/profile';
+import { registerNewUser } from '../../actions/auth';
 import { Redirect } from 'react-router';
 import moment from 'moment';
-import { FieldGroup } from '../helper_functions/index';
+import { FieldGroup } from '../helper_functions/';
 //===============================================================================================//
 
 class NewUserRegistration extends Component {
@@ -93,7 +93,7 @@ class NewUserRegistration extends Component {
     }
 
     onSubmit() {
-        console.log(this.state.password.length)
+        console.log(this.state.password.length);
         console.log(this.state.confirmPassword.length);
         if (this.state.emailAddress !== this.state.confirmEmailAddress || !this.state.accountType) {
             return alert('Please make sure your email address and password inputs match. An account type must also be selected');
@@ -124,11 +124,7 @@ class NewUserRegistration extends Component {
                         alert('New account registered!');
                         return this.setState({redirectToHome: true});
                     }
-
-                    /* if result = not ok {
-                        return alert('Sorry an account already exists with this username and/or email address. Please try different inputs');
-
-                    */
+                    return alert('Sorry an account already exists with this username and/or email address. Please try different inputs');
                 });
             } catch (err) {
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists.');

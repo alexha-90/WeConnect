@@ -50,14 +50,15 @@ module.exports = (app) => {
                                 return res.sendStatus(200);
                             });
                         }
-                        console.log('*********no match keep trying****');
-                        res.send('error');
                     })
                     .catch ((err) => {
-                        console.log('####');
                         console.log(err);
                         return res.send('error');
                     })
+            })
+            .catch (() => {
+                console.log('User not found!');
+                res.send('error');
             })
         } catch (res) {
         console.log(res.err);
@@ -92,36 +93,55 @@ module.exports = (app) => {
 
 
     // authentication is already checked when this is called
-    app.post('/api/saveNewUser', (req, res) => {
-        try {
-            console.log('Attempt to save user to db');
-            const newUser = req.body.payload;
+    app.post('/api/registerNewUser', (req, res) => {
 
-            // TO-DO: query db to see if user already exists
+        const newUser = req.body.payload;
 
-            bcrypt.hash(newUser.password, 10)
-                .then(function (hashPassword) {
-                    const sql = 'INSERT INTO users (email, password, timestamp, account_type, username) VALUES ($1, $2, $3, $4, $5)';
-                    const params = [newUser.emailAddress, hashPassword, newUser.timestamp, newUser.accountType, newUser.username];
-                    return db.query(sql, params)
-                .then(() => {
-                    const sql = "SELECT currval(pg_get_serial_sequence('users', 'user_id'))";
-                    return db.query(sql)
-                })
+        // check if newUser already exists
+        let uniqueInputs = true;
+        const sql = 'SELECT * from users WHERE (email=$1 OR username=$2) LIMIT 1';
+        const params = [newUser.emailAddress, newUser.username];
+
+        (() => {
+            return db.query(sql, params)
                 .then((result) => {
-                    const user_id = result['rows'];
-                    console.log(user_id);
-                    req.login(user_id, () => {
-                        res.sendStatus(200);
-                    });
-                    console.log(req.user);
-                    console.log(req.isAuthenticated());
+                    if (result['rows'].length) {
+                        uniqueInputs = false;
+                        console.log('Account already exists with this username and/or email');
+                        return res.send('error')
+                    }
                 })
-            });
-        } catch (res) {
-            console.log(res.err);
-            res.send('error')
-        }
+        })();
+
+        setTimeout(() => {
+            if (uniqueInputs) {
+                try {
+                    console.log('Attempt to save user to db');
+                    bcrypt.hash(newUser.password, 10)
+                        .then(function (hashPassword) {
+                            const sql = 'INSERT INTO users (email, password, timestamp, account_type, username) VALUES ($1, $2, $3, $4, $5)';
+                            const params = [newUser.emailAddress, hashPassword, newUser.timestamp, newUser.accountType, newUser.username];
+                            return db.query(sql, params)
+                        .then(() => {
+                            const sql = "SELECT currval(pg_get_serial_sequence('users', 'user_id'))";
+                            return db.query(sql)
+                        })
+                        .then((result) => {
+                            const user_id = result['rows'];
+                            console.log(user_id);
+                            req.login(user_id, () => {
+                                res.sendStatus(200);
+                            });
+                            console.log(req.user);
+                            console.log(req.isAuthenticated());
+                        })
+                    });
+                } catch (res) {
+                    console.log(res.err);
+                    res.send('error')
+                }
+            }
+        }, 500);
     });
 
     // authentication is already checked when this is called
