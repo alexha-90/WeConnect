@@ -116,6 +116,8 @@ class SingleContentPost extends Component {
     }
 
     render() {
+        window.scrollTo(0, document.body.scrollHeight);
+
         if (this.state.redirectToContentCreatorsList) {
             return <Redirect push to="/contentCreatorsList"/>
         }
@@ -126,9 +128,9 @@ class SingleContentPost extends Component {
         return (
             <div className="singlePostBigContainer">
                 <br/>
-                <Link id="goBackLink" to="/ContentCreatorsList">
+                <a href='/ContentCreatorsList' id="goBackLink">
                     {'<-- '}Back to results
-                </Link>
+                </a>
 
                 <div className="singleContentPostContainer">
                     <div className="mainContainer">

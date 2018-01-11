@@ -330,6 +330,10 @@ class EditContentPost extends Component {
                 {twitterForm(this.state.showTwitterForm)}
                 {snapchatForm(this.state.showSnapchatForm)}
 
+                <h1>Images:</h1>
+
+                <hr/>
+
 
 
                 <Button bsStyle="warning">

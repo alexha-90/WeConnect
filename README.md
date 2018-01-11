@@ -25,9 +25,8 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Heroku + Heroku Data
 * Axios + redux-thunk
 
-### As of 1/8/2018...
-[x] = addressed, [ ] = work in progress
 
+[x] = addressed, [ ] = work in progress
 ## Known functional bugs and issues
 - [ ] Cannot delete image after uploading on newPost
 - [ ] Cannot modify images on edit post
@@ -35,6 +34,7 @@ Advertisers can view posts made by content creators and contact them for potenti
 - [ ] Private messages should be in conversation format
 - [ ] List results not ordered
 - [ ] Sticky footer not working. Floats up when not enough content on page
+- [x] lightbox references image links from previously viewed singlePosts 
 - [x] Prompt better error if user attempts to access nonexistent post via URL
 - [x] Can register new account with existing username and/or email
 
