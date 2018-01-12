@@ -37,7 +37,8 @@
       .header .headerContainer .rightContent #profileDropdown {
         display: inline-block;
         background: none;
-        border: none; }
+        border: none;
+        position: relative; }
         .header .headerContainer .rightContent #profileDropdown .dropdown.open.btn-group Button {
           color: #bfbfbf;
           background: none;
@@ -67,65 +68,6 @@
             .header .headerContainer .rightContent #profileDropdown ul span a:hover {
               background-color: #cc8800; }
 
-/*
- .rightContent {
-      font-size: 1.75rem;
-      display: inline-block;
-      margin: 0;
-      height: inherit;
-      text-align: center;
-      float: right;
-
-      .loggedInLinks {
-        display: inline-block;
-        width: 100%;
-        padding: 0 25px;
-
-        #contentCreatorsLink {
-          display: inline-block;
-          padding: 0 25px;
-
-        }
-
-        #viewProfileLink {
-          display: inline-block;
-          padding: 0 25px;
-
-
-          img {
-            height: 35px;
-            border-radius: 50%;
-            margin-right: 8px;
-          }
-
-        }
-        #logoutLink {
-          display: inline-block;
-          padding: 0 25px;
-        }
-      }
-
-      .loggedOutLinks {
-        #blankFiller {
-          display: inline-block;
-          width: 30%;
-        }
-        #contentCreatorsLink {
-          display: inline-block;
-          width: 40%;
-        }
-
-        #registerLoginLink {
-          float: right;
-          display: inline-block;
-          width: 30%;
-          span {
-            cursor: pointer;
-          }
-        }
-      }
-    }
- */
 .footerContainer {
   padding-top: 6px;
   height: 65px;
@@ -366,7 +308,8 @@
   margin-left: 15px; }
 
 .singlePostBigContainer {
-  display: block; }
+  display: block;
+  background-color: #e6e6e6; }
   .singlePostBigContainer .singleContentPostContainer {
     display: block;
     position: relative;
@@ -454,103 +397,102 @@
         .singlePostBigContainer .singleContentPostContainer .infoContainer #editButton a, .singlePostBigContainer .singleContentPostContainer .infoContainer #messageButton a {
           color: #f2f2f2; }
 
-.newPostBanner {
-  width: 100%;
-  display: block;
-  background-color: #cccccc;
-  color: #00394d;
-  text-align: center;
-  height: 35px;
-  line-height: 35px; }
-  .newPostBanner span Button {
+.creatorListContainer {
+  background-color: #e6e6e6; }
+  .creatorListContainer .newPostBanner {
+    width: 100%;
+    display: block;
+    background-color: #cccccc;
+    color: #00394d;
+    text-align: center;
+    height: 35px;
+    line-height: 35px; }
+    .creatorListContainer .newPostBanner span Button {
+      display: inline-block;
+      height: 30px;
+      line-height: 15px;
+      margin: 3px 0; }
+  .creatorListContainer .searchBar {
     display: inline-block;
-    height: 30px;
-    line-height: 15px;
-    margin: 3px 0; }
-
-.searchBar {
-  display: inline-block;
-  float: left;
-  width: 17%;
-  height: 700px;
-  background-color: #e6f2ff; }
-  .searchBar form {
-    padding-left: 20px; }
-    .searchBar form h3 {
-      margin-top: 20px; }
-    .searchBar form .filterCategory {
-      margin-left: 10%; }
-    .searchBar form .filterResult {
-      margin-left: 15%; }
-  .searchBar #adPlaceholder {
-    display: block;
-    margin: 20px auto;
-    min-height: 400px;
-    min-width: 240px; }
-
-.adSpace {
-  float: right;
-  display: inline-block;
-  width: 17%;
-  background-color: #e6f2ff; }
-  .adSpace img {
-    display: block;
-    margin: 20px auto;
-    min-height: 400px;
-    min-width: 240px; }
-
-.contentPostContainer {
-  display: inline-block;
-  width: 66%;
-  color: #333333; }
-  .contentPostContainer h1 {
-    padding-left: 20px;
-    margin-top: 10px; }
-  .contentPostContainer .singleContentPost {
-    display: block;
-    width: 70%;
-    margin: 40px auto;
-    padding: 10px 20px;
-    /* Gradient from: http://colorzilla.com/gradient-editor/#7abcff+0,b3d9ff+87 */
-    background: #7abcff;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #7abcff 0%, #b3d9ff 87%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #7abcff 0%, #b3d9ff 87%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #7abcff 0%, #b3d9ff 87%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7abcff', endColorstr='#b3d9ff', GradientType=0);
-    /* IE6-9 */
-    border-radius: 10px;
-    box-shadow: 10px 10px #4d4d4d; }
-    .contentPostContainer .singleContentPost #postSummary {
-      font-size: 1.4em;
-      letter-spacing: 0.125em;
-      font-weight: 700; }
-    .contentPostContainer .singleContentPost #postOtherDetails {
-      position: relative; }
-      .contentPostContainer .singleContentPost #postOtherDetails span {
-        text-decoration: underline; }
-      .contentPostContainer .singleContentPost #postOtherDetails #socialIcons {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        text-align: right;
-        margin-top: -28px; }
-        .contentPostContainer .singleContentPost #postOtherDetails #socialIcons img {
-          height: 22px; }
-  .contentPostContainer .singleContentPost:hover {
-    background: #7abcff;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #7abcff 0%, #60afff 0%, #54a9ff 87%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#54a9ff',GradientType=0 );
-    /* IE6-9 */ }
+    float: left;
+    width: 17%;
+    height: 700px;
+    background-color: #e6f2ff; }
+    .creatorListContainer .searchBar form {
+      padding-left: 20px; }
+      .creatorListContainer .searchBar form h3 {
+        margin-top: 20px; }
+      .creatorListContainer .searchBar form .filterCategory {
+        margin-left: 10%; }
+      .creatorListContainer .searchBar form .filterResult {
+        margin-left: 15%; }
+    .creatorListContainer .searchBar #adPlaceholder {
+      display: block;
+      margin: 20px auto;
+      min-height: 400px;
+      min-width: 240px; }
+  .creatorListContainer .adSpace {
+    float: right;
+    display: inline-block;
+    width: 17%;
+    background-color: #e6f2ff; }
+    .creatorListContainer .adSpace img {
+      display: block;
+      margin: 20px auto;
+      min-height: 400px;
+      min-width: 240px; }
+  .creatorListContainer .contentPostContainer {
+    display: inline-block;
+    width: 66%;
+    color: #333333; }
+    .creatorListContainer .contentPostContainer h1 {
+      padding-left: 20px;
+      margin-top: 10px; }
+    .creatorListContainer .contentPostContainer .singleContentPost {
+      display: block;
+      width: 70%;
+      margin: 40px auto;
+      padding: 10px 20px;
+      /* Gradient from: http://colorzilla.com/gradient-editor/#7abcff+0,b3d9ff+87 */
+      background: #7abcff;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #7abcff 0%, #b3d9ff 87%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #7abcff 0%, #b3d9ff 87%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #7abcff 0%, #b3d9ff 87%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7abcff', endColorstr='#b3d9ff', GradientType=0);
+      /* IE6-9 */
+      border-radius: 10px;
+      box-shadow: 10px 10px #4d4d4d; }
+      .creatorListContainer .contentPostContainer .singleContentPost #postSummary {
+        font-size: 1.4em;
+        letter-spacing: 0.125em;
+        font-weight: 700; }
+      .creatorListContainer .contentPostContainer .singleContentPost #postOtherDetails {
+        position: relative; }
+        .creatorListContainer .contentPostContainer .singleContentPost #postOtherDetails span {
+          text-decoration: underline; }
+        .creatorListContainer .contentPostContainer .singleContentPost #postOtherDetails #socialIcons {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          text-align: right;
+          margin-top: -28px; }
+          .creatorListContainer .contentPostContainer .singleContentPost #postOtherDetails #socialIcons img {
+            height: 22px; }
+    .creatorListContainer .contentPostContainer .singleContentPost:hover {
+      background: #7abcff;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #7abcff 0%, #60afff 0%, #54a9ff 87%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7abcff', endColorstr='#54a9ff', GradientType=0);
+      /* IE6-9 */ }
 
 .profileContainer {
   display: block;

@@ -51,6 +51,7 @@
         display: inline-block;
         background: none;
         border: none;
+        position: relative;
 
         .dropdown.open.btn-group {
           Button {
@@ -94,63 +95,3 @@
     }
   }
 }
-
-/*
- .rightContent {
-      font-size: 1.75rem;
-      display: inline-block;
-      margin: 0;
-      height: inherit;
-      text-align: center;
-      float: right;
-
-      .loggedInLinks {
-        display: inline-block;
-        width: 100%;
-        padding: 0 25px;
-
-        #contentCreatorsLink {
-          display: inline-block;
-          padding: 0 25px;
-
-        }
-
-        #viewProfileLink {
-          display: inline-block;
-          padding: 0 25px;
-
-
-          img {
-            height: 35px;
-            border-radius: 50%;
-            margin-right: 8px;
-          }
-
-        }
-        #logoutLink {
-          display: inline-block;
-          padding: 0 25px;
-        }
-      }
-
-      .loggedOutLinks {
-        #blankFiller {
-          display: inline-block;
-          width: 30%;
-        }
-        #contentCreatorsLink {
-          display: inline-block;
-          width: 40%;
-        }
-
-        #registerLoginLink {
-          float: right;
-          display: inline-block;
-          width: 30%;
-          span {
-            cursor: pointer;
-          }
-        }
-      }
-    }
- */

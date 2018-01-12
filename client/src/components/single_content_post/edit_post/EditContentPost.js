@@ -7,9 +7,14 @@ import DeleteContentPost from './DeleteContentPost';
 import { fetchSingleContentPost, editPostDetailsToProps } from '../../../actions/contentPosts';
 import { FieldGroup, openCategoryIndicator, youtubeForm, instagramForm, twitterForm, snapchatForm, loadingSpinner } from '../../helper_functions';
 import { submissionFlow } from './submissionFlow';
+import Dropzone from 'react-dropzone';
+import { uploadedImages } from '../../helper_functions/newContentHelpers';
+import { uploadImages } from '../../../actions/newContentPost';
+
 //===============================================================================================//
 
 let categoriesArr = [];
+let imagesArr = [];
 
 class EditContentPost extends Component {
     constructor() {
@@ -34,7 +39,9 @@ class EditContentPost extends Component {
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleCategoryToggle = this.handleCategoryToggle.bind(this);
+        this.onUploadImages = this.onUploadImages.bind(this);
         this.onUpdatePost = this.onUpdatePost.bind(this);
+        this.loadimages = this.loadimages.bind(this);
         //onDelete handled within DeleteContentPost class
     }
 
@@ -55,48 +62,48 @@ class EditContentPost extends Component {
         (async () => {
             try {
                 return this.props.dispatch(fetchSingleContentPost(postID))
-                    .then((data) => {
-                        console.log(data);
-                        this.setState( {contentPostID: data[0]['content_post_id']} );
-                        if (data === 'error') {
-                            return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
-                        }
-                        if (!data[0]['is_author']) {
-                            alert ('Sorry! You are not authorized to edit this post.');
-                            setTimeout(() => {
-                                return this.setState({redirectToPost: true})
-                            }, 250);
-                        }
+                .then((data) => {
+                    console.log(data);
+                    this.setState( {contentPostID: data[0]['content_post_id']} );
+                    if (data === 'error') {
+                        return alert ('Unable to retrieve information from the database. Please try again or notify us if the issue persists.');
+                    }
+                    if (!data[0]['is_author']) {
+                        alert ('Sorry! You are not authorized to edit this post.');
+                        setTimeout(() => {
+                            return this.setState({redirectToPost: true})
+                        }, 250);
+                    }
 
-                        this.setState({
-                            userLocation: data[0]['poster_location'],
-                            contentSummary: data[0]['content_summary'],
-                            contentDescription: data[0]['content_description'],
-                            contentIdealMatch: data[0]['content_ideal_match'],
-                            contentTags: data[0]['content_tags'],
-                            contentCategories: data[0]['content_categories']
-                        });
-                        return data;
-                    })
-                    .then((data) => {
-                        return this.props.dispatch(editPostDetailsToProps(data));
-                    })
-                    .then(() => {
-                        if (this.props.contentPost['yt_upload_frequency']) {
-                            this.setState({ showYouTubeForm: true })
-                        }
+                    this.setState({
+                        userLocation: data[0]['poster_location'],
+                        contentSummary: data[0]['content_summary'],
+                        contentDescription: data[0]['content_description'],
+                        contentIdealMatch: data[0]['content_ideal_match'],
+                        contentTags: data[0]['content_tags'],
+                        contentCategories: data[0]['content_categories']
+                    });
+                    return data;
+                })
+                .then((data) => {
+                    return this.props.dispatch(editPostDetailsToProps(data));
+                })
+                .then(() => {
+                    if (this.props.contentPost['yt_upload_frequency']) {
+                        this.setState({ showYouTubeForm: true })
+                    }
 
-                        if (this.props.contentPost['ig_post_frequency']) {
-                            this.setState({ showInstagramForm: true })
-                        }
-                        if (this.props.contentPost['tw_post_frequency']) {
-                            this.setState({ showTwitterForm: true })
-                        }
+                    if (this.props.contentPost['ig_post_frequency']) {
+                        this.setState({ showInstagramForm: true })
+                    }
+                    if (this.props.contentPost['tw_post_frequency']) {
+                        this.setState({ showTwitterForm: true })
+                    }
 
-                        if (this.props.contentPost['sc_post_frequency']) {
-                            this.setState({ showSnapchatForm: true })
-                        }
-                    })
+                    if (this.props.contentPost['sc_post_frequency']) {
+                        this.setState({ showSnapchatForm: true })
+                    }
+                })
             } catch (err) {
                 console.log(err);
                 return alert('Error: Something went wrong. Please try again or notify us if the issue persists. ' + err);
@@ -149,9 +156,76 @@ class EditContentPost extends Component {
         }
     }
 
+    // want to refactor this out to be reused in newPostImageUpload component
+    onUploadImages(files) {
+        if (imagesArr.length > 3) {
+            return alert('You can only upload a maximum of four images. Please delete existing image(s) to make space (Work in progress)');
+        }
 
-    //onDelete handled within DeleteContentPost class
+        let validType = false;
+        let validSize = false;
 
+        files.map(image => {
+            if (image.type === 'image/png' || image.type === 'image/gif' || image.type === 'image/jpeg' || image.type === 'image/jpg') {
+                validType = true;
+            }
+
+            if (image.size < 5242880) {
+                validSize = true;
+            }
+            return '';
+        });
+
+        if (!validType) {
+            return alert('You attempted to upload an unsupported file type. We only allow: .jpeg, .jpg, .png, .gif');
+        }
+
+        if (!validSize) {
+            return alert('One or more of your images exceeds our 5MB file size limit. Please select other image(s)');
+        }
+
+        const cloudName = 'dbcmum1bq';
+        const url = 'https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload';
+        const uploadPreset = 'udi4daeq';
+        const apiKey = '958649161433688';
+        const timestamp = Date.now() / 1000; // required unix timestamp
+
+        files.map(file => {
+            const formData = new FormData();
+            formData.append('upload_preset', uploadPreset);
+            formData.append('api_key', apiKey);
+            formData.append('file', file);
+            formData.append('timestamp', timestamp);
+            formData.append('tags', [this.props.auth.username, this.state.uploadCount]); // username as identifier
+            return this.props.dispatch(uploadImages(url, formData))
+                .then((imageURL) => {
+                    if (imageURL === 'error') {
+                        return alert ('Something went wrong. Please notify us about this issue.');
+                    }
+                    imagesArr.push([imageURL, this.state.uploadCount]);
+                    return this.setState({ hasUploadedImage: true, uploadCount: this.state.uploadCount + 1 });
+                })
+        });
+    }
+
+    loadimages() {
+        console.log(this.props);
+        if (this.props.contentPost.images_arr.length) {
+            return (
+                <div>
+                    {this.props.contentPost.images_arr.map((image) => {
+                        return (
+                            <div className='uploadedImages' key={this.state.contentPostID + '-' + image[1]}>
+                            <img src={image[0]} alt="postImage" />
+                            </div>
+                        )
+                    })}
+                </div>
+            )
+        }
+    }
+
+    //onDelete handled within DeleteContentPost class component
 
     render() {
         if (this.state.loadingComponent) {
@@ -330,7 +404,19 @@ class EditContentPost extends Component {
                 {twitterForm(this.state.showTwitterForm)}
                 {snapchatForm(this.state.showSnapchatForm)}
 
-                <h1>Images:</h1>
+                <div>
+                    <h1>Images:</h1>
+                    <Dropzone
+                        onDrop={this.onUploadImages}
+                        accept='image/*'
+                        multiple
+                        id="dropzone"
+                    >
+                        <p>*****<br/>Click here or drag images into box to initiate upload<span>*****</span></p>
+                    </Dropzone>
+                    {this.loadimages()}
+                    {uploadedImages(imagesArr)}
+                </div>
 
                 <hr/>
 

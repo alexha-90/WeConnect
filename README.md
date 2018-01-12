@@ -32,14 +32,15 @@ Advertisers can view posts made by content creators and contact them for potenti
 - [ ] Cannot modify images on edit post
 - [ ] Cannot edit category on edit post
 - [ ] Private messages should be in conversation format
-- [ ] List results not ordered
 - [ ] Sticky footer not working. Floats up when not enough content on page
+- [x] List results not ordered
 - [x] lightbox references image links from previously viewed singlePosts 
 - [x] Prompt better error if user attempts to access nonexistent post via URL
 - [x] Can register new account with existing username and/or email
 
 ## Known visual bugs and issues
 - [ ] Not optimized for mobile
+- [ ] Username slides out of place on browser zoom change
 - [ ] Categories menu on new/edit post slides when expanding/collapsing
 - [ ] Uploaded image placement positions and sizes can be optimized
 - [ ] Private messages in portfolio page has no styling

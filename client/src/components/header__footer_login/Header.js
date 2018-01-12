@@ -66,19 +66,21 @@ class Header extends Component {
                         </a>
                     </div>
 
-                    <ButtonToolbar id='profileDropdown'>
-                        <DropdownButton title={this.profileIcon()} id=''>
-                            <span className='dropdownItem'>
-                                <a href='/profile'>
-                                    View Profile
-                                </a>
-                            </span>
-                            <hr/>
-                            <span className='dropdownItem' onClick={this.onLogout}>
-                                Logout
-                            </span>
-                        </DropdownButton>
-                    </ButtonToolbar>
+                    <div id="profileDropdown">
+                        <ButtonToolbar id='profileDropdown'>
+                            <DropdownButton title={this.profileIcon()} id=''>
+                                <span className='dropdownItem'>
+                                    <a href='/profile'>
+                                        View Profile
+                                    </a>
+                                </span>
+                                <hr/>
+                                <span className='dropdownItem' onClick={this.onLogout}>
+                                    Logout
+                                </span>
+                            </DropdownButton>
+                        </ButtonToolbar>
+                    </div>
                 </div>
             )
         } else {
