@@ -59,6 +59,8 @@ class NewContentPost extends Component {
 
         // // repopulate form fields if redirected to this component from future step page
         if (this.props.newContentPost.contentSummary) {
+            console.log('yes');
+            console.log(this.props.newContentPost);
             return this.setState({
                 userLocation: this.props.newContentPost.userLocation,
                 contentSummary: this.props.newContentPost.contentSummary,
@@ -187,7 +189,7 @@ class NewContentPost extends Component {
                             type="text"
                             name="userLocation"
                             placeholder="Where do you live? Please list your city, country, and other relevant information. DO NOT ENTER YOUR FULL ADDRESS."
-                            maxLength="100"
+                            maxLength="75"
                             value={this.state.userLocation}
                             onChange={this.handleTextChange}
                         />
@@ -224,7 +226,7 @@ class NewContentPost extends Component {
                             />
                         </FormGroup>
                         <FieldGroup
-                                label="Tags"
+                                label="Tags (separate with commas)"
                                 id="contentTags"
                                 type="text"
                                 name="contentTags"
@@ -244,7 +246,7 @@ class NewContentPost extends Component {
                                     <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
                                         <tbody>
                                         <tr>
-                                            <td><Checkbox defaultChecked={true} name="Action/Adventure">Action/Adventure</Checkbox></td>
+                                            <td><Checkbox name="Action/Adventure">Action/Adventure</Checkbox></td>
                                             <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
                                             <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
                                         </tr>

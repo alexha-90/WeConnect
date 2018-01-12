@@ -30,9 +30,11 @@ Advertisers can view posts made by content creators and contact them for potenti
 ## Known functional bugs and issues
 - [ ] Cannot delete image after uploading on newPost
 - [ ] Cannot modify images on edit post
-- [ ] Cannot edit category on edit post
-- [ ] Private messages should be in conversation format
-- [ ] Sticky footer not working. Floats up when not enough content on page
+- [ ] Window load can drop users off at strange spots
+- [ ] Cannot remove category on edit post
+- [ ] Category checkbox state not preserved in newPost UI
+- [x] Category checkbox state not preserved in editPost UI
+- [x] Cannot add category on edit post
 - [x] List results not ordered
 - [x] lightbox references image links from previously viewed singlePosts 
 - [x] Prompt better error if user attempts to access nonexistent post via URL
@@ -44,12 +46,16 @@ Advertisers can view posts made by content creators and contact them for potenti
 - [ ] Categories menu on new/edit post slides when expanding/collapsing
 - [ ] Uploaded image placement positions and sizes can be optimized
 - [ ] Private messages in portfolio page has no styling
+- [ ] Sticky footer not working. Floats up when not enough content on page
 - [ ] Hard to see twitter icon when hovering over results list page
-- [ ] On newPost page, use icons instead of checkboxes for social mediums
-- [ ] Change styling instead of alert after login fail
 
 ## Potential future features
 * Pull information from respective social medium's API
 * Location field in newPost integrates Google Places autocomplete
 * Profile description and change avatar
 * Filter post results
+* Allocate space for ad banners
+* Private messages should be in conversation format
+
+## Potential visual improvements
+* On newPost page, use icons instead of checkboxes for social mediums

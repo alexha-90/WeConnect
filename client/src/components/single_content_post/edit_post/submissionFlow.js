@@ -4,7 +4,7 @@ import { updateSingleContentPost } from '../../../actions/contentPosts'
 import moment from 'moment';
 //===============================================================================================//
 
-export function submissionFlow(state, props) {
+export function submissionFlow(state, props, categoriesArr) {
     // if form is open and has neither contentPost or newPost data, prompt error.
     if (state.showYouTubeForm && (!props.contentPost['yt_upload_frequency'] && !props.newContentPost.youtube.yt_UploadFrequency)) {
         alert('Error: Please make sure to fill out all details for the YouTube form or deselect the option.');
@@ -23,6 +23,11 @@ export function submissionFlow(state, props) {
 
     if (state.showSnapchatForm && (!props.contentPost['sc_post_frequency'] && !props.newContentPost.snapchat.sc_PostFrequency)) {
         alert('Error: Please make sure to fill out all details for the Snapchat form or deselect the option.');
+        return false;
+    }
+
+    if (categoriesArr.length === 0) {
+        alert('You must select at least one category');
         return false;
     }
 
@@ -137,13 +142,13 @@ export function submissionFlow(state, props) {
         // treat updates as a new post
         let editedPost = {
             lastEdited: moment().format("MM/DD/YYYY") + ' at ' + moment().utcOffset(-480).format('hh:mm a') + ' PST',
+            contentCategories: categoriesArr,
             contentPostID: state.contentPostID,
             userLocation: state.userLocation,
             contentSummary: state.contentSummary,
             contentDescription: state.contentDescription,
             contentIdealMatch: state.contentIdealMatch,
             contentTags: state.contentTags,
-            contentCategories: state.contentCategories,
             youtube,
             instagram,
             twitter,

@@ -50,13 +50,13 @@ export default function contentCreatorResults(data) {
                         </div>
 
                         <div id="postOtherDetails">
-                            <span>Location</span>: {item[2]}
+                            <span>Tags</span>: {item[5]}
                             <br/>
                             <span>Ideal match</span>: {item[3]}
                             <br/>
                             <span>Categories</span>: {item[4]}
                             <br/>
-                            <span>Tags</span>: {item[5]}
+                            <span>Location</span>: {item[2]}
                             <div id="socialIcons">
                                 {item[6]}
                                 {item[7]}

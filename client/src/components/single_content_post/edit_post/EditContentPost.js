@@ -74,7 +74,7 @@ class EditContentPost extends Component {
                             return this.setState({redirectToPost: true})
                         }, 250);
                     }
-
+                    categoriesArr = data[0]['content_categories'];
                     this.setState({
                         userLocation: data[0]['poster_location'],
                         contentSummary: data[0]['content_summary'],
@@ -83,6 +83,7 @@ class EditContentPost extends Component {
                         contentTags: data[0]['content_tags'],
                         contentCategories: data[0]['content_categories']
                     });
+
                     return data;
                 })
                 .then((data) => {
@@ -148,8 +149,13 @@ class EditContentPost extends Component {
     }
 
     onUpdatePost () {
+        // removing duplicates method from https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
+        categoriesArr = categoriesArr.filter(( item, index, inputArray) => {
+            return inputArray.indexOf(item) == index;
+        });
+
         // cross references inputs and existing data, checks that inputs are valid, get timestamp, submit to backend
-        if (submissionFlow(this.state, this.props)) {
+        if (submissionFlow(this.state, this.props, categoriesArr)) {
             setTimeout(() => {
                 return this.setState({ redirectToPost: true });
             }, 1200);
@@ -283,7 +289,7 @@ class EditContentPost extends Component {
                         />
                     </FormGroup>
                     <FieldGroup
-                        label="Tags"
+                        label="Tags (separate with commas)"
                         id="contentTags"
                         type="text"
                         name="contentTags"
@@ -301,53 +307,53 @@ class EditContentPost extends Component {
                             <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
                                 <tbody>
                                 <tr>
-                                    <td><Checkbox defaultChecked={true} name="Action/Adventure">Action/Adventure</Checkbox></td>
-                                    <td><Checkbox name="Anime/Animation">Anime/Animation</Checkbox></td>
-                                    <td><Checkbox name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Action/Adventure')} name="Action/Adventure">Action/Adventure</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Anime/Animation')} name="Anime/Animation">Anime/Animation</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Autos & Vehicles')} name="Autos & Vehicles">Autos & Vehicles</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Classics">Classics</Checkbox></td>
-                                    <td><Checkbox name="Comedy">Comedy</Checkbox></td>
-                                    <td><Checkbox name="Documentary">Documentary</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Classics')} name="Classics">Classics</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Comedy')} name="Comedy">Comedy</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Documentary')} name="Documentary">Documentary</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Drama">Drama</Checkbox></td>
-                                    <td><Checkbox name="Education">Education</Checkbox></td>
-                                    <td><Checkbox name="Entertainment">Entertainment</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Drama')} name="Drama">Drama</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Education')} name="Education">Education</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Entertainment')} name="Entertainment">Entertainment</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Family">Family</Checkbox></td>
-                                    <td><Checkbox name="Film & Animation">Film & Animation</Checkbox></td>
-                                    <td><Checkbox name="Foreign">Foreign</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Family')} name="Family">Family</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Film & Animation')} name="Film & Animation">Film & Animation</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Foreign')} name="Foreign">Foreign</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Gaming">Gaming</Checkbox></td>
-                                    <td><Checkbox name="Horror">Horror</Checkbox></td>
-                                    <td><Checkbox name="How-to & Style">How-to & Style</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Gaming')} name="Gaming">Gaming</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Horror')} name="Horror">Horror</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('How-to & Style')} name="How-to & Style">How-to & Style</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Movies">Movies</Checkbox></td>
-                                    <td><Checkbox name="Music">Music</Checkbox></td>
-                                    <td><Checkbox name="News & Politics">News & Politics</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Movies')} name="Movies">Movies</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Music')} name="Music">Music</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('News & Politics')} name="News & Politics">News & Politics</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Nonprofits & Activism">Nonprofits & Activism</Checkbox></td>
-                                    <td><Checkbox name="People & Blog">People & Blogs</Checkbox></td>
-                                    <td><Checkbox name="Pets & Animals">Pets & Animals</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Nonprofits & Activism')} name="Nonprofits & Activism">Nonprofits & Activism</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('People & Blog')} name="People & Blog">People & Blogs</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Pets & Animals')} name="Pets & Animals">Pets & Animals</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Sci-Fi/Fantasy">Sci-Fi/Fantasy</Checkbox></td>
-                                    <td><Checkbox name="Science & Technology">Science & Technology</Checkbox></td>
-                                    <td><Checkbox name="Short Movies">Short Movies</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Sci-Fi/Fantasy')} name="Sci-Fi/Fantasy">Sci-Fi/Fantasy</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Science & Technology')} name="Science & Technology">Science & Technology</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Short Movies')} name="Short Movies">Short Movies</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Sports">Sports</Checkbox></td>
-                                    <td><Checkbox name="Thriller">Thriller</Checkbox></td>
-                                    <td><Checkbox name="Travel & Events">Travel & Events</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Sports')} name="Sports">Sports</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Thriller')} name="Thriller">Thriller</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Travel & Events')} name="Travel & Events">Travel & Events</Checkbox></td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox name="Vlogging">Vlogging</Checkbox></td>
-                                    <td><Checkbox name="Other">Other</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Vlogging')} name="Vlogging">Vlogging</Checkbox></td>
+                                    <td><Checkbox defaultChecked={this.state.contentCategories.includes('Other')} name="Other">Other</Checkbox></td>
                                 </tr>
                                 </tbody>
                             </Table>
