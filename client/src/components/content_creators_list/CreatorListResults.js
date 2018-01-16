@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { bubbleSort } from '../helper_functions';
-//===============================================================================================//
+//================================================================================================//
 export default function contentCreatorResults(data) {
 
     // console.log(data);

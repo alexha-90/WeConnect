@@ -116,11 +116,11 @@ $sidebar-color: #e6f2ff;
     }
 
     .singleContentPost:hover {
-      background: #7abcff; /* Old browsers */
-      background: -moz-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top, #7abcff 0%, #60afff 0%, #54a9ff 87%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom, #7abcff 0%, #60afff 0%, #54a9ff 87%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7abcff', endColorstr='#54a9ff', GradientType=0); /* IE6-9 */
+      background: rgb(190,203,226); /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(190,203,226,1) 0%, rgba(120,144,188,1) 60%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(190,203,226,1) 0%,rgba(120,144,188,1) 60%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(190,203,226,1) 0%,rgba(120,144,188,1) 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#becbe2', endColorstr='#7890bc',GradientType=0 ); /* IE6-9 */
     }
   }
 }

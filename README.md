@@ -28,26 +28,26 @@ Advertisers can view posts made by content creators and contact them for potenti
 
 [x] = addressed, [ ] = work in progress
 ## Known functional bugs and issues
-- [ ] Cannot delete image after uploading on newPost
-- [ ] Cannot modify images on edit post
-- [ ] Window load can drop users off at strange spots
-- [ ] Cannot remove category on edit post
-- [ ] Category checkbox state not preserved in newPost UI
 - [x] Category checkbox state not preserved in editPost UI
 - [x] Cannot add category on edit post
 - [x] List results not ordered
 - [x] lightbox references image links from previously viewed singlePosts 
 - [x] Prompt better error if user attempts to access nonexistent post via URL
 - [x] Can register new account with existing username and/or email
+- [ ] Cannot delete image after uploading on newPost
+- [ ] Cannot modify images on edit post
+- [ ] Window load can drop users off at strange spots
+- [ ] Cannot remove category on edit post
+- [ ] Category checkbox state not preserved in newPost UI
 
 ## Known visual bugs and issues
+- [x] Username slides out of place in header
+- [x] Hard to see twitter icon when hovering over results list page
 - [ ] Not optimized for mobile
-- [ ] Username slides out of place on browser zoom change
 - [ ] Categories menu on new/edit post slides when expanding/collapsing
 - [ ] Uploaded image placement positions and sizes can be optimized
 - [ ] Private messages in portfolio page has no styling
 - [ ] Sticky footer not working. Floats up when not enough content on page
-- [ ] Hard to see twitter icon when hovering over results list page
 
 ## Potential future features
 * Pull information from respective social medium's API
