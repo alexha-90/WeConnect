@@ -1,3 +1,27 @@
+//.header {
+//  width: 100%;
+//  background-color: #216894;
+//  height: 7vh;
+//  .headerNavbar {
+//    display: block;
+//    margin: 0 auto;
+//    background-color: inherit;
+//    height: inherit;
+//    width: 90%;
+//    background-color: red;
+//    padding: 0;
+//    .navbar-brand {
+//      padding: 0;
+//      img {
+//        position: relative;
+//        top: 50%;
+//        transform: translateY(-50%);
+//        height: 80%;
+//      }
+//    }
+//  }
+//}
+
 .header {
   width: 100%;
   background-color: #216894;
@@ -39,7 +63,8 @@
       text-align: center;
       float: right;
 
-      #registerLoginLink, #newContentPostLink, #contentCreatorsLink {
+
+      #registerLoginLink, #newContentPostLink, #contentCreatorsLink, #userDropdown {
         display: inline-block;
         padding: 0 25px;
         span {
@@ -47,50 +72,60 @@
         }
       }
 
+
+
       #profileDropdown {
         display: inline-block;
         background: none;
         border: none;
         position: relative;
 
-        .dropdown.open.btn-group {
-          Button {
-            color: #bfbfbf;
-            background: none;
-            border: none;
-            box-shadow: none;
-          }
-        }
-
-        Button {
-          padding-top: 15px;
-          font-size: 1.75rem;
-          color: #ffffff;
-          height: 4vh;
+        #userDropdown {
+          display: inline-block;
           background: none;
-          border: none;
+
           img {
             height: 35px;
             border-radius: 50%;
             margin-right: 8px;
           }
         }
+
         ul {
           background-color: #216894;
-          margin-top: 25px;
           text-align: center;
-          span {
-            color: #ffffff;
-            cursor: pointer;
-            a {
-              display: block;
-              color: #ffffff;
-            }
-            a:hover {
-              background-color: #cc8800;
-            }
+          cursor: pointer;
+          a {
+            display: block;
+            color: #f2f2f2;
+          }
+          a:hover {
+            background-color: #cc8800;
           }
         }
+
+        //.dropdown.open.btn-group {
+        //  Button {
+        //    color: #bfbfbf;
+        //    background: none;
+        //    border: none;
+        //    box-shadow: none;
+        //  }
+        //}
+
+        //Button {
+        //  font-size: 1.75rem;
+        //  color: #ffffff;
+        //  height: 4vh;
+        //  background: none;
+        //  border: none;
+        //  img {
+        //    height: 35px;
+        //    border-radius: 50%;
+        //    margin-right: 8px;
+        //  }
+        //}
+
       }
     }
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginModal from './LoginModal';
 import { connect } from 'react-redux';
 import { isLoggedIn, logoutUser } from '../../actions/auth';
-import { ButtonToolbar, DropdownButton } from 'react-bootstrap';
+import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 //===============================================================================================//
 // don't like how login button shows up for a split second
 
@@ -67,19 +67,17 @@ class Header extends Component {
                     </div>
 
                     <div id="profileDropdown">
-                        <ButtonToolbar id='profileDropdown'>
-                            <DropdownButton title={this.profileIcon()} id=''>
-                                <span className='dropdownItem'>
-                                    <a href='/profile'>
+                        <Nav>
+                            <NavDropdown eventKey={1} title={this.profileIcon()} id="userDropdown">
+                                <MenuItem eventKey={1.1} href='/profile'>
                                         View Profile
-                                    </a>
-                                </span>
-                                <hr/>
-                                <span className='dropdownItem' onClick={this.onLogout}>
+                                </MenuItem>
+                                <MenuItem divider />
+                                <MenuItem eventKey={1.2} onClick={this.onLogout}>
                                     Logout
-                                </span>
-                            </DropdownButton>
-                        </ButtonToolbar>
+                                </MenuItem>
+                            </NavDropdown>
+                        </Nav>
                     </div>
                 </div>
             )
