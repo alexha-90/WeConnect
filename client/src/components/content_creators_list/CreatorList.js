@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { fetchAllContentPosts } from '../../actions/contentPosts';
 import { loadingSpinner } from '../helper_functions';
 import ContentPostFilterBar from './CreatorListFilterSidebar';
-import contentCreatorsResults from './creatorListResults';
+import contentCreatorResults from './creatorListResults';
 // import ContentPostListAdSpace from './CreatorListAdSpace';
 
 // simplify response so not everything needs to be queried from DB. Just enough for preview. Then user can load more upon expanding
@@ -68,7 +68,7 @@ class ContentCreatorsList extends Component {
 
                 <div className="contentPostContainer">
                     <h1>Content creators looking to advertise:</h1>
-                    {contentCreatorsResults(this.state.contentPosts)}
+                    {contentCreatorResults(this.state.contentPosts)}
                 </div>
 
                 {/*/!* Import *!/*/}
