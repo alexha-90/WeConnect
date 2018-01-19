@@ -123,4 +123,35 @@ $sidebar-color: #e6f2ff;
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#becbe2', endColorstr='#7890bc',GradientType=0 ); /* IE6-9 */
     }
   }
+
+  @media screen and (max-width: 850px) {
+      .searchBar {
+      display: block;
+      float: none;
+      width: 100%;
+      height: auto;
+      padding: 15px 0;
+      background-color: $sidebar-color;
+      form {
+        margin-left: 8%;
+        h3 {
+          margin: 0;
+        }
+      }
+    }
+
+    .contentPostContainer {
+      h1 {
+        padding-left: 6%;
+        margin-top: 10px;
+      }
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      .singleContentPost {
+        display: block;
+        width: 80%;
+      }
+    }
+  }
 }

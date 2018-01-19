@@ -73,7 +73,9 @@ class Landing extends Component {
                                 {this.displayRegisterButton()}
                             </div>
                         </div>
-                        <img src="https://i.imgur.com/n6INZhE.png" alt="magnetSocial" />
+                        <div id="jumboImage">
+                            <img src="https://i.imgur.com/n6INZhE.png" alt="magnetSocial" />
+                        </div>
                     </Jumbotron>
                 </div>
                 <div className="statistic">

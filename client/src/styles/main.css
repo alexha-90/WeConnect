@@ -55,6 +55,26 @@
             color: #f2f2f2; }
           .header .headerContainer .rightContent #profileDropdown ul a:hover {
             background-color: #cc8800; }
+  @media screen and (max-width: 1050px) {
+    .header {
+      height: 13vh; }
+      .header .headerContainer {
+        width: 100%; }
+        .header .headerContainer #navLogo {
+          width: 100%;
+          height: 50px;
+          display: block;
+          margin: 0 auto;
+          padding-top: 10px; }
+          .header .headerContainer #navLogo img {
+            display: block;
+            margin: 0 auto;
+            height: 100%; }
+        .header .headerContainer .rightContent {
+          font-size: 1.6rem;
+          width: 100%;
+          display: block;
+          float: none; } }
 
 .footerContainer {
   padding-top: 6px;
@@ -122,11 +142,15 @@
         position: relative;
         top: 50%;
         transform: translateY(-50%); }
-    .landing .mainSplash #jumbotron img {
+    .landing .mainSplash #jumbotron #jumboImage {
+      width: 60%;
       display: inline-block;
-      position: relative;
       float: right;
       height: 100%; }
+      .landing .mainSplash #jumbotron #jumboImage img {
+        max-width: 80%;
+        height: inherit;
+        margin-left: 20%; }
     .landing .mainSplash #jumbotron h1 {
       font-size: 3em; }
       .landing .mainSplash #jumbotron h1 span {
@@ -168,6 +192,18 @@
     padding-bottom: 0;
     color: #f2f2f2;
     text-align: center; }
+
+@media screen and (max-width: 1120px) {
+  .landing .mainSplash {
+    height: 84vh; }
+    .landing .mainSplash #jumbotron {
+      width: 90%; }
+      .landing .mainSplash #jumbotron h1 {
+        font-size: 2.75em; }
+        .landing .mainSplash #jumbotron h1 span {
+          font-size: 2em; }
+      .landing .mainSplash #jumbotron #blurb button {
+        width: 100%; } }
 
 .newUserRegistrationContainer {
   width: 65%;
@@ -481,11 +517,33 @@
       /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#becbe2', endColorstr='#7890bc',GradientType=0 );
       /* IE6-9 */ }
+  @media screen and (max-width: 850px) {
+    .creatorListContainer .searchBar {
+      display: block;
+      float: none;
+      width: 100%;
+      height: auto;
+      padding: 15px 0;
+      background-color: #e6f2ff; }
+      .creatorListContainer .searchBar form {
+        margin-left: 8%; }
+        .creatorListContainer .searchBar form h3 {
+          margin: 0; }
+    .creatorListContainer .contentPostContainer {
+      display: block;
+      width: 90%;
+      margin: 0 auto; }
+      .creatorListContainer .contentPostContainer h1 {
+        padding-left: 6%;
+        margin-top: 10px; }
+      .creatorListContainer .contentPostContainer .singleContentPost {
+        display: block;
+        width: 80%; } }
 
 .profileContainer {
   display: block;
   margin: 30px auto;
-  width: 66%; }
+  width: 70%; }
   .profileContainer h1 {
     margin-bottom: -15px; }
   .profileContainer hr {

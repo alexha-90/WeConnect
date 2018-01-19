@@ -30,13 +30,18 @@
         }
       }
 
-      img {
+      #jumboImage {
+        width: 60%;
         display: inline-block;
-        position: relative;
         float: right;
         height: 100%;
-      }
 
+        img {
+          max-width: 80%;
+          height: inherit;
+          margin-left: 20%;
+        }
+      }
       h1 {
         font-size: 3em;
         span {
@@ -93,6 +98,29 @@
       color: #f2f2f2;
       text-align: center;
     }
+  }
 
+  @media screen and (max-width: 1120px) {
+    .mainSplash {
+      height: 84vh;
+
+      #jumbotron {
+        width: 90%;
+        h1 {
+          font-size: 2.75em;
+          span {
+            font-size: 2em;
+          }
+        }
+
+        #blurb {
+          button {
+            width: 100%;
+          }
+        }
+
+
+      }
+    }
   }
 }
