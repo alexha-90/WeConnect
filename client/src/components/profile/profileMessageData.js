@@ -31,7 +31,7 @@ export default function profileMessageData(data, username) {
     }
 
     return (
-        <div>
+        <div style={{background: "#e6e6e6"}}>
             {comboArr.map((item) => {
                 return (
                     <div className='' key={item[0] + '-section'}>

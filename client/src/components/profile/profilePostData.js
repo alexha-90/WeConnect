@@ -6,7 +6,7 @@ export default function profilePostData(data) {
 
     if (!data[0].length) {
         return (
-            <div>
+            <div style={{background: "#e6e6e6"}}>
                 <h2>No posting history to show!</h2>
             </div>
         )
@@ -37,7 +37,7 @@ export default function profilePostData(data) {
         }
     }
     return (
-        <div>
+        <div style={{background: "#e6e6e6"}}>
             {comboArr.map((item) => {
                 return (
                     <div className='contentPostsSection' key={item[0] + '-section'}>

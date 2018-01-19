@@ -22,7 +22,7 @@ class App extends Component {
     return (
         <div>
             <BrowserRouter>
-                <div>
+                <div style={{background: "#e6e6e6"}}>
                     <Header />
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/profile' component={Profile} />

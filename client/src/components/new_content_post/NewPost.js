@@ -171,7 +171,7 @@ class NewContentPost extends Component {
         return (
             <div>
                 <div id="stepComponent">
-                    <Steps labelPlacement="vertical" current={0}>
+                    <Steps labelPlacement="vertical" current={0} id="stepper">
                         <Step title="Description" />
                         <Step title="Mediums" />
                         <Step title="Images" />

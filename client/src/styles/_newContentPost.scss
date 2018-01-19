@@ -2,6 +2,13 @@
   display: block;
   margin: 40px auto 30px auto;
   width: 50%;
+
+  #stepper {
+    width: 100%;
+    .rc-steps-item-process .rc-steps-item-tail:after, .rc-steps-item-wait .rc-steps-item-tail:after {
+      background-color: #595959;
+    }
+  }
 }
 
 .newContentPostContainer {
@@ -29,12 +36,19 @@
     display: block;
     position: relative;
     letter-spacing: normal;
+    width: 100%;
 
     #categoryTable {
       width: 100%;
 
-      td {
-        width: 226px;
+      td:nth-child(even) {
+        width: 40%;
+        background-color: red;
+
+      }
+      td:nth-child(odd) {
+        width: 40%;
+
       }
     }
   }
@@ -145,4 +159,16 @@
     }
   }
 
+  @media screen and (max-width: 1050px) {
+    width: 85%;
+
+
+
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  #stepComponent {
+    width: 80%;
+  }
 }

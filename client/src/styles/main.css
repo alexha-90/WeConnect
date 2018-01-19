@@ -217,6 +217,10 @@
   display: block;
   margin: 40px auto 30px auto;
   width: 50%; }
+  #stepComponent #stepper {
+    width: 100%; }
+    #stepComponent #stepper .rc-steps-item-process .rc-steps-item-tail:after, #stepComponent #stepper .rc-steps-item-wait .rc-steps-item-tail:after {
+      background-color: #595959; }
 
 .newContentPostContainer {
   width: 50%;
@@ -234,11 +238,15 @@
   .newContentPostContainer .categories {
     display: block;
     position: relative;
-    letter-spacing: normal; }
+    letter-spacing: normal;
+    width: 100%; }
     .newContentPostContainer .categories #categoryTable {
       width: 100%; }
-      .newContentPostContainer .categories #categoryTable td {
-        width: 226px; }
+      .newContentPostContainer .categories #categoryTable td:nth-child(even) {
+        width: 40%;
+        background-color: red; }
+      .newContentPostContainer .categories #categoryTable td:nth-child(odd) {
+        width: 40%; }
   .newContentPostContainer h1 {
     text-align: center; }
   .newContentPostContainer h3 {
@@ -302,6 +310,13 @@
     margin-bottom: 5px; }
   .newContentPostContainer .finalReviewList ul {
     margin-left: 30px; }
+  @media screen and (max-width: 1050px) {
+    .newContentPostContainer {
+      width: 85%; } }
+
+@media screen and (max-width: 1050px) {
+  #stepComponent {
+    width: 80%; } }
 
 #instagramShow {
   display: block; }
@@ -420,6 +435,28 @@
         width: 80%; }
         .singlePostBigContainer .singleContentPostContainer .infoContainer #editButton a, .singlePostBigContainer .singleContentPostContainer .infoContainer #messageButton a {
           color: #f2f2f2; }
+    @media screen and (max-width: 1350px) {
+      .singlePostBigContainer .singleContentPostContainer {
+        width: 95%; }
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialLogoContainer {
+          display: block;
+          margin: 0;
+          width: 100%; }
+          .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialLogoContainer img {
+            display: block;
+            margin: 5px auto;
+            height: 100px; }
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult .content .socialMediums .socialMediumContainer #socialStatistics {
+          display: block;
+          width: 90%;
+          margin: 20px auto;
+          padding-bottom: 1px; }
+        .singlePostBigContainer .singleContentPostContainer .infoContainer {
+          width: 26%; }
+          .singlePostBigContainer .singleContentPostContainer .infoContainer #profileBlock img {
+            position: relative;
+            top: 40%;
+            transform: translateY(-50%); } }
 
 .creatorListContainer {
   background-color: #e6e6e6; }
