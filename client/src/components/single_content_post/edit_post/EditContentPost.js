@@ -151,7 +151,7 @@ class EditContentPost extends Component {
     onUpdatePost () {
         // removing duplicates method from https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
         categoriesArr = categoriesArr.filter(( item, index, inputArray) => {
-            return inputArray.indexOf(item) == index;
+            return inputArray.indexOf(item) === index;
         });
 
         // cross references inputs and existing data, checks that inputs are valid, get timestamp, submit to backend
@@ -304,7 +304,7 @@ class EditContentPost extends Component {
                         </span>
                         <br />
                         <Collapse in={this.state.categoryListOpen}>
-                            <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
+                            <Table onChange={this.handleCategoryToggle} responsive striped id="categoryTable">
                                 <tbody>
                                 <tr>
                                     <td><Checkbox defaultChecked={this.state.contentCategories.includes('Action/Adventure')} name="Action/Adventure">Action/Adventure</Checkbox></td>
@@ -427,21 +427,21 @@ class EditContentPost extends Component {
                 <hr/>
 
 
-
-                <Button bsStyle="warning">
-                    <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
-                        Back to post
-                    </Link>
-                </Button>
-                &nbsp;
-
-                <Button bsStyle="danger" onClick={() => this.setState({ showDeleteModal: true })}>
-                    Delete post
-                </Button>
-
-                <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
-                    Update!
-                </Button>
+                <div className="editPostButtons">
+                    <Button bsStyle="warning">
+                        <Link to={"/contentPost/view/id:" + this.state.contentPostID}>
+                            Back to post
+                        </Link>
+                    </Button>
+                    &nbsp;
+                    <Button bsStyle="danger" onClick={() => this.setState({ showDeleteModal: true })}>
+                        Delete post
+                    </Button>
+                    &nbsp;
+                    <Button onClick={this.onUpdatePost} bsStyle="success" id="nextStepButton">
+                        Update!
+                    </Button>
+                </div>
 
                 <DeleteContentPost show={this.state.showDeleteModal} onHide={()=>this.setState({ showDeleteModal: false })} />
 

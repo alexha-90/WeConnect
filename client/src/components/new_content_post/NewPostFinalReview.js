@@ -84,7 +84,7 @@ class NewContentPostFinalReview extends Component {
                             <li><span>Content description:</span> {this.props.newContentPost.contentDescription}</li>
                             <li><span>Content ideal match:</span> {this.props.newContentPost.contentIdealMatch}</li>
                             <li><span>Content tags:</span> {this.props.newContentPost.contentTags}</li>
-                            {/*<li><span>Content categories:</span> {this.props.new_content_post.contentCategories.join(', ')}</li>*/}
+                            <li><span>Content categories:</span> {this.props.newContentPost.contentCategories.join(', ')}</li>
                         </ul>
                     </div>
 
@@ -100,14 +100,14 @@ class NewContentPostFinalReview extends Component {
                     <hr />
                     {uploadedImages(this.props.newContentPost.imagesArr)}
 
-                    <Button bsStyle="warning">
+                    <Button bsStyle="warning" id="goBackButton">
                         <Link to="/newContentPost/images">
-                            Need to make change(s)? Back to previous page (Step 3/5)
+                            Back to previous page (Step 3/5)
                         </Link>
                     </Button>
 
 
-                    <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onSubmitNewContentPost}>
+                    <Button id="goForwardButton" bsStyle="success" onClick={this.onSubmitNewContentPost}>
                         Submit! (Step 5/5)
                     </Button>
 

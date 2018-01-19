@@ -43,7 +43,8 @@ Advertisers can view posts made by content creators and contact them for potenti
 ## Known visual bugs and issues
 - [x] Username slides out of place in header
 - [x] Hard to see twitter icon when hovering over results list page
-- [ ] Not optimized for mobile
+- [x] WORKING ON AS OF 1/18/18: Optimize for tablet
+- [ ] Optimize for mobile
 - [ ] Categories menu on new/edit post slides when expanding/collapsing
 - [ ] Uploaded image placement positions and sizes can be optimized
 - [ ] Private messages in portfolio page has no styling
@@ -54,6 +55,7 @@ Advertisers can view posts made by content creators and contact them for potenti
 * Location field in newPost integrates Google Places autocomplete
 * Profile description and change avatar
 * Filter post results
+* Post result pagination 
 * Allocate space for ad banners
 * Private messages should be in conversation format
 

@@ -32,6 +32,17 @@
     }
   }
 
+  #categoryTable {
+    width: 100%;
+    tr {
+      td {
+        width: 20%;
+        margin: 0;
+        padding: 1px 0 0 10px;
+      }
+    }
+  }
+
   .categories {
     display: block;
     position: relative;
@@ -40,15 +51,12 @@
 
     #categoryTable {
       width: 100%;
-
-      td:nth-child(even) {
-        width: 40%;
-        background-color: red;
-
-      }
-      td:nth-child(odd) {
-        width: 40%;
-
+      tr {
+        td {
+          width: 20%;
+          margin: 0;
+          padding: 1px 0 0 10px;
+        }
       }
     }
   }
@@ -107,7 +115,7 @@
     float: right;
   }
 
-  #contentMediumsGoBack {
+  #goForwardButton {
     float: right;
   }
 
@@ -159,11 +167,29 @@
     }
   }
 
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1100px) {
     width: 85%;
+  }
 
+  @media screen and (max-width: 675px) {
+    Form {
+      margin-bottom: 5px;
+    }
 
+    #goBackButton {
+      width: 100%;
+      float: none;
+      margin-bottom: 15px;
+      a {
+        color: #595959;
+        text-decoration: none;
+      }
+    }
 
+    #goForwardButton, #nextStepButton, .editPostButtons > Button {
+      width: 100%;
+      float: none;
+    }
   }
 }
 

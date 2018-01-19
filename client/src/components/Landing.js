@@ -63,7 +63,7 @@ class Landing extends Component {
                                         GitHub source code
                                     </a>
                                 </Button>
-                                &nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
                                 <Button bsStyle="info">
                                     <Link to="/contentCreatorsList">
                                         Browse content creators

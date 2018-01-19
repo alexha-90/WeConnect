@@ -45,8 +45,8 @@ export function organizeCategories (categoriesArr) {
 
 
 export function youtubeData (props) {
-    // if (props.new_content_post.youtube.yt_UploadFrequency !== null) {
-    if (props.newContentPost.youtube) {
+    if (props.newContentPost.youtube.yt_UploadFrequency !== null) {
+    // if (props.newContentPost.youtube) {
         return (
             <div>
                 <h3>Youtube:</h3>
@@ -62,8 +62,8 @@ export function youtubeData (props) {
 }
 
 export function instagramData (props) {
-    // if (props.new_content_post.instagram.ig_PostFrequency !== null) {
-    if (props.newContentPost.instagram) {
+    if (props.newContentPost.instagram.ig_PostFrequency !== null) {
+    // if (props.newContentPost.instagram) {
         return (
             <div>
                 <h3>Instagram:</h3>
@@ -79,8 +79,8 @@ export function instagramData (props) {
 }
 
 export function twitterData (props) {
-    // if (props.new_content_post.twitter.tw_PostFrequency !== null) {
-    if (props.newContentPost.twitter) {
+    if (props.newContentPost.twitter.tw_PostFrequency !== null) {
+    // if (props.newContentPost.twitter) {
             return (
             <div>
                 <h3>Twitter:</h3>
@@ -96,8 +96,8 @@ export function twitterData (props) {
 }
 
 export function snapchatData (props) {
-    // if (props.new_content_post.snapchat.sc_PostFrequency !== null) {
-    if (props.newContentPost.snapchat) {
+    if (props.newContentPost.snapchat.sc_PostFrequency !== null) {
+    // if (props.newContentPost.snapchat) {
             return (
             <div>
                 <h3>Snapchat:</h3>

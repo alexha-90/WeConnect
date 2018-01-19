@@ -131,13 +131,13 @@ class NewContentPostImageUpload extends Component {
 
                     <hr/>
 
-                    <Button bsStyle="warning">
+                    <Button bsStyle="warning" id="goBackButton">
                         <Link to="/newContentPost/mediums">
                             Back to previous page (Step 2/5)
                         </Link>
                     </Button>
 
-                    <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onNextStep}>
+                    <Button id="goForwardButton" bsStyle="success" onClick={this.onNextStep}>
                         Proceed to review (Step 4/5)
                     </Button>
 

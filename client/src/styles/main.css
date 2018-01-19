@@ -235,6 +235,12 @@
     display: block;
     margin: 10px auto;
     height: 200px; }
+  .newContentPostContainer #categoryTable {
+    width: 100%; }
+    .newContentPostContainer #categoryTable tr td {
+      width: 20%;
+      margin: 0;
+      padding: 1px 0 0 10px; }
   .newContentPostContainer .categories {
     display: block;
     position: relative;
@@ -242,11 +248,10 @@
     width: 100%; }
     .newContentPostContainer .categories #categoryTable {
       width: 100%; }
-      .newContentPostContainer .categories #categoryTable td:nth-child(even) {
-        width: 40%;
-        background-color: red; }
-      .newContentPostContainer .categories #categoryTable td:nth-child(odd) {
-        width: 40%; }
+      .newContentPostContainer .categories #categoryTable tr td {
+        width: 20%;
+        margin: 0;
+        padding: 1px 0 0 10px; }
   .newContentPostContainer h1 {
     text-align: center; }
   .newContentPostContainer h3 {
@@ -276,7 +281,7 @@
   .newContentPostContainer #nextStepButton {
     display: block;
     float: right; }
-  .newContentPostContainer #contentMediumsGoBack {
+  .newContentPostContainer #goForwardButton {
     float: right; }
   .newContentPostContainer #dropzone {
     height: 50px;
@@ -310,9 +315,22 @@
     margin-bottom: 5px; }
   .newContentPostContainer .finalReviewList ul {
     margin-left: 30px; }
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1100px) {
     .newContentPostContainer {
       width: 85%; } }
+  @media screen and (max-width: 675px) {
+    .newContentPostContainer Form {
+      margin-bottom: 5px; }
+    .newContentPostContainer #goBackButton {
+      width: 100%;
+      float: none;
+      margin-bottom: 15px; }
+      .newContentPostContainer #goBackButton a {
+        color: #595959;
+        text-decoration: none; }
+    .newContentPostContainer #goForwardButton, .newContentPostContainer #nextStepButton, .newContentPostContainer .editPostButtons > Button {
+      width: 100%;
+      float: none; } }
 
 @media screen and (max-width: 1050px) {
   #stepComponent {

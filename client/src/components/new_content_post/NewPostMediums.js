@@ -139,13 +139,13 @@ class NewContentPostMediums extends Component {
                     {twitterForm(this.state.showTwitterForm)}
                     {snapchatForm(this.state.showSnapchatForm)}
 
-                    <Button bsStyle="warning">
+                    <Button bsStyle="warning" id="goBackButton">
                         <Link to="/newContentPost">
                             Back to previous page (Step 1/5)
                         </Link>
                     </Button>
 
-                    <Button id="contentMediumsGoBack" bsStyle="success" onClick={this.onNextPage}>
+                    <Button id="goForwardButton" bsStyle="success" onClick={this.onNextPage}>
                         Proceed to optional images (Step 3/5)
                     </Button>
 

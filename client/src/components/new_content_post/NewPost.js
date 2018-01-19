@@ -243,7 +243,7 @@ class NewContentPost extends Component {
                                 </span>
                                 <br />
                                 <Collapse in={this.state.categoryListOpen}>
-                                    <Table onChange={this.handleCategoryToggle} striped bordered id="categoryTable">
+                                    <Table onChange={this.handleCategoryToggle} responsive striped id="categoryTable">
                                         <tbody>
                                         <tr>
                                             <td><Checkbox name="Action/Adventure">Action/Adventure</Checkbox></td>
