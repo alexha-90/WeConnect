@@ -3,6 +3,10 @@
     background-color: #113b55;
     height: 90vh;
 
+    #magnetSocialSmallImg {
+      display: none;
+    }
+
     #jumbotron {
       background: none;
       max-height: 500px;
@@ -118,8 +122,56 @@
             width: 100%;
           }
         }
+      }
+    }
+  }
 
+  @media screen and (max-width: 600px) {
+    .mainSplash {
+      padding-top: 20px;
+      height: 100vh;
 
+      #magnetSocialSmallImg {
+        display: block;
+        margin: 0 auto -20px auto;
+        width: 60%;
+      }
+
+      #jumbotron {
+        width: 90%;
+        top: auto;
+        transform: none;
+        h1 {
+          font-size: 2.5em;
+          span {
+            font-size: 1.75em;
+            text-decoration: underline;
+          }
+        }
+        #blurb {
+          display: block;
+          float: none;
+          width: 100%;
+          div {
+            top: auto;
+            transform: none;
+          }
+        }
+        #jumboImage {
+          display: none;
+        }
+      }
+    }
+    .statistic {
+      h4 {
+        width: 90%;
+      }
+    }
+
+    .demo {
+      img {
+        height: auto;
+        width: 80%;
       }
     }
   }

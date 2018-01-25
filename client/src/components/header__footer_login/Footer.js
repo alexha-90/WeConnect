@@ -10,9 +10,9 @@ class Footer extends Component {
         return (
             <div className="footerContainer">
                 <Grid id="centeredFooterText">
-                    <Row>
-                        <Col sm={2} md={2}>{' '}</Col>
-                        <Col sm={8} md={8}>
+                    <Row style={{margin: "0"}}>
+                        <Col sm={0} md={2}>{' '}</Col>
+                        <Col sm={12} md={8}>
                             <Link to="#">About Us</Link>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
                             <Link to="#">Contact Us</Link>
@@ -36,7 +36,7 @@ class Footer extends Component {
                             <br />
                             <hr id="footerBar"/>
                         </Col>
-                        <Col sm={2} md={2}>{' '}</Col>
+                        <Col sm={0} md={2}>{' '}</Col>
                     </Row>
                 </Grid>
 

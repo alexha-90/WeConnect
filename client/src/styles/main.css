@@ -120,6 +120,8 @@
 .landing .mainSplash {
   background-color: #113b55;
   height: 90vh; }
+  .landing .mainSplash #magnetSocialSmallImg {
+    display: none; }
   .landing .mainSplash #jumbotron {
     background: none;
     max-height: 500px;
@@ -204,6 +206,38 @@
           font-size: 2em; }
       .landing .mainSplash #jumbotron #blurb button {
         width: 100%; } }
+
+@media screen and (max-width: 600px) {
+  .landing .mainSplash {
+    padding-top: 20px;
+    height: 100vh; }
+    .landing .mainSplash #magnetSocialSmallImg {
+      display: block;
+      margin: 0 auto -20px auto;
+      width: 60%; }
+    .landing .mainSplash #jumbotron {
+      width: 90%;
+      top: auto;
+      transform: none; }
+      .landing .mainSplash #jumbotron h1 {
+        font-size: 2.5em; }
+        .landing .mainSplash #jumbotron h1 span {
+          font-size: 1.75em;
+          text-decoration: underline; }
+      .landing .mainSplash #jumbotron #blurb {
+        display: block;
+        float: none;
+        width: 100%; }
+        .landing .mainSplash #jumbotron #blurb div {
+          top: auto;
+          transform: none; }
+      .landing .mainSplash #jumbotron #jumboImage {
+        display: none; }
+  .landing .statistic h4 {
+    width: 90%; }
+  .landing .demo img {
+    height: auto;
+    width: 80%; } }
 
 .newUserRegistrationContainer {
   width: 65%;

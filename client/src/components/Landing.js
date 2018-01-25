@@ -44,6 +44,8 @@ class Landing extends Component {
                     {toastDevelopmentMessage()}
                     <ToastContainer autoClose={false} style={{color: '#ffffff', width: '80%', fontSize: '1.1em'}}/>
 
+                    <img src="https://i.imgur.com/n6INZhE.png" alt="magnetSocialSmall" id="magnetSocialSmallImg" />
+
                     <Jumbotron id="jumbotron">
                         <div id="blurb">
                             <div>

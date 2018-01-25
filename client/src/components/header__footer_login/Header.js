@@ -66,19 +66,19 @@ class Header extends Component {
                         </a>
                     </div>
 
-                    <div id="profileDropdown">
-                        <Nav>
-                            <NavDropdown eventKey={1} title={this.profileIcon()} id="userDropdown">
-                                <MenuItem eventKey={1.1} href='/profile'>
-                                        View Profile
-                                </MenuItem>
-                                <MenuItem divider />
-                                <MenuItem eventKey={1.2} onClick={this.onLogout}>
-                                    Logout
-                                </MenuItem>
-                            </NavDropdown>
-                        </Nav>
-                    </div>
+                    {/*<div id="profileDropdown">*/}
+                        {/*<Nav>*/}
+                            {/*<NavDropdown eventKey={1} title={this.profileIcon()} id="userDropdown">*/}
+                                {/*<MenuItem eventKey={1.1} href='/profile'>*/}
+                                        {/*View Profile*/}
+                                {/*</MenuItem>*/}
+                                {/*<MenuItem divider />*/}
+                                {/*<MenuItem eventKey={1.2} onClick={this.onLogout}>*/}
+                                    {/*Logout*/}
+                                {/*</MenuItem>*/}
+                            {/*</NavDropdown>*/}
+                        {/*</Nav>*/}
+                    {/*</div>*/}
                 </div>
             )
         } else {
