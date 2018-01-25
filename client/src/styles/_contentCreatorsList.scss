@@ -125,7 +125,7 @@ $sidebar-color: #e6f2ff;
   }
 
   @media screen and (max-width: 850px) {
-      .searchBar {
+    .searchBar {
       display: block;
       float: none;
       width: 100%;
@@ -151,6 +151,48 @@ $sidebar-color: #e6f2ff;
       .singleContentPost {
         display: block;
         width: 80%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .newPostBanner {
+      height: auto;
+      padding-bottom: 15px;
+      span {
+        span {
+          margin: 0 auto;
+          width: 70%;
+        }
+        Button {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
+
+
+      .searchBar {
+      display: none;
+
+    }
+
+    .contentPostContainer {
+      h1 {
+        font-size: 2em;
+      }
+
+      .singleContentPost {
+        #postOtherDetails {
+          #socialIcons {
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+            right: auto;
+            bottom: auto;
+            display: block;
+          }
+        }
       }
     }
   }

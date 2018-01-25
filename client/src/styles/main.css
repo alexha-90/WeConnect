@@ -413,7 +413,7 @@
       padding-top: 15px; }
       .singlePostBigContainer .singleContentPostContainer .mainContainer #imageLightbox {
         display: inline-block;
-        margin-left: 2%; }
+        margin-left: 1%; }
         .singlePostBigContainer .singleContentPostContainer .mainContainer #imageLightbox img {
           margin: 0 10px;
           display: inline-block;
@@ -509,6 +509,32 @@
             position: relative;
             top: 40%;
             transform: translateY(-50%); } }
+    @media screen and (max-width: 600px) {
+      .singlePostBigContainer .singleContentPostContainer #imageLightbox {
+        margin: 0; }
+        .singlePostBigContainer .singleContentPostContainer #imageLightbox div {
+          width: 100%;
+          text-align: center;
+          display: block;
+          margin: 15px auto 0 auto; }
+      .singlePostBigContainer .singleContentPostContainer .mainContainer {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        padding-top: 215px; }
+        .singlePostBigContainer .singleContentPostContainer .mainContainer .postResult {
+          display: block;
+          margin: 15px auto 0 auto;
+          width: 80%; }
+      .singlePostBigContainer .singleContentPostContainer .infoContainer {
+        right: auto;
+        width: 100%;
+        height: 200px;
+        display: block; }
+        .singlePostBigContainer .singleContentPostContainer .infoContainer #editButton, .singlePostBigContainer .singleContentPostContainer .infoContainer #messageButton {
+          width: 95%; }
+        .singlePostBigContainer .singleContentPostContainer .infoContainer div {
+          padding-bottom: 10px; } }
 
 .creatorListContainer {
   background-color: #e6e6e6; }
@@ -628,6 +654,27 @@
       .creatorListContainer .contentPostContainer .singleContentPost {
         display: block;
         width: 80%; } }
+  @media screen and (max-width: 600px) {
+    .creatorListContainer .newPostBanner {
+      height: auto;
+      padding-bottom: 15px; }
+      .creatorListContainer .newPostBanner span span {
+        margin: 0 auto;
+        width: 70%; }
+      .creatorListContainer .newPostBanner span Button {
+        display: block;
+        margin: 0 auto; }
+    .creatorListContainer .searchBar {
+      display: none; }
+    .creatorListContainer .contentPostContainer h1 {
+      font-size: 2em; }
+    .creatorListContainer .contentPostContainer .singleContentPost #postOtherDetails #socialIcons {
+      text-align: center;
+      margin-top: 10px;
+      position: relative;
+      right: auto;
+      bottom: auto;
+      display: block; } }
 
 .profileContainer {
   display: block;
