@@ -7,6 +7,8 @@
     color: #ffffff;
     text-decoration: none;
     letter-spacing: 0.05rem; }
+  .header hr {
+    display: none; }
   .header a:hover, .header span:hover {
     color: #bfbfbf; }
   .header .headerContainer {
@@ -75,6 +77,25 @@
           width: 100%;
           display: block;
           float: none; } }
+  @media screen and (max-width: 600px) {
+    .header {
+      height: 17vh; }
+      .header hr {
+        display: block;
+        margin-bottom: 0; }
+      .header .headerContainer #navLogo {
+        text-decoration: underline; }
+      .header .headerContainer .rightContent #newContentPostLink {
+        display: none;
+        width: 0;
+        height: 0;
+        padding: 0; }
+        .header .headerContainer .rightContent #newContentPostLink a {
+          display: none; }
+      .header .headerContainer .rightContent #contentCreatorsLink, .header .headerContainer .rightContent #profileDropdown {
+        font-size: 0.75em;
+        padding: 0;
+        width: 50%; } }
 
 .footerContainer {
   padding-top: 6px;

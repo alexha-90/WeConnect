@@ -53,6 +53,7 @@ class Header extends Component {
         if (this.props.auth.isLoggedIn) {
             return (
                 <div>
+                    <hr id="mobileLine"/>
 
                     <div id="newContentPostLink">
                         <a href='/newContentPost'>

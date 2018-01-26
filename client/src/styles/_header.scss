@@ -26,6 +26,10 @@
     letter-spacing: 0.05rem;
   }
 
+  hr {
+    display: none;
+  }
+
   a:hover, span:hover {
     color: #bfbfbf;
   }
@@ -121,6 +125,37 @@
         width: 100%;
         display: block;
         float: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 17vh;
+    hr {
+      display: block;
+      margin-bottom: 0;
+    }
+    .headerContainer {
+      #navLogo {
+        text-decoration: underline;
+      }
+
+      .rightContent {
+        #newContentPostLink {
+          display: none;
+          width: 0;
+          height: 0;
+          padding: 0;
+          a {
+            display: none;
+          }
+        }
+
+        #contentCreatorsLink, #profileDropdown {
+          font-size: 0.75em;
+          padding: 0;
+          width: 50%;
+        }
       }
     }
   }
