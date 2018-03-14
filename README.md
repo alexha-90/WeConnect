@@ -7,7 +7,7 @@ Advertisers can view posts made by content creators and contact them for potenti
 
 ## tl;dr: Service for connecting advertisers with content creators (YT, IG, TWTR, SC)
 
-### Live demo: 
+## Live demo: 
 <https://we-connect-social.herokuapp.com>
 
 # Table of contents
@@ -29,7 +29,7 @@ Advertisers can view posts made by content creators and contact them for potenti
 
 
 <a name="why"></a>
-## Why this project:
+# Why this project:
 I wanted to create a website for content creators to easily 
 connect with advertisers. I emphasized anonymity and support for less 
 popular content creators. From a technological standpoint, I wanted to 
@@ -37,7 +37,7 @@ practice SCSS, login systems, asynchronous actions, input
 validations, and working with multiple tables in a relational database. 
 
 <a name="howTo"></a>
-## How to use this website:
+# How to use this website:
 ##### Note: You are able to browse posts without registering.
 
 <a name="newPost"></a>
@@ -76,7 +76,7 @@ validations, and working with multiple tables in a relational database.
 6. Your message to this content creator will be visible in your profile page (chat thread feature work in progress)
 
 <a name="highlights"></a>
-## Highlights:
+# Highlights:
 * Step-by-step progression when creating a new post. Data is preserved during navigation
 * Extensive input validation to prevent data faults
 * Integrated image processing system
@@ -87,7 +87,7 @@ validations, and working with multiple tables in a relational database.
 
 
 <a name="builtWith"></a>
-## Built with
+# Built with
 * React.js
 * Redux
 * Bootstrap
@@ -97,7 +97,7 @@ validations, and working with multiple tables in a relational database.
 * PostgreSQL
 
 <a name="notableTools"></a>
-## Notable tools
+# Notable tools
 * Cloudinary.com image storage/processing API
 * Passport.js + bcrypt.js
 * Heroku + Heroku Data
@@ -116,7 +116,7 @@ The project...
 * should make use of more unit tests. But as the sole developer on a time crunch, I opted to skimp on this 
 
 <a name="knownFunctionalBugs"></a>
-## Known functional bugs and issues
+# Known functional bugs and issues
 - ~~Category checkbox state not preserved in editPost UI~~
 - ~~Cannot add category on edit post~~
 - ~~List results not ordered~~
@@ -130,7 +130,7 @@ The project...
 - Category checkbox state not preserved in newPost UI
 
 <a name="knownVisualBugs"></a>
-## Known visual bugs and issues
+# Known visual bugs and issues
 - ~~Username slides out of place in header~~
 - ~~Hard to see twitter icon when hovering over results list page~~
 - ~~Optimize for tablet~~
@@ -141,7 +141,7 @@ The project...
 - Sticky footer not working. Floats up when not enough content on page
 
 <a name="potentialFeatures"></a>
-## Potential features and improvements
+# Potential features and improvements
 * Ability to pull information from respective social medium's API
 * Location field in newPost integrates Google Places autocomplete
 * Profile description and change avatar
@@ -152,13 +152,13 @@ The project...
 * On newPost page, use icons instead of checkboxes for social mediums
 
 <a name="screenshots"></a>
-## Screenshots
+# Screenshots
 <img align="middle" alt='homepage' width='430' src='https://alexha.io/images/WeConnect_landing.png' />
 
 <img align="middle" alt='contentPost' width='430' src='https://alexha.io/images/WeConnect_post.png' />
 
 <a name="license"></a>
-## License
+# License
  * Copyright (C) 2018 Alex Ha
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file,
   You can obtain one at http://mozilla.org/MPL/2.0/.
