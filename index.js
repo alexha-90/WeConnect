@@ -72,6 +72,7 @@ app.get('/test', (req, res) => {
 // SERVER CONFIGURATION                                                                           //
 // =================================================================================================
 // // development route. needs to changed for production
+// note for future: make sure to npm install resolve
 if (process.env.NODE_ENV === 'production') {
     console.log('******** in production environment ********');
 

@@ -4,7 +4,6 @@ const passport = require('passport');
 
 // ************* authentication routes: isLoggedIn, saveNewUser, getProfileData
 
-// need to check if user already exists
 // getProfileData needs to consider advertisers accounts too, once that's wired in
 //===============================================================================================//
 
